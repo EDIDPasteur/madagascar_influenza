@@ -105,6 +105,5 @@ make report    # → docs/index.html
 - [x] Quarto report with Plotly interactive figures (`docs/index.html`)
 - [x] Missing metadata fields identified for all 1,849 Madagascar isolates
 - [x] `analyse_gisaid.py` hardened: logging, argparse, vectorised ops, provenance JSON
-- [x] Report published on QuartoPub
+- [x] Report published on GitHub Pages (mirrored from GitLab)
 - [ ] Phylo-ready threshold validation against Nextstrain avian-flu pipeline
-- [ ] GitLab Pages deployment
