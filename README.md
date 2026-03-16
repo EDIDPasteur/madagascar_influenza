@@ -2,6 +2,8 @@
 
 *Last updated: 2026-03-16*
 
+**Report: https://edidpasteur.github.io/madagascar_influenza/**
+
 ## Table of Contents
 
 - [Goal](#goal)
