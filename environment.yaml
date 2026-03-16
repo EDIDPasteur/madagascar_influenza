@@ -11,6 +11,7 @@ dependencies:
   - plotly
   - nbformat        # needed by plotly for some exports
   - biopython       # parse FASTA sequences
+  - seqkit           # fast FASTA length extraction (bioconda)
   - jupyter
   - quarto          # report generation
   - pip

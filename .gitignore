@@ -1,5 +1,7 @@
-# GISAID data — not redistributable
-data/
+# GISAID raw data — not redistributable
+data/gisaid_epiflu_*
+
+# Derived outputs in data/ are tracked (combined_metadata.tsv, madagascar_*.tsv, etc.)
 
 # Python
 __pycache__/

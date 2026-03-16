@@ -1,0 +1,72 @@
+{
+  "run_timestamp_utc": "2026-03-16T17:21:57.497757+00:00",
+  "python_version": "3.11.15 | packaged by conda-forge | (main, Mar  5 2026, 16:45:40) [GCC 14.3.0]",
+  "pandas_version": "3.0.1",
+  "numpy_version": "2.4.2",
+  "seqkit_path": "/pasteur/appa/homes/cduitama/miniconda3/bin/seqkit",
+  "seqkit_version": "seqkit v2.3.0",
+  "platform": "Linux-4.18.0-553.94.1.el8_10.x86_64-x86_64-with-glibc2.28",
+  "min_seq_len_thresholds": {
+    "PB2": 1800,
+    "PB1": 1800,
+    "PA": 1700,
+    "HA": 1300,
+    "NP": 1200,
+    "NA": 1000,
+    "MP": 800,
+    "NS": 700
+  },
+  "input_xls_files": [
+    {
+      "file": "gisaid_epiflu_isolates_a_human_africa.xls",
+      "rows_after_load": 19902
+    },
+    {
+      "file": "gisaid_epiflu_isolates_animal_environmental_africa.xls",
+      "rows_after_load": 5160
+    },
+    {
+      "file": "gisaid_epiflu_isolates_b_human_africa.xls",
+      "rows_after_load": 5081
+    },
+    {
+      "file": "gisaid_epiflu_isolates_c_human_africa.xls",
+      "rows_after_load": 10
+    }
+  ],
+  "input_fasta_files": [
+    {
+      "file": "gisaid_epiflu_sequence_a_excepth3_human_africa.fasta",
+      "sequences": 49494,
+      "seg_types": 8
+    },
+    {
+      "file": "gisaid_epiflu_sequence_a_h3_human_africa.fasta",
+      "sequences": 61407,
+      "seg_types": 8
+    },
+    {
+      "file": "gisaid_epiflu_sequence_animal_environmental_africa.fasta",
+      "sequences": 22314,
+      "seg_types": 8
+    },
+    {
+      "file": "gisaid_epiflu_sequence_b_human_africa.fasta",
+      "sequences": 27900,
+      "seg_types": 8
+    },
+    {
+      "file": "gisaid_epiflu_sequence_c_human_africa.fasta",
+      "sequences": 28,
+      "seg_types": 7
+    }
+  ],
+  "pipeline_stage_counts": {
+    "total_loaded": 30153,
+    "after_merge_dedup": 30065,
+    "final": 30065,
+    "madagascar": 1849,
+    "africa": 30065
+  },
+  "git_commit": "e085cd00fccb13a73ae8d0b7756166008c21afc8"
+}
