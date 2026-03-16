@@ -51,10 +51,11 @@ This report summarises all influenza sequences available in
 for **Africa (all hosts, all types)** with a focus on **Madagascar**.
 Data were downloaded on **16 March 2026**.
 
-Genome completeness is defined at two levels:
+A sample is considered **analysis-ready** if it meets all three criteria:
 
-- **Complete metadata**: all 8 segment accession IDs present in GISAID (`Complete_metadata`)
-- **Phylo-ready**: all 8 segments have a sequence AND each segment meets minimum length thresholds for phylogenetics (PB2/PB1 ≥ 1,800 nt, PA ≥ 1,700, HA ≥ 1,300, NP ≥ 1,200, NA ≥ 1,000, MP ≥ 800, NS ≥ 700)
+1. **Complete genome** — all 8 segments (PB2, PB1, PA, HA, NP, NA, MP, NS) present in the downloaded FASTA and each segment above minimum length thresholds (PB2/PB1 ≥ 1,800 nt, PA ≥ 1,700, HA ≥ 1,300, NP ≥ 1,200, NA ≥ 1,000, MP ≥ 800, NS ≥ 700)
+2. **Known geographic location** — Country field non-empty
+3. **Known sampling date** — Collection date present and plausible (1990–2026)
 
 The two GISAID downloads are merged and deduplicated on `Isolate_Id`, with the most specific download taking precedence.
 
@@ -63,11 +64,10 @@ The two GISAID downloads are merged and deduplicated on `Isolate_Id`, with the m
 
 def completeness_row(label, d):
     n    = len(d)
-    cm   = int(d["Complete_metadata"].sum()) if "Complete_metadata" in d.columns else 0
     pr   = int(d["phylo_ready"].sum()) if "phylo_ready" in d.columns else 0
     loc  = int(d["Country"].notna().sum())
     yr   = int(d["Year"].between(1990, 2026).sum())
-    all3 = int((d["phylo_ready"] & d["Country"].notna() & d["Year"].between(1990, 2026)).sum()) if "phylo_ready" in d.columns else 0
+    ar   = int((d["phylo_ready"] & d["Country"].notna() & d["Year"].between(1990, 2026)).sum()) if "phylo_ready" in d.columns else 0
     dr_min = d["Collection_Date"].min()
     dr_max = d["Collection_Date"].max()
     date_range = (
@@ -75,14 +75,13 @@ def completeness_row(label, d):
         if pd.notna(dr_min) and pd.notna(dr_max) else "—"
     )
     return {
-        "Dataset": label,
-        "Isolates": f"{n:,}",
-        "Complete metadata": f"{cm:,} ({cm/n*100:.0f}%)",
-        "Phylo-ready": f"{pr:,} ({pr/n*100:.0f}%)",
-        "Location known": f"{loc:,} ({loc/n*100:.0f}%)",
-        "Sampling date": f"{yr:,} ({yr/n*100:.0f}%)",
-        "All criteria (phylo+loc+date)": f"{all3:,} ({all3/n*100:.0f}%)",
-        "Date range": date_range,
+        "Dataset":                    label,
+        "Isolates":                   f"{n:,}",
+        "Complete genome (phylo-ready)": f"{pr:,} ({pr/n*100:.0f}%)",
+        "Known location":             f"{loc:,} ({loc/n*100:.0f}%)",
+        "Known date":                 f"{yr:,} ({yr/n*100:.0f}%)",
+        "Analysis-ready (all 3 criteria)": f"{ar:,} ({ar/n*100:.0f}%)",
+        "Date range":                 date_range,
     }
 
 overview = pd.DataFrame([
@@ -107,14 +106,10 @@ country_counts = (
     africa.groupby("Country")
     .agg(
         Isolates=("Isolate_Id", "count"),
-        Complete=("Complete_metadata", "sum"),
         Phylo=("phylo_ready", "sum"),
     )
     .reset_index()
 )
-country_counts["Completeness_pct"] = (
-    country_counts["Complete"] / country_counts["Isolates"] * 100
-).round(1)
 country_counts["Phylo_pct"] = (
     country_counts["Phylo"] / country_counts["Isolates"] * 100
 ).round(1)
@@ -125,11 +120,11 @@ fig = px.choropleth(
     locationmode="country names",
     color="Isolates",
     hover_name="Country",
-    hover_data={"Isolates": True, "Completeness_pct": True, "Phylo_pct": True, "Country": False},
+    hover_data={"Isolates": True, "Phylo_pct": True, "Country": False},
     color_continuous_scale="YlOrRd",
     scope="africa",
     title="Influenza isolates per African country — all hosts (GISAID EpiFlu)",
-    labels={"Completeness_pct": "Complete genomes (%)"},
+    labels={"Phylo_pct": "Analysis-ready (%)"},
 )
 fig.update_geos(bgcolor="lightgrey", showcountries=True, countrycolor="white")
 fig.show()
@@ -229,7 +224,7 @@ fig.update_layout(showlegend=False)
 fig.show()
 ```
 
-### Genome completeness by country (top 10)
+### Analysis-ready isolates by country (top 10)
 
 ```{python}
 #| label: fig-africa-comp-country
@@ -238,20 +233,20 @@ top10 = africa["Country"].value_counts().head(10).index.tolist()
 af_t10 = africa[africa["Country"].isin(top10)].copy()
 
 comp_c = (
-    af_t10.groupby(["Country", "Complete_metadata"])
+    af_t10.groupby(["Country", "phylo_ready"])
     .size().reset_index(name="n")
 )
-comp_c["Label"] = comp_c["Complete_metadata"].map({True: "Complete", False: "Partial"})
+comp_c["Label"] = comp_c["phylo_ready"].map({True: "Analysis-ready", False: "Incomplete"})
 
 fig = px.bar(
     comp_c,
     x="Country", y="n",
     color="Label",
-    color_discrete_map={"Complete": PALETTE[2], "Partial": PALETTE[5]},
+    color_discrete_map={"Analysis-ready": PALETTE[2], "Incomplete": PALETTE[5]},
     barmode="stack",
     category_orders={"Country": top10},
-    labels={"n": "Isolates", "Label": "Genome"},
-    title="Africa — genome completeness by country (top 10)",
+    labels={"n": "Isolates", "Label": "Status"},
+    title="Africa — analysis-ready isolates by country (top 10)",
 )
 fig.show()
 ```
@@ -328,27 +323,27 @@ fig.update_layout(showlegend=False)
 fig.show()
 ```
 
-### Genome completeness
+### Analysis-ready isolates
 
 ```{python}
 #| label: fig-mdg-completeness
 
-comp_m = mdg.groupby("Complete_metadata").size().reset_index(name="n")
-comp_m["Label"] = comp_m["Complete_metadata"].map(
-    {True: "Complete (8/8 segments)", False: "Partial"}
+comp_m = mdg.groupby("phylo_ready").size().reset_index(name="n")
+comp_m["Label"] = comp_m["phylo_ready"].map(
+    {True: "Analysis-ready (complete genome + loc + date)", False: "Not analysis-ready"}
 )
 
 fig = px.pie(
     comp_m,
     names="Label", values="n",
     color_discrete_sequence=[PALETTE[2], PALETTE[5]],
-    title="Madagascar — genome completeness",
+    title="Madagascar — analysis-ready isolates",
     hole=0.4,
 )
 fig.show()
 ```
 
-### Completeness by subtype (top 6)
+### Analysis-ready isolates by subtype (top 6)
 
 ```{python}
 #| label: fig-mdg-comp-subtype
@@ -359,11 +354,11 @@ mdg_top = mdg[mdg["Subtype"].isin(top6_m)].copy()
 fig = px.histogram(
     mdg_top,
     x="Subtype",
-    color="Complete_metadata",
+    color="phylo_ready",
     barmode="stack",
     color_discrete_map={True: PALETTE[2], False: PALETTE[5]},
-    labels={"Complete_metadata": "Complete genome"},
-    title="Madagascar — completeness by subtype (top 6)",
+    labels={"phylo_ready": "Analysis-ready"},
+    title="Madagascar — analysis-ready isolates by subtype (top 6)",
     category_orders={"Subtype": top6_m},
 )
 fig.update_layout(yaxis_title="Isolates", xaxis_title="Subtype")
@@ -375,8 +370,7 @@ fig.show()
 ## Sequence Quality
 
 For each isolate with sequences, we computed the length of every segment
-available in the FASTA files. This section goes beyond metadata completeness
-to show whether segments are long enough for phylogenetic analysis.
+available in the FASTA files. This section shows whether segments are long enough for phylogenetic analysis.
 
 ### Segment length distribution (Africa, complete genomes)
 

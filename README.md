@@ -61,13 +61,19 @@ The Influenza A metadata is split into two FASTA downloads by subtype (GISAID ex
 
 ### Genome completeness (Madagascar)
 
-An isolate is **phylo-ready** when all 8 core gene segments (PB2, PB1, PA, HA, NP, NA, MP, NS) are present in the downloaded FASTA *and* each segment meets a minimum length threshold. Thresholds are set at ~75–80% of each segment's canonical full-length reference (e.g. 1,800 nt for PB2/PB1, 1,300 nt for HA, 700 nt for NS) — enough sequence for reliable phylogenetic reconstruction while allowing for typical assembly trimming at read ends. These values are defined in `MIN_SEQ_LEN` in `scripts/analyse_gisaid.py` and have not yet been validated against a specific downstream pipeline (see Progress).
+An isolate is **analysis-ready** when it meets all three criteria:
+
+1. **Complete genome (phylo-ready)** — all 8 segments (PB2, PB1, PA, HA, NP, NA, MP, NS) present in the downloaded FASTA and each above minimum length thresholds (~75–80% of full-length reference; e.g. 1,800 nt for PB2/PB1, 1,300 nt for HA, 700 nt for NS). Thresholds are defined in `MIN_SEQ_LEN` in `scripts/analyse_gisaid.py` and have not yet been validated against a specific downstream pipeline (see Progress).
+2. **Known geographic location** — Country field non-empty
+3. **Known sampling date** — Collection date present and plausible (1990–2026)
 
 | Level | Count | % |
 |-------|-------|---|
 | Total isolates | 1,849 | 100% |
-| Complete metadata (8 segment IDs in GISAID) | 782 | 42.3% |
-| Phylo-ready (8 segments + sufficient length) | 782 | 42.3% |
+| Complete genome (phylo-ready) | 782 | 42.3% |
+| Known location | 1,849 | 100% |
+| Known date | 1,849 | 100% |
+| **Analysis-ready (all 3 criteria)** | **782** | **42.3%** |
 
 Isolates that are not phylo-ready are listed in `data/madagascar_missing_metadata.tsv`.
 
