@@ -1,0 +1,18 @@
+name: madagascar_influenza
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.11
+  - pandas
+  - openpyxl        # read .xls/.xlsx files
+  - xlrd            # legacy .xls support
+  - plotly
+  - nbformat        # needed by plotly for some exports
+  - biopython       # parse FASTA sequences
+  - jupyter
+  - quarto          # report generation
+  - pip
+  - pip:
+    - kaleido        # static image export for plotly
