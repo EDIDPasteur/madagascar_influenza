@@ -1,0 +1,15 @@
+# GitLab Pages deployment
+# Publishes docs/index.html to https://<namespace>.pages.pasteur.fr/madagascar_influenza/
+#
+# The report is pre-rendered locally (make report) and committed to docs/.
+# This job simply copies it to the public/ directory that GitLab Pages expects.
+
+pages:
+  stage: deploy
+  script:
+    - cp -r docs public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"

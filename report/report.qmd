@@ -1,0 +1,502 @@
+---
+title: "Influenza in Madagascar and Africa"
+subtitle: "GISAID EpiFlu Metadata Analysis"
+author: "EDID — Institut Pasteur de Madagascar"
+date: today
+format:
+  html:
+    embed-resources: true
+    output-file: "index.html"
+    toc: true
+    toc-depth: 3
+    toc-title: "Contents"
+    number-sections: true
+    theme: cosmo
+    fig-width: 10
+    fig-height: 6
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{python}
+#| label: setup
+
+from pathlib import Path
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+
+DATA_DIR = Path("../data")
+
+df = pd.read_csv(DATA_DIR / "combined_metadata.tsv", sep="\t", parse_dates=["Collection_Date"])
+
+africa = df[df["Continent"] == "Africa"].copy()
+mdg    = df[df["Madagascar"] == True].copy()
+rest   = df[(df["Continent"] == "Africa") & (df["Madagascar"] == False)].copy()
+
+for d in [df, africa, mdg, rest]:
+    d["Subtype"] = d["Subtype"].fillna("Unknown")
+
+PALETTE    = px.colors.qualitative.Bold
+MDG_COLOR  = PALETTE[1]
+REST_COLOR = PALETTE[5]
+```
+
+## Overview
+
+This report summarises all influenza sequences available in
+[GISAID EpiFlu](https://gisaid.org/epiflu-applications/epiflu-database/)
+for **Africa (all hosts, all types)** with a focus on **Madagascar**.
+Data were downloaded on **16 March 2026**.
+
+Genome completeness is defined at two levels:
+
+- **Complete metadata**: all 8 segment accession IDs present in GISAID (`Complete_metadata`)
+- **Phylo-ready**: all 8 segments have a sequence AND each segment meets minimum length thresholds for phylogenetics (PB2/PB1 ≥ 1,800 nt, PA ≥ 1,700, HA ≥ 1,300, NP ≥ 1,200, NA ≥ 1,000, MP ≥ 800, NS ≥ 700)
+
+The two GISAID downloads are merged and deduplicated on `Isolate_Id`, with the most specific download taking precedence.
+
+```{python}
+#| label: tbl-overview
+
+def completeness_row(label, d):
+    n    = len(d)
+    cm   = int(d["Complete_metadata"].sum()) if "Complete_metadata" in d.columns else 0
+    pr   = int(d["phylo_ready"].sum()) if "phylo_ready" in d.columns else 0
+    loc  = int(d["Country"].notna().sum())
+    yr   = int(d["Year"].between(1990, 2026).sum())
+    all3 = int((d["phylo_ready"] & d["Country"].notna() & d["Year"].between(1990, 2026)).sum()) if "phylo_ready" in d.columns else 0
+    dr_min = d["Collection_Date"].min()
+    dr_max = d["Collection_Date"].max()
+    date_range = (
+        f"{dr_min.date()} → {dr_max.date()}"
+        if pd.notna(dr_min) and pd.notna(dr_max) else "—"
+    )
+    return {
+        "Dataset": label,
+        "Isolates": f"{n:,}",
+        "Complete metadata": f"{cm:,} ({cm/n*100:.0f}%)",
+        "Phylo-ready": f"{pr:,} ({pr/n*100:.0f}%)",
+        "Location known": f"{loc:,} ({loc/n*100:.0f}%)",
+        "Sampling date": f"{yr:,} ({yr/n*100:.0f}%)",
+        "All criteria (phylo+loc+date)": f"{all3:,} ({all3/n*100:.0f}%)",
+        "Date range": date_range,
+    }
+
+overview = pd.DataFrame([
+    completeness_row("Madagascar", mdg),
+    completeness_row("Rest of Africa", rest),
+    completeness_row("All Africa", africa),
+])
+
+overview.to_html(index=False, classes="table table-sm table-bordered", border=0)
+```
+
+---
+
+## Africa — All hosts
+
+### Isolates per country
+
+```{python}
+#| label: fig-africa-map
+
+country_counts = (
+    africa.groupby("Country")
+    .agg(
+        Isolates=("Isolate_Id", "count"),
+        Complete=("Complete_metadata", "sum"),
+        Phylo=("phylo_ready", "sum"),
+    )
+    .reset_index()
+)
+country_counts["Completeness_pct"] = (
+    country_counts["Complete"] / country_counts["Isolates"] * 100
+).round(1)
+country_counts["Phylo_pct"] = (
+    country_counts["Phylo"] / country_counts["Isolates"] * 100
+).round(1)
+
+fig = px.choropleth(
+    country_counts,
+    locations="Country",
+    locationmode="country names",
+    color="Isolates",
+    hover_name="Country",
+    hover_data={"Isolates": True, "Completeness_pct": True, "Phylo_pct": True, "Country": False},
+    color_continuous_scale="YlOrRd",
+    scope="africa",
+    title="Influenza isolates per African country — all hosts (GISAID EpiFlu)",
+    labels={"Completeness_pct": "Complete genomes (%)"},
+)
+fig.update_geos(bgcolor="lightgrey", showcountries=True, countrycolor="white")
+fig.show()
+```
+
+### Isolates per country — bar chart (top 15)
+
+```{python}
+#| label: fig-africa-bar
+
+top15 = country_counts.nlargest(15, "Isolates").sort_values("Isolates", ascending=True)
+top15["Color"] = top15["Country"].apply(lambda c: MDG_COLOR if c == "Madagascar" else REST_COLOR)
+
+fig = go.Figure(go.Bar(
+    x=top15["Isolates"],
+    y=top15["Country"],
+    orientation="h",
+    marker_color=list(top15["Color"]),
+    text=top15["Isolates"],
+    textposition="outside",
+))
+fig.update_layout(
+    title="Top 15 African countries by influenza isolate count — all hosts",
+    xaxis_title="Isolates",
+    yaxis_title="",
+    showlegend=False,
+    height=480,
+)
+fig.show()
+```
+
+### Sequences over time (Africa)
+
+```{python}
+#| label: fig-africa-timeline
+
+af_t = africa[africa["Year"].between(1995, 2026)].copy()
+top_sub = af_t["Subtype"].value_counts().head(7).index.tolist()
+af_t["Subtype_grp"] = af_t["Subtype"].apply(lambda s: s if s in top_sub else "Other")
+
+counts = af_t.groupby(["Year", "Subtype_grp"]).size().reset_index(name="n")
+
+fig = px.bar(
+    counts,
+    x="Year", y="n",
+    color="Subtype_grp",
+    barmode="stack",
+    color_discrete_sequence=PALETTE,
+    labels={"n": "Isolates", "Subtype_grp": "Subtype"},
+    title="Africa — influenza isolates per year by subtype (all hosts)",
+)
+fig.update_layout(legend_title_text="Subtype")
+fig.show()
+```
+
+### Host distribution (Africa)
+
+```{python}
+#| label: fig-africa-host
+
+host_counts = africa["Host"].value_counts().reset_index()
+host_counts.columns = ["Host", "n"]
+
+fig = px.bar(
+    host_counts,
+    x="Host", y="n",
+    color="Host",
+    color_discrete_sequence=PALETTE,
+    text_auto=True,
+    title="Africa — isolates by host (all hosts)",
+    labels={"n": "Isolates"},
+)
+fig.update_layout(showlegend=False)
+fig.show()
+```
+
+### Subtype distribution (Africa)
+
+```{python}
+#| label: fig-africa-subtype
+
+top_sub_a = africa["Subtype"].value_counts().head(10).index.tolist()
+africa["Subtype_grp"] = africa["Subtype"].apply(lambda s: s if s in top_sub_a else "Other")
+sub_counts = africa["Subtype_grp"].value_counts().reset_index()
+sub_counts.columns = ["Subtype", "n"]
+
+fig = px.bar(
+    sub_counts.sort_values("n", ascending=False),
+    x="Subtype", y="n",
+    color="Subtype",
+    color_discrete_sequence=PALETTE,
+    text_auto=True,
+    title="Africa — isolates by subtype (all hosts)",
+    labels={"n": "Isolates"},
+)
+fig.update_layout(showlegend=False)
+fig.show()
+```
+
+### Genome completeness by country (top 10)
+
+```{python}
+#| label: fig-africa-comp-country
+
+top10 = africa["Country"].value_counts().head(10).index.tolist()
+af_t10 = africa[africa["Country"].isin(top10)].copy()
+
+comp_c = (
+    af_t10.groupby(["Country", "Complete_metadata"])
+    .size().reset_index(name="n")
+)
+comp_c["Label"] = comp_c["Complete_metadata"].map({True: "Complete", False: "Partial"})
+
+fig = px.bar(
+    comp_c,
+    x="Country", y="n",
+    color="Label",
+    color_discrete_map={"Complete": PALETTE[2], "Partial": PALETTE[5]},
+    barmode="stack",
+    category_orders={"Country": top10},
+    labels={"n": "Isolates", "Label": "Genome"},
+    title="Africa — genome completeness by country (top 10)",
+)
+fig.show()
+```
+
+---
+
+## Madagascar
+
+### Host distribution
+
+```{python}
+#| label: fig-mdg-host
+
+host_mdg = mdg["Host"].value_counts().reset_index()
+host_mdg.columns = ["Host", "n"]
+
+fig = px.bar(
+    host_mdg,
+    x="Host", y="n",
+    color="Host",
+    color_discrete_sequence=PALETTE,
+    text_auto=True,
+    title="Madagascar — isolates by host",
+    labels={"n": "Isolates"},
+)
+fig.update_layout(showlegend=False)
+fig.show()
+```
+
+### Sequences over time by subtype
+
+```{python}
+#| label: fig-mdg-timeline
+
+mdg_t = mdg[mdg["Year"].between(1990, 2026)].copy()
+top_st = mdg_t["Subtype"].value_counts().head(6).index.tolist()
+mdg_t["Subtype_grp"] = mdg_t["Subtype"].apply(lambda s: s if s in top_st else "Other")
+
+counts_m = mdg_t.groupby(["Year", "Subtype_grp"]).size().reset_index(name="n")
+
+fig = px.bar(
+    counts_m,
+    x="Year", y="n",
+    color="Subtype_grp",
+    barmode="stack",
+    color_discrete_sequence=PALETTE,
+    labels={"n": "Isolates", "Subtype_grp": "Subtype"},
+    title="Madagascar — influenza isolates per year by subtype",
+)
+fig.update_layout(legend_title_text="Subtype", xaxis_title="Collection year")
+fig.show()
+```
+
+### Subtype distribution
+
+```{python}
+#| label: fig-mdg-subtype
+
+top_sub_m = mdg["Subtype"].value_counts().head(10).index.tolist()
+mdg["Subtype_grp"] = mdg["Subtype"].apply(lambda s: s if s in top_sub_m else "Other")
+sub_m = mdg["Subtype_grp"].value_counts().reset_index()
+sub_m.columns = ["Subtype", "n"]
+
+fig = px.bar(
+    sub_m.sort_values("n", ascending=False),
+    x="Subtype", y="n",
+    color="Subtype",
+    color_discrete_sequence=PALETTE,
+    text_auto=True,
+    title="Madagascar — isolates by subtype",
+    labels={"n": "Isolates"},
+)
+fig.update_layout(showlegend=False)
+fig.show()
+```
+
+### Genome completeness
+
+```{python}
+#| label: fig-mdg-completeness
+
+comp_m = mdg.groupby("Complete_metadata").size().reset_index(name="n")
+comp_m["Label"] = comp_m["Complete_metadata"].map(
+    {True: "Complete (8/8 segments)", False: "Partial"}
+)
+
+fig = px.pie(
+    comp_m,
+    names="Label", values="n",
+    color_discrete_sequence=[PALETTE[2], PALETTE[5]],
+    title="Madagascar — genome completeness",
+    hole=0.4,
+)
+fig.show()
+```
+
+### Completeness by subtype (top 6)
+
+```{python}
+#| label: fig-mdg-comp-subtype
+
+top6_m = mdg["Subtype"].value_counts().head(6).index.tolist()
+mdg_top = mdg[mdg["Subtype"].isin(top6_m)].copy()
+
+fig = px.histogram(
+    mdg_top,
+    x="Subtype",
+    color="Complete_metadata",
+    barmode="stack",
+    color_discrete_map={True: PALETTE[2], False: PALETTE[5]},
+    labels={"Complete_metadata": "Complete genome"},
+    title="Madagascar — completeness by subtype (top 6)",
+    category_orders={"Subtype": top6_m},
+)
+fig.update_layout(yaxis_title="Isolates", xaxis_title="Subtype")
+fig.show()
+```
+
+---
+
+## Sequence Quality
+
+For each isolate with sequences, we computed the length of every segment
+available in the FASTA files. This section goes beyond metadata completeness
+to show whether segments are long enough for phylogenetic analysis.
+
+### Segment length distribution (Africa, complete genomes)
+
+```{python}
+#| label: fig-seg-lengths-africa
+
+SEGMENTS = ["PB2", "PB1", "PA", "HA", "NP", "NA", "MP", "NS"]
+MIN_LEN = {"PB2": 1800, "PB1": 1800, "PA": 1700,
+            "HA": 1300, "NP": 1200, "NA": 1000, "MP": 800, "NS": 700}
+
+# Only isolates with at least one sequence
+af_seq = africa[africa["n_segs_sequenced"] > 0].copy()
+
+# Melt to long format
+length_cols = [f"{s}_length" for s in SEGMENTS if f"{s}_length" in af_seq.columns]
+long = af_seq[["Isolate_Id", "Country"] + length_cols].melt(
+    id_vars=["Isolate_Id", "Country"],
+    var_name="Segment", value_name="Length"
+).dropna(subset=["Length"])
+long["Segment"] = long["Segment"].str.replace("_length", "")
+
+# Add minimum-length threshold line
+thresholds = pd.DataFrame([
+    {"Segment": s, "Min_length": v} for s, v in MIN_LEN.items()
+])
+
+fig = px.box(
+    long,
+    x="Segment", y="Length",
+    color="Segment",
+    color_discrete_sequence=PALETTE,
+    category_orders={"Segment": SEGMENTS},
+    title="Africa — segment length distribution (all isolates with sequences)",
+    labels={"Length": "Sequence length (nt)"},
+    points=False,
+)
+# Add min-length threshold markers
+for _, row in thresholds.iterrows():
+    fig.add_shape(type="line",
+        xref="x", yref="y",
+        x0=row["Segment"], x1=row["Segment"],
+        y0=row["Min_length"] - 30, y1=row["Min_length"] + 30,
+        line=dict(color="red", width=3))
+fig.add_scatter(x=[None], y=[None], mode="markers",
+    marker=dict(color="red", size=8, symbol="line-ew"),
+    name="Min length for phylogenetics")
+fig.show()
+```
+
+### Phylo-ready isolates per country (top 10)
+
+```{python}
+#| label: fig-phylo-country
+
+top10_p = africa["Country"].value_counts().head(10).index.tolist()
+af_p = africa[africa["Country"].isin(top10_p)].copy()
+
+comp_p = (
+    af_p.groupby(["Country", "phylo_ready"])
+    .size().reset_index(name="n")
+)
+comp_p["Label"] = comp_p["phylo_ready"].map({True: "Phylo-ready", False: "Not phylo-ready"})
+
+fig = px.bar(
+    comp_p,
+    x="Country", y="n",
+    color="Label",
+    color_discrete_map={"Phylo-ready": PALETTE[2], "Not phylo-ready": PALETTE[5]},
+    barmode="stack",
+    category_orders={"Country": top10_p},
+    labels={"n": "Isolates", "Label": "Status"},
+    title="Africa — phylo-ready isolates by country (top 10)",
+)
+fig.show()
+```
+
+### Segment coverage heatmap (Madagascar)
+
+Each column is one Madagascar isolate that has at least one sequence in the
+FASTA files, sorted left-to-right from most complete (8 segments) to least
+complete (1 segment). Each row is one of the 8 core segments. A coloured cell
+means the sequence for that segment was downloaded; a grey cell means it is
+absent. This lets you see at a glance which segments are most often missing
+and whether certain isolates are missing a consistent set.
+
+```{python}
+#| label: fig-mdg-seg-heatmap
+
+SEGMENTS = ["PB2", "PB1", "PA", "HA", "NP", "NA", "MP", "NS"]
+length_cols_mdg = [f"{s}_length" for s in SEGMENTS if f"{s}_length" in mdg.columns]
+
+# Only isolates with at least one sequence, deduplicated on Isolate_Id
+heat = mdg[mdg["n_segs_sequenced"] > 0][
+    ["Isolate_Id", "Subtype", "Year", "n_segs_sequenced"] + length_cols_mdg
+].drop_duplicates("Isolate_Id").copy()
+heat = heat.sort_values("n_segs_sequenced", ascending=False)
+heat_bin = heat[length_cols_mdg].notna().astype(int)
+heat_bin.columns = SEGMENTS
+heat_bin.index = heat["Isolate_Id"].values
+
+fig = px.imshow(
+    heat_bin.T,
+    color_continuous_scale=[[0, PALETTE[5]], [1, PALETTE[2]]],
+    title="Madagascar — segment presence per isolate (sorted by completeness)",
+    labels={"x": "Isolate", "y": "Segment", "color": "Present"},
+    aspect="auto",
+)
+fig.update_layout(
+    xaxis_showticklabels=False,
+    coloraxis_showscale=False,
+    yaxis_title="Segment",
+)
+fig.show()
+```
+
+---
+
+## Data Sources
+
+- **GISAID EpiFlu** (<https://gisaid.org>) — data downloaded on **16 March 2026**
+
+- Madagascar dataset: all hosts, all influenza types.
+- Africa dataset: all hosts, all African countries, all influenza types.
