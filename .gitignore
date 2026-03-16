@@ -1,0 +1,11 @@
+# GISAID data — not redistributable
+data/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Quarto
+/.quarto/
+*_files/
