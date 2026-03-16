@@ -55,7 +55,7 @@ A sample is considered **analysis-ready** if it meets all three criteria:
 
 1. **Complete genome** — all 8 segments (PB2, PB1, PA, HA, NP, NA, MP, NS) present in the downloaded FASTA and each segment above minimum length thresholds (PB2/PB1 ≥ 1,800 nt, PA ≥ 1,700, HA ≥ 1,300, NP ≥ 1,200, NA ≥ 1,000, MP ≥ 800, NS ≥ 700)
 2. **Known geographic location** — Country field non-empty
-3. **Known sampling date** — Collection date present and plausible (1990–2026)
+3. **Known sampling date** — Collection date present and plausible (1990–2026). All isolates in this dataset have full year-month-day precision (0 are year-only or month-only).
 
 The two GISAID downloads are merged and deduplicated on `Isolate_Id`, with the most specific download taking precedence.
 
@@ -416,7 +416,7 @@ for _, row in thresholds.iterrows():
         line=dict(color="red", width=3))
 fig.add_scatter(x=[None], y=[None], mode="markers",
     marker=dict(color="red", size=8, symbol="line-ew"),
-    name="Min length for phylogenetics")
+    name="Minimum length threshold (analysis-ready cutoff)")
 fig.show()
 ```
 
@@ -443,45 +443,6 @@ fig = px.bar(
     category_orders={"Country": top10_p},
     labels={"n": "Isolates", "Label": "Status"},
     title="Africa — phylo-ready isolates by country (top 10)",
-)
-fig.show()
-```
-
-### Segment coverage heatmap (Madagascar)
-
-Each column is one Madagascar isolate that has at least one sequence in the
-FASTA files, sorted left-to-right from most complete (8 segments) to least
-complete (1 segment). Each row is one of the 8 core segments. A coloured cell
-means the sequence for that segment was downloaded; a grey cell means it is
-absent. This lets you see at a glance which segments are most often missing
-and whether certain isolates are missing a consistent set.
-
-```{python}
-#| label: fig-mdg-seg-heatmap
-
-SEGMENTS = ["PB2", "PB1", "PA", "HA", "NP", "NA", "MP", "NS"]
-length_cols_mdg = [f"{s}_length" for s in SEGMENTS if f"{s}_length" in mdg.columns]
-
-# Only isolates with at least one sequence, deduplicated on Isolate_Id
-heat = mdg[mdg["n_segs_sequenced"] > 0][
-    ["Isolate_Id", "Subtype", "Year", "n_segs_sequenced"] + length_cols_mdg
-].drop_duplicates("Isolate_Id").copy()
-heat = heat.sort_values("n_segs_sequenced", ascending=False)
-heat_bin = heat[length_cols_mdg].notna().astype(int)
-heat_bin.columns = SEGMENTS
-heat_bin.index = heat["Isolate_Id"].values
-
-fig = px.imshow(
-    heat_bin.T,
-    color_continuous_scale=[[0, PALETTE[5]], [1, PALETTE[2]]],
-    title="Madagascar — segment presence per isolate (sorted by completeness)",
-    labels={"x": "Isolate", "y": "Segment", "color": "Present"},
-    aspect="auto",
-)
-fig.update_layout(
-    xaxis_showticklabels=False,
-    coloraxis_showscale=False,
-    yaxis_title="Segment",
 )
 fig.show()
 ```

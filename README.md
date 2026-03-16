@@ -65,7 +65,7 @@ An isolate is **analysis-ready** when it meets all three criteria:
 
 1. **Complete genome (phylo-ready)** — all 8 segments (PB2, PB1, PA, HA, NP, NA, MP, NS) present in the downloaded FASTA and each above minimum length thresholds (~75–80% of full-length reference; e.g. 1,800 nt for PB2/PB1, 1,300 nt for HA, 700 nt for NS). Thresholds are defined in `MIN_SEQ_LEN` in `scripts/analyse_gisaid.py` and have not yet been validated against a specific downstream pipeline (see Progress).
 2. **Known geographic location** — Country field non-empty
-3. **Known sampling date** — Collection date present and plausible (1990–2026)
+3. **Known sampling date** — Collection date present and plausible (1990–2026). All 30,065 African isolates (including all 1,849 from Madagascar) have full year-month-day precision; 0 are year-only.
 
 | Level | Count | % |
 |-------|-------|---|
