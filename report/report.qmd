@@ -224,6 +224,30 @@ fig.update_layout(showlegend=False)
 fig.show()
 ```
 
+### Influenza B lineage (Africa)
+
+Among the **`{python} int((africa['Subtype']=='B').sum())`** Influenza B isolates from Africa,
+the Victoria lineage predominates. A small fraction have no lineage annotation in GISAID.
+
+```{python}
+#| label: fig-africa-b-lineage
+
+b_africa = africa[africa["Subtype"] == "B"].copy()
+b_africa["Lineage_grp"] = b_africa["Lineage"].fillna("Unknown")
+lin_a = b_africa["Lineage_grp"].value_counts().reset_index()
+lin_a.columns = ["Lineage", "n"]
+
+fig = px.pie(
+    lin_a,
+    names="Lineage", values="n",
+    color_discrete_sequence=PALETTE,
+    title="Africa — Influenza B lineage",
+    hole=0.4,
+)
+fig.update_traces(textinfo="label+percent+value")
+fig.show()
+```
+
 ### Analysis-ready isolates by country (top 10)
 
 ```{python}
@@ -320,6 +344,30 @@ fig = px.bar(
     labels={"n": "Isolates"},
 )
 fig.update_layout(showlegend=False)
+fig.show()
+```
+
+### Influenza B lineage (Madagascar)
+
+All **`{python} int((mdg['Subtype']=='B').sum())`** Influenza B isolates from Madagascar
+have a lineage annotation. The Victoria lineage accounts for the vast majority.
+
+```{python}
+#| label: fig-mdg-b-lineage
+
+b_mdg = mdg[mdg["Subtype"] == "B"].copy()
+b_mdg["Lineage_grp"] = b_mdg["Lineage"].fillna("Unknown")
+lin_m = b_mdg["Lineage_grp"].value_counts().reset_index()
+lin_m.columns = ["Lineage", "n"]
+
+fig = px.pie(
+    lin_m,
+    names="Lineage", values="n",
+    color_discrete_sequence=PALETTE,
+    title="Madagascar — Influenza B lineage",
+    hole=0.4,
+)
+fig.update_traces(textinfo="label+percent+value")
 fig.show()
 ```
 
