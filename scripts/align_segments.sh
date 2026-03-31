@@ -112,8 +112,15 @@ for fpath in norosoa_files:
     print(f"  Reading {fpath.name} (Norosoa, unpublished) ...", flush=True)
     process_fasta(fpath, parse_norosoa_header)
 
+IUPAC = set("ACGTNRYSWKMBDHVacgtnryswkmbdhv-")
+
+def sanitize(seq):
+    """Replace any non-IUPAC nucleotide character with N."""
+    return "".join(c if c in IUPAC else "N" for c in seq)
+
 written = 0
 skipped = 0
+sanitized_total = 0
 for (seg, subtype), scopes in sorted(records.items()):
     for scope, entries in scopes.items():
         if len(entries) < MIN_SEQS:
@@ -122,10 +129,17 @@ for (seg, subtype), scopes in sorted(records.items()):
         fname = split_dir / f"{seg}_{subtype}.{scope}.fasta"
         with open(fname, "w") as fh:
             for hdr, seq in entries:
+                clean = sanitize(seq)
+                n_bad = sum(1 for a, b in zip(seq, clean) if a != b)
+                if n_bad:
+                    sanitized_total += n_bad
                 fh.write(hdr + "\n")
-                for i in range(0, len(seq), 80):
-                    fh.write(seq[i:i+80] + "\n")
+                for i in range(0, len(clean), 80):
+                    fh.write(clean[i:i+80] + "\n")
         written += 1
+
+if sanitized_total:
+    print(f"\n  WARNING: {sanitized_total} non-IUPAC characters replaced with N across all sequences")
 
 print(f"\n  Done -- {written} files written, {skipped} combos skipped (< {MIN_SEQS} seqs)")
 print(f"\n  {'Segment':<6} {'Subtype':<12} {'Africa':>8} {'Madagascar':>12}")
