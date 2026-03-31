@@ -173,23 +173,23 @@ for INPUT in "${SPLIT_DIR}"/*.fasta; do
 
     N_SEQS=$(grep -c "^>" "${INPUT}" 2>/dev/null || echo 0)
 
-    # Resource tiers based on sequence count:
-    #   tiny   n <=   500 : L-INS-i (accurate), 4 CPUs, 8G,  4h
-    #   small  n <=  2000 : --auto,              4 CPUs, 8G,  4h
-    #   medium n <=  8000 : --auto,              8 CPUs, 16G, 8h
-    #   large  n >   8000 : --auto,             16 CPUs, 32G, 12h
+    # Resource tiers — calibrated from benchmarks (HA segment, worst-case memory):
+    #   tiny   n <=   500 : L-INS-i, peak 168 MB → 2G (12x), 1h
+    #   small  n <=  2000 : --auto,  peak 186 MB → 2G (11x), 1h
+    #   medium n <=  8000 : --auto,  peak 468 MB → 4G ( 9x), 1h
+    #   large  n >   8000 : --auto,  peak 5.1 GB → 16G (3x), 2h
     if [[ "${N_SEQS}" -le 500 ]]; then
         MAFFT_ARGS="--localpair --maxiterate 1000 --nuc --thread 4"
-        CPUS=4; MEM="8G"; TIME="04:00:00"
+        CPUS=4; MEM="2G"; TIME="01:00:00"
     elif [[ "${N_SEQS}" -le 2000 ]]; then
         MAFFT_ARGS="--auto --nuc --thread 4"
-        CPUS=4; MEM="8G"; TIME="04:00:00"
+        CPUS=4; MEM="2G"; TIME="01:00:00"
     elif [[ "${N_SEQS}" -le 8000 ]]; then
         MAFFT_ARGS="--auto --nuc --thread 8"
-        CPUS=8; MEM="16G"; TIME="08:00:00"
+        CPUS=8; MEM="4G"; TIME="01:00:00"
     else
         MAFFT_ARGS="--auto --nuc --thread 16"
-        CPUS=16; MEM="32G"; TIME="12:00:00"
+        CPUS=16; MEM="16G"; TIME="02:00:00"
     fi
 
     if $DRY_RUN; then

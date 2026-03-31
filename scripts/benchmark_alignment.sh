@@ -42,8 +42,8 @@ declare -A TIER_MAFFT=( [tiny]="--localpair --maxiterate 1000 --nuc --thread 4"
                         [medium]="--auto --nuc --thread 8"
                         [large]="--auto --nuc --thread 16" )
 declare -A TIER_CPUS=(  [tiny]=4 [small]=4 [medium]=8  [large]=16 )
-declare -A TIER_MEM=(   [tiny]="8G" [small]="8G" [medium]="16G" [large]="32G" )
-declare -A TIER_TIME=(  [tiny]="04:00:00" [small]="04:00:00" [medium]="08:00:00" [large]="12:00:00" )
+declare -A TIER_MEM=(   [tiny]="2G" [small]="2G" [medium]="4G" [large]="16G" )
+declare -A TIER_TIME=(  [tiny]="01:00:00" [small]="01:00:00" [medium]="01:00:00" [large]="02:00:00" )
 declare -A TIER_FILE=(  [tiny]="HA_H11N2.madagascar"
                         [small]="HA_H5N8.africa"
                         [medium]="HA_H5N1.africa"
