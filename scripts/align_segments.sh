@@ -164,100 +164,58 @@ for (seg, subtype), scopes in sorted(records.items()):
 PYEOF
 
 # ---------------------------------------------------------------------------
-# 2. Submit one SLURM job per FASTA file to align
+# 2. Align with parallel + srun (one srun per file, -j N concurrent)
 # ---------------------------------------------------------------------------
 echo ""
-echo "[2/2] Submitting MAFFT alignment jobs..."
-[[ "${BATCH_SIZE}" -gt 0 ]] && echo "      Batch mode: submitting at most ${BATCH_SIZE} jobs."
+echo "[2/2] Submitting MAFFT alignment jobs via parallel + srun..."
 
-submitted=0
-skipped=0
+JOBS="${BATCH_SIZE:-20}"
+[[ "${BATCH_SIZE}" -eq 0 ]] && JOBS=425   # unlimited → all at once
 
+# Build list of pending (not yet aligned) FASTA files
+PENDING=()
 for INPUT in "${SPLIT_DIR}"/*.fasta; do
-    # Stop if batch limit reached
-    if [[ "${BATCH_SIZE}" -gt 0 && "${submitted}" -ge "${BATCH_SIZE}" ]]; then
-        break
-    fi
-
     BASENAME=$(basename "${INPUT}" .fasta)
     OUTPUT="${ALN_DIR}/${BASENAME}.aln.fasta"
-
     if [[ -f "${OUTPUT}" ]]; then
-        echo "  [SKIP] ${BASENAME} -- already aligned"
-        ((skipped++)) || true
         continue
     fi
-
-    N_SEQS=$(grep -c "^>" "${INPUT}" 2>/dev/null || echo 0)
-
-    # Resource tiers — calibrated from benchmarks (HA segment, worst-case memory):
-    #   tiny   n <=   500 : L-INS-i, peak 168 MB → 2G (12x)
-    #   small  n <=  2000 : --auto,  peak 186 MB → 2G (11x)
-    #   medium n <=  8000 : --auto,  peak 468 MB → 4G ( 9x)
-    #   large  n >   8000 : --auto,  peak 5.1 GB → 16G (3x)
-    if [[ "${N_SEQS}" -le 500 ]]; then
-        MAFFT_ARGS="--localpair --maxiterate 1000 --nuc --thread 4"
-        CPUS=4; MEM="2G"
-    elif [[ "${N_SEQS}" -le 2000 ]]; then
-        MAFFT_ARGS="--auto --nuc --thread 4"
-        CPUS=4; MEM="2G"
-    elif [[ "${N_SEQS}" -le 8000 ]]; then
-        MAFFT_ARGS="--auto --nuc --thread 8"
-        CPUS=8; MEM="4G"
-    else
-        MAFFT_ARGS="--auto --nuc --thread 16"
-        CPUS=16; MEM="16G"
-    fi
-
-    if $DRY_RUN; then
-        MODE=$(echo "${MAFFT_ARGS}" | awk '{print $1}')
-        echo "  [DRY-RUN] ${BASENAME} (n=${N_SEQS}, mode=${MODE}, cpus=${CPUS}, mem=${MEM})"
-        ((submitted++)) || true
-        continue
-    fi
-
-    JOB_SCRIPT=$(mktemp "${LOG_DIR}/job_${BASENAME}_XXXX.sh")
-    cat > "${JOB_SCRIPT}" <<SLURM
-#!/usr/bin/env bash
-#SBATCH --job-name=mafft_${BASENAME}
-#SBATCH --output=${LOG_DIR}/mafft_${BASENAME}_%j.out
-#SBATCH --error=${LOG_DIR}/mafft_${BASENAME}_%j.err
-#SBATCH --cpus-per-task=${CPUS}
-#SBATCH --mem=${MEM}
-#SBATCH --partition=seqbio
-
-source /opt/gensoft/adm/Modules/5.6.1/init/bash
-module load fasta ruby mafft/7.526
-
-echo "Aligning ${BASENAME} (${N_SEQS} sequences, mode=${MAFFT_ARGS%% *})..."
-mafft ${MAFFT_ARGS} "${INPUT}" > "${OUTPUT}"
-
-# Verify output and write to summary log
-N_OUT=\$(grep -c "^>" "${OUTPUT}" 2>/dev/null || echo 0)
-SUMMARY="${LOG_DIR}/alignment_summary.tsv"
-if [[ "\${N_OUT}" -eq "${N_SEQS}" ]]; then
-    echo -e "${BASENAME}\t${N_SEQS}\t\${N_OUT}\tOK" >> "\${SUMMARY}"
-    echo "Done: ${OUTPUT} (\${N_OUT} sequences aligned)"
-else
-    echo -e "${BASENAME}\t${N_SEQS}\t\${N_OUT}\tWARN_COUNT_MISMATCH" >> "\${SUMMARY}"
-    echo "WARNING: input had ${N_SEQS} seqs but output has \${N_OUT}"
-fi
-SLURM
-
-    JOB_ID=$(sbatch "${JOB_SCRIPT}" | awk '{print $NF}')
-    MODE=$(echo "${MAFFT_ARGS}" | awk '{print $1}')
-    echo "  Submitted ${BASENAME} (n=${N_SEQS}, mode=${MODE}) -> job ${JOB_ID}"
-    ((submitted++)) || true
+    PENDING+=("${INPUT}")
 done
+TOTAL="${#PENDING[@]}"
 
-echo ""
+if [[ "${TOTAL}" -eq 0 ]]; then
+    echo "All alignments already done."
+    exit 0
+fi
+
+echo "  ${TOTAL} pending, ${JOBS} concurrent srun slots."
+
 if $DRY_RUN; then
-    echo "Dry run complete -- ${submitted} jobs would be submitted."
+    for INPUT in "${PENDING[@]}"; do
+        BASENAME=$(basename "${INPUT}" .fasta)
+        N_SEQS=$(grep -c "^>" "${INPUT}")
+        if   [[ "${N_SEQS}" -le 500  ]]; then MODE="--localpair"; CPUS=4; MEM="2G"
+        elif [[ "${N_SEQS}" -le 2000 ]]; then MODE="--auto";      CPUS=4; MEM="2G"
+        elif [[ "${N_SEQS}" -le 8000 ]]; then MODE="--auto";      CPUS=8; MEM="4G"
+        else                                   MODE="--auto";      CPUS=16; MEM="16G"
+        fi
+        echo "  [DRY-RUN] ${BASENAME} (n=${N_SEQS}, mode=${MODE}, cpus=${CPUS}, mem=${MEM})"
+    done
+    echo ""
+    echo "Dry run complete -- ${TOTAL} jobs would be submitted."
 else
-    REMAINING=$(( $(ls "${SPLIT_DIR}"/*.fasta | wc -l) - $(ls "${ALN_DIR}"/*.aln.fasta 2>/dev/null | wc -l) - submitted ))
-    echo "${submitted} jobs submitted, ${skipped} already done."
-    [[ "${BATCH_SIZE}" -gt 0 && "${REMAINING}" -gt 0 ]] && \
-        echo "Re-run with --batch-size ${BATCH_SIZE} to submit the next batch (${REMAINING} remaining)."
-    echo "Monitor with: squeue -u \$USER"
+    printf '%s\n' "${PENDING[@]}" | \
+        parallel -j "${JOBS}" \
+            --joblog "${LOG_DIR}/parallel_align.log" \
+            --resume \
+            "bash ${PROJECT_ROOT}/scripts/run_one_alignment.sh {} ${ALN_DIR} ${LOG_DIR}"
+
+    DONE=$(ls "${ALN_DIR}"/*.aln.fasta 2>/dev/null | wc -l)
+    REMAINING=$(( $(ls "${SPLIT_DIR}"/*.fasta | wc -l) - DONE ))
+    echo ""
+    echo "Batch done. Aligned so far: ${DONE} / $(ls "${SPLIT_DIR}"/*.fasta | wc -l)"
+    [[ "${REMAINING}" -gt 0 ]] && \
+        echo "Re-run to process remaining ${REMAINING} (--joblog enables resume)."
 fi
 echo "Alignments will be written to: ${ALN_DIR}/"
