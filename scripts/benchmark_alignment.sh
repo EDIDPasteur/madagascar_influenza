@@ -43,7 +43,6 @@ declare -A TIER_MAFFT=( [tiny]="--localpair --maxiterate 1000 --nuc --thread 4"
                         [large]="--auto --nuc --thread 16" )
 declare -A TIER_CPUS=(  [tiny]=4 [small]=4 [medium]=8  [large]=16 )
 declare -A TIER_MEM=(   [tiny]="2G" [small]="2G" [medium]="4G" [large]="16G" )
-declare -A TIER_TIME=(  [tiny]="01:00:00" [small]="01:00:00" [medium]="01:00:00" [large]="02:00:00" )
 declare -A TIER_FILE=(  [tiny]="HA_H11N2.madagascar"
                         [small]="HA_H5N8.africa"
                         [medium]="HA_H5N1.africa"
@@ -72,7 +71,6 @@ for TIER in tiny small medium large; do
     MAFFT_ARGS="${TIER_MAFFT[$TIER]}"
     CPUS="${TIER_CPUS[$TIER]}"
     MEM="${TIER_MEM[$TIER]}"
-    TIME="${TIER_TIME[$TIER]}"
 
     JOB_SCRIPT=$(mktemp "${LOG_DIR}/bench_job_${TIER}_XXXX.sh")
     cat > "${JOB_SCRIPT}" <<SLURM
@@ -82,7 +80,6 @@ for TIER in tiny small medium large; do
 #SBATCH --error=${LOGFILE}_%j.err
 #SBATCH --cpus-per-task=${CPUS}
 #SBATCH --mem=${MEM}
-#SBATCH --time=${TIME}
 #SBATCH --partition=seqbio
 
 source /opt/gensoft/adm/Modules/5.6.1/init/bash
@@ -106,7 +103,7 @@ SLURM
 
     JOB_ID=$(sbatch "${JOB_SCRIPT}" | awk '{print $NF}')
     JOB_IDS+=("${JOB_ID}:${TIER}:${NAME}:${N_SEQS}:${CPUS}:${MEM}")
-    echo "  [${TIER}] n=${N_SEQS}, ${CPUS} CPUs ${MEM} ${TIME} -> job ${JOB_ID}  (${NAME})"
+    echo "  [${TIER}] n=${N_SEQS}, ${CPUS} CPUs ${MEM} -> job ${JOB_ID}  (${NAME})"
 done
 
 # ---------------------------------------------------------------------------

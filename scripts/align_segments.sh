@@ -174,27 +174,27 @@ for INPUT in "${SPLIT_DIR}"/*.fasta; do
     N_SEQS=$(grep -c "^>" "${INPUT}" 2>/dev/null || echo 0)
 
     # Resource tiers — calibrated from benchmarks (HA segment, worst-case memory):
-    #   tiny   n <=   500 : L-INS-i, peak 168 MB → 2G (12x), 1h
-    #   small  n <=  2000 : --auto,  peak 186 MB → 2G (11x), 1h
-    #   medium n <=  8000 : --auto,  peak 468 MB → 4G ( 9x), 1h
-    #   large  n >   8000 : --auto,  peak 5.1 GB → 16G (3x), 2h
+    #   tiny   n <=   500 : L-INS-i, peak 168 MB → 2G (12x)
+    #   small  n <=  2000 : --auto,  peak 186 MB → 2G (11x)
+    #   medium n <=  8000 : --auto,  peak 468 MB → 4G ( 9x)
+    #   large  n >   8000 : --auto,  peak 5.1 GB → 16G (3x)
     if [[ "${N_SEQS}" -le 500 ]]; then
         MAFFT_ARGS="--localpair --maxiterate 1000 --nuc --thread 4"
-        CPUS=4; MEM="2G"; TIME="01:00:00"
+        CPUS=4; MEM="2G"
     elif [[ "${N_SEQS}" -le 2000 ]]; then
         MAFFT_ARGS="--auto --nuc --thread 4"
-        CPUS=4; MEM="2G"; TIME="01:00:00"
+        CPUS=4; MEM="2G"
     elif [[ "${N_SEQS}" -le 8000 ]]; then
         MAFFT_ARGS="--auto --nuc --thread 8"
-        CPUS=8; MEM="4G"; TIME="01:00:00"
+        CPUS=8; MEM="4G"
     else
         MAFFT_ARGS="--auto --nuc --thread 16"
-        CPUS=16; MEM="16G"; TIME="02:00:00"
+        CPUS=16; MEM="16G"
     fi
 
     if $DRY_RUN; then
         MODE=$(echo "${MAFFT_ARGS}" | awk '{print $1}')
-        echo "  [DRY-RUN] ${BASENAME} (n=${N_SEQS}, mode=${MODE}, cpus=${CPUS}, mem=${MEM}, time=${TIME})"
+        echo "  [DRY-RUN] ${BASENAME} (n=${N_SEQS}, mode=${MODE}, cpus=${CPUS}, mem=${MEM})"
         ((submitted++)) || true
         continue
     fi
@@ -207,7 +207,6 @@ for INPUT in "${SPLIT_DIR}"/*.fasta; do
 #SBATCH --error=${LOG_DIR}/mafft_${BASENAME}_%j.err
 #SBATCH --cpus-per-task=${CPUS}
 #SBATCH --mem=${MEM}
-#SBATCH --time=${TIME}
 #SBATCH --partition=seqbio
 
 source /opt/gensoft/adm/Modules/5.6.1/init/bash
