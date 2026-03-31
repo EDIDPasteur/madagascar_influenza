@@ -10,7 +10,10 @@
 #   n > 500  → --auto                         (FFT-NS-2/FFT-NS-1, fast)
 #
 # Usage (from project root):
-#   bash scripts/align_segments.sh [--dry-run]
+#   bash scripts/align_segments.sh [--dry-run] [--batch-size N]
+#
+# --batch-size N : submit at most N new jobs per invocation (default: unlimited).
+#                  Re-run to submit the next batch; completed alignments are skipped.
 
 set -euo pipefail
 
@@ -21,7 +24,15 @@ ALN_DIR="${PROJECT_ROOT}/alignments/aligned"
 LOG_DIR="${PROJECT_ROOT}/alignments/logs"
 
 DRY_RUN=false
-[[ "${1:-}" == "--dry-run" ]] && DRY_RUN=true
+BATCH_SIZE=0   # 0 = unlimited
+
+ARGS=("$@")
+for (( i=0; i<${#ARGS[@]}; i++ )); do
+    case "${ARGS[$i]}" in
+        --dry-run)    DRY_RUN=true ;;
+        --batch-size) BATCH_SIZE="${ARGS[$((i+1))]}"; i=$((i+1)) ;;
+    esac
+done
 
 mkdir -p "${SPLIT_DIR}" "${ALN_DIR}" "${LOG_DIR}"
 
@@ -157,11 +168,17 @@ PYEOF
 # ---------------------------------------------------------------------------
 echo ""
 echo "[2/2] Submitting MAFFT alignment jobs..."
+[[ "${BATCH_SIZE}" -gt 0 ]] && echo "      Batch mode: submitting at most ${BATCH_SIZE} jobs."
 
 submitted=0
 skipped=0
 
 for INPUT in "${SPLIT_DIR}"/*.fasta; do
+    # Stop if batch limit reached
+    if [[ "${BATCH_SIZE}" -gt 0 && "${submitted}" -ge "${BATCH_SIZE}" ]]; then
+        break
+    fi
+
     BASENAME=$(basename "${INPUT}" .fasta)
     OUTPUT="${ALN_DIR}/${BASENAME}.aln.fasta"
 
@@ -237,7 +254,10 @@ echo ""
 if $DRY_RUN; then
     echo "Dry run complete -- ${submitted} jobs would be submitted."
 else
+    REMAINING=$(( $(ls "${SPLIT_DIR}"/*.fasta | wc -l) - $(ls "${ALN_DIR}"/*.aln.fasta 2>/dev/null | wc -l) - submitted ))
     echo "${submitted} jobs submitted, ${skipped} already done."
+    [[ "${BATCH_SIZE}" -gt 0 && "${REMAINING}" -gt 0 ]] && \
+        echo "Re-run with --batch-size ${BATCH_SIZE} to submit the next batch (${REMAINING} remaining)."
     echo "Monitor with: squeue -u \$USER"
 fi
 echo "Alignments will be written to: ${ALN_DIR}/"

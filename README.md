@@ -163,7 +163,11 @@ All jobs run on the `seqbio` partition with no time limit. Alignments already pr
 bash scripts/benchmark_alignment.sh
 bash scripts/parse_benchmark.sh   # after jobs finish
 
-# Submit all 425 alignment jobs
+# Submit all 425 alignment jobs in batches of 20
+bash scripts/align_segments.sh --batch-size 20
+# Re-run the same command to submit the next batch (completed alignments are skipped)
+
+# Or submit all at once
 bash scripts/align_segments.sh
 
 # Monitor
