@@ -34,6 +34,9 @@ for (( i=0; i<${#ARGS[@]}; i++ )); do
     esac
 done
 
+source /opt/gensoft/adm/Modules/5.6.1/init/bash
+module load parallel/20200222
+
 mkdir -p "${SPLIT_DIR}" "${ALN_DIR}" "${LOG_DIR}"
 
 # ---------------------------------------------------------------------------
