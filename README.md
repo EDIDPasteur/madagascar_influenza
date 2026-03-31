@@ -12,6 +12,7 @@
   - [GISAID data](#gisaid-data)
   - [Unpublished avian data (Norosoa)](#unpublished-avian-data-norosoa)
 - [Reproducing the analysis](#reproducing-the-analysis)
+- [Sequence alignment pipeline](#sequence-alignment-pipeline)
 - [Progress](#progress)
 
 ## Goal
@@ -102,6 +103,73 @@ Unpublished avian influenza sequences from Madagascar collected by Norosoa Rahar
 - **20 isolates partially typed** (e.g. "N2", "H9"): incomplete sequencing — full subtype cannot be determined.
 - **1 co-infection** (sample H1N2/H6N1): confirmed double infection, not a data entry error.
 - **1 imported case** (sample 80824-23, Chicken, H4N6, 22 Aug 2023, region "Brésil"): confirmed import from Brazil — part of punctual testing of imported day-old chicks alongside routine market surveillance.
+
+## Sequence alignment pipeline
+
+### What is being aligned
+
+Each alignment is a **single influenza segment from a single subtype**. Mixing subtypes is avoided because highly variable segments like HA and NA diverge too much across subtypes to be meaningfully aligned together. Internal segments (PB2, PB1, PA, NP, MP, NS) are more conserved but are also kept per-subtype to maintain consistency and allow subtype-specific phylogenies.
+
+Each segment × subtype combination is aligned in **two scopes**:
+
+- **Africa** — all African sequences from GISAID + Norosoa's Madagascar sequences
+- **Madagascar** — Madagascar sequences only (GISAID + Norosoa)
+
+This gives a maximum of 16 alignments per subtype (8 segments × 2 scopes), reduced to those with ≥ 3 sequences.
+
+### Inputs
+
+| Source | Files | Sequences |
+|--------|-------|-----------|
+| GISAID EpiFlu | `data/gisaid_epiflu_sequence_*.fasta` (5 files) | 161,143 |
+| Norosoa (unpublished) | `data/norosoa_avian_*.fasta` (7 files) | 830 |
+
+**Phase 1** (`scripts/align_segments.sh`): the Python block reads all input FASTA files, splits them by segment × subtype × scope, and writes intermediate files to `alignments/split/`. Non-IUPAC characters are replaced with `N` at this stage (228 characters corrected across all GISAID sequences).
+
+### Outputs
+
+**425 aligned FASTA files** in `alignments/aligned/<SEG>_<SUBTYPE>.<scope>.aln.fasta`
+
+For example:
+```
+alignments/aligned/HA_H9N2.madagascar.aln.fasta   # HA segment, H9N2, Madagascar only
+alignments/aligned/HA_H3N2.africa.aln.fasta        # HA segment, H3N2, all Africa
+alignments/aligned/PB2_H5N1.africa.aln.fasta       # PB2 segment, H5N1, all Africa
+```
+
+### Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/align_segments.sh` | Main pipeline: splits sequences, submits one SLURM job per alignment |
+| `scripts/benchmark_alignment.sh` | Submits 4 test jobs (one per resource tier) to measure real RAM and runtime |
+| `scripts/parse_benchmark.sh` | Parses benchmark results via `reportseff` and `/usr/bin/time -v` |
+
+### Resource tiers (calibrated from benchmarks on HA segment)
+
+| Tier | Sequences | MAFFT mode | CPUs | Memory | Measured peak RAM | Jobs |
+|------|-----------|------------|------|--------|-------------------|------|
+| tiny | ≤ 500 | `--localpair --maxiterate 1000` (L-INS-i) | 4 | 2G | 168 MB | ~271 |
+| small | 501–2,000 | `--auto` | 4 | 2G | 186 MB | ~11 |
+| medium | 2,001–8,000 | `--auto` | 8 | 4G | 468 MB | ~16 |
+| large | > 8,000 | `--auto` | 16 | 16G | 5.1 GB | ~3 |
+
+All jobs run on the `seqbio` partition with no time limit. Alignments already present in `alignments/aligned/` are skipped (resumable). Job logs are written to `alignments/logs/`.
+
+### Running the pipeline
+
+```bash
+# (Optional) benchmark resource usage first
+bash scripts/benchmark_alignment.sh
+bash scripts/parse_benchmark.sh   # after jobs finish
+
+# Submit all 425 alignment jobs
+bash scripts/align_segments.sh
+
+# Monitor
+squeue -u $USER
+reportseff $(sacct -u $USER --format=JobID --noheader -S today | tr '\n' ',')
+```
 
 ## Reproducing the analysis
 
