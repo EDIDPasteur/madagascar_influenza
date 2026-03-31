@@ -1,6 +1,9 @@
 # GISAID raw data — not redistributable
 data/gisaid_epiflu_*
 
+# Norosoa unpublished avian data — not redistributable
+data/norosoa_avian_*.fasta
+
 # Derived outputs in data/ are tracked (combined_metadata.tsv, madagascar_*.tsv, etc.)
 
 # Python

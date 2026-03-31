@@ -1,6 +1,6 @@
 # Madagascar Influenza
 
-*Last updated: 2026-03-16*
+*Last updated: 2026-03-31*
 
 **Report: https://edidpasteur.github.io/madagascar_influenza/**
 
@@ -9,6 +9,8 @@
 - [Goal](#goal)
 - [Resources](#resources)
 - [Data](#data)
+  - [GISAID data](#gisaid-data)
+  - [Unpublished avian data (Norosoa)](#unpublished-avian-data-norosoa)
 - [Reproducing the analysis](#reproducing-the-analysis)
 - [Progress](#progress)
 
@@ -29,6 +31,8 @@ Characterize influenza sequences from Madagascar and Africa available in GISAID:
 - **Nextstrain avian-flu pipeline**: https://github.com/nextstrain/avian-flu
 
 ## Data
+
+### GISAID data
 
 Downloaded from GISAID EpiFlu (manual download, 16 March 2026). Raw GISAID files are in `data/` and are **not tracked by git** (GISAID redistribution policy). Derived outputs (`combined_metadata.tsv`, `madagascar_missing_metadata.tsv`) **are tracked**.
 
@@ -77,6 +81,28 @@ An isolate is **analysis-ready** when it meets all three criteria:
 
 Isolates that are not phylo-ready are listed in `data/madagascar_missing_metadata.tsv`.
 
+### Unpublished avian data (Norosoa)
+
+Unpublished avian influenza sequences from Madagascar collected by Norosoa Raharinosy (Institut Pasteur de Madagascar, 2021–2023). Provided as 7 FASTA files organised by HA/NA subtype, covering **109 unique isolates** (830 segment sequences in total). Raw files are in `data/` and are **not tracked by git**.
+
+| File | Subtype(s) | Isolates | Sequences |
+|------|-----------|----------|-----------|
+| `norosoa_avian_h1_madagascar.fasta` | H1N2 | 8 | 62 |
+| `norosoa_avian_h4_madagascar.fasta` | H4 (partial) | 14 | 109 |
+| `norosoa_avian_h6_madagascar.fasta` | H6N2, H6N8 | 13 | 103 |
+| `norosoa_avian_h7_madagascar.fasta` | H7N7 | 3 | 24 |
+| `norosoa_avian_h9_madagascar.fasta` | H9N2 | 55 | 427 |
+| `norosoa_avian_n2_madagascar.fasta` | N2 (partial) | 12 | 77 |
+| `norosoa_avian_n6_madagascar.fasta` | N6 (partial) | 4 | 28 |
+| **Total** | | **109** | **830** |
+
+**Notes on data quality (confirmed by Norosoa):**
+
+- **3 isolates already in GISAID** (IDs: 78609-23, 78830-23, 79149-23 — H9N2, July 2023). The GISAID entries are partial (5 segments, not phylo-ready); these FASTA files contain the complete genomes sequenced by CDC.
+- **20 isolates partially typed** (e.g. "N2", "H9"): incomplete sequencing — full subtype cannot be determined.
+- **1 co-infection** (sample H1N2/H6N1): confirmed double infection, not a data entry error.
+- **1 imported case** (sample 80824-23, Chicken, H4N6, 22 Aug 2023, region "Brésil"): confirmed import from Brazil — part of punctual testing of imported day-old chicks alongside routine market surveillance.
+
 ## Reproducing the analysis
 
 ### 1. Create the environment
@@ -114,4 +140,6 @@ make report    # → docs/index.html
 - [x] Missing metadata fields identified for all 1,849 Madagascar isolates
 - [x] `analyse_gisaid.py` hardened: logging, argparse, vectorised ops, provenance JSON
 - [x] Report published on GitHub Pages (mirrored from GitLab)
+- [x] Unpublished avian sequences from Norosoa (109 isolates, 830 segments) added to `data/`
+- [ ] Integrate Norosoa sequences into phylogenetic analysis
 - [ ] Phylo-ready threshold validation against Nextstrain avian-flu pipeline
