@@ -85,7 +85,8 @@ for TIER in tiny small medium large; do
 #SBATCH --time=${TIME}
 #SBATCH --partition=seqbio
 
-module load mafft/7.526
+source /opt/gensoft/adm/Modules/5.6.1/init/bash
+module load fasta ruby mafft/7.526
 
 echo "=== BENCHMARK: ${TIER} tier ==="
 echo "Input:    ${INPUT}"
