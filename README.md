@@ -13,6 +13,7 @@
   - [Unpublished avian data (Norosoa)](#unpublished-avian-data-norosoa)
 - [Reproducing the analysis](#reproducing-the-analysis)
 - [Sequence alignment pipeline](#sequence-alignment-pipeline)
+- [Phylogenetic tree pipeline](#phylogenetic-tree-pipeline)
 - [Progress](#progress)
 
 ## Goal
@@ -106,6 +107,10 @@ Unpublished avian influenza sequences from Madagascar collected by Norosoa Rahar
 
 ## Sequence alignment pipeline
 
+### Why per-segment, never concatenated
+
+Influenza has 8 independent genomic segments that can **reassort** — meaning different segments can have different evolutionary histories within the same host. Concatenating segments into a single alignment would produce a chimeric sequence that does not reflect the biology of any one segment, and would produce a tree with no valid biological interpretation. The per-segment approach is therefore the field standard.
+
 ### What is being aligned
 
 Each alignment is a **single influenza segment from a single subtype**. Mixing subtypes is avoided because highly variable segments like HA and NA diverge too much across subtypes to be meaningfully aligned together. Internal segments (PB2, PB1, PA, NP, MP, NS) are more conserved but are also kept per-subtype to maintain consistency and allow subtype-specific phylogenies.
@@ -128,7 +133,7 @@ This gives a maximum of 16 alignments per subtype (8 segments × 2 scopes), redu
 
 ### Outputs
 
-**425 aligned FASTA files** in `alignments/aligned/<SEG>_<SUBTYPE>.<scope>.aln.fasta`
+**358 aligned FASTA files** in `alignments/aligned/<SEG>_<SUBTYPE>.<scope>.aln.fasta` (425 initial split files, 67 removed after filtering sequences with partial/unknown subtypes — only `HxNy`, `B`, and `C` are kept).
 
 For example:
 ```
@@ -163,7 +168,7 @@ All jobs run on the `seqbio` partition with no time limit. Alignments already pr
 bash scripts/benchmark_alignment.sh
 bash scripts/parse_benchmark.sh   # after jobs finish
 
-# Submit all 425 alignment jobs in batches of 20
+# Submit all 358 alignment jobs in batches of 20
 bash scripts/align_segments.sh --batch-size 20
 # Re-run the same command to submit the next batch (completed alignments are skipped)
 
@@ -174,6 +179,46 @@ bash scripts/align_segments.sh
 squeue -u $USER
 reportseff $(sacct -u $USER --format=JobID --noheader -S today | tr '\n' ',')
 ```
+
+## Phylogenetic tree pipeline
+
+**265 ML trees** — one per segment × subtype combination (Africa-scoped only), using all Madagascar sequences plus a representative subset of African sequences.
+
+### Subsampling strategy
+
+All Madagascar sequences are kept in full. African sequences (excluding Madagascar) are sampled **proportionally by country** to a target of **200 sequences per tree**. This ensures every country present in the Africa dataset contributes to each tree in proportion to its real sampling density, while keeping tree inference tractable. Random seed 42 is used for reproducibility.
+
+### Model and software
+
+| Parameter | Value |
+|-----------|-------|
+| Software | IQ-TREE 3.1.0 |
+| Substitution model | HKY+G (Hasegawa-Kishino-Yano + Gamma) |
+| Branch support | None (not computed) |
+| Seed | 42 |
+| Fallback | FastTree 2.2.0 |
+
+### Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/run_trees.sh` | Main pipeline: subsamples alignments, submits one IQ-TREE job per tree |
+| `scripts/run_one_tree.sh` | Runs IQ-TREE on a single subsampled FASTA via `srun` |
+
+### Running the pipeline
+
+```bash
+# Submit all 265 tree jobs in batches of 20
+bash scripts/run_trees.sh --batch-size 20
+
+# Or submit all at once
+bash scripts/run_trees.sh
+
+# Monitor
+squeue -u $USER
+```
+
+Trees are written to `trees/<SEG>_<SUBTYPE>.treefile`. Subsampled FASTAs are in `trees/subsampled/`. Completed trees are skipped on re-run (resumable).
 
 ## Reproducing the analysis
 
@@ -213,5 +258,9 @@ make report    # → docs/index.html
 - [x] `analyse_gisaid.py` hardened: logging, argparse, vectorised ops, provenance JSON
 - [x] Report published on GitHub Pages (mirrored from GitLab)
 - [x] Unpublished avian sequences from Norosoa (109 isolates, 830 segments) added to `data/`
-- [ ] Integrate Norosoa sequences into phylogenetic analysis
+- [x] All sequences split by segment × subtype × scope; 67 partial-subtype combos excluded
+- [x] **358 per-segment alignments completed** (MAFFT, resource-tiered, via `parallel+srun`)
+- [x] **265 ML trees queued** (IQ-TREE 3.1.0, HKY+G, subsampled Africa + all Madagascar)
+- [ ] Visualise and interpret phylogenetic trees (265 trees: 265 segment × subtype combos)
+- [ ] Assess reassortment across segments for key subtypes (H9N2, H5N1, H3N2, H1N1)
 - [ ] Phylo-ready threshold validation against Nextstrain avian-flu pipeline
