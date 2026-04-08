@@ -64,6 +64,11 @@ def norm_subtype(raw):
     s = re.sub(r'[^A-Za-z0-9]', '_', s)
     return s if s else "Unknown"
 
+def is_complete_subtype(s):
+    """Return True only for unambiguous, full subtypes (H3N2, B, C).
+    Rejects partial subtypes like H3, N2, A, Unknown."""
+    return bool(re.match(r'^H\d+N\d+$', s)) or s in ('B', 'C')
+
 def parse_gisaid_header(line):
     """Pipe-delimited GISAID EpiFlu header.
     e.g. >A/duck/Madagascar/78609/2023|HA|Madagascar|2023-07-01|H9N2|...
@@ -94,7 +99,7 @@ def process_fasta(fpath, header_parser):
     seq_lines = []
 
     def flush():
-        if header and seg and subtype and seg in SEGMENTS and subtype != "Unknown":
+        if header and seg and subtype and seg in SEGMENTS and is_complete_subtype(subtype):
             entry = (header, "".join(seq_lines))
             records[(seg, subtype)]["africa"].append(entry)
             if is_mdg:
