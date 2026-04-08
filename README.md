@@ -182,43 +182,93 @@ reportseff $(sacct -u $USER --format=JobID --noheader -S today | tr '\n' ',')
 
 ## Phylogenetic tree pipeline
 
-**265 ML trees** — one per segment × subtype combination (Africa-scoped only), using all Madagascar sequences plus a representative subset of African sequences.
+### Scientific objective
 
-### Subsampling strategy
+The central question of this project is: **does influenza surveillance in Madagascar capture genetic diversity that is unique to Africa, or merely re-samples lineages that circulate widely across the continent?** In other words, is the sequencing effort in Madagascar worth doing from a public-health and evolutionary perspective?
 
-All Madagascar sequences are kept in full. African sequences (excluding Madagascar) are sampled **proportionally by country** to a target of **200 sequences per tree**. This ensures every country present in the Africa dataset contributes to each tree in proportion to its real sampling density, while keeping tree inference tractable. Random seed 42 is used for reproducibility.
+To answer this, we build maximum-likelihood trees that place Madagascar sequences inside the broader African phylogenetic context. Each tree is designed so that African diversity is the dominant background (~80%) and Madagascar sequences (~20%) are placed *into* that background. This allows us to ask:
+
+> Do Madagascar sequences form **monophyletic clades** (groups of ≥ 2 Madagascar sequences with a common ancestor exclusive to Madagascar)?
+
+A monophyletic Malagasy clade indicates a lineage that has been circulating locally in Madagascar long enough to diverge from viruses in other African countries — i.e. unique, locally-evolved diversity that would not have been detected without Madagascar sequencing. By contrast, Madagascar sequences that are scattered as single tips throughout an otherwise African tree indicate recent importations with no sustained local transmission.
+
+Branch lengths will later be used to quantify evolutionary divergence within Madagascar clades vs. between Madagascar and Africa.
+
+### Tree design
+
+**16 ML trees** are built, filtered to datasets where Madagascar has ≥ 10 sequences and Africa has ≥ 20 — the minimum needed to detect and interpret monophyletic clustering. Two strategies apply by segment:
+
+| Category | Segments | Tree scope | # Trees |
+|----------|----------|------------|---------|
+| **HA per-subtype** | HA | One tree per HA subtype | 5 |
+| **NA per-subtype** | NA | One tree per NA subtype | 5 |
+| **Internal merged** | PB2, PB1, PA, NP, MP, NS | All subtypes merged — one tree per segment | 6 |
+| **Total** | | | **16** |
+
+**HA and NA** are kept per-subtype because HA/NA subtypes represent distinct antigenic lineages separated by long branches — mixing them would produce an unresolvable star topology. **Internal segments** (PB2, PB1, PA, NP, MP, NS) do not cluster by HxNy subtype (Poon, *Virus Evolution* 2024); merging all subtypes into one tree per segment recovers the full evolutionary history of each internal gene, including reassortment signatures.
+
+**Subsampling** (all trees, seed 42):
+- **Madagascar**: all sequences kept
+- **Africa (non-Madagascar)**: proportionally sampled by country to **4 × n_Madagascar** — large enough that the tree reflects African diversity, small enough for IQ-TREE to run in hours–days
+
+**Filter**: trees with Mdg < 10 or Africa < 20 are skipped (56 subtypes excluded — mostly avian subtypes with no Madagascar sequences, e.g. H5N8, H7N6).
+
+### Tree inventory
+
+| Tree | DB total | Mdg (all) | Africa (all) | Mdg in tree | Africa in tree | Tree size | % Mdg |
+|------|----------|-----------|--------------|-------------|----------------|-----------|-------|
+| HA_B | 5,015 | 365 | 4,650 | 365 | 1,492 | 1,857 | 19.7% |
+| HA_H1N1 | 8,621 | 234 | 8,387 | 234 | 1,027 | 1,261 | 18.6% |
+| HA_H3N2 | 9,587 | 375 | 9,212 | 375 | 1,557 | 1,932 | 19.4% |
+| HA_H6N2 | 64 | 27 | 37 | 27 | 37 | 64 | 42.2% |
+| HA_H9N2 | 1,438 | 71 | 1,367 | 71 | 303 | 374 | 19.0% |
+| NA_B | 4,451 | 342 | 4,109 | 342 | 1,395 | 1,737 | 19.7% |
+| NA_H1N1 | 7,959 | 203 | 7,756 | 203 | 894 | 1,097 | 18.5% |
+| NA_H3N2 | 8,965 | 369 | 8,596 | 369 | 1,526 | 1,895 | 19.5% |
+| NA_H6N2 | 65 | 28 | 37 | 28 | 37 | 65 | 43.1% |
+| NA_H9N2 | 1,049 | 71 | 978 | 71 | 299 | 370 | 19.2% |
+| MP | 20,510 | 826 | 19,684 | 826 | 3,440 | 4,266 | 19.4% |
+| NP | 18,451 | 907 | 17,544 | 907 | 3,733 | 4,640 | 19.5% |
+| NS | 19,568 | 907 | 18,661 | 907 | 3,747 | 4,654 | 19.5% |
+| PA | 16,970 | 773 | 16,197 | 773 | 3,205 | 3,978 | 19.4% |
+| PB1 | 16,148 | 687 | 15,461 | 687 | 2,863 | 3,550 | 19.4% |
+| PB2 | 16,710 | 736 | 15,974 | 736 | 3,057 | 3,793 | 19.4% |
+
+> **DB total**: sequences in the full Africa alignment before subsampling.  
+> **Africa in tree**: sampled proportionally by country (4 × n_Mdg, seed 42).  
+> H6N2 is small enough that all sequences are kept (no subsampling applied).  
+> Internal segment trees are built from unaligned `alignments/split/` files merged across all subtypes; MAFFT re-aligns them before IQ-TREE.
 
 ### Model and software
 
 | Parameter | Value |
 |-----------|-------|
 | Software | IQ-TREE 3.1.0 |
-| Substitution model | HKY+G (Hasegawa-Kishino-Yano + Gamma) |
-| Branch support | None (not computed) |
+| Substitution model | HKY+G (Hasegawa-Kishino-Yano + Gamma rate variation) |
+| Branch support | None (not computed — not needed for clade detection) |
 | Seed | 42 |
-| Fallback | FastTree 2.2.0 |
 
 ### Scripts
 
 | Script | Purpose |
 |--------|---------|
-| `scripts/run_trees.sh` | Main pipeline: subsamples alignments, submits one IQ-TREE job per tree |
-| `scripts/run_one_tree.sh` | Runs IQ-TREE on a single subsampled FASTA via `srun` |
+| `scripts/run_trees.sh` | Subsamples inputs (Phase 1A: HA/NA from aligned files; Phase 1B: internal segments merged from split files), then submits all IQ-TREE jobs via `parallel + srun` |
+| `scripts/run_one_tree.sh` | Runs one job: MAFFT re-alignment (internal segments only) followed by IQ-TREE, via `srun` on the `seqbio` partition |
 
 ### Running the pipeline
 
 ```bash
-# Submit all 265 tree jobs in batches of 20
-bash scripts/run_trees.sh --batch-size 20
-
-# Or submit all at once
+# Submit all 16 tree jobs
 bash scripts/run_trees.sh
+
+# Or in batches
+bash scripts/run_trees.sh --batch-size 8
 
 # Monitor
 squeue -u $USER
 ```
 
-Trees are written to `trees/<SEG>_<SUBTYPE>.treefile`. Subsampled FASTAs are in `trees/subsampled/`. Completed trees are skipped on re-run (resumable).
+Trees are written to `trees/<NAME>.treefile`. Subsampled FASTAs (and MAFFT re-alignments for internal segments) are in `trees/subsampled/`. Completed trees are skipped on re-run (resumable).
 
 ## Reproducing the analysis
 
@@ -260,7 +310,8 @@ make report    # → docs/index.html
 - [x] Unpublished avian sequences from Norosoa (109 isolates, 830 segments) added to `data/`
 - [x] All sequences split by segment × subtype × scope; 67 partial-subtype combos excluded
 - [x] **358 per-segment alignments completed** (MAFFT, resource-tiered, via `parallel+srun`)
-- [x] **265 ML trees queued** (IQ-TREE 3.1.0, HKY+G, subsampled Africa + all Madagascar)
-- [ ] Visualise and interpret phylogenetic trees (265 trees: 265 segment × subtype combos)
-- [ ] Assess reassortment across segments for key subtypes (H9N2, H5N1, H3N2, H1N1)
-- [ ] Phylo-ready threshold validation against Nextstrain avian-flu pipeline
+- [x] **16 ML trees queued** (IQ-TREE 3.1.0, HKY+G — 5 HA + 5 NA per-subtype, 6 internal segments merged; all Madagascar + 4× Africa)
+- [ ] Run tree jobs and verify 16 treefiles
+- [ ] Count monophyletic Madagascar clades per tree (≥ 2 Mdg tips, exclusive common ancestor)
+- [ ] Measure branch lengths within Madagascar clades vs. between Madagascar and Africa
+- [ ] Assess reassortment across segments for key subtypes (H9N2, H3N2, H1N1, B)
