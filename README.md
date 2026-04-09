@@ -24,6 +24,7 @@ Characterize influenza sequences from Madagascar and Africa available in GISAID:
 - What is their geographic location and sampling time?
 - Are the genomes complete?
 - Which isolates are suitable for phylogenetic analysis (all 8 segments present and of sufficient length)?
+- **Does Madagascar sequencing capture unique African genetic diversity?** Do Malagasy viruses form distinct local lineages (monophyletic clades), or are they sporadic importations from the broader African gene pool? This determines whether sustained in-country influenza surveillance in Madagascar is justified from a genomic-epidemiology perspective.
 
 ## Resources
 
@@ -109,11 +110,11 @@ Unpublished avian influenza sequences from Madagascar collected by Norosoa Rahar
 
 ### Why per-segment, never concatenated
 
-Influenza has 8 independent genomic segments that can **reassort** — meaning different segments can have different evolutionary histories within the same host. Concatenating segments into a single alignment would produce a chimeric sequence that does not reflect the biology of any one segment, and would produce a tree with no valid biological interpretation. The per-segment approach is therefore the field standard.
+Influenza has 8 independent genomic segments that can **reassort** — meaning different segments can have different evolutionary histories within the same host.
 
 ### What is being aligned
 
-Each alignment is a **single influenza segment from a single subtype**. Mixing subtypes is avoided because highly variable segments like HA and NA diverge too much across subtypes to be meaningfully aligned together. Internal segments (PB2, PB1, PA, NP, MP, NS) are more conserved but are also kept per-subtype to maintain consistency and allow subtype-specific phylogenies.
+Each alignment is a **single influenza segment from a single subtype**. Mixing subtypes is avoided because highly variable segments like HA and NA diverge too much across subtypes to be meaningfully aligned together. Internal segments (PB2, PB1, PA, NP, MP, NS) are more conserved but are also kept per-subtype at the alignment stage; for tree building they are merged across all subtypes into one tree per segment (see Phylogenetic tree pipeline).
 
 Each segment × subtype combination is aligned in **two scopes**:
 
@@ -182,21 +183,9 @@ reportseff $(sacct -u $USER --format=JobID --noheader -S today | tr '\n' ',')
 
 ## Phylogenetic tree pipeline
 
-### Scientific objective
-
-The central question of this project is: **does influenza surveillance in Madagascar capture genetic diversity that is unique to Africa, or merely re-samples lineages that circulate widely across the continent?** In other words, is the sequencing effort in Madagascar worth doing from a public-health and evolutionary perspective?
-
-To answer this, we build maximum-likelihood trees that place Madagascar sequences inside the broader African phylogenetic context. Each tree is designed so that African diversity is the dominant background (~80%) and Madagascar sequences (~20%) are placed *into* that background. This allows us to ask:
-
-> Do Madagascar sequences form **monophyletic clades** (groups of ≥ 2 Madagascar sequences with a common ancestor exclusive to Madagascar)?
-
-A monophyletic Malagasy clade indicates a lineage that has been circulating locally in Madagascar long enough to diverge from viruses in other African countries — i.e. unique, locally-evolved diversity that would not have been detected without Madagascar sequencing. By contrast, Madagascar sequences that are scattered as single tips throughout an otherwise African tree indicate recent importations with no sustained local transmission.
-
-Branch lengths will later be used to quantify evolutionary divergence within Madagascar clades vs. between Madagascar and Africa.
-
 ### Tree design
 
-**16 ML trees** are built, filtered to datasets where Madagascar has ≥ 10 sequences and Africa has ≥ 20 — the minimum needed to detect and interpret monophyletic clustering. Two strategies apply by segment:
+**16 ML trees** (IQ-TREE 3.1.0, HKY+G, seed 42) are built to assess whether Madagascar sequences form **monophyletic clades** — groups of ≥ 2 Madagascar sequences sharing a common ancestor exclusive to Madagascar, indicating locally-sustained lineages — or are scattered singletons within an otherwise African tree, indicating sporadic importation. Trees are filtered to datasets where Madagascar has ≥ 10 sequences and Africa has ≥ 20. Two strategies apply by segment:
 
 | Category | Segments | Tree scope | # Trees |
 |----------|----------|------------|---------|
@@ -238,15 +227,6 @@ Branch lengths will later be used to quantify evolutionary divergence within Mad
 > **Africa in tree**: sampled proportionally by country (4 × n_Mdg, seed 42).  
 > H6N2 is small enough that all sequences are kept (no subsampling applied).  
 > Internal segment trees are built from unaligned `alignments/split/` files merged across all subtypes; MAFFT re-aligns them before IQ-TREE.
-
-### Model and software
-
-| Parameter | Value |
-|-----------|-------|
-| Software | IQ-TREE 3.1.0 |
-| Substitution model | HKY+G (Hasegawa-Kishino-Yano + Gamma rate variation) |
-| Branch support | None (not computed — not needed for clade detection) |
-| Seed | 42 |
 
 ### Scripts
 
