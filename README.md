@@ -10,9 +10,9 @@
 - [Data](#data)
   - [GISAID data](#gisaid-data)
   - [Unpublished avian data (Norosoa)](#unpublished-avian-data-norosoa)
-- [Reproducing the analysis](#reproducing-the-analysis)
 - [Sequence alignment pipeline](#sequence-alignment-pipeline)
 - [Phylogenetic tree pipeline](#phylogenetic-tree-pipeline)
+- [Reproducing the analysis](#reproducing-the-analysis)
 - [Progress](#progress)
 
 ## Goal

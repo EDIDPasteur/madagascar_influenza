@@ -413,11 +413,9 @@ fig.update_layout(yaxis_title="Isolates", xaxis_title="Subtype")
 fig.show()
 ```
 
----
+### Norosoa — Unpublished Avian Sequences
 
-## Norosoa — Unpublished Avian Sequences
-
-Unpublished avian influenza sequences collected by **Norosoa Raharinosy**
+Unpublished avian influenza sequences collected by **Norosoa Razanajatovo**
 (Institut Pasteur de Madagascar, 2021–2023). These 109 isolates (830 segment sequences)
 are not publicly available in GISAID (except 3 partially-released H9N2 isolates) and
 represent the **only near-complete avian influenza genomic data from Madagascar** in this
@@ -477,7 +475,7 @@ nor_iso = (
 nor_iso["complete"] = nor_iso["n_seqs"] >= 7  # ≥7/8 segments present
 ```
 
-### Subtype distribution
+#### Subtype distribution
 
 ```{python}
 #| label: fig-nor-subtype
@@ -498,7 +496,7 @@ fig.update_layout(showlegend=False)
 fig.show()
 ```
 
-### Sampling timeline
+#### Sampling timeline
 
 ```{python}
 #| label: fig-nor-timeline
@@ -523,7 +521,7 @@ fig.update_layout(
 fig.show()
 ```
 
-### Genome completeness
+#### Genome completeness
 
 Each isolate may have been sequenced for some or all 8 gene segments
 (PB2, PB1, PA, HA, NP, NA, MP, NS). Completeness is estimated from the
@@ -558,7 +556,7 @@ fig.update_layout(xaxis_title="Subtype", yaxis_title="Isolates")
 fig.show()
 ```
 
-### Sequences-per-isolate distribution
+#### Sequences-per-isolate distribution
 
 ```{python}
 #| label: fig-nor-segs-dist
@@ -876,7 +874,13 @@ clade sizes automatically — ask to generate this script when ready.
 
 ## Data Sources
 
-- **GISAID EpiFlu** (<https://gisaid.org>) — data downloaded on **16 March 2026**
+- **GISAID EpiFlu** (<https://gisaid.org>) — data downloaded on **16 March 2026**.
+  Madagascar dataset: all hosts, all influenza types.
+  Africa dataset: all hosts, all African countries, all influenza types.
 
-- Madagascar dataset: all hosts, all influenza types.
-- Africa dataset: all hosts, all African countries, all influenza types.
+- **Norosoa Razanajatovo** (Institut Pasteur de Madagascar) — unpublished avian influenza
+  sequences from Madagascar, collected 2021–2023, provided directly to this analysis.
+  109 unique isolates, 830 segment sequences, covering subtypes H1N2, H4, H6N2, H6N8,
+  H7N7, H9N2 and partial-subtype isolates (N2, N6). Complete genomes assembled from
+  CDC sequencing. Not yet publicly available in GISAID (3 partial H9N2 entries exist:
+  78609-23, 78830-23, 79149-23 — superseded by these complete genomes in this analysis).
