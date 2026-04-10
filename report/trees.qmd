@@ -94,6 +94,16 @@ A **monophyletic Madagascar clade** = maximal subtree (≥ 2 tips) whose leaves 
 
 ```{python}
 #| label: tbl-tree-inventory
+#| tbl-cap: |
+#|   Summary of the 16 ML trees.
+#|   **Tree** — segment × subtype label.
+#|   **Mdg tips** — Madagascar sequences in the tree.
+#|   **Africa tips** — non-Madagascar African sequences (subsampled to 4× Mdg count).
+#|   **Clades** — number of maximal monophyletic Madagascar clades (≥2 tips).
+#|   **Singletons** — Madagascar sequences not belonging to any clade.
+#|   **% Mdg in clades** — fraction of Madagascar tips that fall inside a clade.
+#|   **Mean clade size** — average number of tips per clade.
+#|   **Mean stem BL** — average branch length separating clade root from nearest African ancestor (proxy for time since introduction).
 
 # Read IQ-TREE log sizes to get actual input counts per tree
 display_cols = {
@@ -110,6 +120,16 @@ trees_sum.rename(columns=display_cols)[list(display_cols.values())].to_html(
     index=False, classes="table table-sm table-striped table-bordered", border=0
 )
 ```
+
+**Answer:** Both patterns co-exist, but the dominant signal is **clades** (local transmission).
+Across all 16 trees, **84 % of Madagascar sequences (4,762/5,649) cluster in monophyletic clades**; only 16 % (886) are singletons.
+The pattern differs sharply by viral ecology:
+
+| Group | Mdg tips | % in clades | Interpretation |
+|-------|----------|-------------|----------------|
+| Avian (H6N2, H9N2) | 197 | **99.5 %** | Established local lineage — essentially no sporadic importation |
+| Seasonal (H1N1, H3N2, Flu B) | 3,081 | 85 % | Mostly in clades, but many small short-lived ones — repeated reintroductions each season |
+| Internal segments (merged) | 2,371 | 82 % | Similar to seasonal; high clade count reflects both local circulation and reassortment |
 
 ---
 
