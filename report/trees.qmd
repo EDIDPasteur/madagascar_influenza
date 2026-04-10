@@ -231,8 +231,22 @@ fig.show()
 
 ## Tree images
 
-```bash
-mamba run -p ./env python scripts/render_trees.py --force
-```
-
 Tips: Madagascar = red, Africa = grey. Blue boxes = monophyletic Madagascar clades (`n=` size, `s=` stem BL).
+
+```{python}
+#| label: fig-tree-gallery
+from IPython.display import display, HTML
+imgs = sorted(TREES_IMG.glob("*.png"))
+if imgs:
+    parts = []
+    for p in imgs:
+        parts.append(
+            f'<div style="display:inline-block;margin:6px;vertical-align:top">'
+            f'<p style="font-size:11px;text-align:center;margin:2px 0">{p.stem}</p>'
+            f'<img src="{p}" style="width:600px">'
+            f'</div>'
+        )
+    display(HTML('<div style="line-height:1">' + "".join(parts) + '</div>'))
+else:
+    display(HTML('<p style="color:grey">No PNGs found in trees_img/ — run <code>scripts/render_trees.py</code> first.</p>'))
+```
