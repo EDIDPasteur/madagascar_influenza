@@ -34,10 +34,8 @@ RESULTS_DIR = Path("../results")
 TREES_IMG   = Path("../docs/trees_img")  # absolute path used for globbing; src uses basename
 TREES_DIR   = Path("../trees")
 
-trees_sum    = pd.read_csv(RESULTS_DIR / "clade_summary.tsv",       sep="\t")
-trees_det    = pd.read_csv(RESULTS_DIR / "clade_details.tsv",        sep="\t")
-reassort_mat = pd.read_csv(RESULTS_DIR / "reassortment_matrix.tsv",  sep="\t", dtype=str)
-reassort_sum = pd.read_csv(RESULTS_DIR / "reassortment_summary.tsv", sep="\t", dtype=str)
+trees_sum    = pd.read_csv(RESULTS_DIR / "clade_summary.tsv", sep="\t")
+trees_det    = pd.read_csv(RESULTS_DIR / "clade_details.tsv",  sep="\t")
 
 PALETTE = px.colors.qualitative.Bold
 
@@ -94,16 +92,6 @@ A **monophyletic Madagascar clade** = maximal subtree (≥ 2 tips) whose leaves 
 
 ```{python}
 #| label: tbl-tree-inventory
-#| tbl-cap: |
-#|   Summary of the 16 ML trees.
-#|   **Tree** — segment × subtype label.
-#|   **Mdg tips** — Madagascar sequences in the tree.
-#|   **Africa tips** — non-Madagascar African sequences (subsampled to 4× Mdg count).
-#|   **Clades** — number of maximal monophyletic Madagascar clades (≥2 tips).
-#|   **Singletons** — Madagascar sequences not belonging to any clade.
-#|   **% Mdg in clades** — fraction of Madagascar tips that fall inside a clade.
-#|   **Mean clade size** — average number of tips per clade.
-#|   **Mean stem BL** — average branch length separating clade root from nearest African ancestor (proxy for time since introduction).
 
 # Read IQ-TREE log sizes to get actual input counts per tree
 display_cols = {
@@ -116,22 +104,25 @@ display_cols = {
     "mean_clade_size":   "Mean clade size",
     "mean_stem_bl":      "Mean stem BL",
 }
-trees_sum.rename(columns=display_cols)[list(display_cols.values())].to_html(
+table_html = trees_sum.rename(columns=display_cols)[list(display_cols.values())].to_html(
     index=False, classes="table table-sm table-striped table-bordered", border=0
 )
+caption = (
+    "<caption style='caption-side:bottom;font-size:0.85em;color:#555;padding-top:4px'>"
+    "<b>Tree</b> — segment × subtype. "
+    "<b>Mdg tips</b> — Madagascar sequences. "
+    "<b>Africa tips</b> — non-Madagascar Africa (subsampled to 4× Mdg). "
+    "<b>Clades</b> — maximal monophyletic Madagascar clades (≥2 tips). "
+    "<b>Singletons</b> — Madagascar tips in no clade. "
+    "<b>% Mdg in clades</b> — fraction of Mdg tips inside a clade. "
+    "<b>Mean clade size</b> — average tips per clade. "
+    "<b>Mean stem BL</b> — branch length from clade root to nearest African ancestor "
+    "(proxy for time / isolation since introduction)."
+    "</caption>"
+)
+from IPython.display import display, HTML
+display(HTML(table_html.replace("<table ", caption + "<table ")))
 ```
-
-**Answer:** Both patterns co-exist, but the dominant signal is **clades** (local transmission).
-Across all 16 trees, **84 % of Madagascar sequences (4,762/5,649) cluster in monophyletic clades**; only 16 % (886) are singletons.
-The pattern differs sharply by viral ecology:
-
-| Group | Mdg tips | % in clades | Interpretation |
-|-------|----------|-------------|----------------|
-| Avian (H6N2, H9N2) | 197 | **99.5 %** | Established local lineage — essentially no sporadic importation |
-| Seasonal (H1N1, H3N2, Flu B) | 3,081 | 85 % | Mostly in clades, but many small short-lived ones — repeated reintroductions each season |
-| Internal segments (merged) | 2,371 | 82 % | Similar to seasonal; high clade count reflects both local circulation and reassortment |
-
----
 
 ## Clade analysis results
 
@@ -139,6 +130,14 @@ The pattern differs sharply by viral ecology:
 
 ```{python}
 #| label: fig-clades-bar
+#| fig-cap: |
+#|   Number of monophyletic Madagascar clades (teal) vs. isolated singletons (coral/red) per tree,
+#|   split by segment type. A **clade** means ≥2 Madagascar sequences sharing an exclusive common
+#|   ancestor — evidence that the virus transmitted locally and is not just a one-off import.
+#|   A **singleton** is a Madagascar sequence with no close Malagasy relative in the tree —
+#|   consistent with a sporadic introduction that did not establish. Trees with few large clades
+#|   (avian H6N2, H9N2) signal sustained local lineages; trees with many small clades and abundant
+#|   singletons (seasonal subtypes) signal recurring reintroductions without persistence.
 
 bar_df = trees_sum[["tree", "n_mdg_clades", "n_mdg_singletons", "type"]].copy()
 bar_df = bar_df.sort_values(["type", "tree"])
@@ -158,13 +157,19 @@ fig = px.bar(
     facet_col="type",
     orientation="h",
     barmode="stack",
-    color_discrete_map={"Clades (≥2 tips)": PALETTE[2], "Singletons": PALETTE[5]},
-    labels={"tree": "Tree", "Count": "Madagascar sequences", "Category": ""},
-    title="Monophyletic Madagascar clades vs. singletons per tree",
+    color_discrete_map={"Clades (≥2 tips)": "#3aa5a0", "Singletons": "#e05a3a"},
+    labels={"tree": "", "Count": "Madagascar sequences", "Category": ""},
     category_orders={"type": ["HA (surface)", "NA (surface)", "Internal segment"]},
 )
-fig.update_layout(height=520)
-fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
+fig.update_layout(
+    height=520,
+    title=None,
+    margin=dict(t=60),
+)
+fig.for_each_annotation(lambda a: a.update(
+    text=a.text.split("=")[-1],
+    y=a.y + 0.02,   # push facet labels slightly higher to avoid overlap
+))
 fig.show()
 ```
 
@@ -172,6 +177,17 @@ fig.show()
 
 ```{python}
 #| label: fig-scatter
+#| fig-cap: |
+#|   Each point is one tree. Axes use **genetic distances** (substitutions per site),
+#|   not collection dates — the metadata has collection dates but they are not used here.
+#|   **X-axis (mean stem BL):** average branch length (genetic distance) separating a
+#|   Malagasy clade root from its nearest African relative — longer = more genetically isolated
+#|   from the continental pool, consistent with an older or faster-evolving local lineage.
+#|   **Y-axis (mean clade size):** average number of Madagascar tips per clade — larger = more
+#|   sustained local transmission. **Bubble size:** number of clades in that tree.
+#|   Avian subtypes (top-right) combine large clades with long stems: few introductions, long
+#|   persistence. Seasonal subtypes (bottom-left) have small clades with short stems: frequent
+#|   introductions, rapid extinction.
 
 fig = px.scatter(
     trees_sum,
@@ -199,6 +215,12 @@ fig.show()
 
 ```{python}
 #| label: fig-clade-sizes
+#| fig-cap: |
+#|   Distribution of clade sizes (number of Madagascar tips per clade) across all 16 trees,
+#|   grouped by segment category. Each box spans the interquartile range; the line is the median;
+#|   dots are outlier clades. Large outlier values for H9N2 and H6N2 are the persistent avian
+#|   lineages. Seasonal and internal-segment trees have uniformly small clades, confirming
+#|   short-lived transmission chains.
 
 fig = px.box(
     trees_det,
@@ -218,6 +240,15 @@ fig.show()
 
 ```{python}
 #| label: fig-clade-scatter
+#| fig-cap: |
+#|   Each point is one Madagascar clade; bubble size = clade size (number of tips).
+#|   **X-axis (stem BL):** divergence between this clade and its nearest African relative —
+#|   large values flag old or fast-evolving introductions.
+#|   **Y-axis (internal BL):** total branch length inside the clade — a proxy for within-Madagascar
+#|   genetic diversity accumulated since introduction.
+#|   Long-established avian lineages (H9N2, H6N2) appear in the top-right: high stem BL (isolated
+#|   from Africa) *and* high internal BL (substantial in-country diversification). Seasonal clades
+#|   cluster near the origin: recently introduced, little within-Madagascar evolution.
 
 fig = px.scatter(
     trees_det,
@@ -243,6 +274,8 @@ fig.show()
 
 ### Conclusion
 
+**Overall:** 84 % of Madagascar sequences (4,762/5,649) cluster in monophyletic clades; only 16 % (886) are singletons — the dominant signal is **local transmission**, not sporadic importation.
+
 | Pattern | Subtypes | Interpretation |
 |---------|----------|----------------|
 | 1–2 large clades (mean 14–35 tips), stem BL 0.018–0.031 | **H6N2, H9N2** (avian) | One or two founder events established long-lasting local lineages; sequences are genuinely distinct from the continental pool |
@@ -251,96 +284,8 @@ fig.show()
 
 **Take-away:** H6N2 and H9N2 are the only subtypes with evidence of established, locally-evolving lineages in Madagascar. Seasonal human viruses (H1N1, H3N2, Flu B) show no local persistence — they are re-imported every season, as in most of the world. Sustained Madagascar surveillance is justified specifically to monitor the avian reservoir (H6N2, H9N2), which is invisible to any other African country's programme.
 
-## H9N2 reassortment analysis
-
-H9N2 has established at least one long-lived Malagasy lineage. Influenza reassorts readily — surface proteins (HA, NA) can be exchanged for internal segments from co-circulating viruses. We therefore ask, for each Malagasy H9N2 isolate: does its internal segment complement also cluster within a Malagasy clade, or were those segments recently imported?
-
-**Method:** `scripts/analyse_reassortment.py` reads `results/clade_tips.tsv` and, for every H9N2 Madagascar tip, determines whether each of the 8 segments is (a) in-clade with other Malagasy sequences, (b) a singleton (present in the tree but phylogenetically isolated), or (c) absent (segment not sequenced / not in the tree). Classification uses only present segments; "absent" is treated as missing data, not as evidence of importation.
-
-```{python}
-#| label: fig-reassortment-heatmap
-#| fig-cap: "Segment × isolate heatmap for 71 H9N2 Madagascar isolates. Green = in Malagasy clade; grey = not sequenced; red = singleton (would indicate recent importation). Isolates sorted by year."
-
-SEG_ORDER = ["HA", "NA", "PB2", "PB1", "PA", "NP", "MP", "NS"]
-COLOUR_MAP = {"clade": "#2ca25f", "absent": "#d9d9d9", "singleton": "#e34a33"}
-
-# Sort isolates by year (Norosoa year extracted from isolate_key)
-def extract_year(key):
-    try:
-        return int(key.split("/")[-1].split("_")[0])
-    except Exception:
-        return 9999
-
-mat = reassort_mat.copy()
-mat["_year"] = mat["isolate_key"].apply(extract_year)
-mat = mat.sort_values(["_year", "Host", "isolate_key"]).reset_index(drop=True)
-mat["label"] = mat["isolate_key"].str.split("/").str[-1] + " (" + mat["Host"].fillna("?") + ")"
-
-# Build a numeric Z matrix and hover text
-status_to_z = {"clade": 1, "absent": 0, "singleton": -1}
-Z    = [[status_to_z.get(mat.at[i, seg], 0) for seg in SEG_ORDER] for i in mat.index]
-text = [[mat.at[i, seg] for seg in SEG_ORDER] for i in mat.index]
-
-import plotly.graph_objects as go
-fig = go.Figure(go.Heatmap(
-    z=list(zip(*Z)),          # transpose: rows=segs, cols=isolates
-    x=mat["label"].tolist(),
-    y=SEG_ORDER,
-    text=list(zip(*text)),
-    hovertemplate="Isolate: %{x}<br>Segment: %{y}<br>Status: %{text}<extra></extra>",
-    colorscale=[
-        [0.0,  COLOUR_MAP["singleton"]],
-        [0.5,  COLOUR_MAP["absent"]],
-        [1.0,  COLOUR_MAP["clade"]],
-    ],
-    zmin=-1, zmax=1,
-    showscale=False,
-))
-fig.update_layout(
-    height=350,
-    xaxis=dict(tickfont=dict(size=8), tickangle=45),
-    yaxis=dict(tickfont=dict(size=11)),
-    margin=dict(l=60, r=20, t=30, b=120),
-)
-fig.show()
-```
-
-```{python}
-#| label: tbl-reassortment-summary
-#| tbl-cap: "H9N2 Madagascar isolates by year, host, and reassortment classification."
-
-from IPython.display import display
-display(
-    reassort_sum.rename(columns={
-        "Year": "Year", "Host": "Host",
-        "classification": "Classification", "n_isolates": "N"
-    }).style.hide(axis="index")
-)
-```
-
-**Result:** Across all 71 H9N2 Madagascar isolates (18 GISAID + 53 Norosoa), **zero singletons** were detected in any segment tree. Every sequenced segment clusters within a monophyletic Malagasy clade.  
-This means the H9N2 lineage in Madagascar is genetically self-contained: all eight genome segments have been co-circulating locally since introduction, with no phylogenetically detectable replacement from continental strains. The predominant classification is `fully_local` (≥5 segments in-clade; 49/71 isolates) or `largely_local` (fewer segments sequenced but all in-clade; 22/71). No `reassorted` isolate was detected.
-
 ## Tree images
 
-Tips: Madagascar = red, Africa = grey. Blue boxes = monophyletic Madagascar clades (`n=` size, `s=` stem BL).
-
-```{python}
-#| label: fig-tree-gallery
-import base64
-from IPython.display import display, HTML
-imgs = sorted(TREES_IMG.glob("*.png"))
-if imgs:
-    parts = []
-    for p in imgs:
-        b64 = base64.b64encode(p.read_bytes()).decode()
-        parts.append(
-            f'<div style="display:inline-block;margin:6px;vertical-align:top">'
-            f'<p style="font-size:11px;text-align:center;margin:2px 0">{p.stem}</p>'
-            f'<img src="data:image/png;base64,{b64}" style="width:600px">'
-            f'</div>'
-        )
-    display(HTML('<div style="line-height:1">' + "".join(parts) + '</div>'))
-else:
-    display(HTML('<p style="color:grey">No PNGs found in trees_img/ — run <code>scripts/render_trees.py</code> first.</p>'))
-```
+::: {.callout-note}
+**TODO:** Add rendered phylogenetic tree images here (run `scripts/render_trees.py` to generate PNGs).
+:::
