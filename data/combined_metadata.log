@@ -1,0 +1,58 @@
+18:21:53  INFO      === analyse_gisaid.py ===
+18:21:53  INFO      Data directory : /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/data
+18:21:53  INFO      Output         : /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/data/combined_metadata.tsv
+18:21:53  INFO      Log file       : /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/data/combined_metadata.log
+18:21:53  INFO      seqkit resolved -> /pasteur/appa/homes/cduitama/miniconda3/bin/seqkit
+18:21:53  INFO      XLS glob       : data/gisaid_epiflu_isolates_*.xls  -> 4 file(s)
+18:21:53  INFO      
+Found 4 metadata file(s):
+18:21:53  INFO      Loading metadata [a_human_africa]: gisaid_epiflu_isolates_a_human_africa.xls
+18:21:54  INFO        -> 19902 isolates read
+18:21:55  INFO        All isolates are from Africa
+18:21:55  INFO        No duplicate Isolate_Id within file
+18:21:55  INFO      Loading metadata [animal_environmental_africa]: gisaid_epiflu_isolates_animal_environmental_africa.xls
+18:21:55  INFO        -> 5160 isolates read
+18:21:55  INFO        All isolates are from Africa
+18:21:55  INFO        No duplicate Isolate_Id within file
+18:21:55  INFO      Loading metadata [b_human_africa]: gisaid_epiflu_isolates_b_human_africa.xls
+18:21:55  INFO        -> 5081 isolates read
+18:21:56  INFO        All isolates are from Africa
+18:21:56  INFO        No duplicate Isolate_Id within file
+18:21:56  INFO      Loading metadata [c_human_africa]: gisaid_epiflu_isolates_c_human_africa.xls
+18:21:56  INFO        -> 10 isolates read
+18:21:56  INFO        All isolates are from Africa
+18:21:56  INFO        No duplicate Isolate_Id within file
+18:21:56  WARNING   
+Cross-file duplicates: 176 rows share 88 Isolate_Id(s) -- keeping first (alphabetically first XLS, first row in that file)
+18:21:56  INFO      Combined (deduplicated): 30065 isolates (from 30153 across all files)
+18:21:56  INFO      
+FASTA glob     : data/gisaid_epiflu_sequence_*.fasta  -> 5 file(s)
+18:21:56  INFO        Note: [gisaid_epiflu_sequence_a_excepth3_human_africa.fasta] has no matching XLS; sequences joined by EPI accession
+18:21:56  INFO      Parsing FASTA [gisaid_epiflu_sequence_a_excepth3_human_africa.fasta] with seqkit ...
+18:21:56  INFO        -> 49494 sequences, 8 segment types
+18:21:56  INFO        Note: [gisaid_epiflu_sequence_a_h3_human_africa.fasta] has no matching XLS; sequences joined by EPI accession
+18:21:56  INFO      Parsing FASTA [gisaid_epiflu_sequence_a_h3_human_africa.fasta] with seqkit ...
+18:21:56  INFO        -> 61407 sequences, 8 segment types
+18:21:56  INFO      Parsing FASTA [gisaid_epiflu_sequence_animal_environmental_africa.fasta] with seqkit ...
+18:21:56  INFO        -> 22314 sequences, 8 segment types
+18:21:56  INFO      Parsing FASTA [gisaid_epiflu_sequence_b_human_africa.fasta] with seqkit ...
+18:21:56  INFO        -> 27900 sequences, 8 segment types
+18:21:56  INFO      Parsing FASTA [gisaid_epiflu_sequence_c_human_africa.fasta] with seqkit ...
+18:21:57  INFO        -> 28 sequences, 7 segment types
+18:21:57  INFO      
+Total unique sequences across all FASTAs: 161143
+18:21:57  INFO      
+-- Madagascar (n=1,849) --
+  Complete metadata (8 seg IDs) : 782 (42.3%)
+  Complete sequences (8 seqs)   : 782 (42.3%)
+  Phylo-ready (min lengths)     : 782 (42.3%)
+  Valid collection date         : 1,849 (100.0%)
+18:21:57  INFO      
+-- All Africa (n=30,065) --
+  Complete metadata (8 seg IDs) : 13,716 (45.6%)
+  Complete sequences (8 seqs)   : 13,682 (45.5%)
+  Phylo-ready (min lengths)     : 13,510 (44.9%)
+  Valid collection date         : 30,065 (100.0%)
+18:21:57  INFO      
+Saved: data/combined_metadata.tsv  (30065 rows, 74 columns)
+18:21:57  INFO      Provenance written -> data/combined_metadata.provenance.json

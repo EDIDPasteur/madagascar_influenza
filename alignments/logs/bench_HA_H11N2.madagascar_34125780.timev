@@ -1,0 +1,84 @@
+outputhat23=16
+treein = 0
+compacttree = 0
+stacksize: 8192 kb
+generating a scoring matrix for nucleotide (dist=200) ... done
+All-to-all alignment.
+    0 / 10 (by thread   0) tbfast-pair (nuc) Version 7.526
+alg=L, model=DNA200 (2), 2.00 (6.00), -0.10 (-0.30), noshift, amax=0.0
+4 thread(s)
+
+outputhat23=16
+Loading 'hat3.seed' ... 
+done.
+Writing hat3 for iterative refinement
+generating a scoring matrix for nucleotide (dist=200) ... done
+Gap Penalty = -1.53, +0.00, +0.00
+tbutree = 1, compacttree = 0
+Constructing a UPGMA tree ... 
+    0 / 10
+done.
+
+Progressive alignment ... 
+STEP     1 /9 (thread    0) STEP     4 /9 (thread    3) STEP     5 /9 (thread    3) STEP     2 /9 (thread    1) STEP     6 /9 (thread    0) STEP     7 /9 (thread    3) STEP     3 /9 (thread    2) STEP     8 /9 (thread    0) STEP     9 /9 (thread    1) 
+done.
+tbfast (nuc) Version 7.526
+alg=A, model=DNA200 (2), 1.53 (4.59), -0.00 (-0.00), noshift, amax=0.0
+4 thread(s)
+
+minimumweight = 0.000010
+autosubalignment = 0.000000
+nthread = 4
+randomseed = 0
+blosum 62 / kimura 200
+poffset = 0
+niter = 16
+sueff_global = 0.100000
+nadd = 16
+Loading 'hat3' ... done.
+generating a scoring matrix for nucleotide (dist=200) ... done
+
+    0 / 10
+Segment   1/  1    1-1699
+001-0000-1 (thread    2) identical     001-0001-1 (thread    4) identical     001-0002-0 (thread    3) identical     001-0003-0 (thread    1) identical     001-0004-0 (thread    2) identical     001-0005-1 (thread    4) identical     001-0006-0 (thread    3) identical     001-0007-1 (thread    1) identical     001-0008-1 (thread    1) identical     001-0009-1 (thread    4) identical     001-0009-0 (thread    2) identical     001-0011-0 (thread    3) identical     001-0012-0 (thread    1) identical     001-0013-1 (thread    4) identical     001-0014-0 (thread    2) identical     001-0015-1 (thread    3) identical     001-0016-1 (thread    1) identical     
+Converged.
+done
+dvtditr (nuc) Version 7.526
+alg=A, model=DNA200 (2), 1.53 (4.59), -0.00 (-0.00), noshift, amax=0.0
+4 thread(s)
+
+
+Strategy:
+ L-INS-i (Probably most accurate, very slow)
+ Iterative refinement method (<16) with LOCAL pairwise alignment information
+
+If unsure which option to use, try 'mafft --auto input > output'.
+For more information, see 'mafft --help', 'mafft --man' and the mafft page.
+
+The default gap scoring scheme has been changed in version 7.110 (2013 Oct).
+It tends to insert more gaps into gap-rich regions than previous versions.
+To disable this change, add the --leavegappyregion option.
+
+	Command being timed: "mafft --localpair --maxiterate 1000 --nuc --thread 4 /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/alignments/split/HA_H11N2.madagascar.fasta"
+	User time (seconds): 1.49
+	System time (seconds): 0.57
+	Percent of CPU this job got: 167%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.23
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 171972
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 110284
+	Voluntary context switches: 20426
+	Involuntary context switches: 144
+	Swaps: 0
+	File system inputs: 40
+	File system outputs: 352
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,4 @@
+34125780:tiny:HA_H11N2.madagascar:10:4:8G
+34125781:small:HA_H5N8.africa:651:4:8G
+34125782:medium:HA_H5N1.africa:2303:8:16G
+34125783:large:HA_H1N1.africa:8621:16:32G

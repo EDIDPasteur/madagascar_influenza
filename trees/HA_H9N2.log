@@ -1,0 +1,586 @@
+IQ-TREE version 3.1.0 for Linux x86 64-bit built Mar 16 2026
+Developed by Bui Quang Minh, Thomas Wong, Nhan Ly-Trong, Huaiyan Ren
+Contributed by Lam-Tung Nguyen, Dominik Schrempf, Chris Bielow,
+Olga Chernomor, Michael Woodhams, Diep Thi Hoang, Heiko Schmidt
+
+Host:    maestro-2014 (AVX2, FMA3, 2002 GB RAM)
+Command: iqtree3 -s /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/subsampled/HA_H9N2.africa.subsampled.fasta -m HKY+G -T 4 --seed 42 --prefix /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H9N2 --redo --quiet
+Seed:    42 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Apr  9 12:25:26 2026
+Kernel:  AVX+FMA - 4 threads (4 CPU cores detected)
+
+Reading alignment file /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/subsampled/HA_H9N2.africa.subsampled.fasta ... Fasta format detected
+Reading fasta file: done in 0.0110932 secs using 90.88% CPU
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.00730914 secs using 298.7% CPU
+WARNING: 71 sites contain only gaps or ambiguous characters.
+Alignment has 374 sequences with 1906 columns, 1400 distinct patterns
+856 parsimony-informative, 329 singleton sites, 721 constant sites
+WARNING: Some sequence names are changed as follows:
+EPI4819098|HA|A/chicken/Cote-d'Ivoire/IA098/2025|EPI_ISL_20260745|A_/_H9N2 -> EPI4819098|HA|A/chicken/Cote-d_Ivoire/IA098/2025|EPI_ISL_20260745|A_/_H9N2
+EPI4801977|HA|A/chicken/Cote_d'Ivoire/IA087/2025|EPI_ISL_20253210|A_/_H9N2 -> EPI4801977|HA|A/chicken/Cote_d_Ivoire/IA087/2025|EPI_ISL_20253210|A_/_H9N2
+EPI4801602|HA|A/chicken/Cote_d'Ivoire/IA07/2024|EPI_ISL_20252484|A_/_H9N2 -> EPI4801602|HA|A/chicken/Cote_d_Ivoire/IA07/2024|EPI_ISL_20252484|A_/_H9N2
+EPI4801706|HA|A/chicken/Cote_d'Ivoire/IA072/2025|EPI_ISL_20252560|A_/_H9N2 -> EPI4801706|HA|A/chicken/Cote_d_Ivoire/IA072/2025|EPI_ISL_20252560|A_/_H9N2
+EPI4801993|HA|A/chicken/Cote_d'Ivoire/IA091/2025|EPI_ISL_20253213|A_/_H9N2 -> EPI4801993|HA|A/chicken/Cote_d_Ivoire/IA091/2025|EPI_ISL_20253213|A_/_H9N2
+EPI4776979|HA|A/Cote-d'Ivoire/IA24/2025|EPI_ISL_20237348|A_/_H9N2 -> EPI4776979|HA|A/Cote-d_Ivoire/IA24/2025|EPI_ISL_20237348|A_/_H9N2
+EPI4785796|HA|A/Cote-d'Ivoire/IA082/2025|EPI_ISL_20243457|A_/_H9N2 -> EPI4785796|HA|A/Cote-d_Ivoire/IA082/2025|EPI_ISL_20243457|A_/_H9N2
+
+                                                                                              Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.000454645 secs using 684.7% CPU
+   1  EPI3629772|HA|A/duck/Madagascar/78609/2023|EPI_ISL_19530558|A_/_H9N2                           13.85%    passed     92.64%
+   2  EPI3629777|HA|A/duck/Madagascar/79149/2023|EPI_ISL_19530559|A_/_H9N2                           14.01%    passed     90.62%
+   3  EPI3629844|HA|A/duck/Madagascar/78830/2023|EPI_ISL_19530570|A_/_H9N2                           13.80%    passed     92.27%
+   4  EPI5132219|HA|A/duck/Madagascar/76277/2025|EPI_ISL_20360485|A_/_H9N2                           11.70%    passed     93.27%
+   5  EPI5132266|HA|A/duck/Madagascar/78021/2025|EPI_ISL_20360492|A_/_H9N2                           11.70%    passed     97.26%
+   6  EPI5132258|HA|A/duck/Madagascar/78020/2025|EPI_ISL_20360491|A_/_H9N2                           11.75%    passed     97.51%
+   7  EPI4576239|HA|A/duck/Madagascar/71902/2025|EPI_ISL_20090032|A_/_H9N2                           11.80%    passed     98.49%
+   8  EPI4209616|HA|A/duck/Madagascar/71559/2025|EPI_ISL_19813420|A_/_H9N2                           11.75%    passed     99.37%
+   9  EPI4209601|HA|A/duck/Madagascar/71551/2025|EPI_ISL_19813418|A_/_H9N2                           11.80%    passed     99.65%
+  10  EPI4209608|HA|A/duck/Madagascar/71557/2025|EPI_ISL_19813419|A_/_H9N2                           11.75%    passed     99.12%
+  11  EPI4209593|HA|A/duck/Madagascar/71550/2025|EPI_ISL_19813417|A_/_H9N2                           11.75%    passed     99.18%
+  12  EPI4209550|HA|A/duck/Madagascar/71272/2025|EPI_ISL_19813411|A_/_H9N2                           11.75%    passed     98.79%
+  13  EPI4770074|HA|A/duck/Madagascar/75334/2025|EPI_ISL_20231989|A_/_H9N2                           11.75%    passed     95.27%
+  14  EPI4770081|HA|A/duck/Madagascar/76004/2025|EPI_ISL_20231990|A_/_H9N2                           11.75%    passed     97.52%
+  15  EPI4770050|HA|A/duck/Madagascar/75332/2025|EPI_ISL_20231984|A_/_H9N2                           11.70%    passed     94.35%
+  16  EPI4770054|HA|A/duck/Madagascar/75337/2025|EPI_ISL_20231985|A_/_H9N2                           11.70%    passed     94.35%
+  17  EPI4770037|HA|A/duck/Madagascar/73990/2025|EPI_ISL_20231981|A_/_H9N2                           11.70%    passed     96.79%
+  18  EPI4770045|HA|A/duck/Madagascar/75057/2025|EPI_ISL_20231983|A_/_H9N2                           11.70%    passed     94.05%
+  19  A/duck/Madagascar/72706-21/2021_H9N2_HA                                                         9.97%    passed     94.75%
+  20  A/duck/Madagascar/72728-21/2021_H9N2_HA                                                         9.92%    passed     91.56%
+  21  A/duck/Madagascar/72738-21/2021_H9N2_HA                                                         9.92%    passed     91.56%
+  22  A/duck/Madagascar/79129-22/2022_H9N2_HA                                                        10.02%    passed     72.03%
+  23  A/duck/Madagascar/79131-22/2022_H9N2_HA                                                        10.07%    passed     78.86%
+  24  A/goose/Madagascar/79630-22/2022_H9N2_HA                                                        9.92%    passed     70.54%
+  25  A/duck/Madagascar/71020-23/2023_H9N2_HA                                                         9.92%    passed     70.54%
+  26  A/duck/Madagascar/72388-23/2023_H9N2_HA                                                         9.92%    passed     70.54%
+  27  A/duck/Madagascar/72400-23/2023_H9N2_HA                                                         9.92%    passed     70.54%
+  28  A/duck/Madagascar/72415-23/2023_H9N2_HA                                                         9.92%    passed     70.54%
+  29  A/goose/Madagascar/72732-23/2023_H9N2_HA                                                        9.92%    passed     70.54%
+  30  A/duck/Madagascar/73762-23/2023_H9N2_HA                                                         9.92%    passed     70.54%
+  31  A/duck/Madagascar/74528-23/2023_H9N2_HA                                                         9.97%    passed     71.90%
+  32  A/duck/Madagascar/74540-23/2023_H9N2_HA                                                         9.92%    passed     78.25%
+  33  A/duck/Madagascar/74554-23/2023_H9N2_HA                                                         9.92%    passed     78.25%
+  34  A/chicken/Madagascar/75209-23/2023_H9N2_HA                                                      9.92%    passed     70.54%
+  35  A/chicken/Madagascar/75222-23/2023_H9N2_HA                                                      9.92%    passed     70.54%
+  36  A/chicken/Madagascar/75234-23/2023_H9N2_HA                                                      9.92%    passed     70.54%
+  37  A/chicken/Madagascar/75238-23/2023_H9N2_HA                                                      9.92%    passed     70.54%
+  38  A/chicken/Madagascar/75239-23/2023_H9N2_HA                                                      9.92%    passed     70.54%
+  39  A/chicken/Madagascar/75242-23/2023_H9N2_HA                                                      9.92%    passed     70.54%
+  40  A/duck/Madagascar/75824-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  41  A/duck/Madagascar/75834-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  42  A/duck/Madagascar/75838-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  43  A/duck/Madagascar/75840-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  44  A/duck/Madagascar/75841-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  45  A/duck/Madagascar/75848-23/2023_H9N2_HA                                                        10.02%    passed     78.91%
+  46  A/duck/Madagascar/75852-23/2023_H9N2_HA                                                         9.97%    passed     80.44%
+  47  A/duck/Madagascar/75854-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  48  A/duck/Madagascar/75856-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  49  A/duck/Madagascar/75858-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  50  A/duck/Madagascar/75862-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  51  A/duck/Madagascar/76158-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  52  A/duck/Madagascar/76160-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  53  A/duck/Madagascar/76164-23/2023_H9N2_HA                                                         9.92%    passed     80.95%
+  54  A/duck/Madagascar/76166-23/2023_H9N2_HA                                                         9.97%    passed     81.18%
+  55  A/duck/Madagascar/76168-23/2023_H9N2_HA                                                         9.97%    passed     80.02%
+  56  A/duck/Madagascar/76422-23/2023_H9N2_HA                                                         9.92%    passed     78.27%
+  57  A/duck/Madagascar/76438-23/2023_H9N2_HA                                                        10.13%    passed     67.11%
+  58  A/duck/Madagascar/76442-23/2023_H9N2_HA                                                         9.97%    passed     66.19%
+  59  A/duck/Madagascar/76452-23/2023_H9N2_HA                                                        10.02%    passed     67.28%
+  60  A/duck/Madagascar/76888-23/2023_H9N2_HA                                                         9.97%    passed     71.64%
+  61  A/duck/Madagascar/77335-23/2023_H9N2_HA                                                         9.92%    passed     74.63%
+  62  A/duck/Madagascar/77459-23/2023_H9N2_HA                                                         9.92%    passed     72.58%
+  63  A/duck/Madagascar/77819-23/2023_H9N2_HA                                                         9.92%    passed     76.36%
+  64  A/duck/Madagascar/78609-23/2023_H9N2_HA                                                         9.92%    passed     84.85%
+  65  A/duck/Madagascar/78830-23/2023_H9N2_HA                                                         9.92%    passed     82.39%
+  66  A/duck/Madagascar/78834-23/2023_H9N2_HA                                                         9.97%    passed     82.78%
+  67  A/duck/Madagascar/79043-23/2023_H9N2_HA                                                         9.92%    passed     79.10%
+  68  A/duck/Madagascar/79144-23/2023_H9N2_HA                                                         9.92%    passed     84.55%
+  69  A/duck/Madagascar/79147-23/2023_H9N2_HA                                                         9.92%    passed     84.55%
+  70  A/duck/Madagascar/79158-23/2023_H9N2_HA                                                         9.92%    passed     84.55%
+  71  A/duck/Madagascar/79161-23/2023_H9N2_HA                                                         9.92%    passed     84.55%
+  72  EPI1671016|HA|A/Senegal/0243/2019|EPI_ISL_406471|A_/_H9N2                                       8.18%    passed     99.55%
+  73  EPI3438583|HA|A/Ghana/FS-24-2641/2024|EPI_ISL_19266347|A_/_H9N2                                11.70%    passed     98.13%
+  74  EPI953370|HA|A/chicken/Egypt/F12168D/2016|EPI_ISL_254826|A_/_H9N2                              10.44%    passed     99.83%
+  75  EPI557162|HA|A/chicken/Egypt/BSU4714-AR2217/2014|EPI_ISL_170252|A_/_H9N2                       11.86%    passed     87.52%
+  76  EPI4920697|HA|A/chicken/Egypt/BA21431C/2023|EPI_ISL_20299565|A_/_H9N2                           8.66%    passed     99.58%
+  77  EPI2152820|HA|A/chicken/Egypt/N19600A/2021|EPI_ISL_14834925|A_/_H9N2                            8.66%    passed     94.38%
+  78  EPI4819098|HA|A/chicken/Cote-d_Ivoire/IA098/2025|EPI_ISL_20260745|A_/_H9N2                     11.70%    passed     92.63%
+  79  EPI1508757|HA|A/chicken/Ashanti/18VIR1513-32/2018|EPI_ISL_368366|A_/_H9N2                      11.91%    passed     92.92%
+  80  EPI4094819|HA|A/chicken/Marrakech/33/2024|EPI_ISL_19776328|A_/_H9N2                            82.69%    failed      3.89%
+  81  EPI1170948|HA|A/chicken/Egypt/ABD4/2015|EPI_ISL_297111|A_/_H9N2                                20.83%    passed     71.55%
+  82  EPI3071117|HA|A/chicken/Egypt/AHRI-S22P/2019|EPI_ISL_18934738|A_/_H9N2                         23.24%    passed     96.76%
+  83  EPI2609237|HA|A/chicken/Morocco/497/2023|EPI_ISL_17885908|A_/_H9N2                             77.18%    passed     45.68%
+  84  EPI1200957|HA|A/chicken/Uganda/MUWRP-200190/2017|EPI_ISL_303844|A_/_H9N2                        9.13%    passed     97.61%
+  85  EPI1566747|HA|A/chicken/Egypt/171123V/2017|EPI_ISL_381736|A_/_H9N2                             59.39%    passed     36.04%
+  86  EPI4094813|HA|A/chicken/Fes/356/2024|EPI_ISL_19776322|A_/_H9N2                                 82.69%    failed      4.33%
+  87  EPI1897919|HA|A/chicken/Uganda/921/2018|EPI_ISL_4062424|A_/_H9N2                               10.07%    passed     98.70%
+  88  EPI1200906|HA|A/chicken/Uganda/MUWRP-200161/2017|EPI_ISL_303828|A_/_H9N2                        9.44%    passed     98.48%
+  89  EPI2981186|HA|A/chicken/Kenya/KN-CO-0659/2019|EPI_ISL_18856533|A_/_H9N2                        10.02%    passed     98.91%
+  90  EPI4801977|HA|A/chicken/Cote_d_Ivoire/IA087/2025|EPI_ISL_20253210|A_/_H9N2                     11.70%    passed     99.85%
+  91  EPI2152438|HA|A/chicken/EGYPT/A15066/2018|EPI_ISL_14832692|A_/_H9N2                             8.66%    passed     99.46%
+  92  EPI2981125|HA|A/chicken/Kenya/BM-CO-0209/2019|EPI_ISL_18856525|A_/_H9N2                         9.97%    passed     96.69%
+  93  EPI1897804|HA|A/chicken/Uganda/MUWRP-943/2019|EPI_ISL_4062409|A_/_H9N2                         10.07%    passed     98.34%
+  94  EPI4920777|HA|A/chicken/Egypt/DA21667OP/2024|EPI_ISL_20299576|A_/_H9N2                          8.66%    passed     88.29%
+  95  EPI2152777|HA|A/chicken/Egypt/A19244/2020|EPI_ISL_14834918|A_/_H9N2                             8.66%    passed     96.65%
+  96  EPI1519447|HA|A/chicken/Algeria/19BBD/2017|EPI_ISL_370231|A_/_H9N2                             12.64%    passed     99.02%
+  97  EPI4094818|HA|A/chicken/Temara/25/2024|EPI_ISL_19776327|A_/_H9N2                               82.69%    failed      3.12%
+  98  EPI3599963|HA|A/chicken/Upper_East/AI-T-24-1704/2024|EPI_ISL_19477425|A_/_H9N2                 11.70%    passed     97.02%
+  99  EPI1896776|HA|A/chicken/Uganda/901/2018|EPI_ISL_4062058|A_/_H9N2                               10.07%    passed     99.41%
+ 100  EPI2153076|HA|A/chicken/Egypt/S14165/2017|EPI_ISL_14834992|A_/_H9N2                            11.70%    passed     98.86%
+ 101  EPI1897544|HA|A/chicken/Uganda/MUWRP-975/2019|EPI_ISL_4062374|A_/_H9N2                         10.07%    passed     99.31%
+ 102  EPI1829798|HA|A/chicken/Gafsa/56/2014|EPI_ISL_502283|A_/_H9N2                                  11.86%    passed     99.23%
+ 103  EPI439157|HA|A/chicken/Egypt/VRLCU-ZK1/2012|EPI_ISL_138619|A_/_H9N2                            76.86%    passed     53.01%
+ 104  EPI2981048|HA|A/chicken/Kenya/BM-CO-0483/2019|EPI_ISL_18856483|A_/_H9N2                         9.97%    passed     96.98%
+ 105  EPI531678|HA|A/chicken/Egypt/123243V/2012|EPI_ISL_162588|A_/_H9N2                              11.70%    passed     96.66%
+ 106  EPI1551649|HA|A/chicken/Algeria/223/2017|EPI_ISL_378848|A_/_H9N2                               10.44%    passed     99.51%
+ 107  EPI2763517|HA|A/chicken/Morocco/IAV-497/2023|EPI_ISL_18338450|A_/_H9N2                         69.62%    passed      6.42%
+ 108  EPI1817624|HA|A/chicken/Benin/19-A-01-145-E/2019|EPI_ISL_697603|A_/_H9N2                        8.66%    passed     97.29%
+ 109  EPI2143277|HA|A/chicken/Nigeria/OG-BL17-21T_19VIR8424-6/2019|EPI_ISL_14768084|A_/_H9N2         10.34%    passed     98.80%
+ 110  EPI809367|HA|A/chicken/Egypt/F9883C/2014|EPI_ISL_229628|A_/_H9N2                                8.92%    passed     98.82%
+ 111  EPI1897078|HA|A/chicken/Uganda/831/2018|EPI_ISL_4062098|A_/_H9N2                               10.07%    passed     99.14%
+ 112  EPI1200890|HA|A/chicken/Uganda/MUWRP-201234/2017|EPI_ISL_303818|A_/_H9N2                        9.50%    passed     99.79%
+ 113  EPI1309929|HA|A/chicken/Egypt/2/2014|EPI_ISL_329697|A_/_H9N2                                   13.75%    passed     94.13%
+ 114  EPI1083035|HA|A/chicken/Burkina_Faso/17RS93-19/2017|EPI_ISL_282421|A_/_H9N2                    11.86%    passed     97.13%
+ 115  EPI4229226|HA|A/chicken/Egypt/EGY-9-91/2025|EPI_ISL_19821012|A_/_H9N2                          11.86%    passed     98.70%
+ 116  EPI493108|HA|A/chicken/Egypt/S7025E/2013|EPI_ISL_151934|A_/_H9N2                               11.18%    passed     99.97%
+ 117  EPI2609348|HA|A/chicken/Morocco/355/2022|EPI_ISL_17885935|A_/_H9N2                             77.18%    passed     57.67%
+ 118  EPI3668064|HA|A/chicken/Tunisia/63CH/2016|EPI_ISL_19576108|A_/_H9N2                            10.60%    passed     90.25%
+ 119  EPI1950316|HA|A/chicken/Morocco/8_3465_21RS1333-8/2019|EPI_ISL_8387689|A_/_H9N2                11.70%    passed     89.39%
+ 120  EPI1902190|HA|A/chicken/Egypt/F17123A/2019|EPI_ISL_4070939|A_/_H9N2                             8.66%    passed     90.66%
+ 121  EPI809302|HA|A/chicken/Egypt/D9326C/2013|EPI_ISL_229615|A_/_H9N2                                9.97%    passed     99.09%
+ 122  EPI2405720|HA|A/chicken/Egypt/v1896/2022|EPI_ISL_16925118|A_/_H9N2                             54.35%    passed     71.61%
+ 123  EPI439156|HA|A/chicken/Egypt/VRLCU-ZK2/2012|EPI_ISL_138618|A_/_H9N2                            76.08%    passed     72.32%
+ 124  EPI1904682|HA|A/chicken/Egypt/S63/2020|EPI_ISL_4073098|A_/_H9N2                                17.26%    passed     95.32%
+ 125  EPI1170947|HA|A/chicken/Egypt/ABD3/2015|EPI_ISL_297110|A_/_H9N2                                20.83%    passed     89.52%
+ 126  EPI809284|HA|A/chicken/Egypt/D10799A/2015|EPI_ISL_229560|A_/_H9N2                              10.44%    passed     93.24%
+ 127  EPI4229223|HA|A/chicken/Egypt/EGY-9-75/2025|EPI_ISL_19821009|A_/_H9N2                          11.86%    passed     98.81%
+ 128  EPI383563|HA|A/chicken/Egypt/111959VG/2011|EPI_ISL_119617|A_/_H9N2                             11.12%    passed     98.72%
+ 129  EPI1634076|HA|A/chicken/Egypt/F398-2/2019|EPI_ISL_399422|A_/_H9N2                              73.50%    passed     23.25%
+ 130  EPI2152462|HA|A/chicken/EGYPT/A15659/2018|EPI_ISL_14833014|A_/_H9N2                             8.66%    passed     99.03%
+ 131  EPI1040900|HA|A/chicken/Egypt/152537V/2015|EPI_ISL_244798|A_/_H9N2                             11.91%    passed     95.96%
+ 132  EPI1896721|HA|A/chicken/MUWRP-Uganda/897/2018|EPI_ISL_4062051|A_/_H9N2                         10.07%    passed     98.96%
+ 133  EPI2981061|HA|A/chicken/Kenya/BM-CO-0264/2019|EPI_ISL_18856485|A_/_H9N2                         9.97%    passed     97.22%
+ 134  EPI1897911|HA|A/chicken/Uganda/MUWRP-933/2019|EPI_ISL_4062423|A_/_H9N2                         10.07%    passed     99.14%
+ 135  EPI4229221|HA|A/chicken/Egypt/EGY-9-64/2024|EPI_ISL_19821007|A_/_H9N2                          11.86%    passed     97.03%
+ 136  EPI1897778|HA|A/chicken/Uganda/MUWRP-927/2019|EPI_ISL_4062404|A_/_H9N2                         10.07%    passed     99.09%
+ 137  EPI1789432|HA|A/chicken/Egypt/V2630/2019|EPI_ISL_505795|A_/_H9N2                               20.83%    passed     77.56%
+ 138  EPI4920905|HA|A/chicken/Egypt/RA21168OP/2023|EPI_ISL_20299592|A_/_H9N2                          8.66%    passed     99.86%
+ 139  EPI2152761|HA|A/chicken/Egypt/N19598A/2021|EPI_ISL_14834916|A_/_H9N2                            8.66%    passed     97.03%
+ 140  EPI1817865|HA|A/chicken/Morocco/AS13/2018|EPI_ISL_697633|A_/_H9N2                               8.66%    passed     96.31%
+ 141  EPI809273|HA|A/chicken/Egypt/D10685D/2015|EPI_ISL_229562|A_/_H9N2                              10.44%    passed     93.24%
+ 142  EPI855217|HA|A/chicken/Morocco/Meknes02/2016|EPI_ISL_237090|A_/_H9N2                           74.08%    passed     15.10%
+ 143  EPI398572|HA|A/chicken/Egypt/D4905B/2012|EPI_ISL_129883|A_/_H9N2                               11.07%    passed     98.45%
+ 144  EPI2143253|HA|A/chicken/Nigeria/IM-C11-15T_19VIR8425-4/2019|EPI_ISL_14768081|A_/_H9N2          10.34%    passed     99.41%
+ 145  EPI1789424|HA|A/chicken/Egypt/V1051/2019|EPI_ISL_505787|A_/_H9N2                               20.83%    passed     77.45%
+ 146  EPI1818153|HA|A/chicken/Uganda/MUWRP-773/2017|EPI_ISL_697716|A_/_H9N2                           8.66%    passed     99.82%
+ 147  EPI2152972|HA|A/chicken/EGYPT/A15803/2018|EPI_ISL_14834979|A_/_H9N2                             8.66%    passed     95.51%
+ 148  EPI718563|HA|A/chicken/Tunisia/56/2014|EPI_ISL_213842|A_/_H9N2                                 42.76%    passed     81.58%
+ 149  EPI2152561|HA|A/chicken/Egypt/N19766D/2021|EPI_ISL_14834296|A_/_H9N2                            8.66%    passed     98.27%
+ 150  EPI841555|HA|A/chicken/Suez/3/2015|EPI_ISL_235143|A_/_H9N2                                     42.39%    passed     45.38%
+ 151  EPI1901616|HA|A/chicken/Egypt/S16702A/2019|EPI_ISL_4069776|A_/_H9N2                             8.66%    passed     99.08%
+ 152  EPI841554|HA|A/chicken/North_Sinai/2/2015|EPI_ISL_235142|A_/_H9N2                              56.77%    passed     38.57%
+ 153  EPI2596985|HA|A/chicken/Tunisia/H9-010/2018|EPI_ISL_17805959|A_/_H9N2                          47.27%    passed      9.69%
+ 154  EPI3071168|HA|A/chicken/Egypt/AHRI-22108VG/2019|EPI_ISL_18934755|A_/_H9N2                      23.24%    passed     93.32%
+ 155  EPI1551604|HA|A/chicken/Algeria/206/2017|EPI_ISL_378831|A_/_H9N2                               10.44%    passed     99.72%
+ 156  EPI4920873|HA|A/chicken/Egypt/PS21751C/2024|EPI_ISL_20299588|A_/_H9N2                           8.66%    passed     99.18%
+ 157  EPI1566120|HA|A/chicken/Kenya/A71-1404/2017|EPI_ISL_381547|A_/_H9N2                            10.02%    passed     99.89%
+ 158  EPI1200919|HA|A/chicken/Uganda/MUWRP-200188/2017|EPI_ISL_303834|A_/_H9N2                        9.55%    passed     97.41%
+ 159  EPI2152852|HA|A/chicken/Egypt/A19610/2021|EPI_ISL_14834930|A_/_H9N2                             8.66%    passed     99.58%
+ 160  EPI557489|HA|A/chicken/Egypt/NLQP123VD-AR758/2013|EPI_ISL_170362|A_/_H9N2                      11.70%    passed     99.36%
+ 161  EPI3222580|HA|A/chicken/Egypt/DT20892OP/2022|EPI_ISL_19064353|A_/_H9N2                          8.66%    passed     91.66%
+ 162  EPI809350|HA|A/chicken/Egypt/D9377/2014|EPI_ISL_229627|A_/_H9N2                                10.23%    passed     99.54%
+ 163  EPI2152885|HA|A/chicken/EGYPT/S15518/2018|EPI_ISL_14834968|A_/_H9N2                             8.66%    passed     99.40%
+ 164  EPI1789414|HA|A/chicken/Egypt/V1596/2017|EPI_ISL_505777|A_/_H9N2                               20.83%    passed     84.05%
+ 165  EPI2763516|HA|A/chicken/Morocco/IAV-83/2022|EPI_ISL_18338449|A_/_H9N2                          67.73%    failed      4.93%
+ 166  EPI2152705|HA|A/chicken/Egypt/S19326C/2020|EPI_ISL_14834897|A_/_H9N2                            8.66%    passed     99.38%
+ 167  EPI1950364|HA|A/chicken/Morocco/18_6657_21RS1333-20/2020|EPI_ISL_8387695|A_/_H9N2              11.70%    passed     93.82%
+ 168  EPI1897053|HA|A/chicken/MUWRP-Uganda/843/2018|EPI_ISL_4062095|A_/_H9N2                         10.07%    passed     92.44%
+ 169  EPI4094876|HA|A/chicken/Rabat/Ch24/2024|EPI_ISL_19776343|A_/_H9N2                              82.69%    failed      3.15%
+ 170  EPI3071170|HA|A/chicken/Egypt/AHRI-192691V/2019|EPI_ISL_18934757|A_/_H9N2                      23.24%    passed     96.56%
+ 171  EPI531677|HA|A/chicken/Egypt/123140V/2012|EPI_ISL_162587|A_/_H9N2                              11.70%    passed     99.31%
+ 172  EPI4229224|HA|A/chicken/Egypt/EGY-9-83/2025|EPI_ISL_19821010|A_/_H9N2                          11.86%    passed     98.19%
+ 173  EPI1299993|HA|A/chicken/Egypt/1635VS/2016|EPI_ISL_327432|A_/_H9N2                              20.83%    passed     87.15%
+ 174  EPI2153304|HA|A/chicken/Egypt/N14498A/2017|EPI_ISL_14835051|A_/_H9N2                           11.70%    passed     96.79%
+ 175  EPI1896902|HA|A/chicken/Uganda/856/2018|EPI_ISL_4062074|A_/_H9N2                               10.07%    passed     99.58%
+ 176  EPI1902307|HA|A/chicken/Egypt/A17349/2019|EPI_ISL_4070950|A_/_H9N2                              8.66%    passed     99.14%
+ 177  EPI1789421|HA|A/chicken/Egypt/V3604/2018|EPI_ISL_505784|A_/_H9N2                               20.83%    passed     81.26%
+ 178  EPI3593648|HA|A/chicken/Greater_Accra/AI-T-24-149/2024|EPI_ISL_19466613|A_/_H9N2               11.70%    passed     99.85%
+ 179  EPI2188405|HA|A/chicken/Uganda/1062/2019|EPI_ISL_15215301|A_/_H9N2                             10.07%    passed     98.95%
+ 180  EPI1789418|HA|A/chicken/Egypt/V1317/2018|EPI_ISL_505781|A_/_H9N2                               20.83%    passed     83.68%
+ 181  EPI1817834|HA|A/chicken/Morocco/AS29/2018|EPI_ISL_697629|A_/_H9N2                               8.66%    passed     94.74%
+ 182  EPI3032811|HA|A/chicken/Egypt/AHRI-SP3/2022|EPI_ISL_18898021|A_/_H9N2                          30.85%    passed     99.93%
+ 183  EPI1904669|HA|A/chicken/Egypt/V77/2020|EPI_ISL_4073085|A_/_H9N2                                16.58%    passed     89.01%
+ 184  EPI2188453|HA|A/chicken/Uganda/1063/2019|EPI_ISL_15215313|A_/_H9N2                             10.07%    passed     95.46%
+ 185  EPI355460|HA|A/chicken/Egypt/114940v/2011|EPI_ISL_105052|A_/_H9N2                               8.76%    passed     98.48%
+ 186  EPI1817700|HA|A/chicken/Benin/19-A-01-165-E/2019|EPI_ISL_697612|A_/_H9N2                        8.66%    passed     97.29%
+ 187  EPI2981234|HA|A/chicken/Kenya/BM-CO-0653/2019|EPI_ISL_18856539|A_/_H9N2                         9.97%    passed     98.40%
+ 188  EPI4229222|HA|A/chicken/Egypt/EGY-9-68/2025|EPI_ISL_19821008|A_/_H9N2                          11.86%    passed     98.56%
+ 189  EPI1634078|HA|A/chicken/Egypt/F398-4/2019|EPI_ISL_399424|A_/_H9N2                              73.50%    passed     42.80%
+ 190  EPI2152721|HA|A/chicken/Egypt/N19302B/2020|EPI_ISL_14834900|A_/_H9N2                            8.66%    passed     96.75%
+ 191  EPI1901511|HA|A/chicken/Egypt/S16705A/2019|EPI_ISL_4069763|A_/_H9N2                             8.66%    passed     99.08%
+ 192  EPI1896784|HA|A/chicken/Uganda/885/2018|EPI_ISL_4062059|A_/_H9N2                               10.07%    passed     96.74%
+ 193  EPI2763530|HA|A/chicken/Morocco/IAV-355/2022|EPI_ISL_18338463|A_/_H9N2                         67.31%    failed      4.87%
+ 194  EPI1789417|HA|A/chicken/Egypt/V2479/2017|EPI_ISL_505780|A_/_H9N2                               20.83%    passed     83.65%
+ 195  EPI1897842|HA|A/chicken/Uganda/MUWRP-955/2019|EPI_ISL_4062414|A_/_H9N2                         10.07%    passed     98.42%
+ 196  EPI4686256|HA|A/chicken/Egypt/SP1/2022|EPI_ISL_20170514|A_/_H9N2                               31.85%    passed     98.85%
+ 197  EPI3032810|HA|A/chicken/Egypt/AHRI-SP1/2022|EPI_ISL_18898020|A_/_H9N2                          30.85%    passed     99.51%
+ 198  EPI1200915|HA|A/chicken/Uganda/MUWRP-200168/2017|EPI_ISL_303826|A_/_H9N2                        9.44%    passed     97.10%
+ 199  EPI1903987|HA|A/chicken/Benin/19-A-10-1339-E_20VIR6511-13/2019|EPI_ISL_4072352|A_/_H9N2        11.70%    passed     96.77%
+ 200  EPI986918|HA|A/chicken/Egypt/93/2015|EPI_ISL_261475|A_/_H9N2                                   76.81%    passed     73.42%
+ 201  EPI3071146|HA|A/chicken/Egypt/AHRI-191959VP/2019|EPI_ISL_18934743|A_/_H9N2                     23.24%    passed     96.21%
+ 202  EPI4920753|HA|A/chicken/Egypt/DA21334OP/2023|EPI_ISL_20299573|A_/_H9N2                          8.66%    passed     94.57%
+ 203  EPI4686286|HA|A/chicken/Egypt/SP7/2022|EPI_ISL_20170523|A_/_H9N2                               31.85%    passed     98.58%
+ 204  EPI1897133|HA|A/chicken/Uganda/829/2018|EPI_ISL_4062105|A_/_H9N2                               10.07%    passed     96.98%
+ 205  EPI1299991|HA|A/chicken/Egypt/16572V/2016|EPI_ISL_327430|A_/_H9N2                              20.83%    passed     84.94%
+ 206  EPI1950261|HA|A/chicken/Morocco/5_2781_21RS1333-5/2019|EPI_ISL_8387682|A_/_H9N2                12.12%    passed     85.31%
+ 207  EPI1200903|HA|A/chicken/Uganda/MUWRP-201203/2017|EPI_ISL_303827|A_/_H9N2                        8.71%    passed     91.34%
+ 208  EPI1551637|HA|A/chicken/Algeria/212/2017|EPI_ISL_378837|A_/_H9N2                               10.49%    passed     99.73%
+ 209  EPI1904673|HA|A/chicken/Egypt/V654/2020|EPI_ISL_4073089|A_/_H9N2                               14.69%    passed     96.19%
+ 210  EPI2609181|HA|A/chicken/Morocco/F48/2021|EPI_ISL_17885879|A_/_H9N2                             75.66%    passed     29.61%
+ 211  EPI531676|HA|A/chicken/Egypt/1256S/2012|EPI_ISL_162586|A_/_H9N2                                11.70%    passed     98.49%
+ 212  EPI1902061|HA|A/chicken/Egypt/S16694/2019|EPI_ISL_4070614|A_/_H9N2                              8.66%    passed     99.08%
+ 213  EPI3222644|HA|A/chicken/Egypt/BA19894OP/2021|EPI_ISL_19064361|A_/_H9N2                          8.66%    passed     92.04%
+ 214  EPI1901441|HA|A/chicken/Egypt/N16946C/2019|EPI_ISL_4069754|A_/_H9N2                             8.66%    passed     99.50%
+ 215  EPI2188398|HA|A/chicken/Uganda/995/2019|EPI_ISL_15215300|A_/_H9N2                              10.07%    passed     99.41%
+ 216  EPI687572|HA|A/chicken/Egypt/13342V/2013|EPI_ISL_205972|A_/_H9N2                               18.00%    passed     89.62%
+ 217  EPI2153044|HA|A/chicken/Egypt/S18643C/2020|EPI_ISL_14834988|A_/_H9N2                            8.66%    passed     99.18%
+ 218  EPI2152569|HA|A/chicken/Egypt/D19481/2020|EPI_ISL_14834410|A_/_H9N2                             8.66%    passed     98.19%
+ 219  EPI1829799|HA|A/chicken/Mahdia/803/2015|EPI_ISL_502284|A_/_H9N2                                11.86%    passed     99.23%
+ 220  EPI1901343|HA|A/chicken/Egypt/S16700B/2019|EPI_ISL_4069649|A_/_H9N2                             8.66%    passed     99.08%
+ 221  EPI809046|HA|A/chicken/Egypt/S10597A/2015|EPI_ISL_229553|A_/_H9N2                              10.02%    passed     99.23%
+ 222  EPI1897991|HA|A/chicken/Uganda/MUWRP-984/2019|EPI_ISL_4062433|A_/_H9N2                         10.07%    passed     97.38%
+ 223  EPI3600183|HA|A/chicken/Upper_East/AI-T-1733/2024|EPI_ISL_19477998|A_/_H9N2                    11.75%    passed     96.50%
+ 224  EPI416593|HA|A/chicken/Tunisia/2019/2010|EPI_ISL_134190|A_/_H9N2                               43.60%    passed     83.32%
+ 225  EPI1551969|HA|A/chicken/Egypt/Walaa2/2017|EPI_ISL_378934|A_/_H9N2                              57.87%    passed     55.39%
+ 226  EPI1551670|HA|A/chicken/Algeria/220/2017|EPI_ISL_378853|A_/_H9N2                               10.44%    passed     99.51%
+ 227  EPI2153084|HA|A/chicken/Egypt/A18720/2020|EPI_ISL_14834993|A_/_H9N2                             8.66%    passed     97.05%
+ 228  EPI1817715|HA|A/chicken/Benin/19-A-01-154-E/2019|EPI_ISL_697614|A_/_H9N2                        8.66%    passed     97.29%
+ 229  EPI4801602|HA|A/chicken/Cote_d_Ivoire/IA07/2024|EPI_ISL_20252484|A_/_H9N2                      11.59%    passed     94.32%
+ 230  EPI1897733|HA|A/chicken/Uganda/MUWRP-965/2019|EPI_ISL_4062398|A_/_H9N2                         10.07%    passed     98.53%
+ 231  EPI2152689|HA|A/chicken/Egypt/N19606C/2021|EPI_ISL_14834879|A_/_H9N2                            8.66%    passed     97.03%
+ 232  EPI2152681|HA|A/chicken/Egypt/N19078B/2020|EPI_ISL_14834878|A_/_H9N2                            8.66%    passed     98.06%
+ 233  EPI2153319|HA|A/chicken/EGYPT/A15073/2018|EPI_ISL_14835053|A_/_H9N2                             8.66%    passed     98.35%
+ 234  EPI1897093|HA|A/chicken/Uganda/850/2018|EPI_ISL_4062100|A_/_H9N2                               10.07%    passed     96.73%
+ 235  EPI506213|HA|A/chicken/Egypt/BSU-BS-M35/2012|EPI_ISL_156287|A_/_H9N2                           11.70%    passed     99.87%
+ 236  EPI1300000|HA|A/chicken/Egypt/1524F/2015|EPI_ISL_327439|A_/_H9N2                               20.88%    passed     90.09%
+ 237  EPI3089206|HA|A/chicken/Egypt/F53/2024|EPI_ISL_18950677|A_/_H9N2                               79.70%    passed     17.98%
+ 238  EPI1896730|HA|A/chicken/MUWRP-Uganda/890/2018|EPI_ISL_4062052|A_/_H9N2                         10.07%    passed     98.70%
+ 239  EPI809069|HA|A/chicken/Egypt/F10533D/2015|EPI_ISL_229572|A_/_H9N2                              10.44%    passed     99.86%
+ 240  EPI355106|HA|A/chicken/Egypt/11vir4453-275/2011|EPI_ISL_104829|A_/_H9N2                        14.43%    passed     99.87%
+ 241  EPI1299985|HA|A/chicken/Egypt/152979V/2015|EPI_ISL_327424|A_/_H9N2                             20.83%    passed     82.99%
+ 242  EPI1170953|HA|A/chicken/Egypt/ABD9/2015|EPI_ISL_297666|A_/_H9N2                                20.83%    passed     86.65%
+ 243  EPI809299|HA|A/chicken/Egypt/S10489C/2015|EPI_ISL_229604|A_/_H9N2                              10.44%    passed     99.52%
+ 244  EPI809053|HA|A/chicken/Egypt/F9516B/2014|EPI_ISL_229554|A_/_H9N2                               11.23%    passed     99.71%
+ 245  EPI1566748|HA|A/chicken/Egypt/1774CAD/2017|EPI_ISL_381737|A_/_H9N2                             20.83%    passed     71.60%
+ 246  EPI493092|HA|A/chicken/Egypt/D7663C/2013|EPI_ISL_151932|A_/_H9N2                               10.60%    passed     97.37%
+ 247  EPI1901342|HA|A/chicken/Morocco/SF6/2017|EPI_ISL_4069648|A_/_H9N2                              10.81%    passed     97.90%
+ 248  EPI4686608|HA|A/chicken/Qalyubia/Moshtohor-Reh3/2025|EPI_ISL_20170596|A_/_H9N2                 80.38%    passed     53.78%
+ 249  EPI1818205|HA|A/chicken/Uganda/MUWRP-815/2018|EPI_ISL_697722|A_/_H9N2                           8.66%    passed     97.81%
+ 250  EPI4920737|HA|A/chicken/Egypt/BA21809OP/2024|EPI_ISL_20299571|A_/_H9N2                          8.66%    passed     99.18%
+ 251  EPI1634077|HA|A/chicken/Egypt/F398-3/2019|EPI_ISL_399423|A_/_H9N2                              73.50%    passed     30.76%
+ 252  EPI1309936|HA|A/chicken/Egypt/10/2016|EPI_ISL_329704|A_/_H9N2                                  15.48%    passed     99.51%
+ 253  EPI953355|HA|A/chicken/Egypt/F12173D/2016|EPI_ISL_254822|A_/_H9N2                              10.44%    passed     99.83%
+ 254  EPI1200882|HA|A/chicken/Uganda/MUWRP-200170/2017|EPI_ISL_303810|A_/_H9N2                        9.44%    passed     97.30%
+ 255  EPI1789425|HA|A/chicken/Egypt/V1348/2019|EPI_ISL_505788|A_/_H9N2                               25.71%    passed     99.77%
+ 256  EPI3600188|HA|A/chicken/Upper_East/AI-T-1749/2024|EPI_ISL_19478090|A_/_H9N2                    11.80%    passed     99.10%
+ 257  EPI1897927|HA|A/chicken/Uganda/MUWRP-935/2019|EPI_ISL_4062425|A_/_H9N2                         10.07%    passed     98.96%
+ 258  EPI4920913|HA|A/chicken/Egypt/RA21169OP/2023|EPI_ISL_20299593|A_/_H9N2                          8.66%    passed     99.86%
+ 259  EPI3503802|HA|A/chicken/Egypt/BA20476OP/2022|EPI_ISL_19332068|A_/_H9N2                          8.66%    passed     99.95%
+ 260  EPI1904679|HA|A/chicken/Egypt/v2252/2020|EPI_ISL_4073095|A_/_H9N2                              16.11%    passed     90.67%
+ 261  EPI2153124|HA|A/chicken/Egypt/D18579A/2020|EPI_ISL_14834998|A_/_H9N2                            8.66%    passed     99.18%
+ 262  EPI2981202|HA|A/chicken/Kenya/BU-CO-0801/2019|EPI_ISL_18856535|A_/_H9N2                         9.97%    passed     97.00%
+ 263  EPI1309931|HA|A/chicken/Egypt/5/2014|EPI_ISL_329699|A_/_H9N2                                   13.75%    passed     98.58%
+ 264  EPI809277|HA|A/chicken/Egypt/D10562/2015|EPI_ISL_229609|A_/_H9N2                               10.44%    passed     98.53%
+ 265  EPI493214|HA|A/chicken/Egypt/S7404/2013|EPI_ISL_151940|A_/_H9N2                                11.49%    passed     98.53%
+ 266  EPI493048|HA|A/chicken/Egypt/D5490B/2012|EPI_ISL_151930|A_/_H9N2                                9.39%    passed     99.13%
+ 267  EPI4801706|HA|A/chicken/Cote_d_Ivoire/IA072/2025|EPI_ISL_20252560|A_/_H9N2                     11.70%    passed     99.29%
+ 268  EPI1776576|HA|A/chicken/Egypt/A15068/2018|EPI_ISL_503057|A_/_H9N2                               8.71%    passed     99.17%
+ 269  EPI809323|HA|A/chicken/Egypt/D9570B/2014|EPI_ISL_229612|A_/_H9N2                                9.76%    passed     99.56%
+ 270  EPI4920785|HA|A/chicken/Egypt/DA21668C/2024|EPI_ISL_20299577|A_/_H9N2                           8.66%    passed     88.29%
+ 271  EPI3593027|HA|A/chicken/Greater_Accra/AI-T-24-137/2024|EPI_ISL_19466524|A_/_H9N2               11.70%    passed     98.49%
+ 272  EPI1519444|HA|A/chicken/Algeria/15BBD/2017|EPI_ISL_370228|A_/_H9N2                             12.64%    passed     99.02%
+ 273  EPI2981138|HA|A/chicken/Kenya/KN-CO-0509/2019|EPI_ISL_18856527|A_/_H9N2                         9.97%    passed     94.55%
+ 274  EPI506212|HA|A/chicken/Egypt/BSU-BS-M33/2012|EPI_ISL_156286|A_/_H9N2                           11.70%    passed     99.82%
+ 275  EPI398571|HA|A/chicken/Egypt/D4907A/2012|EPI_ISL_129882|A_/_H9N2                               10.18%    passed     99.19%
+ 276  EPI2763521|HA|A/chicken/Morocco/IAV-356/2022|EPI_ISL_18338454|A_/_H9N2                         67.31%    failed      4.87%
+ 277  EPI1299994|HA|A/chicken/Egypt/161970V/2016|EPI_ISL_327433|A_/_H9N2                             20.83%    passed     92.79%
+ 278  EPI1200888|HA|A/chicken/Uganda/MUWRP-201231/2017|EPI_ISL_303816|A_/_H9N2                        9.92%    passed     98.65%
+ 279  EPI1200897|HA|A/chicken/Uganda/MUWRP-200193/2017|EPI_ISL_303823|A_/_H9N2                        9.92%    passed     99.11%
+ 280  EPI809329|HA|A/chicken/Egypt/S9652E/2014|EPI_ISL_229608|A_/_H9N2                                9.97%    passed     98.72%
+ 281  EPI359220|HA|A/chicken/Egypt/S4456B/2011|EPI_ISL_107985|A_/_H9N2                               10.02%    passed     98.94%
+ 282  EPI1950193|HA|A/chicken/Morocco/17_6650_21RS1333-19/2020|EPI_ISL_8387673|A_/_H9N2              11.70%    passed     98.90%
+ 283  EPI1897576|HA|A/chicken/Uganda/MUWRP-956/2019|EPI_ISL_4062378|A_/_H9N2                         10.07%    passed     98.42%
+ 284  EPI3032801|HA|A/chicken/Egypt/AHRI-SP2/2022|EPI_ISL_18897572|A_/_H9N2                          30.85%    passed     99.81%
+ 285  EPI2142675|HA|A/chicken/Egypt/FFN3/2019|EPI_ISL_14766981|A_/_H9N2                              22.30%    passed     90.75%
+ 286  EPI1551605|HA|A/chicken/Algeria/214/2017|EPI_ISL_378832|A_/_H9N2                               10.44%    passed     99.78%
+ 287  EPI2609362|HA|A/chicken/Morocco/175-2/2021|EPI_ISL_17885941|A_/_H9N2                           75.66%    passed     54.89%
+ 288  EPI809062|HA|A/chicken/Egypt/S9288A/2013|EPI_ISL_229567|A_/_H9N2                                8.87%    passed     99.55%
+ 289  EPI1789434|HA|A/chicken/Egypt/V2692/2019|EPI_ISL_505797|A_/_H9N2                               20.83%    passed     78.44%
+ 290  EPI1817764|HA|A/chicken/Benin/19-A-01-146-E/2019|EPI_ISL_697620|A_/_H9N2                        8.66%    passed     97.33%
+ 291  EPI3668072|HA|A/chicken/Tunisia/91CH/2017|EPI_ISL_19576109|A_/_H9N2                            10.60%    passed     87.94%
+ 292  EPI1904672|HA|A/chicken/Egypt/V649/2020|EPI_ISL_4073088|A_/_H9N2                               15.95%    passed     86.42%
+ 293  EPI1818232|HA|A/chicken/Uganda/MUWRP-712/2017|EPI_ISL_697726|A_/_H9N2                           8.66%    passed     94.15%
+ 294  EPI1818288|HA|A/chicken/Uganda/MUWRP-789/2017|EPI_ISL_697733|A_/_H9N2                           8.66%    passed     97.84%
+ 295  EPI1818223|HA|A/chicken/Uganda/MUWRP-739/2017|EPI_ISL_697725|A_/_H9N2                           8.66%    passed     98.98%
+ 296  EPI2152892|HA|A/chicken/Egypt/D19290C/2020|EPI_ISL_14834969|A_/_H9N2                            8.66%    passed     99.69%
+ 297  EPI4801993|HA|A/chicken/Cote_d_Ivoire/IA091/2025|EPI_ISL_20253213|A_/_H9N2                     11.70%    passed     99.65%
+ 298  EPI1556320|HA|A/chicken/Egypt/A-chicken-1/2017|EPI_ISL_379764|A_/_H9N2                         12.80%    passed     99.78%
+ 299  EPI2763526|HA|A/chicken/Morocco/IAV-181-1/2022|EPI_ISL_18338459|A_/_H9N2                       67.89%    passed     21.05%
+ 300  EPI1508755|HA|A/chicken/Ashanti/18VIR1513-22/2018|EPI_ISL_368364|A_/_H9N2                      11.91%    passed     92.92%
+ 301  EPI2609240|HA|A/chicken/Morocco/430/2023|EPI_ISL_17885911|A_/_H9N2                             77.18%    passed     43.96%
+ 302  EPI2981210|HA|A/chicken/Kenya/BU-CO-0853/2019|EPI_ISL_18856536|A_/_H9N2                         9.97%    passed     96.48%
+ 303  EPI2153345|HA|A/chicken/Egypt/D19290B/2020|EPI_ISL_14834933|A_/_H9N2                           55.88%    passed     77.61%
+ 304  EPI1789415|HA|A/chicken/Egypt/V69/2017|EPI_ISL_505778|A_/_H9N2                                 20.83%    passed     71.16%
+ 305  EPI1551674|HA|A/chicken/Algeria/221/2017|EPI_ISL_378855|A_/_H9N2                               10.44%    passed     99.51%
+ 306  EPI809258|HA|A/duck/Egypt/C9787/2014|EPI_ISL_229563|A_/_H9N2                                    9.34%    passed     97.99%
+ 307  EPI1902298|HA|A/pigeon/Egypt/A16865/2019|EPI_ISL_4070946|A_/_H9N2                               8.66%    passed     99.18%
+ 308  EPI687618|HA|A/quail/Egypt/14864V/2014|EPI_ISL_206001|A_/_H9N2                                 18.00%    passed     85.55%
+ 309  EPI809364|HA|A/quail/Egypt/D9842/2014|EPI_ISL_229600|A_/_H9N2                                   9.13%    passed     96.55%
+ 310  EPI2041993|HA|A/ostrich/South_Africa/591788/2019|EPI_ISL_12749782|A_/_H9N2                     11.70%    passed     84.51%
+ 311  EPI993797|HA|A/Egypt/ZU65/2016|EPI_ISL_262575|A_/_H9N2                                         11.70%    passed     99.86%
+ 312  EPI3599873|HA|A/Chicken/Western/AI-T-24-889/2024|EPI_ISL_19476834|A_/_H9N2                     11.70%    passed     96.47%
+ 313  EPI1381412|HA|A/Chicken/Egypt/AR544/2018|EPI_ISL_344535|A_/_H9N2                                9.18%    passed     93.94%
+ 314  EPI1381436|HA|A/Chicken/Egypt/AR544/2018|EPI_ISL_344535|A_/_H9N2                                8.92%    passed     96.86%
+ 315  EPI1381410|HA|A/Chicken/Egypt/AR541/2018|EPI_ISL_344553|A_/_H9N2                               12.07%    passed     93.69%
+ 316  EPI1381413|HA|A/Chicken/Egypt/AR545/2018|EPI_ISL_344554|A_/_H9N2                                9.97%    passed     99.36%
+ 317  EPI3062071|HA|A/Chicken/Greater_Accra/AI-T-0061/2022|EPI_ISL_18928246|A_/_H9N2                 77.70%    passed     98.61%
+ 318  EPI1776321|HA|A/Chicken/Egypt/CL83/2013|EPI_ISL_503009|A_/_H9N2                                11.75%    passed     97.91%
+ 319  EPI3607212|HA|A/Chicken/Algeria/1P4217/2019|EPI_ISL_19493814|A_/_H9N2                          10.34%    passed     98.31%
+ 320  EPI1381408|HA|A/Chicken/Egypt/AR538/2017|EPI_ISL_344551|A_/_H9N2                               12.12%    passed     99.84%
+ 321  EPI3062655|HA|A/Chicken/North_East/AI-T-22-1272/2022|EPI_ISL_18928496|A_/_H9N2                 70.30%    passed     97.10%
+ 322  EPI3599838|HA|A/Chicken/Western/AI-T-24-881/2024|EPI_ISL_19476827|A_/_H9N2                     11.70%    passed     97.27%
+ 323  EPI1381406|HA|A/Chicken/Egypt/AR536/2017|EPI_ISL_344549|A_/_H9N2                               13.06%    passed     96.05%
+ 324  EPI3062574|HA|A/Chicken/Upper_East/AI-T-22-1405/2022|EPI_ISL_18928408|A_/_H9N2                 76.86%    passed     99.19%
+ 325  EPI3607217|HA|A/Chicken/Algeria/5P3542/2019|EPI_ISL_19493818|A_/_H9N2                          10.44%    passed     98.81%
+ 326  EPI1381430|HA|A/Chicken/Egypt/AR537/2017|EPI_ISL_344550|A_/_H9N2                               12.01%    passed     99.88%
+ 327  EPI4776979|HA|A/Cote-d_Ivoire/IA24/2025|EPI_ISL_20237348|A_/_H9N2                              11.70%    passed     96.58%
+ 328  EPI4785796|HA|A/Cote-d_Ivoire/IA082/2025|EPI_ISL_20243457|A_/_H9N2                             11.70%    passed     93.63%
+ 329  EPI3114793|HA|A/Gallus_Gallus/Mali/MLIKO-1-22-02-123/2022|EPI_ISL_18981751|A_/_H9N2             9.23%    passed     98.94%
+ 330  EPI1160906|HA|A/broiler_chicken/Casablanca/16VIR9564-1/2016|EPI_ISL_295661|A_/_H9N2            10.39%    passed     98.00%
+ 331  EPI3505844|HA|A/garganey/Egypt/DT20952C/2023|EPI_ISL_19333694|A_/_H9N2                         10.28%    passed     98.39%
+ 332  EPI3599970|HA|A/Guinea_fowl/Upper_East/AI-T-24-1713/2024|EPI_ISL_19477453|A_/_H9N2             11.70%    passed     99.68%
+ 333  EPI3222361|HA|A/turkey/Egypt/BA20489OP/2022|EPI_ISL_19064318|A_/_H9N2                           8.66%    passed     82.79%
+ 334  EPI1272592|HA|A/turkey/Morocco/AR166/2018|EPI_ISL_320967|A_/_H9N2                              12.01%    passed     99.43%
+ 335  EPI4250915|HA|A/turkey/Enshas/H91/2023|EPI_ISL_19827762|A_/_H9N2                               80.38%    passed     84.44%
+ 336  EPI1299996|HA|A/turkey/Egypt/1623FAOS/2016|EPI_ISL_327435|A_/_H9N2                             20.83%    passed     89.62%
+ 337  EPI4446328|HA|A/avian/Hadejia/HDJ11-15tb/2022|EPI_ISL_19917921|A_/_H9N2                        39.24%    passed     76.55%
+ 338  EPI2550315|HA|A/layer/Niger/13-23_23VIR3551-13/2023|EPI_ISL_17638494|A_/_H9N2                   9.13%    passed     99.08%
+ 339  EPI1896425|HA|A/broiler/Egypt/H9-3/2018|EPI_ISL_4061717|A_/_H9N2                               33.89%    passed     93.49%
+ 340  EPI3724354|HA|A/feces/Mozambique/ID_131/2022|EPI_ISL_19613456|A_/_H9N2                         12.28%    passed     93.15%
+ 341  EPI346926|HA|A/migratory_bird/Tunisia/51/2010|EPI_ISL_100058|A_/_H9N2                          43.60%    passed     88.03%
+ 342  EPI3222896|HA|A/environment/Egypt/DT20580S/2022|EPI_ISL_19064394|A_/_H9N2                       8.66%    passed     98.96%
+ 343  EPI3503889|HA|A/environment/Egypt/BA20496W/2022|EPI_ISL_19332079|A_/_H9N2                       8.66%    passed     95.92%
+ 344  EPI3222920|HA|A/common_quaill/Egypt/BA20406OP/2022|EPI_ISL_19064397|A_/_H9N2                    8.66%    passed     99.54%
+ 345  EPI3599681|HA|A/Environment/Senegal/GA024/2023|EPI_ISL_19474873|A_/_H9N2                       10.07%    passed     99.69%
+ 346  EPI4469941|HA|A/laying_hen/Togo/DE-25-155_25VIR4654-8/2025|EPI_ISL_20056273|A_/_H9N2           10.60%    passed     98.04%
+ 347  EPI3062607|HA|A/Guinea_Fowl/Greater_Accra/AI-T-22-0858T/2022|EPI_ISL_18928432|A_/_H9N2         78.38%    passed     92.74%
+ 348  EPI3062387|HA|A/Guinea_Fowl/Greater_Accra/AI-T-22-0082/2022|EPI_ISL_18928325|A_/_H9N2          78.28%    passed     87.69%
+ 349  EPI2752422|HA|A/common_coat/Egypt/SCU-8/2022|EPI_ISL_18287400|A_/_H9N2                         43.49%    passed     51.69%
+ 350  EPI1555817|HA|A/Bat/Egypt/381OP/2017|EPI_ISL_379681|A_/_H9N2                                   10.55%    failed      0.00%
+ 351  EPI2609120|HA|A/poultry/Egypt/CK-FAO-S34/2020|EPI_ISL_17885863|A_/_H9N2                        23.24%    passed     96.06%
+ 352  EPI2609112|HA|A/poultry/Egypt/CK-V2090/2020|EPI_ISL_17885855|A_/_H9N2                          23.24%    passed     95.30%
+ 353  EPI2609114|HA|A/poultry/Egypt/CK-S63/2020|EPI_ISL_17885857|A_/_H9N2                            23.24%    passed     98.66%
+ 354  EPI2609216|HA|A/poultry/Egypt/CK-VD44/2020|EPI_ISL_17885893|A_/_H9N2                           23.24%    passed     96.97%
+ 355  EPI2609113|HA|A/poultry/Egypt/CK-V1980/2020|EPI_ISL_17885856|A_/_H9N2                          23.24%    passed     93.51%
+ 356  EPI2609227|HA|A/poultry/Egypt/CK-V6/2020|EPI_ISL_17885901|A_/_H9N2                             23.24%    passed     93.51%
+ 357  EPI2609110|HA|A/poultry/Egypt/CK-V3049/2020|EPI_ISL_17885853|A_/_H9N2                          23.24%    passed     94.35%
+ 358  EPI2116997|HA|A/chicken-Cobb/Egypt/104/2019|EPI_ISL_14224171|A_/_H9N2                          26.50%    passed     77.18%
+ 359  EPI2042001|HA|A/Egyptian_goose/South_Africa/TP2118/2021|EPI_ISL_12749975|A_/_H9N2              19.78%    passed     85.24%
+ 360  EPI1087901|HA|A/_Quail_/Egypt/1253V/2016|EPI_ISL_283156|A_/_H9N2                               11.86%    passed     98.91%
+ 361  EPI1625806|HA|A/QUAIL/Egypt/152890V/2015|EPI_ISL_398052|A_/_H9N2                               20.83%    passed     84.20%
+ 362  EPI3621327|HA|A/wild_bird/South_Africa/EF24257/2024|EPI_ISL_19512472|A_/_H9N2                   9.81%    passed     96.00%
+ 363  EPI2396905|HA|A/Duck/Egypt/22-1/2022|EPI_ISL_16891308|A_/_H9N2                                 66.84%    passed     92.24%
+ 364  EPI2143357|HA|A/guinea_fowl/Nigeria/KD-GF152-154T_19VIR8425-1/2019|EPI_ISL_14768094|A_/_H9N2   10.44%    passed     98.52%
+ 365  EPI1226423|HA|A/chiken/Nador/FCS1_29/2016|EPI_ISL_309191|A_/_H9N2                               9.23%    passed     99.88%
+ 366  EPI3503881|HA|A/common_quail/Egypt/BA20408OP/2022|EPI_ISL_19332078|A_/_H9N2                     8.66%    passed     99.54%
+ 367  EPI1896918|HA|A/Wild_bird/Uganda/MUWRP-863/2018|EPI_ISL_4062076|A_/_H9N2                       10.07%    passed     88.74%
+ 368  EPI2981194|HA|A/Turkey/Kenya/NB-TO-0208/2019|EPI_ISL_18856534|A_/_H9N2                         10.13%    passed     99.92%
+ 369  EPI895425|HA|A/swine/Egypt/151/2015|EPI_ISL_244595|A_/_H9N2                                    74.08%    passed     51.83%
+ 370  EPI1950224|HA|A/pheasant/Morocco/19RS1944-14/2019|EPI_ISL_8387677|A_/_H9N2                     11.75%    passed     95.91%
+ 371  EPI2649566|HA|A/barbary_partridge/Morocco/CVM1/2022|EPI_ISL_18037823|A_/_H9N2                  71.98%    passed     19.93%
+ 372  EPI1902601|HA|A/gray_headed_gull/Tunisia/216/2018|EPI_ISL_4071030|A_/_H9N2                      9.97%    passed     95.22%
+ 373  EPI4921097|HA|A/laughing_dove/Egypt/DA21532C/2023|EPI_ISL_20299616|A_/_H9N2                     8.71%    passed     99.75%
+ 374  EPI1299987|HA|A/DUCK/Egypt/161338V/2016|EPI_ISL_327426|A_/_H9N2                                20.83%    passed     85.95%
+WARNING: 37 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                                                                                          18.65%  8 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: EPI4770054|HA|A/duck/Madagascar/75337/2025|EPI_ISL_20231985|A_/_H9N2 is identical to EPI4770050|HA|A/duck/Madagascar/75332/2025|EPI_ISL_20231984|A_/_H9N2 but kept for subsequent analysis
+NOTE: A/duck/Madagascar/72738-21/2021_H9N2_HA is identical to A/duck/Madagascar/72728-21/2021_H9N2_HA but kept for subsequent analysis
+NOTE: A/duck/Madagascar/71020-23/2023_H9N2_HA is identical to A/goose/Madagascar/79630-22/2022_H9N2_HA but kept for subsequent analysis
+NOTE: A/chicken/Madagascar/75209-23/2023_H9N2_HA is identical to A/goose/Madagascar/72732-23/2023_H9N2_HA but kept for subsequent analysis
+NOTE: A/duck/Madagascar/75834-23/2023_H9N2_HA is identical to A/duck/Madagascar/75824-23/2023_H9N2_HA but kept for subsequent analysis
+NOTE: A/duck/Madagascar/79147-23/2023_H9N2_HA is identical to A/duck/Madagascar/79144-23/2023_H9N2_HA but kept for subsequent analysis
+NOTE: EPI953355|HA|A/chicken/Egypt/F12173D/2016|EPI_ISL_254822|A_/_H9N2 is identical to EPI953370|HA|A/chicken/Egypt/F12168D/2016|EPI_ISL_254826|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI1508755|HA|A/chicken/Ashanti/18VIR1513-22/2018|EPI_ISL_368364|A_/_H9N2 is identical to EPI1508757|HA|A/chicken/Ashanti/18VIR1513-32/2018|EPI_ISL_368366|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI4920785|HA|A/chicken/Egypt/DA21668C/2024|EPI_ISL_20299577|A_/_H9N2 is identical to EPI4920777|HA|A/chicken/Egypt/DA21667OP/2024|EPI_ISL_20299576|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI1519444|HA|A/chicken/Algeria/15BBD/2017|EPI_ISL_370228|A_/_H9N2 is identical to EPI1519447|HA|A/chicken/Algeria/19BBD/2017|EPI_ISL_370231|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI1829799|HA|A/chicken/Mahdia/803/2015|EPI_ISL_502284|A_/_H9N2 is identical to EPI1829798|HA|A/chicken/Gafsa/56/2014|EPI_ISL_502283|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI1551670|HA|A/chicken/Algeria/220/2017|EPI_ISL_378853|A_/_H9N2 is identical to EPI1551649|HA|A/chicken/Algeria/223/2017|EPI_ISL_378848|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI1817700|HA|A/chicken/Benin/19-A-01-165-E/2019|EPI_ISL_697612|A_/_H9N2 is identical to EPI1817624|HA|A/chicken/Benin/19-A-01-145-E/2019|EPI_ISL_697603|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI809273|HA|A/chicken/Egypt/D10685D/2015|EPI_ISL_229562|A_/_H9N2 is identical to EPI809284|HA|A/chicken/Egypt/D10799A/2015|EPI_ISL_229560|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI4920913|HA|A/chicken/Egypt/RA21169OP/2023|EPI_ISL_20299593|A_/_H9N2 is identical to EPI4920905|HA|A/chicken/Egypt/RA21168OP/2023|EPI_ISL_20299592|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI2152689|HA|A/chicken/Egypt/N19606C/2021|EPI_ISL_14834879|A_/_H9N2 is identical to EPI2152761|HA|A/chicken/Egypt/N19598A/2021|EPI_ISL_14834916|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI1901511|HA|A/chicken/Egypt/S16705A/2019|EPI_ISL_4069763|A_/_H9N2 is identical to EPI1901616|HA|A/chicken/Egypt/S16702A/2019|EPI_ISL_4069776|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI4920737|HA|A/chicken/Egypt/BA21809OP/2024|EPI_ISL_20299571|A_/_H9N2 is identical to EPI4920873|HA|A/chicken/Egypt/PS21751C/2024|EPI_ISL_20299588|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI2763521|HA|A/chicken/Morocco/IAV-356/2022|EPI_ISL_18338454|A_/_H9N2 is identical to EPI2763530|HA|A/chicken/Morocco/IAV-355/2022|EPI_ISL_18338463|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI1897576|HA|A/chicken/Uganda/MUWRP-956/2019|EPI_ISL_4062378|A_/_H9N2 is identical to EPI1897842|HA|A/chicken/Uganda/MUWRP-955/2019|EPI_ISL_4062414|A_/_H9N2 but kept for subsequent analysis
+NOTE: EPI3503881|HA|A/common_quail/Egypt/BA20408OP/2022|EPI_ISL_19332078|A_/_H9N2 is identical to EPI3222920|HA|A/common_quaill/Egypt/BA20406OP/2022|EPI_ISL_19064397|A_/_H9N2 but kept for subsequent analysis
+Checking for duplicate sequences: done in 0.00102928 secs using 290.7% CPU
+Identifying sites to remove: done in 0.00577318 secs using 372.6% CPU
+NOTE: 24 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: A/duck/Madagascar/72388-23/2023_H9N2_HA (identical to A/goose/Madagascar/79630-22/2022_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/72400-23/2023_H9N2_HA (identical to A/goose/Madagascar/79630-22/2022_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/72415-23/2023_H9N2_HA (identical to A/goose/Madagascar/79630-22/2022_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/73762-23/2023_H9N2_HA (identical to A/goose/Madagascar/79630-22/2022_H9N2_HA) is ignored but added at the end
+NOTE: A/chicken/Madagascar/75222-23/2023_H9N2_HA (identical to A/goose/Madagascar/72732-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/chicken/Madagascar/75234-23/2023_H9N2_HA (identical to A/goose/Madagascar/72732-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/chicken/Madagascar/75238-23/2023_H9N2_HA (identical to A/goose/Madagascar/72732-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/chicken/Madagascar/75239-23/2023_H9N2_HA (identical to A/goose/Madagascar/72732-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/75838-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/75840-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/75841-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/75854-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/75856-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/75858-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/75862-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/76158-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/76160-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/76164-23/2023_H9N2_HA (identical to A/duck/Madagascar/75824-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/79158-23/2023_H9N2_HA (identical to A/duck/Madagascar/79144-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: A/duck/Madagascar/79161-23/2023_H9N2_HA (identical to A/duck/Madagascar/79144-23/2023_H9N2_HA) is ignored but added at the end
+NOTE: EPI1551674|HA|A/chicken/Algeria/221/2017|EPI_ISL_378855|A_/_H9N2 (identical to EPI1551649|HA|A/chicken/Algeria/223/2017|EPI_ISL_378848|A_/_H9N2) is ignored but added at the end
+NOTE: EPI1817715|HA|A/chicken/Benin/19-A-01-154-E/2019|EPI_ISL_697614|A_/_H9N2 (identical to EPI1817624|HA|A/chicken/Benin/19-A-01-145-E/2019|EPI_ISL_697603|A_/_H9N2) is ignored but added at the end
+NOTE: EPI1902061|HA|A/chicken/Egypt/S16694/2019|EPI_ISL_4070614|A_/_H9N2 (identical to EPI1901616|HA|A/chicken/Egypt/S16702A/2019|EPI_ISL_4069776|A_/_H9N2) is ignored but added at the end
+NOTE: EPI1901343|HA|A/chicken/Egypt/S16700B/2019|EPI_ISL_4069649|A_/_H9N2 (identical to EPI1901616|HA|A/chicken/Egypt/S16702A/2019|EPI_ISL_4069776|A_/_H9N2) is ignored but added at the end
+Alignment was printed to /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H9N2.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H9N2.uniqueseq.phy
+Creating fast initial parsimony tree by random order stepwise addition...
+0.683 seconds, parsimony score: 4986 (based on 1185 sites)
+
+NOTE: 63 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -31632.859
+2. Current log-likelihood: -30710.498
+3. Current log-likelihood: -29977.427
+4. Current log-likelihood: -29430.494
+5. Current log-likelihood: -29342.157
+6. Current log-likelihood: -29336.450
+7. Current log-likelihood: -29335.859
+Optimal log-likelihood: -29335.780
+Rate parameters:  A-C: 1.00000  A-G: 7.45044  A-T: 1.00000  C-G: 1.00000  C-T: 7.45044  G-T: 1.00000
+Base frequencies:  A: 0.343  C: 0.192  G: 0.224  T: 0.241
+Gamma shape alpha: 0.471
+Parameters optimization took 7 rounds (1.477 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.159185 secs using 397.6% CPU
+Computing ML distances took 0.160794 sec (of wall-clock time) 0.634857 sec (of CPU time)
+WARNING: Some pairwise ML distances are too long (saturated)
+Setting up auxiliary I and S matrices: done in 0.00254412 secs using 116.3% CPU
+Constructing RapidNJ tree: done in 0.279681 secs using 71.52% CPU
+Computing RapidNJ tree took 0.282312 sec (of wall-clock time) 0.203109 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -30431.140
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 8.261 second
+Computing log-likelihood of 98 initial trees ... 6.533 seconds
+Current best score: -29314.088
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -29240.050
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 7: -29240.027
+Iteration 10 / LogL: -29252.774 / Time: 0h:0m:32s
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 11: -29231.193
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 12: -29230.950
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 18: -29220.842
+Iteration 20 / LogL: -29223.333 / Time: 0h:0m:44s
+Finish initializing candidate tree set (20)
+Current best tree score: -29220.842 / CPU time: 41.540
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 28: -29220.313
+Iteration 30 / LogL: -29243.057 / Time: 0h:1m:2s (0h:3m:27s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 38: -29214.326
+Iteration 40 / LogL: -29262.579 / Time: 0h:1m:19s (0h:3m:19s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 44: -29213.980
+Iteration 50 / LogL: -29225.450 / Time: 0h:1m:40s (0h:3m:11s left)
+Iteration 60 / LogL: -29270.174 / Time: 0h:2m:1s (0h:2m:52s left)
+Iteration 70 / LogL: -29253.191 / Time: 0h:2m:23s (0h:2m:32s left)
+Iteration 80 / LogL: -29217.656 / Time: 0h:2m:44s (0h:2m:12s left)
+Iteration 90 / LogL: -29277.836 / Time: 0h:3m:6s (0h:1m:52s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 100: -29212.226
+Iteration 100 / LogL: -29212.226 / Time: 0h:3m:29s (0h:3m:31s left)
+Iteration 110 / LogL: -29241.146 / Time: 0h:3m:50s (0h:3m:9s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 116: -29211.143
+Iteration 120 / LogL: -29211.934 / Time: 0h:4m:11s (0h:3m:22s left)
+Iteration 130 / LogL: -29241.858 / Time: 0h:4m:35s (0h:3m:3s left)
+Iteration 140 / LogL: -29216.131 / Time: 0h:4m:58s (0h:2m:42s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 142: -29210.772
+Iteration 150 / LogL: -29222.715 / Time: 0h:5m:20s (0h:3m:17s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 153: -29209.497
+Iteration 160 / LogL: -29245.585 / Time: 0h:5m:41s (0h:3m:19s left)
+Iteration 170 / LogL: -29240.752 / Time: 0h:6m:3s (0h:2m:57s left)
+Iteration 180 / LogL: -29209.598 / Time: 0h:6m:23s (0h:2m:35s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 185: -29209.074
+Iteration 190 / LogL: -29213.735 / Time: 0h:6m:43s (0h:3m:22s left)
+Iteration 200 / LogL: -29230.651 / Time: 0h:7m:4s (0h:3m:0s left)
+Iteration 210 / LogL: -29250.853 / Time: 0h:7m:26s (0h:2m:39s left)
+Iteration 220 / LogL: -29209.117 / Time: 0h:7m:47s (0h:2m:18s left)
+Iteration 230 / LogL: -29250.359 / Time: 0h:8m:9s (0h:1m:57s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 232: -29208.899
+Iteration 240 / LogL: -29312.341 / Time: 0h:8m:30s (0h:3m:16s left)
+Iteration 250 / LogL: -29393.930 / Time: 0h:8m:52s (0h:2m:55s left)
+Iteration 260 / LogL: -29209.187 / Time: 0h:9m:14s (0h:2m:33s left)
+Iteration 270 / LogL: -29209.368 / Time: 0h:9m:34s (0h:2m:12s left)
+Iteration 280 / LogL: -29209.345 / Time: 0h:9m:56s (0h:1m:51s left)
+Iteration 290 / LogL: -29227.400 / Time: 0h:10m:21s (0h:1m:30s left)
+Iteration 300 / LogL: -29214.283 / Time: 0h:10m:42s (0h:1m:8s left)
+Iteration 310 / LogL: -29233.239 / Time: 0h:11m:3s (0h:0m:47s left)
+Iteration 320 / LogL: -29211.690 / Time: 0h:11m:24s (0h:0m:25s left)
+Iteration 330 / LogL: -29212.896 / Time: 0h:11m:43s (0h:0m:4s left)
+TREE SEARCH COMPLETED AFTER 333 ITERATIONS / Time: 0h:11m:50s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -29208.899
+Optimal log-likelihood: -29208.899
+Rate parameters:  A-C: 1.00000  A-G: 7.47500  A-T: 1.00000  C-G: 1.00000  C-T: 7.47500  G-T: 1.00000
+Base frequencies:  A: 0.343  C: 0.192  G: 0.224  T: 0.241
+Gamma shape alpha: 0.473
+Parameters optimization took 1 rounds (0.139 sec)
+BEST SCORE FOUND : -29208.899
+Total tree length: 5.483
+
+Total number of iterations: 333
+CPU time used for tree search: 2767.539 sec (0h:46m:7s)
+Wall-clock time used for tree search: 707.539 sec (0h:11m:47s)
+Total CPU time used: 2779.404 sec (0h:46m:19s)
+Total wall-clock time used: 710.857 sec (0h:11m:50s)
+
+Analysis results written to: 
+  IQ-TREE report:                /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H9N2.iqtree
+  Maximum-likelihood tree:       /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H9N2.treefile
+  Likelihood distances:          /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H9N2.mldist
+  Screen log file:               /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H9N2.log
+
+Date and Time: Thu Apr  9 12:37:16 2026

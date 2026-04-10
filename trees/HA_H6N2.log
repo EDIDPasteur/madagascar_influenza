@@ -1,0 +1,199 @@
+IQ-TREE version 3.1.0 for Linux x86 64-bit built Mar 16 2026
+Developed by Bui Quang Minh, Thomas Wong, Nhan Ly-Trong, Huaiyan Ren
+Contributed by Lam-Tung Nguyen, Dominik Schrempf, Chris Bielow,
+Olga Chernomor, Michael Woodhams, Diep Thi Hoang, Heiko Schmidt
+
+Host:    maestro-2014 (AVX2, FMA3, 2002 GB RAM)
+Command: iqtree3 -s /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/subsampled/HA_H6N2.africa.subsampled.fasta -m HKY+G -T 4 --seed 42 --prefix /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H6N2 --redo --quiet
+Seed:    42 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Apr  9 12:25:26 2026
+Kernel:  AVX+FMA - 4 threads (4 CPU cores detected)
+
+Reading alignment file /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/subsampled/HA_H6N2.africa.subsampled.fasta ... Fasta format detected
+Reading fasta file: done in 0.00176128 secs using 32.19% CPU
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.00218856 secs using 246.6% CPU
+Alignment has 64 sequences with 1747 columns, 673 distinct patterns
+561 parsimony-informative, 135 singleton sites, 1051 constant sites
+                                                                                Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.0124205 secs using 298% CPU
+   1  EPI3879537|HA|A/duck/Madagascar/82059/2024|EPI_ISL_19704266|A_/_H6N2              2.63%    passed     99.11%
+   2  EPI3748432|HA|A/duck/Madagascar/81836/2024|EPI_ISL_19638439|A_/_H6N2              2.63%    passed     98.54%
+   3  EPI3748426|HA|A/duck/Madagascar/81833/2024|EPI_ISL_19638438|A_/_H6N2              2.69%    passed     98.89%
+   4  EPI3748418|HA|A/duck/Madagascar/81494/2024|EPI_ISL_19638437|A_/_H6N2              2.63%    passed     98.54%
+   5  EPI3748411|HA|A/duck/Madagascar/81490/2024|EPI_ISL_19638436|A_/_H6N2              2.69%    passed     99.36%
+   6  EPI3748378|HA|A/duck/Madagascar/80791/2024|EPI_ISL_19638431|A_/_H6N2              2.63%    passed     98.54%
+   7  EPI3748370|HA|A/duck/Madagascar/80788/2024|EPI_ISL_19638430|A_/_H6N2              2.69%    passed     98.89%
+   8  EPI3748362|HA|A/chicken/Madagascar/80774/2024|EPI_ISL_19638429|A_/_H6N2           2.69%    passed     98.89%
+   9  EPI3748355|HA|A/chicken/Madagascar/80773/2024|EPI_ISL_19638428|A_/_H6N2           2.63%    passed     98.54%
+  10  EPI5132310|HA|A/duck/Madagascar/78273/2025|EPI_ISL_20360498|A_/_H6N2              2.63%    passed     98.59%
+  11  EPI5132318|HA|A/goose/Madagascar/78289/2025|EPI_ISL_20360499|A_/_H6N2             2.75%    passed     99.17%
+  12  EPI5132297|HA|A/duck/Madagascar/78071/2025|EPI_ISL_20360496|A_/_H6N2              2.69%    passed     99.24%
+  13  EPI5132302|HA|A/duck/Madagascar/78271/2025|EPI_ISL_20360497|A_/_H6N2              2.63%    passed     99.96%
+  14  EPI5132281|HA|A/duck/Madagascar/78069/2025|EPI_ISL_20360494|A_/_H6N2              2.63%    passed     99.96%
+  15  EPI5132289|HA|A/duck/Madagascar/78070/2025|EPI_ISL_20360495|A_/_H6N2              2.63%    passed     99.07%
+  16  EPI5132251|HA|A/duck/Madagascar/77877/2025|EPI_ISL_20360490|A_/_H6N2              2.63%    passed     99.96%
+  17  EPI4576250|HA|A/duck/Madagascar/72065/2025|EPI_ISL_20090034|A_/_H6N2              2.63%    passed     98.97%
+  18  EPI4576265|HA|A/goose/Madagascar/72080/2025|EPI_ISL_20090036|A_/_H6N2             2.63%    passed     98.97%
+  19  EPI4576298|HA|A/duck/Madagascar/73453/2025|EPI_ISL_20090042|A_/_H6N2              3.43%    passed     96.57%
+  20  EPI4576305|HA|A/duck/Madagascar/73470/2025|EPI_ISL_20090043|A_/_H6N2              2.86%    passed     98.58%
+  21  EPI4576292|HA|A/duck/Madagascar/73447/2025|EPI_ISL_20090041|A_/_H6N2              2.63%    passed     98.59%
+  22  EPI4576324|HA|A/duck/Madagascar/73790/2025|EPI_ISL_20090046|A_/_H6N2              2.63%    passed     98.59%
+  23  EPI4576313|HA|A/duck/Madagascar/73777/2025|EPI_ISL_20090044|A_/_H6N2              2.75%    passed     98.31%
+  24  EPI4576318|HA|A/duck/Madagascar/73785/2025|EPI_ISL_20090045|A_/_H6N2              2.69%    passed     98.32%
+  25  EPI4770086|HA|A/duck/Madagascar/74500/2025|EPI_ISL_20231991|A_/_H6N2              2.69%    passed     99.60%
+  26  EPI4770041|HA|A/duck/Madagascar/74197/2025|EPI_ISL_20231982|A_/_H6N2              2.63%    passed     99.38%
+  27  A/duck/Madagascar/72868-21/2021_H6N2_HA                                           1.60%    passed     88.97%
+  28  EPI2044740|HA|A/chicken/South_Africa/654182/2020|EPI_ISL_12869980|A_/_H6N2        2.46%    passed     64.31%
+  29  EPI2044751|HA|A/ostrich/South_Africa/644344/2020|EPI_ISL_12869982|A_/_H6N2       25.70%    passed     88.15%
+  30  EPI2044835|HA|A/ostrich/South_Africa/647367/2020|EPI_ISL_12869983|A_/_H6N2       46.14%    passed     76.85%
+  31  EPI2044715|HA|A/chicken/South_Africa/645275/2020|EPI_ISL_12869977|A_/_H6N2        2.46%    passed     71.97%
+  32  EPI2044723|HA|A/chicken/South_Africa/636697/2020|EPI_ISL_12869978|A_/_H6N2        2.46%    passed     69.06%
+  33  EPI2044732|HA|A/chicken/South_Africa/654160/2020|EPI_ISL_12869979|A_/_H6N2        2.46%    passed     73.62%
+  34  EPI1890287|HA|A/teal/Egypt/MBD1566C/2018|EPI_ISL_4031376|A_/_H6N2                 0.17%    passed     88.88%
+  35  EPI1890279|HA|A/teal/Egypt/MBD1556OP/2018|EPI_ISL_4031375|A_/_H6N2                0.17%    passed     90.09%
+  36  EPI1551416|HA|A/chicken/South_Africa/N2826/2016|EPI_ISL_378725|A_/_H6N2           2.46%    passed     81.95%
+  37  EPI102741|HA|A/chicken/South_Africa/UP1102/02|EPI_ISL_10108|A_/_H6N2              4.69%    passed     68.53%
+  38  EPI102711|HA|A/chicken/South_Africa/AL19/02|EPI_ISL_10109|A_/_H6N2                6.64%    passed     82.94%
+  39  EPI2044644|HA|A/chicken/South_Africa/387087/2019|EPI_ISL_12864553|A_/_H6N2        2.46%    passed     52.08%
+  40  EPI669015|HA|A/chicken/South_Africa/AL25/2002|EPI_ISL_200919|A_/_H6N2             1.03%    passed     96.83%
+  41  EPI3145510|HA|A/ostrich/South_Africa/AI9145-P42/2023|EPI_ISL_19009636|A_/_H6N2    1.43%    passed     99.27%
+  42  EPI372371|HA|A/shoveler/Egypt/13251-NAMRU3/2006|EPI_ISL_120196|A_/_H6N2           2.80%    passed     73.45%
+  43  EPI372386|HA|A/teal/Egypt/13203-NAMRU3/2006|EPI_ISL_120198|A_/_H6N2               2.63%    passed     78.95%
+  44  EPI1370644|HA|A/Eurasian-teal/Egypt/P2-29/2017|EPI_ISL_341563|A_/_H6N2            2.63%    passed     91.74%
+  45  EPI841756|HA|A/chicken/South_Africa/BKR2/2012|EPI_ISL_235195|A_/_H6N2             1.49%    passed     88.07%
+  46  EPI841751|HA|A/chicken/South_Africa/BKR4/2012|EPI_ISL_235194|A_/_H6N2             1.43%    passed     91.39%
+  47  EPI841740|HA|A/chicken/South_Africa/W04/2002|EPI_ISL_235193|A_/_H6N2              1.72%    passed     98.51%
+  48  EPI841732|HA|A/chicken/South_Africa/MAS/2013|EPI_ISL_235192|A_/_H6N2              0.92%    passed     93.10%
+  49  EPI310333|HA|A/duck_/Zambia/03/2008|EPI_ISL_88223|A_/_H6N2                        0.17%    passed     88.77%
+  50  EPI310325|HA|A/duck/Zambia/02/2008|EPI_ISL_88222|A_/_H6N2                         0.17%    passed     88.77%
+  51  EPI310373|HA|A/duck/Zambia/08/2009|EPI_ISL_88228|A_/_H6N2                         0.17%    passed     85.62%
+  52  EPI310389|HA|A/duck/Zambia/10/2009|EPI_ISL_88230|A_/_H6N2                         0.17%    passed     85.08%
+  53  EPI1790336|HA|A/chicken/South_Africa/402385/2016|EPI_ISL_506055|A_/_H6N2          2.46%    passed     75.92%
+  54  EPI1790328|HA|A/chicken/South_Africa/401156/2016|EPI_ISL_506054|A_/_H6N2          2.46%    passed     70.11%
+  55  EPI1790320|HA|A/chicken/South_Africa/398997/2016|EPI_ISL_506053|A_/_H6N2          2.46%    passed     82.04%
+  56  EPI1790312|HA|A/chicken/South_Africa/344579/2015|EPI_ISL_506052|A_/_H6N2          2.52%    passed     97.18%
+  57  EPI1790304|HA|A/chicken/South_Africa/344378/2015|EPI_ISL_506051|A_/_H6N2          2.46%    passed     97.04%
+  58  EPI1790296|HA|A/chicken/South_Africa/341797/2015|EPI_ISL_506050|A_/_H6N2          2.46%    passed     84.60%
+  59  EPI1790288|HA|A/chicken/South_Africa/339678/2015|EPI_ISL_506049|A_/_H6N2          2.46%    passed     81.19%
+  60  EPI1790280|HA|A/chicken/South_Africa/338087/2015|EPI_ISL_506048|A_/_H6N2          2.46%    passed     97.33%
+  61  EPI1790360|HA|A/chicken/South_Africa/432/2019|EPI_ISL_506058|A_/_H6N2             2.46%    passed     58.12%
+  62  EPI1790352|HA|A/chicken/South_Africa/H44954/2016|EPI_ISL_506057|A_/_H6N2          2.46%    passed     80.59%
+  63  EPI1790344|HA|A/chicken/South_Africa/404573/2016|EPI_ISL_506056|A_/_H6N2          2.46%    passed     84.47%
+  64  EPI228507|HA|A/whiskered_tern/Egypt/04/2004|EPI_ISL_65223|A_/_H6N2                2.12%    passed     77.31%
+****  TOTAL                                                                             3.38%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: EPI3748418|HA|A/duck/Madagascar/81494/2024|EPI_ISL_19638437|A_/_H6N2 is identical to EPI3748432|HA|A/duck/Madagascar/81836/2024|EPI_ISL_19638439|A_/_H6N2 but kept for subsequent analysis
+NOTE: EPI3748370|HA|A/duck/Madagascar/80788/2024|EPI_ISL_19638430|A_/_H6N2 is identical to EPI3748426|HA|A/duck/Madagascar/81833/2024|EPI_ISL_19638438|A_/_H6N2 but kept for subsequent analysis
+NOTE: EPI5132281|HA|A/duck/Madagascar/78069/2025|EPI_ISL_20360494|A_/_H6N2 is identical to EPI5132302|HA|A/duck/Madagascar/78271/2025|EPI_ISL_20360497|A_/_H6N2 but kept for subsequent analysis
+NOTE: EPI4576265|HA|A/goose/Madagascar/72080/2025|EPI_ISL_20090036|A_/_H6N2 is identical to EPI4576250|HA|A/duck/Madagascar/72065/2025|EPI_ISL_20090034|A_/_H6N2 but kept for subsequent analysis
+NOTE: EPI4576324|HA|A/duck/Madagascar/73790/2025|EPI_ISL_20090046|A_/_H6N2 is identical to EPI4576292|HA|A/duck/Madagascar/73447/2025|EPI_ISL_20090041|A_/_H6N2 but kept for subsequent analysis
+Checking for duplicate sequences: done in 0.000209623 secs using 99.7% CPU
+Identifying sites to remove: done in 0.00105246 secs using 309.3% CPU
+NOTE: 4 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: EPI3748378|HA|A/duck/Madagascar/80791/2024|EPI_ISL_19638431|A_/_H6N2 (identical to EPI3748432|HA|A/duck/Madagascar/81836/2024|EPI_ISL_19638439|A_/_H6N2) is ignored but added at the end
+NOTE: EPI3748355|HA|A/chicken/Madagascar/80773/2024|EPI_ISL_19638428|A_/_H6N2 (identical to EPI3748432|HA|A/duck/Madagascar/81836/2024|EPI_ISL_19638439|A_/_H6N2) is ignored but added at the end
+NOTE: EPI3748362|HA|A/chicken/Madagascar/80774/2024|EPI_ISL_19638429|A_/_H6N2 (identical to EPI3748426|HA|A/duck/Madagascar/81833/2024|EPI_ISL_19638438|A_/_H6N2) is ignored but added at the end
+NOTE: EPI5132251|HA|A/duck/Madagascar/77877/2025|EPI_ISL_20360490|A_/_H6N2 (identical to EPI5132302|HA|A/duck/Madagascar/78271/2025|EPI_ISL_20360497|A_/_H6N2) is ignored but added at the end
+Alignment was printed to /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H6N2.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H6N2.uniqueseq.phy
+Creating fast initial parsimony tree by random order stepwise addition...
+0.020 seconds, parsimony score: 1474 (based on 696 sites)
+
+NOTE: 5 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -10456.990
+2. Current log-likelihood: -10148.927
+3. Current log-likelihood: -10064.825
+4. Current log-likelihood: -10054.181
+5. Current log-likelihood: -10046.770
+6. Current log-likelihood: -10039.541
+7. Current log-likelihood: -10032.013
+8. Current log-likelihood: -10024.088
+9. Current log-likelihood: -10015.713
+10. Current log-likelihood: -10006.830
+11. Current log-likelihood: -9997.374
+12. Current log-likelihood: -9987.271
+13. Current log-likelihood: -9976.429
+14. Current log-likelihood: -9964.736
+15. Current log-likelihood: -9952.054
+16. Current log-likelihood: -9938.211
+17. Current log-likelihood: -9922.985
+18. Current log-likelihood: -9906.089
+19. Current log-likelihood: -9887.151
+20. Current log-likelihood: -9865.661
+21. Current log-likelihood: -9840.949
+22. Current log-likelihood: -9812.149
+23. Current log-likelihood: -9778.313
+24. Current log-likelihood: -9705.602
+25. Current log-likelihood: -9693.105
+26. Current log-likelihood: -9692.823
+Optimal log-likelihood: -9692.808
+Rate parameters:  A-C: 1.00000  A-G: 9.42367  A-T: 1.00000  C-G: 1.00000  C-T: 9.42367  G-T: 1.00000
+Base frequencies:  A: 0.339  C: 0.175  G: 0.236  T: 0.250
+Gamma shape alpha: 0.327
+Parameters optimization took 26 rounds (0.405 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.00380606 secs using 433.4% CPU
+Computing ML distances took 0.003930 sec (of wall-clock time) 0.016620 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 0.00667475 secs using 130.1% CPU
+Constructing RapidNJ tree: done in 0.0550607 secs using 62.98% CPU
+Computing RapidNJ tree took 0.061783 sec (of wall-clock time) 0.043448 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -9760.421
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 0.256 second
+Computing log-likelihood of 98 initial trees ... 0.530 seconds
+Current best score: -9688.544
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -9683.232
+BETTER TREE FOUND at iteration 2: -9683.230
+Iteration 10 / LogL: -9683.252 / Time: 0h:0m:1s
+Iteration 20 / LogL: -9683.242 / Time: 0h:0m:2s
+Finish initializing candidate tree set (20)
+Current best tree score: -9683.230 / CPU time: 1.972
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -9683.251 / Time: 0h:0m:3s (0h:0m:9s left)
+Iteration 40 / LogL: -9683.386 / Time: 0h:0m:4s (0h:0m:7s left)
+Iteration 50 / LogL: -9683.344 / Time: 0h:0m:5s (0h:0m:6s left)
+Iteration 60 / LogL: -9683.265 / Time: 0h:0m:7s (0h:0m:4s left)
+Iteration 70 / LogL: -9683.623 / Time: 0h:0m:8s (0h:0m:3s left)
+Iteration 80 / LogL: -9683.549 / Time: 0h:0m:9s (0h:0m:2s left)
+Iteration 90 / LogL: -9683.327 / Time: 0h:0m:10s (0h:0m:1s left)
+Iteration 100 / LogL: -9683.246 / Time: 0h:0m:11s (0h:0m:0s left)
+TREE SEARCH COMPLETED AFTER 103 ITERATIONS / Time: 0h:0m:12s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -9683.230
+Optimal log-likelihood: -9683.229
+Rate parameters:  A-C: 1.00000  A-G: 9.46548  A-T: 1.00000  C-G: 1.00000  C-T: 9.46548  G-T: 1.00000
+Base frequencies:  A: 0.339  C: 0.175  G: 0.236  T: 0.250
+Gamma shape alpha: 0.332
+Parameters optimization took 1 rounds (0.011 sec)
+BEST SCORE FOUND : -9683.229
+Total tree length: 1.074
+
+Total number of iterations: 103
+CPU time used for tree search: 44.346 sec (0h:0m:44s)
+Wall-clock time used for tree search: 11.446 sec (0h:0m:11s)
+Total CPU time used: 46.510 sec (0h:0m:46s)
+Total wall-clock time used: 12.074 sec (0h:0m:12s)
+
+Analysis results written to: 
+  IQ-TREE report:                /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H6N2.iqtree
+  Maximum-likelihood tree:       /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H6N2.treefile
+  Likelihood distances:          /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H6N2.mldist
+  Screen log file:               /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/HA_H6N2.log
+
+Date and Time: Thu Apr  9 12:25:38 2026

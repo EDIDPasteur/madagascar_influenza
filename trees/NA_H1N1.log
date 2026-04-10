@@ -1,0 +1,1407 @@
+IQ-TREE version 3.1.0 for Linux x86 64-bit built Mar 16 2026
+Developed by Bui Quang Minh, Thomas Wong, Nhan Ly-Trong, Huaiyan Ren
+Contributed by Lam-Tung Nguyen, Dominik Schrempf, Chris Bielow,
+Olga Chernomor, Michael Woodhams, Diep Thi Hoang, Heiko Schmidt
+
+Host:    maestro-2014 (AVX2, FMA3, 2002 GB RAM)
+Command: iqtree3 -s /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/subsampled/NA_H1N1.africa.subsampled.fasta -m HKY+G -T 8 --seed 42 --prefix /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/NA_H1N1 --redo --quiet
+Seed:    42 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Apr  9 12:25:26 2026
+Kernel:  AVX+FMA - 8 threads (8 CPU cores detected)
+
+Reading alignment file /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/subsampled/NA_H1N1.africa.subsampled.fasta ... Fasta format detected
+Reading fasta file: done in 0.111041 secs using 91.18% CPU
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.0423569 secs using 184.4% CPU
+WARNING: 2098 sites contain only gaps or ambiguous characters.
+Alignment has 1097 sequences with 6637 columns, 1156 distinct patterns
+701 parsimony-informative, 482 singleton sites, 5454 constant sites
+WARNING: Some sequence names are changed as follows:
+EPI3296084|NA|A/Cote_D'Ivoire/0375/2024|EPI_ISL_19141433|A_/_H1N1 -> EPI3296084|NA|A/Cote_D_Ivoire/0375/2024|EPI_ISL_19141433|A_/_H1N1
+EPI426440|NA|A/Cote_D'Ivoire/1186/2012|EPI_ISL_136463|A_/_H1N1 -> EPI426440|NA|A/Cote_D_Ivoire/1186/2012|EPI_ISL_136463|A_/_H1N1
+EPI4793011|NA|A/Cote_D'Ivoire/2437/2025|EPI_ISL_20247758|A_/_H1N1 -> EPI4793011|NA|A/Cote_D_Ivoire/2437/2025|EPI_ISL_20247758|A_/_H1N1
+EPI1887904|NA|A/Cote_D'Ivoire/1565/2021|EPI_ISL_3796256|A_/_H1N1 -> EPI1887904|NA|A/Cote_D_Ivoire/1565/2021|EPI_ISL_3796256|A_/_H1N1
+EPI1885624|NA|A/Cote_D'Ivoire/1040/2021|EPI_ISL_3534831|A_/_H1N1 -> EPI1885624|NA|A/Cote_D_Ivoire/1040/2021|EPI_ISL_3534831|A_/_H1N1
+EPI1114298|NA|A/Cote_D'Ivoire/961/2017|EPI_ISL_287169|A_/_H1N1 -> EPI1114298|NA|A/Cote_D_Ivoire/961/2017|EPI_ISL_287169|A_/_H1N1
+EPI3296020|NA|A/Cote_D'Ivoire/1060/2024|EPI_ISL_19141425|A_/_H1N1 -> EPI3296020|NA|A/Cote_D_Ivoire/1060/2024|EPI_ISL_19141425|A_/_H1N1
+EPI1887919|NA|A/Cote_D'Ivoire/1566/2021|EPI_ISL_3796308|A_/_H1N1 -> EPI1887919|NA|A/Cote_D_Ivoire/1566/2021|EPI_ISL_3796308|A_/_H1N1
+EPI4793019|NA|A/Cote_D'Ivoire/2524/2025|EPI_ISL_20247759|A_/_H1N1 -> EPI4793019|NA|A/Cote_D_Ivoire/2524/2025|EPI_ISL_20247759|A_/_H1N1
+EPI3728866|NA|A/Cote_D'Ivoire/1061/2024|EPI_ISL_19621761|A_/_H1N1 -> EPI3728866|NA|A/Cote_D_Ivoire/1061/2024|EPI_ISL_19621761|A_/_H1N1
+EPI791219|NA|A/Cote_D'Ivoire/475/2016|EPI_ISL_227343|A_/_H1N1 -> EPI791219|NA|A/Cote_D_Ivoire/475/2016|EPI_ISL_227343|A_/_H1N1
+EPI3532238|NA|A/Cote_D'Ivoire/2479/2024|EPI_ISL_19377265|A_/_H1N1 -> EPI3532238|NA|A/Cote_D_Ivoire/2479/2024|EPI_ISL_19377265|A_/_H1N1
+EPI1885632|NA|A/Cote_D'Ivoire/1901/2021|EPI_ISL_3534832|A_/_H1N1 -> EPI1885632|NA|A/Cote_D_Ivoire/1901/2021|EPI_ISL_3534832|A_/_H1N1
+EPI4631609|NA|A/Cote_D'Ivoire/1900/2025|EPI_ISL_20141067|A_/_H1N1 -> EPI4631609|NA|A/Cote_D_Ivoire/1900/2025|EPI_ISL_20141067|A_/_H1N1
+EPI3800468|NA|A/Cote_D'Ivoire/2677/2024|EPI_ISL_19669247|A_/_H1N1 -> EPI3800468|NA|A/Cote_D_Ivoire/2677/2024|EPI_ISL_19669247|A_/_H1N1
+EPI3532094|NA|A/Cote_D'Ivoire/2393/2024|EPI_ISL_19377247|A_/_H1N1 -> EPI3532094|NA|A/Cote_D_Ivoire/2393/2024|EPI_ISL_19377247|A_/_H1N1
+EPI1719904|NA|A/Cote_D'Ivoire/2499/2019|EPI_ISL_418616|A_/_H1N1 -> EPI1719904|NA|A/Cote_D_Ivoire/2499/2019|EPI_ISL_418616|A_/_H1N1
+EPI2781129|NA|A/Cote_D'Ivoire/2372/2023|EPI_ISL_18451784|A_/_H1N1 -> EPI2781129|NA|A/Cote_D_Ivoire/2372/2023|EPI_ISL_18451784|A_/_H1N1
+EPI4632355|NA|A/Cote_D'Ivoire/1724/2025|EPI_ISL_20141194|A_/_H1N1 -> EPI4632355|NA|A/Cote_D_Ivoire/1724/2025|EPI_ISL_20141194|A_/_H1N1
+EPI1114291|NA|A/Cote_D'Ivoire/794/2017|EPI_ISL_287166|A_/_H1N1 -> EPI1114291|NA|A/Cote_D_Ivoire/794/2017|EPI_ISL_287166|A_/_H1N1
+EPI1885496|NA|A/Cote_D'Ivoire/1982/2021|EPI_ISL_3534642|A_/_H1N1 -> EPI1885496|NA|A/Cote_D_Ivoire/1982/2021|EPI_ISL_3534642|A_/_H1N1
+EPI3187252|NA|A/Cote_D'Ivoire/2553/2023|EPI_ISL_19034560|A_/_H1N1 -> EPI3187252|NA|A/Cote_D_Ivoire/2553/2023|EPI_ISL_19034560|A_/_H1N1
+EPI507832|NA|A/Cote_d'Ivoire/2273/2013|EPI_ISL_156884|A_/_H1N1 -> EPI507832|NA|A/Cote_d_Ivoire/2273/2013|EPI_ISL_156884|A_/_H1N1
+EPI4615343|NA|A/Cote_d'Ivoire/0200/2025|EPI_ISL_20130723|A_/_H1N1 -> EPI4615343|NA|A/Cote_d_Ivoire/0200/2025|EPI_ISL_20130723|A_/_H1N1
+EPI2024364|NA|A/Cote_d'Ivoire/2943/2021|EPI_ISL_12241606|A_/_H1N1 -> EPI2024364|NA|A/Cote_d_Ivoire/2943/2021|EPI_ISL_12241606|A_/_H1N1
+EPI4770707|NA|A/Cote-d'Ivoire/3309/2025|EPI_ISL_20232996|A_/_H1N1 -> EPI4770707|NA|A/Cote-d_Ivoire/3309/2025|EPI_ISL_20232996|A_/_H1N1
+EPI4770615|NA|A/_Cote-d'Ivoire/3208/2025|EPI_ISL_20232587|A_/_H1N1 -> EPI4770615|NA|A/_Cote-d_Ivoire/3208/2025|EPI_ISL_20232587|A_/_H1N1
+EPI3844292|NA|A/_Cote_D'Ivoire/2678/2024|EPI_ISL_19688272|A_/_H1N1 -> EPI3844292|NA|A/_Cote_D_Ivoire/2678/2024|EPI_ISL_19688272|A_/_H1N1
+EPI3804600|NA|A/CA'te_D'Ivoire/2678/2024|EPI_ISL_19669924|A_/_H1N1 -> EPI3804600|NA|A/CA_te_D_Ivoire/2678/2024|EPI_ISL_19669924|A_/_H1N1
+EPI4816294|NA|A/Cote-D'ivoire/GR3467/2025|EPI_ISL_20259880|A_/_H1N1 -> EPI4816294|NA|A/Cote-D_ivoire/GR3467/2025|EPI_ISL_20259880|A_/_H1N1
+EPI3842985|NA|A/CoteD'Ivoire/3988/2024|EPI_ISL_19687846|A_/_H1N1 -> EPI3842985|NA|A/CoteD_Ivoire/3988/2024|EPI_ISL_19687846|A_/_H1N1
+EPI4770621|NA|A/_CA'te-d'Ivoire/3268/2025|EPI_ISL_20232588|A_/_H1N1 -> EPI4770621|NA|A/_CA_te-d_Ivoire/3268/2025|EPI_ISL_20232588|A_/_H1N1
+EPI4770697|NA|A/CA'te-d'Ivoire/3276/2025|EPI_ISL_20232990|A_/_H1N1 -> EPI4770697|NA|A/CA_te-d_Ivoire/3276/2025|EPI_ISL_20232990|A_/_H1N1
+
+                                                                                           Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.0135383 secs using 571.3% CPU
+   1  EPI1849697|NA|A/Madagascar/218/2020|EPI_ISL_1180146|A_/_H1N1                                78.39%    passed     60.34%
+   2  EPI1849705|NA|A/Madagascar/227/2020|EPI_ISL_1180147|A_/_H1N1                                78.44%    passed     64.48%
+   3  EPI1849689|NA|A/Madagascar/560/2020|EPI_ISL_1180145|A_/_H1N1                                78.41%    passed     59.04%
+   4  EPI1849713|NA|A/Madagascar/882/2020|EPI_ISL_1180148|A_/_H1N1                                78.41%    passed     66.45%
+   5  EPI1849717|NA|A/Madagascar/290/2020|EPI_ISL_1180149|A_/_H1N1                                78.42%    passed     56.99%
+   6  EPI3629571|NA|A/Madagascar/02676/2024|EPI_ISL_19530528|A_/_H1N1                             78.76%    passed     70.64%
+   7  EPI3629578|NA|A/Madagascar/02679/2024|EPI_ISL_19530529|A_/_H1N1                             78.76%    passed     73.22%
+   8  EPI3629414|NA|A/Madagascar/01828/2024|EPI_ISL_19530506|A_/_H1N1                             78.76%    passed     70.87%
+   9  EPI3629421|NA|A/Madagascar/01832/2024|EPI_ISL_19530507|A_/_H1N1                             78.76%    passed     70.87%
+  10  EPI3629404|NA|A/Madagascar/01759/2024|EPI_ISL_19530504|A_/_H1N1                             78.76%    passed     77.24%
+  11  EPI3629409|NA|A/Madagascar/01760/2024|EPI_ISL_19530505|A_/_H1N1                             78.76%    passed     69.86%
+  12  EPI3629440|NA|A/Madagascar/02405/2024|EPI_ISL_19530510|A_/_H1N1                             78.76%    passed     72.74%
+  13  EPI3629447|NA|A/Madagascar/02409/2024|EPI_ISL_19530511|A_/_H1N1                             78.76%    passed     73.22%
+  14  EPI3629426|NA|A/Madagascar/01966/2024|EPI_ISL_19530508|A_/_H1N1                             78.76%    passed     74.74%
+  15  EPI3629377|NA|A/Madagascar/01741/2024|EPI_ISL_19530499|A_/_H1N1                             78.77%    passed     76.41%
+  16  EPI3629394|NA|A/Madagascar/01753/2024|EPI_ISL_19530502|A_/_H1N1                             78.76%    passed     75.35%
+  17  EPI3629399|NA|A/Madagascar/01758/2024|EPI_ISL_19530503|A_/_H1N1                             78.76%    passed     72.74%
+  18  EPI3629382|NA|A/Madagascar/01747/2024|EPI_ISL_19530500|A_/_H1N1                             78.76%    passed     72.74%
+  19  EPI3629388|NA|A/Madagascar/01751/2024|EPI_ISL_19530501|A_/_H1N1                             78.76%    passed     69.86%
+  20  EPI3629528|NA|A/Madagascar/02570/2024|EPI_ISL_19530522|A_/_H1N1                             78.76%    passed     69.78%
+  21  EPI3629520|NA|A/Madagascar/02566/2024|EPI_ISL_19530521|A_/_H1N1                             78.77%    passed     78.83%
+  22  EPI3629557|NA|A/Madagascar/02654/2024|EPI_ISL_19530526|A_/_H1N1                             78.76%    passed     75.68%
+  23  EPI3629564|NA|A/Madagascar/02655/2024|EPI_ISL_19530527|A_/_H1N1                             78.76%    passed     70.64%
+  24  EPI3629542|NA|A/Madagascar/02590/2024|EPI_ISL_19530524|A_/_H1N1                             78.76%    passed     70.87%
+  25  EPI3629549|NA|A/Madagascar/02630/2024|EPI_ISL_19530525|A_/_H1N1                             78.76%    passed     77.68%
+  26  EPI3629468|NA|A/Madagascar/02465/2024|EPI_ISL_19530514|A_/_H1N1                             78.76%    passed     72.74%
+  27  EPI3629455|NA|A/Madagascar/02429/2024|EPI_ISL_19530512|A_/_H1N1                             78.76%    passed     67.80%
+  28  EPI3629462|NA|A/Madagascar/02437/2024|EPI_ISL_19530513|A_/_H1N1                             78.76%    passed     73.22%
+  29  EPI3629498|NA|A/Madagascar/02476/2024|EPI_ISL_19530518|A_/_H1N1                             78.76%    passed     73.22%
+  30  EPI3629505|NA|A/Madagascar/02528/2024|EPI_ISL_19530519|A_/_H1N1                             78.76%    passed     74.61%
+  31  EPI3629491|NA|A/Madagascar/02475/2024|EPI_ISL_19530517|A_/_H1N1                             78.76%    passed     70.87%
+  32  EPI4440401|NA|A/Madagascar/01483/2025|EPI_ISL_19907471|A_/_H1N1                             78.76%    passed     73.87%
+  33  EPI4440395|NA|A/Madagascar/01482/2025|EPI_ISL_19907470|A_/_H1N1                             78.76%    passed     71.47%
+  34  EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1                             78.76%    passed     73.87%
+  35  EPI4440447|NA|A/Madagascar/02060/2025|EPI_ISL_19907479|A_/_H1N1                             78.76%    passed     68.66%
+  36  EPI4440441|NA|A/Madagascar/02048/2025|EPI_ISL_19907478|A_/_H1N1                             78.76%    passed     73.87%
+  37  EPI4440436|NA|A/Madagascar/02012/2025|EPI_ISL_19907477|A_/_H1N1                             78.76%    passed     73.87%
+  38  EPI4440429|NA|A/Madagascar/02003/2025|EPI_ISL_19907476|A_/_H1N1                             78.76%    passed     71.47%
+  39  EPI4440424|NA|A/Madagascar/01999/2025|EPI_ISL_19907475|A_/_H1N1                             78.77%    passed     65.02%
+  40  EPI4440418|NA|A/Madagascar/01951/2025|EPI_ISL_19907474|A_/_H1N1                             78.76%    passed     73.87%
+  41  EPI4440414|NA|A/Madagascar/01817/2025|EPI_ISL_19907473|A_/_H1N1                             78.76%    passed     78.73%
+  42  EPI4440408|NA|A/Madagascar/01484/2025|EPI_ISL_19907472|A_/_H1N1                             78.76%    passed     71.47%
+  43  EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1                             78.76%    passed     72.74%
+  44  EPI3629327|NA|A/Madagascar/02952/2024|EPI_ISL_19530491|A_/_H1N1                             78.76%    passed     75.53%
+  45  EPI3629307|NA|A/Madagascar/02918/2024|EPI_ISL_19530488|A_/_H1N1                             78.76%    passed     73.16%
+  46  EPI3629312|NA|A/Madagascar/02930/2024|EPI_ISL_19530489|A_/_H1N1                             78.76%    passed     78.92%
+  47  EPI3629251|NA|A/Madagascar/02550/2024|EPI_ISL_19530480|A_/_H1N1                             78.76%    passed     73.22%
+  48  EPI3629296|NA|A/Madagascar/02797/2024|EPI_ISL_19530486|A_/_H1N1                             78.76%    passed     74.02%
+  49  EPI1546405|NA|A/Madagascar/552/2019|EPI_ISL_377817|A_/_H1N1                                 78.41%    passed     60.66%
+  50  EPI3629282|NA|A/Madagascar/02790/2024|EPI_ISL_19530484|A_/_H1N1                             78.77%    passed     80.31%
+  51  EPI1546421|NA|A/Madagascar/690/2019|EPI_ISL_377819|A_/_H1N1                                 78.41%    passed     55.22%
+  52  EPI3629288|NA|A/Madagascar/02791/2024|EPI_ISL_19530485|A_/_H1N1                             78.76%    passed     78.92%
+  53  EPI1546413|NA|A/Madagascar/888/2019|EPI_ISL_377818|A_/_H1N1                                 78.41%    passed     58.03%
+  54  EPI346716|NA|A/Madagascar/8753/2011|EPI_ISL_99933|A_/_H1N1                                  78.76%    passed     79.81%
+  55  EPI346720|NA|A/Madagascar/3520/2011|EPI_ISL_99935|A_/_H1N1                                  78.77%    passed     81.55%
+  56  EPI346718|NA|A/Madagascar/9252/2011|EPI_ISL_99934|A_/_H1N1                                  78.76%    passed     72.45%
+  57  EPI5154593|NA|A/Madagascar/2547/2025|EPI_ISL_20367038|A_/_H1N1                              78.41%    passed     59.20%
+  58  EPI5154601|NA|A/Madagascar/3431/2025|EPI_ISL_20367039|A_/_H1N1                              78.39%    passed     56.16%
+  59  EPI5154577|NA|A/Madagascar/2642/2025|EPI_ISL_20367036|A_/_H1N1                              78.41%    passed     62.22%
+  60  EPI5154585|NA|A/Madagascar/2769/2025|EPI_ISL_20367037|A_/_H1N1                              78.41%    passed     59.36%
+  61  EPI5154569|NA|A/Madagascar/3109/2025|EPI_ISL_20367035|A_/_H1N1                              78.41%    passed     60.28%
+  62  EPI5154609|NA|A/Madagascar/2998/2025|EPI_ISL_20367040|A_/_H1N1                              78.41%    passed     56.43%
+  63  EPI5154617|NA|A/Madagascar/3328/2025|EPI_ISL_20367041|A_/_H1N1                              78.41%    passed     61.83%
+  64  EPI1852634|NA|A/Madagascar/218/2020|EPI_ISL_1296440|A_/_H1N1                                78.39%    passed     60.34%
+  65  EPI2756996|NA|A/Madagascar/1616/2023|EPI_ISL_18303950|A_/_H1N1                              78.39%    passed     60.18%
+  66  EPI2756982|NA|A/Madagascar/1657/2023|EPI_ISL_18303948|A_/_H1N1                              78.41%    passed     53.36%
+  67  EPI2756974|NA|A/Madagascar/6406/2023|EPI_ISL_18303947|A_/_H1N1                              78.41%    passed     57.44%
+  68  EPI2756966|NA|A/Madagascar/1736/2023|EPI_ISL_18303946|A_/_H1N1                              78.41%    passed     59.20%
+  69  EPI2756959|NA|A/Madagascar/807/2023|EPI_ISL_18303945|A_/_H1N1                               78.41%    passed     55.15%
+  70  EPI238326|NA|A/Madagascar/9567/2009|EPI_ISL_68459|A_/_H1N1                                  78.76%    passed     81.04%
+  71  EPI238324|NA|A/Madagascar/9551/2009|EPI_ISL_68458|A_/_H1N1                                  78.76%    passed     79.73%
+  72  EPI239897|NA|A/Madagascar/6081/2009|EPI_ISL_68859|A_/_H1N1                                  78.71%    passed     49.60%
+  73  EPI239895|NA|A/Madagascar/6054/2009|EPI_ISL_68858|A_/_H1N1                                  78.71%    passed     49.60%
+  74  EPI4576350|NA|A/Madagascar/00987/2025|EPI_ISL_20090050|A_/_H1N1                             78.76%    passed     71.47%
+  75  EPI4576355|NA|A/Madagascar/01426/2025|EPI_ISL_20090051|A_/_H1N1                             78.76%    passed     73.87%
+  76  EPI4576359|NA|A/Madagascar/02235/2025|EPI_ISL_20090052|A_/_H1N1                             78.76%    passed     69.76%
+  77  EPI4576408|NA|A/Madagascar/02388/2025|EPI_ISL_20090059|A_/_H1N1                             78.76%    passed     66.10%
+  78  EPI4576396|NA|A/Madagascar/73139/2025|EPI_ISL_20090057|A_/_H1N1                             78.76%    passed     73.87%
+  79  EPI4576418|NA|A/Madagascar/71255/2025|EPI_ISL_20090061|A_/_H1N1                             78.76%    passed     71.47%
+  80  EPI1703491|NA|A/Madagascar/5414/2019|EPI_ISL_413350|A_/_H1N1                                78.41%    passed     56.52%
+  81  EPI1703475|NA|A/Madagascar/5355/2019|EPI_ISL_413348|A_/_H1N1                                78.41%    passed     59.49%
+  82  EPI1703467|NA|A/Madagascar/5333/2019|EPI_ISL_413347|A_/_H1N1                                78.41%    passed     59.49%
+  83  EPI301925|NA|A/Madagascar/7519/2010|EPI_ISL_85959|A_/_H1N1                                  78.76%    passed     82.71%
+  84  EPI301923|NA|A/Madagascar/7473/2010|EPI_ISL_85958|A_/_H1N1                                  78.76%    passed     82.71%
+  85  EPI1705108|NA|A/Madagascar/4987/2019|EPI_ISL_413758|A_/_H1N1                                78.41%    passed     59.49%
+  86  EPI1705092|NA|A/Madagascar/4681/2019|EPI_ISL_413756|A_/_H1N1                                78.42%    passed     55.71%
+  87  EPI1705139|NA|A/Madagascar/5254/2019|EPI_ISL_413763|A_/_H1N1                                78.41%    passed     59.49%
+  88  EPI1705472|NA|A/Madagascar/5415/2019|EPI_ISL_413806|A_/_H1N1                                78.41%    passed     62.10%
+  89  EPI2360561|NA|A/Madagascar/7318/2022|EPI_ISL_16830512|A_/_H1N1                              78.41%    passed     58.56%
+  90  EPI2360568|NA|A/Madagascar/7405/2022|EPI_ISL_16830513|A_/_H1N1                              78.41%    passed     56.03%
+  91  EPI2360576|NA|A/Madagascar/7287/2022|EPI_ISL_16830514|A_/_H1N1                              78.41%    passed     58.56%
+  92  EPI2360584|NA|A/Madagascar/7283/2022|EPI_ISL_16830515|A_/_H1N1                              78.41%    passed     58.12%
+  93  EPI2360592|NA|A/Madagascar/7293/2022|EPI_ISL_16830516|A_/_H1N1                              78.41%    passed     61.83%
+  94  EPI2360598|NA|A/Madagascar/7306/2022|EPI_ISL_16830517|A_/_H1N1                              78.41%    passed     67.47%
+  95  EPI2360606|NA|A/Madagascar/7647/2022|EPI_ISL_16830518|A_/_H1N1                              78.41%    passed     61.83%
+  96  EPI243975|NA|A/Madagascar/10201/2009|EPI_ISL_70349|A_/_H1N1                                 78.76%    passed     86.70%
+  97  EPI3517974|NA|A/Madagascar/295/2024|EPI_ISL_19355056|A_/_H1N1                               78.41%    passed     57.64%
+  98  EPI3518298|NA|A/Madagascar/1251/2024|EPI_ISL_19355099|A_/_H1N1                              78.41%    passed     62.28%
+  99  EPI4634233|NA|A/Madagascar/02585/2025|EPI_ISL_20142006|A_/_H1N1                             78.76%    passed     71.47%
+ 100  EPI4634227|NA|A/Madagascar/02557/2025|EPI_ISL_20142005|A_/_H1N1                             78.76%    passed     71.47%
+ 101  EPI4634259|NA|A/Madagascar/02701/2025|EPI_ISL_20142011|A_/_H1N1                             78.76%    passed     71.47%
+ 102  EPI4634254|NA|A/Madagascar/02687/2025|EPI_ISL_20142010|A_/_H1N1                             78.77%    passed     73.15%
+ 103  EPI4634278|NA|A/Madagascar/02756/2025|EPI_ISL_20142014|A_/_H1N1                             78.77%    passed     70.62%
+ 104  EPI4634271|NA|A/Madagascar/02735/2025|EPI_ISL_20142013|A_/_H1N1                             78.76%    passed     73.87%
+ 105  EPI3518657|NA|A/Madagascar/1332/2024|EPI_ISL_19355144|A_/_H1N1                              78.39%    passed     57.35%
+ 106  EPI3518811|NA|A/Madagascar/1187/2024|EPI_ISL_19355164|A_/_H1N1                              78.41%    passed     56.52%
+ 107  EPI4783873|NA|A/Madagascar/03191/2025|EPI_ISL_20240053|A_/_H1N1                             78.76%    passed     77.96%
+ 108  EPI4783932|NA|A/Madagascar/03617/2025|EPI_ISL_20240061|A_/_H1N1                             78.76%    passed     77.96%
+ 109  EPI5181870|NA|A/Madagascar/2996/2025|EPI_ISL_20374006|A_/_H1N1                              78.39%    passed     54.70%
+ 110  EPI5181878|NA|A/Madagascar/2938/2025|EPI_ISL_20374007|A_/_H1N1                              78.41%    passed     53.36%
+ 111  EPI5181902|NA|A/Madagascar/2892/2025|EPI_ISL_20374010|A_/_H1N1                              78.39%    passed     48.92%
+ 112  EPI4638843|NA|A/Madagascar/02287/2025|EPI_ISL_20144931|A_/_H1N1                             78.76%    passed     73.87%
+ 113  EPI4638836|NA|A/Madagascar/02191/2025|EPI_ISL_20144930|A_/_H1N1                             78.76%    passed     73.87%
+ 114  EPI4638831|NA|A/Madagascar/02115/2025|EPI_ISL_20144929|A_/_H1N1                             78.76%    passed     76.03%
+ 115  EPI4638825|NA|A/Madagascar/02050/2025|EPI_ISL_20144928|A_/_H1N1                             78.76%    passed     73.87%
+ 116  EPI4638848|NA|A/Madagascar/02411/2025|EPI_ISL_20144932|A_/_H1N1                             78.77%    passed     68.45%
+ 117  EPI4638819|NA|A/Madagascar/02054/2025|EPI_ISL_20144927|A_/_H1N1                             78.76%    passed     73.87%
+ 118  EPI4638812|NA|A/Madagascar/01927/2025|EPI_ISL_20144926|A_/_H1N1                             78.76%    passed     71.47%
+ 119  EPI4638804|NA|A/Madagascar/01989/2025|EPI_ISL_20144925|A_/_H1N1                             78.76%    passed     68.02%
+ 120  EPI4638799|NA|A/Madagascar/01862/2025|EPI_ISL_20144924|A_/_H1N1                             78.76%    passed     73.87%
+ 121  EPI319595|NA|A/Madagascar/0149/2011|EPI_ISL_90789|A_/_H1N1                                  78.76%    passed     85.52%
+ 122  EPI319593|NA|A/Madagascar/0149/2011|EPI_ISL_90788|A_/_H1N1                                  78.76%    passed     85.52%
+ 123  EPI4716706|NA|A/Madagascar/01927/2025|EPI_ISL_20178779|A_/_H1N1                             78.76%    passed     71.47%
+ 124  EPI4716698|NA|A/Madagascar/02191/2025|EPI_ISL_20178778|A_/_H1N1                             78.76%    passed     73.87%
+ 125  EPI509286|NA|A/Madagascar/2098/2007|EPI_ISL_157379|A_/_H1N1                                 78.71%    passed     54.36%
+ 126  EPI2926916|NA|A/Madagascar/268/2023|EPI_ISL_18785900|A_/_H1N1                               78.41%    passed     51.89%
+ 127  EPI2927135|NA|A/Madagascar/357/2023|EPI_ISL_18785934|A_/_H1N1                               78.41%    passed     60.95%
+ 128  EPI3840624|NA|A/Madagascar/03221/2024|EPI_ISL_19687053|A_/_H1N1                             78.76%    passed     76.24%
+ 129  EPI3840606|NA|A/Madagascar/02988/2024|EPI_ISL_19687049|A_/_H1N1                             78.76%    passed     74.61%
+ 130  EPI3840555|NA|A/Madagascar/03118/2024|EPI_ISL_19687042|A_/_H1N1                             78.76%    passed     73.16%
+ 131  EPI3840670|NA|A/Madagascar/03502/2024|EPI_ISL_19687060|A_/_H1N1                             78.76%    passed     77.24%
+ 132  EPI2927325|NA|A/Madagascar/356/2023|EPI_ISL_18785958|A_/_H1N1                               78.41%    passed     58.56%
+ 133  EPI3840645|NA|A/Madagascar/03041/2024|EPI_ISL_19687056|A_/_H1N1                             78.76%    passed     70.64%
+ 134  EPI3879492|NA|A/Madagascar/00030/2025|EPI_ISL_19704260|A_/_H1N1                             78.76%    passed     70.87%
+ 135  EPI3879483|NA|A/Madagascar/00021/2025|EPI_ISL_19704258|A_/_H1N1                             78.76%    passed     70.87%
+ 136  EPI3879488|NA|A/Madagascar/00026/2025|EPI_ISL_19704259|A_/_H1N1                             78.76%    passed     73.22%
+ 137  EPI3879667|NA|A/Madagascar/00003/2025|EPI_ISL_19704286|A_/_H1N1                             78.76%    passed     69.86%
+ 138  EPI3879675|NA|A/Madagascar/00031/2025|EPI_ISL_19704287|A_/_H1N1                             78.76%    passed     70.87%
+ 139  EPI621836|NA|A/Madagascar/1566/2015|EPI_ISL_190949|A_/_H1N1                                 78.76%    passed     85.70%
+ 140  EPI1282090|NA|A/Madagascar/698/2018|EPI_ISL_322860|A_/_H1N1                                 78.41%    passed     70.16%
+ 141  EPI1282098|NA|A/Madagascar/745/2018|EPI_ISL_322861|A_/_H1N1                                 78.41%    passed     64.96%
+ 142  EPI1282106|NA|A/Madagascar/777/2018|EPI_ISL_322862|A_/_H1N1                                 78.41%    passed     67.47%
+ 143  EPI1282114|NA|A/Madagascar/883/2018|EPI_ISL_322863|A_/_H1N1                                 78.41%    passed     67.47%
+ 144  EPI1282066|NA|A/Madagascar/561/2018|EPI_ISL_322857|A_/_H1N1                                 78.41%    passed     67.47%
+ 145  EPI1282074|NA|A/Madagascar/641/2018|EPI_ISL_322858|A_/_H1N1                                 78.41%    passed     70.16%
+ 146  EPI1282162|NA|A/Madagascar/375/2018|EPI_ISL_322869|A_/_H1N1                                 78.42%    passed     63.81%
+ 147  EPI1282146|NA|A/Madagascar/425/2018|EPI_ISL_322867|A_/_H1N1                                 78.42%    passed     63.81%
+ 148  EPI3748888|NA|A/Madagascar/03744/2024|EPI_ISL_19640279|A_/_H1N1                             78.77%    passed     74.32%
+ 149  EPI390480|NA|A/Madagascar/00566/2012|EPI_ISL_127655|A_/_H1N1                                78.76%    passed     72.86%
+ 150  EPI390484|NA|A/Madagascar/00863/2012|EPI_ISL_127657|A_/_H1N1                                78.76%    passed     77.83%
+ 151  EPI390482|NA|A/Madagascar/00695/2012|EPI_ISL_127656|A_/_H1N1                                78.76%    passed     73.94%
+ 152  EPI3934280|NA|A/Madagascar/03041/2024|EPI_ISL_19723316|A_/_H1N1                             78.76%    passed     70.64%
+ 153  EPI278575|NA|A/Madagascar/0001/2010|EPI_ISL_79222|A_/_H1N1                                  78.76%    passed     83.77%
+ 154  EPI278581|NA|A/Madagascar/290/2010|EPI_ISL_79225|A_/_H1N1                                   78.76%    passed     78.10%
+ 155  EPI278585|NA|A/Madagascar/95/2010|EPI_ISL_79227|A_/_H1N1                                    78.76%    passed     82.46%
+ 156  EPI278583|NA|A/Madagascar/555/2010|EPI_ISL_79226|A_/_H1N1                                   78.76%    passed     83.77%
+ 157  EPI3935148|NA|A/Madagascar/02988/2024|EPI_ISL_19723431|A_/_H1N1                             78.76%    passed     74.61%
+ 158  EPI3935094|NA|A/Madagascar/03221/2024|EPI_ISL_19723423|A_/_H1N1                             78.76%    passed     76.24%
+ 159  EPI4645202|NA|A/Madagascar/2118/2025|EPI_ISL_20150139|A_/_H1N1                              78.41%    passed     59.20%
+ 160  EPI4645196|NA|A/Madagascar/2217/2025|EPI_ISL_20150138|A_/_H1N1                              78.41%    passed     62.22%
+ 161  EPI4645267|NA|A/Madagascar/2361/2025|EPI_ISL_20150147|A_/_H1N1                              78.41%    passed     62.22%
+ 162  EPI4645298|NA|A/Madagascar/1765/2025|EPI_ISL_20150151|A_/_H1N1                              78.41%    passed     59.36%
+ 163  EPI4645290|NA|A/Madagascar/1990/2025|EPI_ISL_20150150|A_/_H1N1                              78.39%    passed     51.71%
+ 164  EPI4645282|NA|A/Madagascar/1905/2025|EPI_ISL_20150149|A_/_H1N1                              78.41%    passed     56.03%
+ 165  EPI4645274|NA|A/Madagascar/2029/2025|EPI_ISL_20150148|A_/_H1N1                              78.39%    passed     60.18%
+ 166  EPI4645322|NA|A/Madagascar/1730/2025|EPI_ISL_20150154|A_/_H1N1                              78.41%    passed     59.20%
+ 167  EPI4645314|NA|A/Madagascar/2301/2025|EPI_ISL_20150153|A_/_H1N1                              78.41%    passed     56.43%
+ 168  EPI4645306|NA|A/Madagascar/2489/2025|EPI_ISL_20150152|A_/_H1N1                              78.41%    passed     53.55%
+ 169  EPI4304227|NA|A/Madagascar/01242/2025|EPI_ISL_19854882|A_/_H1N1                             78.76%    passed     68.86%
+ 170  EPI4304234|NA|A/Madagascar/01380/2025|EPI_ISL_19854883|A_/_H1N1                             78.76%    passed     73.87%
+ 171  EPI4304215|NA|A/Madagascar/01113/2025|EPI_ISL_19854880|A_/_H1N1                             78.76%    passed     77.74%
+ 172  EPI4304221|NA|A/Madagascar/01183/2025|EPI_ISL_19854881|A_/_H1N1                             78.76%    passed     71.47%
+ 173  EPI4304201|NA|A/Madagascar/00431/2025|EPI_ISL_19854878|A_/_H1N1                             78.76%    passed     68.86%
+ 174  EPI4304208|NA|A/Madagascar/01079/2025|EPI_ISL_19854879|A_/_H1N1                             78.76%    passed     73.87%
+ 175  EPI4304196|NA|A/Madagascar/00426/2025|EPI_ISL_19854877|A_/_H1N1                             78.76%    passed     68.86%
+ 176  EPI466569|NA|A/Madagascar/01708/2013|EPI_ISL_145418|A_/_H1N1                                78.76%    passed     77.74%
+ 177  EPI466571|NA|A/Madagascar/01774/2013|EPI_ISL_145419|A_/_H1N1                                78.76%    passed     77.74%
+ 178  EPI466565|NA|A/Madagascar/01123/2013|EPI_ISL_145416|A_/_H1N1                                78.76%    passed     77.74%
+ 179  EPI466567|NA|A/Madagascar/01430/2013|EPI_ISL_145417|A_/_H1N1                                78.76%    passed     77.74%
+ 180  EPI466577|NA|A/Madagascar/02001/2013|EPI_ISL_145422|A_/_H1N1                                78.76%    passed     77.83%
+ 181  EPI466579|NA|A/Madagascar/02007/2013|EPI_ISL_145423|A_/_H1N1                                78.76%    passed     77.74%
+ 182  EPI466573|NA|A/Madagascar/01909/2013|EPI_ISL_145420|A_/_H1N1                                78.76%    passed     75.25%
+ 183  EPI466575|NA|A/Madagascar/01938/2013|EPI_ISL_145421|A_/_H1N1                                78.76%    passed     80.16%
+ 184  EPI466581|NA|A/Madagascar/02064/2013|EPI_ISL_145424|A_/_H1N1                                78.76%    passed     77.74%
+ 185  EPI982548|NA|A/Madagascar/5602/2016|EPI_ISL_260155|A_/_H1N1                                 78.76%    passed     80.26%
+ 186  EPI982546|NA|A/Madagascar/5599/2016|EPI_ISL_260154|A_/_H1N1                                 78.77%    passed     80.26%
+ 187  EPI982554|NA|A/Madagascar/6380/2016|EPI_ISL_260158|A_/_H1N1                                 78.76%    passed     80.26%
+ 188  EPI982552|NA|A/Madagascar/6112/2016|EPI_ISL_260157|A_/_H1N1                                 78.76%    passed     81.39%
+ 189  EPI982550|NA|A/Madagascar/5768/2016|EPI_ISL_260156|A_/_H1N1                                 78.76%    passed     74.84%
+ 190  EPI5191595|NA|A/Madagascar/00211/2026|EPI_ISL_20379681|A_/_H1N1                             78.76%    passed     81.05%
+ 191  EPI5191560|NA|A/Madagascar/04323/2025|EPI_ISL_20379676|A_/_H1N1                             78.76%    passed     73.15%
+ 192  EPI5191546|NA|A/Madagascar/03845/2025|EPI_ISL_20379674|A_/_H1N1                             78.76%    passed     66.24%
+ 193  EPI5191539|NA|A/Madagascar/03787/2025|EPI_ISL_20379672|A_/_H1N1                             78.76%    passed     76.44%
+ 194  EPI5191542|NA|A/Madagascar/03792/2025|EPI_ISL_20379673|A_/_H1N1                             78.76%    passed     77.96%
+ 195  EPI228933|NA|A/Madagascar/2349/2008|EPI_ISL_65344|A_/_H1N1                                  78.71%    passed     45.29%
+ 196  EPI228937|NA|A/Madagascar/1531/2008|EPI_ISL_65347|A_/_H1N1                                  78.71%    passed     45.29%
+ 197  EPI228941|NA|A/Madagascar/1637/2008|EPI_ISL_65349|A_/_H1N1                                  78.71%    passed     47.52%
+ 198  EPI228946|NA|A/Madagascar/2042/2008|EPI_ISL_65350|A_/_H1N1                                  78.71%    passed     40.46%
+ 199  EPI228950|NA|A/Madagascar/2041/2008|EPI_ISL_65351|A_/_H1N1                                  78.71%    passed     40.46%
+ 200  EPI228954|NA|A/Madagascar/1545/2008|EPI_ISL_65354|A_/_H1N1                                  78.71%    passed     40.46%
+ 201  EPI228958|NA|A/Madagascar/2360/2008|EPI_ISL_65357|A_/_H1N1                                  78.71%    passed     40.48%
+ 202  EPI3724419|NA|A/feces/Madagascar/ID_167/2021|EPI_ISL_19613507|A_/_H1N1                      78.05%    passed     48.99%
+ 203  EPI3724417|NA|A/feces/Madagascar/ID_166/2022|EPI_ISL_19613506|A_/_H1N1                      78.15%    passed     37.56%
+ 204  EPI2911866|NA|A/Kenya/KEMRI-KI045/2015|EPI_ISL_18759336|A_/_H1N1                            78.76%    passed     78.58%
+ 205  EPI1266825|NA|A/Kenya/128/2018|EPI_ISL_319788|A_/_H1N1                                      78.41%    passed     64.54%
+ 206  EPI284129|NA|A/Kenya/0053/2009|EPI_ISL_75514|A_/_H1N1                                       78.76%    passed     86.35%
+ 207  EPI778050|NA|A/Kenya/006/2015|EPI_ISL_225448|A_/_H1N1                                       78.41%    passed     65.96%
+ 208  EPI284130|NA|A/Kenya/0057/2009|EPI_ISL_75515|A_/_H1N1                                       78.76%    passed     89.00%
+ 209  EPI2988095|NA|A/Kenya/AFI-LAM-1378/2023|EPI_ISL_18860278|A_/_H1N1                           78.39%    passed     59.77%
+ 210  EPI295446|NA|A/Kenya/3872/2010|EPI_ISL_84171|A_/_H1N1                                       78.76%    passed     90.62%
+ 211  EPI2912449|NA|A/Kenya/KEMRI-S051/2011|EPI_ISL_18759482|A_/_H1N1                             78.76%    passed     84.42%
+ 212  EPI2156676|NA|A/Kenya/133/2022|EPI_ISL_14861056|A_/_H1N1                                    78.41%    passed     62.18%
+ 213  EPI2156652|NA|A/Kenya/121/2022|EPI_ISL_14861053|A_/_H1N1                                    78.41%    passed     62.18%
+ 214  EPI1733597|NA|A/Kenya/CDC-Nyeri-037/2011|EPI_ISL_428933|A_/_H1N1                            78.76%    passed     85.55%
+ 215  EPI4557487|NA|A/Kenya/NYR12014/Human/2025|EPI_ISL_20074380|A_/_H1N1                         78.77%    passed     72.31%
+ 216  EPI1728111|NA|A/Kenya/CDC-Kakamega-007/2009|EPI_ISL_426344|A_/_H1N1                         78.76%    passed     85.51%
+ 217  EPI4471041|NA|A/Kenya/CNR-HCL025095498301/2020|EPI_ISL_20058151|A_/_H1N1                    78.57%    passed     69.01%
+ 218  EPI912153|NA|A/Kenya/105/2016|EPI_ISL_248213|A_/_H1N1                                       78.41%    passed     65.54%
+ 219  EPI2911086|NA|A/Kenya/KEMRI-N019/2018|EPI_ISL_18759105|A_/_H1N1                             78.76%    passed     77.24%
+ 220  EPI1321157|NA|A/Kenya/114/2018|EPI_ISL_331560|A_/_H1N1                                      78.41%    passed     61.41%
+ 221  EPI1731884|NA|A/Kenya/CDC-Kakamega-009/2018|EPI_ISL_428414|A_/_H1N1                         78.76%    passed     81.21%
+ 222  EPI1728119|NA|A/Kenya/CDC-Kakamega-008/2009|EPI_ISL_426345|A_/_H1N1                         78.76%    passed     85.51%
+ 223  EPI2911388|NA|A/Kenya/KEMRI-NH005/2018|EPI_ISL_18759210|A_/_H1N1                            78.76%    passed     83.24%
+ 224  EPI1724507|NA|A/Kenya/CDC-Nakuru-044/2015|EPI_ISL_421571|A_/_H1N1                           78.76%    passed     88.75%
+ 225  EPI2911243|NA|A/Kenya/KEMRI-N044/2015|EPI_ISL_18759158|A_/_H1N1                             78.76%    passed     88.75%
+ 226  EPI2912434|NA|A/Kenya/KEMRI-S045/2011|EPI_ISL_18759476|A_/_H1N1                             78.76%    passed     79.94%
+ 227  EPI2912249|NA|A/Kenya/KEMRI-NY035/2010|EPI_ISL_18759414|A_/_H1N1                            78.76%    passed     85.55%
+ 228  EPI2911457|NA|A/Kenya/KEMRI-K013/2009|EPI_ISL_18759233|A_/_H1N1                             78.76%    passed     89.00%
+ 229  EPI5178229|NA|A/Kenya/AFI-MGT-2441/2025|EPI_ISL_20373459|A_/_H1N1                           78.76%    passed     68.55%
+ 230  EPI1728401|NA|A/Kenya/CDC-Kakamega-046/2011|EPI_ISL_426574|A_/_H1N1                         78.76%    passed     83.24%
+ 231  EPI1724134|NA|A/Kenya/CDC-KNH-084/2015|EPI_ISL_421280|A_/_H1N1                              78.76%    passed     76.52%
+ 232  EPI4557524|NA|A/Kenya/NYR12049/Human/2025|EPI_ISL_20074579|A_/_H1N1                         78.79%    passed     66.02%
+ 233  EPI2911816|NA|A/Kenya/KEMRI-KI011/2010|EPI_ISL_18759321|A_/_H1N1                            78.76%    passed     83.24%
+ 234  EPI4843350|NA|A/Kenya/SYA88001/2025|EPI_ISL_20268502|A_/_H1N1                               78.76%    passed     61.61%
+ 235  EPI1727619|NA|A/Kenya/Kilifi-045/2015|EPI_ISL_426157|A_/_H1N1                               78.76%    passed     78.58%
+ 236  EPI4470944|NA|A/Kenya/CNR-HCL025095458001/2020|EPI_ISL_20058138|A_/_H1N1                    78.57%    passed     77.12%
+ 237  EPI2911240|NA|A/Kenya/KEMRI-N043/2015|EPI_ISL_18759157|A_/_H1N1                             79.06%    passed     82.98%
+ 238  EPI1728715|NA|A/Kenya/CDC-Kakamega-060/2014|EPI_ISL_427402|A_/_H1N1                         78.76%    passed     79.08%
+ 239  EPI2911002|NA|A/Kenya/KEMRI-K045/2011|EPI_ISL_18759077|A_/_H1N1                             78.76%    passed     83.24%
+ 240  EPI2156708|NA|A/Kenya/120/2022|EPI_ISL_14861153|A_/_H1N1                                    78.41%    passed     62.18%
+ 241  EPI1724054|NA|A/Kenya/CDC-KNH-061/2011|EPI_ISL_421255|A_/_H1N1                              78.76%    passed     86.22%
+ 242  EPI2911294|NA|A/Kenya/KEMRI-NH031/2010|EPI_ISL_18759175|A_/_H1N1                            78.76%    passed     85.55%
+ 243  EPI3247901|NA|A/Kenya/110/2024|EPI_ISL_19083733|A_/_H1N1                                    78.41%    passed     49.20%
+ 244  EPI1724190|NA|A/Kenya/CDC-KNH-008/2018|EPI_ISL_421439|A_/_H1N1                              78.76%    passed     76.24%
+ 245  EPI189124|NA|A/Kenya/18/2009|EPI_ISL_33577|A_/_H1N1                                         78.76%    passed     87.43%
+ 246  EPI3999640|NA|A/Kenya/AFI-LAM-1927/2024|EPI_ISL_19742352|A_/_H1N1                           78.42%    passed     54.22%
+ 247  EPI5175487|NA|A/Kenya/AFI-KDH-2155/2025|EPI_ISL_20373097|A_/_H1N1                           79.48%    passed     73.52%
+ 248  EPI2912419|NA|A/Kenya/KEMRI-S039/2011|EPI_ISL_18759471|A_/_H1N1                             78.76%    passed     84.42%
+ 249  EPI2156636|NA|A/Kenya/143/2022|EPI_ISL_14861051|A_/_H1N1                                    78.39%    passed     68.11%
+ 250  EPI4843359|NA|A/Kenya/SYA88025/2025|EPI_ISL_20268503|A_/_H1N1                               78.76%    passed     73.16%
+ 251  EPI1514487|NA|A/Kenya/46/2018|EPI_ISL_369403|A_/_H1N1                                       78.03%    passed     72.36%
+ 252  EPI2156847|NA|A/Kenya/122/2022|EPI_ISL_14861727|A_/_H1N1                                    78.41%    passed     60.24%
+ 253  EPI4470786|NA|A/Kenya/CNR-HCL025095407401/2020|EPI_ISL_20058117|A_/_H1N1                    78.57%    passed     70.21%
+ 254  EPI2799776|NA|A/Kenya/KLF180441/2023|EPI_ISL_18530052|A_/_H1N1                              78.76%    passed     68.55%
+ 255  EPI295443|NA|A/Kenya/3840/2010|EPI_ISL_84170|A_/_H1N1                                       78.76%    passed     90.62%
+ 256  EPI1731860|NA|A/Kenya/CDC-Kakamega-006/2018|EPI_ISL_428411|A_/_H1N1                         78.76%    passed     78.88%
+ 257  EPI3518247|NA|A/Kenya/143/2024|EPI_ISL_19355091|A_/_H1N1                                    78.41%    passed     59.49%
+ 258  EPI2912398|NA|A/Kenya/KEMRI-S032/2011|EPI_ISL_18759464|A_/_H1N1                             78.76%    passed     84.42%
+ 259  EPI1724411|NA|A/Kenya/CDC-Nakuru-028/2014|EPI_ISL_421555|A_/_H1N1                           78.76%    passed     80.22%
+ 260  EPI1321189|NA|A/Kenya/108/2018|EPI_ISL_331564|A_/_H1N1                                      78.41%    passed     61.41%
+ 261  EPI301706|NA|A/Kenya/6362/2010|EPI_ISL_85811|A_/_H1N1                                       78.76%    passed     87.76%
+ 262  EPI2912437|NA|A/Kenya/KEMRI-S047/2013|EPI_ISL_18759477|A_/_H1N1                             78.76%    passed     83.20%
+ 263  EPI4809059|NA|A/Kenya/IRH16341/2025|EPI_ISL_20257871|A_/_H1N1                               78.77%    passed     67.24%
+ 264  EPI2911394|NA|A/Kenya/KEMRI-NH008/2018|EPI_ISL_18759212|A_/_H1N1                            78.76%    passed     76.24%
+ 265  EPI2912246|NA|A/Kenya/KEMRI-NY034/2010|EPI_ISL_18759413|A_/_H1N1                            78.76%    passed     79.94%
+ 266  EPI4557493|NA|A/Kenya/NYR12015/Human/2025|EPI_ISL_20074381|A_/_H1N1                         78.79%    passed     66.82%
+ 267  EPI2911285|NA|A/Kenya/KEMRI-NH028/2010|EPI_ISL_18759172|A_/_H1N1                            78.76%    passed     85.55%
+ 268  EPI3247869|NA|A/Kenya/105/2024|EPI_ISL_19083729|A_/_H1N1                                    78.41%    passed     59.04%
+ 269  EPI912121|NA|A/Kenya/101/2016|EPI_ISL_248209|A_/_H1N1                                       78.39%    passed     65.72%
+ 270  EPI2911541|NA|A/Kenya/KEMRI-NH066/2011|EPI_ISL_18759261|A_/_H1N1                            78.76%    passed     86.12%
+ 271  EPI454435|NA|A/Kenya/104/2013|EPI_ISL_142574|A_/_H1N1                                       78.76%    passed     89.33%
+ 272  EPI2911053|NA|A/Kenya/KEMRI-K067/2016|EPI_ISL_18759094|A_/_H1N1                             78.76%    passed     81.39%
+ 273  EPI1725180|NA|A/Kenya/CDC-Nakuru-010/2018|EPI_ISL_422478|A_/_H1N1                           78.76%    passed     77.24%
+ 274  EPI1731908|NA|A/Kenya/CDC-Kakamega-015/2018|EPI_ISL_428417|A_/_H1N1                         78.76%    passed     78.88%
+ 275  EPI4446540|NA|A/Kenya/MSA09066/Human/2025|EPI_ISL_19910101|A_/_H1N1                         78.76%    passed     66.74%
+ 276  EPI1734122|NA|A/Kenya/CDC-Siaya-040/2011|EPI_ISL_429823|A_/_H1N1                            78.76%    passed     84.42%
+ 277  EPI2911342|NA|A/Kenya/KEMRI-NH016/2018|EPI_ISL_18759191|A_/_H1N1                            78.76%    passed     82.60%
+ 278  EPI1724747|NA|A/Kenya/CDC-Nakuru-080/2009|EPI_ISL_421766|A_/_H1N1                           78.76%    passed     90.62%
+ 279  EPI2912357|NA|A/Kenya/KEMRI-NY006/2009|EPI_ISL_18759450|A_/_H1N1                            78.76%    passed     89.00%
+ 280  EPI960232|NA|A/Kenya/106/2016|EPI_ISL_256091|A_/_H1N1                                       78.41%    passed     64.59%
+ 281  EPI4451636|NA|A/Kenya/KNH12822/Human/2025|EPI_ISL_19910124|A_/_H1N1                         78.82%    passed     65.50%
+ 282  EPI2912389|NA|A/Kenya/KEMRI-S028/2011|EPI_ISL_18759461|A_/_H1N1                             78.76%    passed     84.34%
+ 283  EPI2911562|NA|A/Kenya/KEMRI-NH085/2015|EPI_ISL_18759268|A_/_H1N1                            78.76%    passed     70.39%
+ 284  EPI2910984|NA|A/Kenya/KEMRI-N017/2014|EPI_ISL_18759071|A_/_H1N1                             78.76%    passed     86.35%
+ 285  EPI1722454|NA|A/Kenya/CDC-KNH-040/2011|EPI_ISL_420829|A_/_H1N1                              78.76%    passed     80.66%
+ 286  EPI284116|NA|A/Kenya/0029/2009|EPI_ISL_75499|A_/_H1N1                                       78.76%    passed     86.70%
+ 287  EPI284135|NA|A/Kenya/0046/2009|EPI_ISL_75521|A_/_H1N1                                       78.76%    passed     89.33%
+ 288  EPI1724222|NA|A/Kenya/CDC-KNH-014/2018|EPI_ISL_421443|A_/_H1N1                              78.76%    passed     71.70%
+ 289  EPI3247821|NA|A/Kenya/112/2024|EPI_ISL_19083723|A_/_H1N1                                    78.41%    passed     59.04%
+ 290  EPI2912198|NA|A/Kenya/KEMRI-KI001/2018|EPI_ISL_18759397|A_/_H1N1                            78.76%    passed     81.02%
+ 291  EPI1725140|NA|A/Kenya/CDC-Nakuru-002/2018|EPI_ISL_422473|A_/_H1N1                           78.76%    passed     70.64%
+ 292  EPI284133|NA|A/Kenya/0024/2009|EPI_ISL_75519|A_/_H1N1                                       78.76%    passed     87.43%
+ 293  EPI2911798|NA|A/Kenya/KEMRI-KI007/2018|EPI_ISL_18759315|A_/_H1N1                            78.76%    passed     77.24%
+ 294  EPI2308286|NA|A/Kenya/KEMRI-2021203212/2022|EPI_ISL_16619605|A_/_H1N1                       78.60%    passed     77.61%
+ 295  EPI2911436|NA|A/Kenya/KEMRI-K008/2018|EPI_ISL_18759226|A_/_H1N1                             78.76%    passed     81.21%
+ 296  EPI2912473|NA|A/Kenya/KEMRI-NY067/2014|EPI_ISL_18759490|A_/_H1N1                            78.76%    passed     86.74%
+ 297  EPI4470754|NA|A/Kenya/CNR-HCL025095096001/2020|EPI_ISL_20058113|A_/_H1N1                    78.57%    passed     70.21%
+ 298  EPI1724272|NA|A/Kenya/CDC-Nakuru-010/2013|EPI_ISL_421525|A_/_H1N1                           78.76%    passed     84.05%
+ 299  EPI5177616|NA|A/Kenya/AFI-LKN-058/2025|EPI_ISL_20373379|A_/_H1N1                            78.76%    passed     75.53%
+ 300  EPI1724014|NA|A/Kenya/CDC-KNH-054/2011|EPI_ISL_421216|A_/_H1N1                              78.76%    passed     80.66%
+ 301  EPI2910921|NA|A/Kenya/KEMRI-N001/2018|EPI_ISL_18759050|A_/_H1N1                             78.76%    passed     74.61%
+ 302  EPI2910951|NA|A/Kenya/KEMRI-N010/2018|EPI_ISL_18759060|A_/_H1N1                             78.76%    passed     77.24%
+ 303  EPI1724643|NA|A/Kenya/CDC-Nakuru-063/2010|EPI_ISL_421693|A_/_H1N1                           78.76%    passed     83.24%
+ 304  EPI2912565|NA|A/Kenya/KEMRI-S001/2009|EPI_ISL_18759964|A_/_H1N1                             78.76%    passed     89.00%
+ 305  EPI366280|NA|A/Kenya/1826/2010|EPI_ISL_115068|A_/_H1N1                                      78.76%    passed     81.75%
+ 306  EPI1266849|NA|A/Kenya/125/2018|EPI_ISL_319791|A_/_H1N1                                      78.42%    passed     66.19%
+ 307  EPI2911586|NA|A/Kenya/KEMRI-K003/2018|EPI_ISL_18759276|A_/_H1N1                             78.77%    passed     81.07%
+ 308  EPI1727635|NA|A/Kenya/Kilifi-049/2015|EPI_ISL_426162|A_/_H1N1                               78.77%    passed     76.96%
+ 309  EPI2912285|NA|A/Kenya/KEMRI-NY014/2009|EPI_ISL_18759426|A_/_H1N1                            78.76%    passed     80.92%
+ 310  EPI1733701|NA|A/Kenya/CDC-Nyeri-067/2014|EPI_ISL_428973|A_/_H1N1                            78.76%    passed     86.74%
+ 311  EPI1514480|NA|A/Kenya/59/2018|EPI_ISL_369392|A_/_H1N1                                       78.03%    passed     70.78%
+ 312  EPI1727571|NA|A/Kenya/Kilifi-023/2011|EPI_ISL_426151|A_/_H1N1                               78.76%    passed     81.84%
+ 313  EPI1514485|NA|A/Kenya/56/2018|EPI_ISL_369399|A_/_H1N1                                       78.21%    passed     67.57%
+ 314  EPI4557469|NA|A/Kenya/NAK13247/Human/2025|EPI_ISL_20074582|A_/_H1N1                         78.80%    passed     66.09%
+ 315  EPI4470794|NA|A/Kenya/CNR-HCL025095408301/2020|EPI_ISL_20058118|A_/_H1N1                    78.57%    passed     73.07%
+ 316  EPI284114|NA|A/Kenya/0020/2009|EPI_ISL_75497|A_/_H1N1                                       78.76%    passed     87.43%
+ 317  EPI1728039|NA|A/Kenya/Kilifi-008/2018|EPI_ISL_426335|A_/_H1N1                               78.76%    passed     79.70%
+ 318  EPI1344872|NA|A/Kenya/139/2018|EPI_ISL_335881|A_/_H1N1                                      78.41%    passed     71.88%
+ 319  EPI2911315|NA|A/Kenya/KEMRI-NH043/2011|EPI_ISL_18759182|A_/_H1N1                            78.76%    passed     87.58%
+ 320  EPI2912315|NA|A/Kenya/KEMRI-N104/2011|EPI_ISL_18759436|A_/_H1N1                             78.76%    passed     80.66%
+ 321  EPI2911297|NA|A/Kenya/KEMRI-NH032/2010|EPI_ISL_18759176|A_/_H1N1                            78.83%    passed     85.62%
+ 322  EPI2911397|NA|A/Kenya/KEMRI-NH009/2009|EPI_ISL_18759213|A_/_H1N1                            78.76%    passed     85.51%
+ 323  EPI2911391|NA|A/Kenya/KEMRI-NH006/2009|EPI_ISL_18759211|A_/_H1N1                            78.76%    passed     87.10%
+ 324  EPI1733922|NA|A/Kenya/CDC-Siaya-012/2009|EPI_ISL_429244|A_/_H1N1                            78.76%    passed     89.00%
+ 325  EPI1309046|NA|A/Kenya/057/2017|EPI_ISL_329329|A_/_H1N1                                      78.03%    passed     70.94%
+ 326  EPI1728329|NA|A/Kenya/CDC-Kakamega-036/2011|EPI_ISL_426490|A_/_H1N1                         78.76%    passed     84.07%
+ 327  EPI2911050|NA|A/Kenya/KEMRI-K066/2015|EPI_ISL_18759093|A_/_H1N1                             78.76%    passed     76.24%
+ 328  EPI1722478|NA|A/Kenya/CDC-KNH-045/2011|EPI_ISL_420832|A_/_H1N1                              78.76%    passed     77.36%
+ 329  EPI1733914|NA|A/Kenya/CDC-Siaya-011/2009|EPI_ISL_429243|A_/_H1N1                            78.77%    passed     90.22%
+ 330  EPI1733757|NA|A/Kenya/CDC-Nyeri-080/2015|EPI_ISL_428980|A_/_H1N1                            79.06%    passed     78.71%
+ 331  EPI5175495|NA|A/Kenya/AFI-KDH-2156/2025|EPI_ISL_20373098|A_/_H1N1                           79.61%    passed     75.68%
+ 332  EPI325581|NA|A/Kenya/6758/2011|EPI_ISL_93612|A_/_H1N1                                       78.76%    passed     83.24%
+ 333  EPI2911505|NA|A/Kenya/KEMRI-K038/2011|EPI_ISL_18759249|A_/_H1N1                             78.76%    passed     85.55%
+ 334  EPI356350|NA|A/Kenya/071/2010|EPI_ISL_105930|A_/_H1N1                                       77.99%    passed     78.02%
+ 335  EPI157878|NA|A/Kenya/331/2007|EPI_ISL_22137|A_/_H1N1                                        78.71%    passed     44.28%
+ 336  EPI1308242|NA|A/Kenya/036/2018|EPI_ISL_329201|A_/_H1N1                                      78.41%    passed     62.10%
+ 337  EPI1724683|NA|A/Kenya/CDC-Nakuru-071/2010|EPI_ISL_421698|A_/_H1N1                           78.76%    passed     83.24%
+ 338  EPI2911400|NA|A/Kenya/KEMRI-NH009/2018|EPI_ISL_18759214|A_/_H1N1                            78.76%    passed     74.61%
+ 339  EPI4470810|NA|A/Kenya/CNR-HCL025095411101/2020|EPI_ISL_20058120|A_/_H1N1                    78.57%    passed     77.82%
+ 340  EPI2955492|NA|A/Ghana/7775/2023|EPI_ISL_18812037|A_/_H1N1                                   78.76%    passed     68.55%
+ 341  EPI4495777|NA|A/Ghana/FS-25-4383/2025|EPI_ISL_20066608|A_/_H1N1                             78.76%    passed     75.80%
+ 342  EPI4917439|NA|A/Ghana/FS-25-8498/2025|EPI_ISL_20298189|A_/_H1N1                             78.76%    passed     70.87%
+ 343  EPI438814|NA|A/Ghana/DILI-1218/2012|EPI_ISL_138530|A_/_H1N1                                 78.76%    passed     77.20%
+ 344  EPI2982511|NA|A/Ghana/7702/2023|EPI_ISL_18856761|A_/_H1N1                                   78.76%    passed     71.70%
+ 345  EPI2902582|NA|A/Ghana/7526/2023|EPI_ISL_18742896|A_/_H1N1                                   78.41%    passed     56.73%
+ 346  EPI2678676|NA|A/Ghana/3070/2023|EPI_ISL_18091901|A_/_H1N1                                   78.41%    passed     60.24%
+ 347  EPI229140|NA|A/Ghana/FS-205/2008|EPI_ISL_65464|A_/_H1N1                                     78.71%    passed     40.99%
+ 348  EPI4617562|NA|A/Ghana/3798/2025|EPI_ISL_20131631|A_/_H1N1                                   78.41%    passed     61.12%
+ 349  EPI541032|NA|A/Ghana/DILI-0567/2014|EPI_ISL_166054|A_/_H1N1                                 78.76%    passed     86.49%
+ 350  EPI2544650|NA|A/Ghana/410/2023|EPI_ISL_17625883|A_/_H1N1                                    78.42%    passed     58.71%
+ 351  EPI4052651|NA|A/Ghana/FS-25-0018/2024|EPI_ISL_19762352|A_/_H1N1                             78.76%    passed     78.55%
+ 352  EPI4758338|NA|A/Ghana/7238/2025|EPI_ISL_20221414|A_/_H1N1                                   78.41%    passed     62.10%
+ 353  EPI4495868|NA|A/Ghana/ARI-25-0792/2025|EPI_ISL_20066623|A_/_H1N1                            78.76%    passed     76.24%
+ 354  EPI4495625|NA|A/Ghana/FS-25-3238/2025|EPI_ISL_20066406|A_/_H1N1                             78.76%    passed     71.70%
+ 355  EPI278395|NA|A/Ghana/FS-2328/2009|EPI_ISL_79131|A_/_H1N1                                    78.76%    passed     84.92%
+ 356  EPI278357|NA|A/Ghana/FS-411/2010|EPI_ISL_79112|A_/_H1N1                                     78.76%    passed     77.83%
+ 357  EPI1328904|NA|A/Ghana/512/2018|EPI_ISL_332827|A_/_H1N1                                      78.77%    passed     82.41%
+ 358  EPI4640375|NA|A/Ghana/ARI-25-0433/2025|EPI_ISL_20145297|A_/_H1N1                            78.76%    passed     82.55%
+ 359  EPI4928739|NA|A/Ghana/9065/2025|EPI_ISL_20301745|A_/_H1N1                                   78.39%    passed     56.54%
+ 360  EPI2544596|NA|A/Ghana/1701/2023|EPI_ISL_17625876|A_/_H1N1                                   78.41%    passed     51.57%
+ 361  EPI4758527|NA|A/Ghana/6517/2025|EPI_ISL_20221439|A_/_H1N1                                   78.41%    passed     61.30%
+ 362  EPI4617421|NA|A/Ghana/3501/2025|EPI_ISL_20131613|A_/_H1N1                                   78.41%    passed     62.28%
+ 363  EPI4240271|NA|A/Ghana/FS-25-1015/2025|EPI_ISL_19824048|A_/_H1N1                             78.76%    passed     83.18%
+ 364  EPI541038|NA|A/Ghana/DILI-0620/2014|EPI_ISL_166057|A_/_H1N1                                 78.76%    passed     86.49%
+ 365  EPI2541992|NA|A/Ghana/941/2023|EPI_ISL_17608703|A_/_H1N1                                    78.76%    passed     67.43%
+ 366  EPI287001|NA|A/Ghana/FS-10-3745/2010|EPI_ISL_81331|A_/_H1N1                                 78.76%    passed     84.82%
+ 367  EPI4722282|NA|A/Ghana/FS-25-5535/2025|EPI_ISL_20184602|A_/_H1N1                             78.76%    passed     70.12%
+ 368  EPI4324480|NA|A/Ghana/FS-25-1536/2025|EPI_ISL_19863658|A_/_H1N1                             78.76%    passed     83.18%
+ 369  EPI4495828|NA|A/Ghana/FS-25-3917/2025|EPI_ISL_20066615|A_/_H1N1                             78.76%    passed     71.70%
+ 370  EPI4721089|NA|A/Ghana/ARI-25-0915/2025|EPI_ISL_20183640|A_/_H1N1                            78.79%    passed     72.23%
+ 371  EPI1843785|NA|A/Ghana/2252/2020|EPI_ISL_959866|A_/_H1N1                                     78.76%    passed     83.02%
+ 372  EPI4710965|NA|A/Ghana/FS-25-6294/2025|EPI_ISL_20174975|A_/_H1N1                             78.76%    passed     70.12%
+ 373  EPI4053439|NA|A/Ghana/FS-25-0362/2025|EPI_ISL_19762461|A_/_H1N1                             78.76%    passed     81.40%
+ 374  EPI4496583|NA|A/Ghana/FS-25-4153/2025|EPI_ISL_20066974|A_/_H1N1                             78.76%    passed     81.02%
+ 375  EPI4301585|NA|A/Ghana/0284/2025|EPI_ISL_19854472|A_/_H1N1                                   78.41%    passed     69.12%
+ 376  EPI2902590|NA|A/Ghana/1915/2023|EPI_ISL_18742897|A_/_H1N1                                   78.41%    passed     60.24%
+ 377  EPI4721135|NA|A/Ghana/FS-25-4908/2025|EPI_ISL_20183771|A_/_H1N1                             78.76%    passed     68.32%
+ 378  EPI1082153|NA|A/Ghana/475/2017|EPI_ISL_282174|A_/_H1N1                                      78.76%    passed     83.35%
+ 379  EPI1843781|NA|A/Ghana/140/2020|EPI_ISL_959864|A_/_H1N1                                      78.76%    passed     66.41%
+ 380  EPI278391|NA|A/Ghana/FS-1940/2009|EPI_ISL_79129|A_/_H1N1                                    78.76%    passed     85.51%
+ 381  EPI624683|NA|A/Ghana/DARI-15-077/2015|EPI_ISL_191835|A_/_H1N1                               78.76%    passed     81.36%
+ 382  EPI4496586|NA|A/Ghana/FS-25-4179/2025|EPI_ISL_20066975|A_/_H1N1                             78.76%    passed     75.78%
+ 383  EPI4324490|NA|A/Ghana/FS-25-1631/2025|EPI_ISL_19863660|A_/_H1N1                             78.76%    passed     73.20%
+ 384  EPI4323407|NA|A/Ghana/ARI-25-0293/2025|EPI_ISL_19863496|A_/_H1N1                            78.76%    passed     77.24%
+ 385  EPI4495857|NA|A/Ghana/FS-25-3942/2025|EPI_ISL_20066621|A_/_H1N1                             78.76%    passed     70.12%
+ 386  EPI829398|NA|A/Ghana/DILI-16-0610/2016|EPI_ISL_232889|A_/_H1N1                              78.76%    passed     78.88%
+ 387  EPI4237198|NA|A/Ghana/FS-25-0521/2025|EPI_ISL_19823051|A_/_H1N1                             78.76%    passed     77.68%
+ 388  EPI4722369|NA|A/Ghana/FS-25-5660/2025|EPI_ISL_20184658|A_/_H1N1                             78.76%    passed     68.55%
+ 389  EPI4741406|NA|A/Ghana/FS-25-6754/2025|EPI_ISL_20204229|A_/_H1N1                             79.04%    passed     64.80%
+ 390  EPI287015|NA|A/Ghana/FS-10-4184/2010|EPI_ISL_81338|A_/_H1N1                                 78.76%    passed     84.07%
+ 391  EPI2721045|NA|A/Ghana/1044/2023|EPI_ISL_18167284|A_/_H1N1                                   78.76%    passed     71.70%
+ 392  EPI4642770|NA|A/Ghana/FS-25-2266/2025|EPI_ISL_20146355|A_/_H1N1                             78.76%    passed     68.32%
+ 393  EPI4052821|NA|A/Ghana/FS-25-0128/2025|EPI_ISL_19762379|A_/_H1N1                             78.76%    passed     69.02%
+ 394  EPI4721097|NA|A/Ghana/ARI-25-0935/2025|EPI_ISL_20183642|A_/_H1N1                            78.76%    passed     71.70%
+ 395  EPI4323614|NA|A/Ghana/FS-25-1228/2025|EPI_ISL_19863525|A_/_H1N1                             78.76%    passed     84.51%
+ 396  EPI4708012|NA|A/Ghana/FS-25-5983/2025|EPI_ISL_20174437|A_/_H1N1                             78.76%    passed     76.24%
+ 397  EPI4917336|NA|A/Ghana/FS-25-9703/2025|EPI_ISL_20298176|A_/_H1N1                             78.76%    passed     79.31%
+ 398  EPI4601484|NA|A/Ghana/0603/2025|EPI_ISL_20103143|A_/_H1N1                                   78.41%    passed     60.24%
+ 399  EPI1889241|NA|A/Ghana/167/2021|EPI_ISL_4005757|A_/_H1N1                                     78.76%    passed     81.60%
+ 400  EPI4496569|NA|A/Ghana/FS-25-4129/2025|EPI_ISL_20066972|A_/_H1N1                             78.76%    passed     77.31%
+ 401  EPI4762731|NA|A/Ghana/ARI-25-1275/2025|EPI_ISL_20225246|A_/_H1N1                            78.76%    passed     65.53%
+ 402  EPI4722258|NA|A/Ghana/FS-25-5306/2025|EPI_ISL_20184595|A_/_H1N1                             78.76%    passed     70.12%
+ 403  EPI1354696|NA|A/Ghana/3865/2018|EPI_ISL_338049|A_/_H1N1                                     78.76%    passed     74.61%
+ 404  EPI1877580|NA|A/Togo/0403/2021|EPI_ISL_2625867|A_/_H1N1                                     78.44%    passed     71.92%
+ 405  EPI1882253|NA|A/Togo/0308/2021|EPI_ISL_2918706|A_/_H1N1                                     78.41%    passed     72.72%
+ 406  EPI1877651|NA|A/Togo/0111/2021|EPI_ISL_2625876|A_/_H1N1                                     78.57%    passed     76.71%
+ 407  EPI2003158|NA|A/Togo/0196/2022|EPI_ISL_11495690|A_/_H1N1                                    78.41%    passed     63.60%
+ 408  EPI2772753|NA|A/Togo/0668/2023|EPI_ISL_18374411|A_/_H1N1                                    78.41%    passed     55.84%
+ 409  EPI1882072|NA|A/Togo/0298/2021|EPI_ISL_2918683|A_/_H1N1                                     78.41%    passed     66.06%
+ 410  EPI2955418|NA|A/Togo/1514/2023|EPI_ISL_18812026|A_/_H1N1                                    78.76%    passed     71.70%
+ 411  EPI2003048|NA|A/Togo/1410/2021|EPI_ISL_11495651|A_/_H1N1                                    78.41%    passed     63.40%
+ 412  EPI2003091|NA|A/Togo/1134/2021|EPI_ISL_11495667|A_/_H1N1                                    78.41%    passed     63.40%
+ 413  EPI2620020|NA|A/Togo/414/2023|EPI_ISL_17981225|A_/_H1N1                                     78.41%    passed     59.04%
+ 414  EPI2620152|NA|A/Togo/426/2023|EPI_ISL_17981243|A_/_H1N1                                     78.41%    passed     57.09%
+ 415  EPI1877299|NA|A/Togo/0086/2021|EPI_ISL_2625830|A_/_H1N1                                     78.41%    passed     68.52%
+ 416  EPI2619689|NA|A/Togo/491/2023|EPI_ISL_17981184|A_/_H1N1                                     78.41%    passed     58.12%
+ 417  EPI2620084|NA|A/Togo/262/2023|EPI_ISL_17981233|A_/_H1N1                                     78.41%    passed     58.12%
+ 418  EPI1882182|NA|A/Togo/0312/2021|EPI_ISL_2918697|A_/_H1N1                                     78.41%    passed     73.59%
+ 419  EPI2772828|NA|A/Togo/0706/2023|EPI_ISL_18374420|A_/_H1N1                                    78.41%    passed     59.04%
+ 420  EPI1877337|NA|A/Togo/0165/2021|EPI_ISL_2625835|A_/_H1N1                                     78.41%    passed     71.85%
+ 421  EPI2620128|NA|A/Togo/508/2023|EPI_ISL_17981240|A_/_H1N1                                     78.41%    passed     59.28%
+ 422  EPI1987608|NA|A/Togo/44/2021|EPI_ISL_10332511|A_/_H1N1                                      78.73%    passed     79.39%
+ 423  EPI2955778|NA|A/Togo/1325/2023|EPI_ISL_18812078|A_/_H1N1                                    78.76%    passed     71.70%
+ 424  EPI5124188|NA|A/Togo/1719/2025|EPI_ISL_20359304|A_/_H1N1                                    78.42%    passed     60.85%
+ 425  EPI1882135|NA|A/Togo/0242/2021|EPI_ISL_2918691|A_/_H1N1                                     78.41%    passed     67.90%
+ 426  EPI1877235|NA|A/Togo/0155/2021|EPI_ISL_2625822|A_/_H1N1                                     78.44%    passed     69.62%
+ 427  EPI1877455|NA|A/Togo/0153/2021|EPI_ISL_2625851|A_/_H1N1                                     78.41%    passed     67.90%
+ 428  EPI2620225|NA|A/Togo/410/2023|EPI_ISL_17981252|A_/_H1N1                                     78.41%    passed     61.41%
+ 429  EPI1488451|NA|A/Togo/395/2019|EPI_ISL_364141|A_/_H1N1                                       78.41%    passed     62.85%
+ 430  EPI1882057|NA|A/Togo/0256/2021|EPI_ISL_2918681|A_/_H1N1                                     78.41%    passed     70.68%
+ 431  EPI1882309|NA|A/Togo/0257/2021|EPI_ISL_2918713|A_/_H1N1                                     78.39%    passed     64.04%
+ 432  EPI2955744|NA|A/Togo/1582/2023|EPI_ISL_18812073|A_/_H1N1                                    78.76%    passed     60.80%
+ 433  EPI2772874|NA|A/Togo/0580/2023|EPI_ISL_18374426|A_/_H1N1                                    78.41%    passed     51.12%
+ 434  EPI2756757|NA|A/Senegal/1444/2023|EPI_ISL_18301283|A_/_H1N1                                 78.42%    passed     59.67%
+ 435  EPI2794210|NA|A/Senegal/1855/2023|EPI_ISL_18510221|A_/_H1N1                                 78.95%    passed     70.72%
+ 436  EPI2671778|NA|A/Senegal/1117/2023|EPI_ISL_18076290|A_/_H1N1                                 78.76%    passed     72.15%
+ 437  EPI4617102|NA|A/Senegal/IPD-1958/2025|EPI_ISL_20131464|A_/_H1N1                             78.41%    passed     62.39%
+ 438  EPI2596133|NA|A/Senegal/MagalIR21/2021|EPI_ISL_17805827|A_/_H1N1                            80.17%    passed     96.33%
+ 439  EPI4496544|NA|A/Senegal/IPD-1526/2025|EPI_ISL_20066942|A_/_H1N1                             78.53%    passed     58.42%
+ 440  EPI2756741|NA|A/Senegal/1442/2023|EPI_ISL_18301280|A_/_H1N1                                 78.88%    passed     67.18%
+ 441  EPI4791697|NA|A/Senegal/IPD-2891/2025|EPI_ISL_20246867|A_/_H1N1                             78.50%    passed     66.24%
+ 442  EPI4590799|NA|A/Senegal/IPD-1825/2025|EPI_ISL_20096836|A_/_H1N1                             78.42%    passed     44.73%
+ 443  EPI2756370|NA|A/Senegal/1427/2023|EPI_ISL_18300252|A_/_H1N1                                 78.41%    passed     65.62%
+ 444  EPI4590881|NA|A/Senegal/IPD-1640/2025|EPI_ISL_20096947|A_/_H1N1                             78.41%    passed     50.87%
+ 445  EPI4590782|NA|A/Senegal/IPD-1644/2025|EPI_ISL_20096833|A_/_H1N1                             78.41%    passed     49.29%
+ 446  EPI2756354|NA|A/Senegal/1425/2023|EPI_ISL_18300250|A_/_H1N1                                 78.41%    passed     51.17%
+ 447  EPI2747640|NA|A/Senegal/1306/2023|EPI_ISL_18282711|A_/_H1N1                                 78.41%    passed     58.12%
+ 448  EPI2756047|NA|A/Senegal/1387/2023|EPI_ISL_18294842|A_/_H1N1                                 78.71%    passed     66.76%
+ 449  EPI2756346|NA|A/Senegal/1423/2023|EPI_ISL_18300249|A_/_H1N1                                 78.41%    passed     61.41%
+ 450  EPI2747576|NA|A/Senegal/1273/2023|EPI_ISL_18282091|A_/_H1N1                                 78.41%    passed     58.12%
+ 451  EPI733881|NA|A/Zambia/04-00308/2015|EPI_ISL_216453|A_/_H1N1                                 78.76%    passed     75.06%
+ 452  EPI2191798|NA|A/Zambia/4463/2022|EPI_ISL_15286649|A_/_H1N1                                  78.41%    passed     64.96%
+ 453  EPI756134|NA|A/Zambia/38/2015|EPI_ISL_220969|A_/_H1N1                                       78.42%    passed     67.21%
+ 454  EPI2901573|NA|A/Zambia/4138/2023|EPI_ISL_18742645|A_/_H1N1                                  78.41%    passed     60.24%
+ 455  EPI3231445|NA|A/Zambia/A_Zambia-PERCH_002_2013/2013|EPI_ISL_19072316|A_/_H1N1               78.76%    passed     82.23%
+ 456  EPI3576700|NA|A/Zambia/11-NIC-628/2024|EPI_ISL_19388926|A_/_H1N1                            78.77%    passed     69.43%
+ 457  EPI4935901|NA|A/Zambia/07-NIC-930/2025|EPI_ISL_20305201|A_/_H1N1                            78.76%    passed     69.05%
+ 458  EPI5154625|NA|A/Zambia/0950/2025|EPI_ISL_20367042|A_/_H1N1                                  78.41%    passed     52.27%
+ 459  EPI3792971|NA|A/Zambia/100384/2024|EPI_ISL_19667822|A_/_H1N1                                78.41%    passed     59.04%
+ 460  EPI672733|NA|A/Zambia/01-00118/2015|EPI_ISL_201782|A_/_H1N1                                 78.76%    passed     82.27%
+ 461  EPI5225815|NA|A/Zambia/06-NIC-071/2026|EPI_ISL_20387989|A_/_H1N1                            78.76%    passed     71.48%
+ 462  EPI5154656|NA|A/Zambia/0902/2025|EPI_ISL_20367046|A_/_H1N1                                  78.41%    passed     55.22%
+ 463  EPI2002953|NA|A/Zambia/0390/2021|EPI_ISL_11495607|A_/_H1N1                                  78.41%    passed     55.03%
+ 464  EPI3458742|NA|A/Zambia/0109/2024|EPI_ISL_19284401|A_/_H1N1                                  78.41%    passed     59.04%
+ 465  EPI5154679|NA|A/Zambia/0909/2025|EPI_ISL_20367049|A_/_H1N1                                  78.39%    passed     53.43%
+ 466  EPI2194080|NA|A/Zambia/9265/2022|EPI_ISL_15393506|A_/_H1N1                                  78.39%    passed     51.91%
+ 467  EPI756087|NA|A/Zambia/0426/2015|EPI_ISL_220963|A_/_H1N1                                     78.41%    passed     60.23%
+ 468  EPI3759178|NA|A/Zambia/0607/2024|EPI_ISL_19647001|A_/_H1N1                                  78.39%    passed     54.21%
+ 469  EPI3792992|NA|A/Zambia/400127/2024|EPI_ISL_19667826|A_/_H1N1                                78.41%    passed     52.51%
+ 470  EPI5180131|NA|A/Zambia/0888/2025|EPI_ISL_20373701|A_/_H1N1                                  78.41%    passed     52.53%
+ 471  EPI4936845|NA|A/Zambia/08-NIC-311/2025|EPI_ISL_20305695|A_/_H1N1                            78.76%    passed     71.23%
+ 472  EPI5180067|NA|A/Zambia/0895/2025|EPI_ISL_20373693|A_/_H1N1                                  78.41%    passed     55.22%
+ 473  EPI3624818|NA|A/Zambia/01-NIC-506/2024|EPI_ISL_19510888|A_/_H1N1                            78.82%    passed     80.47%
+ 474  EPI3759269|NA|A/Zambia/0150/2024|EPI_ISL_19647014|A_/_H1N1                                  78.41%    passed     64.54%
+ 475  EPI3577115|NA|A/Zambia/15-NIC-173/2024|EPI_ISL_19388939|A_/_H1N1                            78.76%    passed     75.35%
+ 476  EPI2003006|NA|A/Zambia/0129/2021|EPI_ISL_11495636|A_/_H1N1                                  78.41%    passed     61.12%
+ 477  EPI2901543|NA|A/Zambia/1139/2023|EPI_ISL_18742641|A_/_H1N1                                  78.41%    passed     60.10%
+ 478  EPI3759336|NA|A/Zambia/0636/2024|EPI_ISL_19647023|A_/_H1N1                                  78.41%    passed     59.04%
+ 479  EPI672720|NA|A/Zambia/06-00039/2015|EPI_ISL_201779|A_/_H1N1                                 78.76%    passed     78.88%
+ 480  EPI672732|NA|A/Zambia/01-00118/2015|EPI_ISL_201782|A_/_H1N1                                 78.76%    passed     82.27%
+ 481  EPI3354923|NA|A/South_Africa/R03580/2024|EPI_ISL_19182603|A_/_H1N1                          78.76%    passed     76.24%
+ 482  EPI3606789|NA|A/South_Africa/R04162/2024|EPI_ISL_19493757|A_/_H1N1                          78.76%    passed     72.74%
+ 483  EPI2098635|NA|A/South_Africa/R05880/2022|EPI_ISL_13957805|A_/_H1N1                          78.76%    passed     61.61%
+ 484  EPI1794792|NA|A/South_Africa/6188/2020|EPI_ISL_508578|A_/_H1N1                              78.76%    passed     69.05%
+ 485  EPI3375350|NA|A/South_Africa/NHLS-SU-K062068/2024|EPI_ISL_19203483|A_/_H1N1                 78.76%    passed     81.41%
+ 486  EPI3066985|NA|A/South_Africa/R08368/2022|EPI_ISL_18931205|A_/_H1N1                          78.76%    passed     57.24%
+ 487  EPI3501627|NA|A/South_Africa/PATH-CERI-K062643/2024|EPI_ISL_19330680|A_/_H1N1               78.76%    passed     67.87%
+ 488  EPI3529229|NA|A/South_Africa/PATH-CERI-K062950/2024|EPI_ISL_19374088|A_/_H1N1               78.77%    passed     82.60%
+ 489  EPI3511046|NA|A/South_Africa/PET32930/2024|EPI_ISL_19342178|A_/_H1N1                        78.70%    passed     65.89%
+ 490  EPI2122024|NA|A/South_Africa/R05220/2022|EPI_ISL_14333153|A_/_H1N1                          78.76%    passed     79.36%
+ 491  EPI3511350|NA|A/South_Africa/R04900/2024|EPI_ISL_19342778|A_/_H1N1                          78.76%    passed     77.24%
+ 492  EPI1085324|NA|A/South_Africa/R07347/2017|EPI_ISL_282776|A_/_H1N1                            78.41%    passed     65.62%
+ 493  EPI1794778|NA|A/South_Africa/3796/2020|EPI_ISL_508571|A_/_H1N1                              78.76%    passed     82.25%
+ 494  EPI3510933|NA|A/South_Africa/PET32788/2024|EPI_ISL_19342148|A_/_H1N1                        78.44%    passed     60.90%
+ 495  EPI3510993|NA|A/South_Africa/PET32862/2024|EPI_ISL_19342166|A_/_H1N1                        79.34%    passed     48.18%
+ 496  EPI3511004|NA|A/South_Africa/PET32871/2024|EPI_ISL_19342170|A_/_H1N1                        78.45%    passed     59.17%
+ 497  EPI3363506|NA|A/South_Africa/NHLS-UCT-K061954/2024|EPI_ISL_19193862|A_/_H1N1                78.76%    passed     68.96%
+ 498  EPI3362818|NA|A/South_Africa/NHLS-UCT-K061934/2024|EPI_ISL_19193040|A_/_H1N1                78.76%    passed     75.68%
+ 499  EPI2122058|NA|A/South_Africa/R05509/2022|EPI_ISL_14333256|A_/_H1N1                          78.76%    passed     79.36%
+ 500  EPI3509218|NA|A/South_Africa/PET32527/2024|EPI_ISL_19340933|A_/_H1N1                        78.41%    passed     64.28%
+ 501  EPI3481904|NA|A/South_Africa/R05462/2024|EPI_ISL_19302698|A_/_H1N1                          78.76%    passed     67.80%
+ 502  EPI3509111|NA|A/South_Africa/PET33111/2024|EPI_ISL_19340914|A_/_H1N1                        78.44%    passed     56.91%
+ 503  EPI3511326|NA|A/South_Africa/R04895/2024|EPI_ISL_19342775|A_/_H1N1                          78.76%    passed     72.74%
+ 504  EPI815192|NA|A/South_Africa/3519/2016|EPI_ISL_230461|A_/_H1N1                               78.41%    passed     75.77%
+ 505  EPI1984155|NA|A/South_Africa/14342/2021|EPI_ISL_9713675|A_/_H1N1                            78.76%    passed     81.60%
+ 506  EPI3509251|NA|A/South_Africa/PET32588/2024|EPI_ISL_19340938|A_/_H1N1                        78.44%    passed     62.78%
+ 507  EPI3066622|NA|A/South_Africa/R05714/2022|EPI_ISL_18931156|A_/_H1N1                          78.76%    passed     61.61%
+ 508  EPI5163114|NA|A/South_Africa/PATH-CERI-C073352/2025|EPI_ISL_20369711|A_/_H1N1               81.05%    passed     81.74%
+ 509  EPI3511153|NA|A/South_Africa/PET33137/2024|EPI_ISL_19342197|A_/_H1N1                        78.44%    passed     48.28%
+ 510  EPI3511358|NA|A/South_Africa/R04924/2024|EPI_ISL_19342779|A_/_H1N1                          78.76%    passed     68.32%
+ 511  EPI3317826|NA|A/South_Africa/K061721/2024|EPI_ISL_19156876|A_/_H1N1                         78.76%    passed     82.64%
+ 512  EPI2774394|NA|A/South_Africa/R15629/2021|EPI_ISL_18385069|A_/_H1N1                          78.76%    passed     83.24%
+ 513  EPI1270707|NA|A/South_Africa/R08028/2018|EPI_ISL_320601|A_/_H1N1                            78.44%    passed     63.80%
+ 514  EPI1970751|NA|A/South_Africa/R16451/2021|EPI_ISL_9402285|A_/_H1N1                           78.76%    passed     81.60%
+ 515  EPI3066673|NA|A/South_Africa/R07360/2018|EPI_ISL_18931163|A_/_H1N1                          78.76%    passed     75.35%
+ 516  EPI4824518|NA|A/South_Africa/8588/2025|EPI_ISL_20262155|A_/_H1N1                            78.41%    passed     64.86%
+ 517  EPI3362850|NA|A/South_Africa/NHLS-UCT-K061942/2024|EPI_ISL_19193050|A_/_H1N1                78.79%    passed     73.84%
+ 518  EPI2312247|NA|A/South_Africa/R07375/2022|EPI_ISL_16646092|A_/_H1N1                          78.47%    passed     67.85%
+ 519  EPI5163087|NA|A/South_Africa/PATH-CERI-C073345/2025|EPI_ISL_20369707|A_/_H1N1               78.76%    passed     70.87%
+ 520  EPI3532936|NA|A/South_Africa/NHLS-UCT-CERI-K062305/2024|EPI_ISL_19378052|A_/_H1N1           78.76%    passed     75.68%
+ 521  EPI684385|NA|A/South_Africa/4030/2015|EPI_ISL_205294|A_/_H1N1                               78.76%    passed     82.22%
+ 522  EPI3510748|NA|A/South_Africa/PET32541/2024|EPI_ISL_19342109|A_/_H1N1                        78.44%    passed     58.45%
+ 523  EPI3533073|NA|A/South_Africa/NHLS-UCT-CERI-K062326/2024|EPI_ISL_19378358|A_/_H1N1           78.76%    passed     78.88%
+ 524  EPI466635|NA|A/South_Africa/826/2013|EPI_ISL_145451|A_/_H1N1                                78.76%    passed     84.05%
+ 525  EPI3827179|NA|A/South_Africa/R04822/2024|EPI_ISL_19680470|A_/_H1N1                          78.76%    passed     72.74%
+ 526  EPI3352140|NA|A/South_Africa/K061894/2024|EPI_ISL_19176366|A_/_H1N1                         78.76%    passed     73.20%
+ 527  EPI3317842|NA|A/South_Africa/K061724/2024|EPI_ISL_19156878|A_/_H1N1                         78.76%    passed     75.68%
+ 528  EPI3372091|NA|A/South_Africa/NHLS-SU-K062060/2024|EPI_ISL_19201744|A_/_H1N1                 78.77%    passed     84.39%
+ 529  EPI466623|NA|A/South_Africa/2360/2013|EPI_ISL_145445|A_/_H1N1                               78.76%    passed     84.34%
+ 530  EPI1796642|NA|A/South_Africa/3973/2020|EPI_ISL_513924|A_/_H1N1                              78.76%    passed     69.05%
+ 531  EPI3317834|NA|A/South_Africa/K061723/2024|EPI_ISL_19156877|A_/_H1N1                         78.76%    passed     65.54%
+ 532  EPI4946641|NA|A/South_Africa/RE334578/2023|EPI_ISL_20308131|A_/_H1N1                        78.76%    passed     75.35%
+ 533  EPI1970739|NA|A/South_Africa/R14500/2021|EPI_ISL_9402279|A_/_H1N1                           78.76%    passed     83.24%
+ 534  EPI830388|NA|A/South_Africa/5140/2016|EPI_ISL_233063|A_/_H1N1                               78.41%    passed     75.77%
+ 535  EPI5007147|NA|A/South_Africa/1191/2025|EPI_ISL_20328054|A_/_H1N1                            78.41%    passed     67.61%
+ 536  EPI4984381|NA|A/South_Africa/PATH-CERI-C072385/2025|EPI_ISL_20320210|A_/_H1N1               78.76%    passed     59.33%
+ 537  EPI3474773|NA|A/South_Africa/3989/2024|EPI_ISL_19298964|A_/_H1N1                            78.41%    passed     59.04%
+ 538  EPI4984444|NA|A/South_Africa/PATH-CERI-C073141/2025|EPI_ISL_20320308|A_/_H1N1               78.76%    passed     59.33%
+ 539  EPI3529531|NA|A/South_Africa/NHLS-SU-CERI-K062115/2024|EPI_ISL_19374893|A_/_H1N1            78.79%    passed     76.91%
+ 540  EPI3481637|NA|A/South_Africa/R04384/2024|EPI_ISL_19302664|A_/_H1N1                          78.76%    passed     74.61%
+ 541  EPI3502133|NA|A/South_Africa/PATH-CERI-K062712/2024|EPI_ISL_19331246|A_/_H1N1               78.76%    passed     77.88%
+ 542  EPI4190454|NA|A/South_Africa/PATH-CERI-C066227/2025|EPI_ISL_19805928|A_/_H1N1               78.76%    passed     68.32%
+ 543  EPI4628631|NA|A/South_Africa/PET37240/2025|EPI_ISL_20139010|A_/_H1N1                        78.42%    passed     51.97%
+ 544  EPI2915197|NA|A/South_Africa/R07216/2018|EPI_ISL_18765097|A_/_H1N1                          78.79%    passed     78.87%
+ 545  EPI4984428|NA|A/South_Africa/PATH-CERI-C072988/2025|EPI_ISL_20320219|A_/_H1N1               78.76%    passed     79.70%
+ 546  EPI3510812|NA|A/South_Africa/PET32687/2024|EPI_ISL_19342123|A_/_H1N1                        78.44%    passed     54.45%
+ 547  EPI1279580|NA|A/South_Africa/R07338/2018|EPI_ISL_322329|A_/_H1N1                            78.74%    passed     71.88%
+ 548  EPI2159218|NA|A/South_Africa/R05948/2022|EPI_ISL_14870879|A_/_H1N1                          78.39%    passed     47.62%
+ 549  EPI3363538|NA|A/South_Africa/NHLS-UCT-K061958/2024|EPI_ISL_19193869|A_/_H1N1                78.76%    passed     75.68%
+ 550  EPI3532988|NA|A/South_Africa/NHLS-UCT-CERI-K062311/2024|EPI_ISL_19378235|A_/_H1N1           78.76%    passed     77.88%
+ 551  EPI3509489|NA|A/South_Africa/PET32921/2024|EPI_ISL_19340985|A_/_H1N1                        78.44%    passed     56.91%
+ 552  EPI5163100|NA|A/South_Africa/PATH-CERI-C073349/2025|EPI_ISL_20369709|A_/_H1N1               79.33%    passed     84.16%
+ 553  EPI672767|NA|A/South_Africa/R3168/2015|EPI_ISL_201790|A_/_H1N1                              78.76%    passed     80.22%
+ 554  EPI3827252|NA|A/South_Africa/R05602/2024|EPI_ISL_19680541|A_/_H1N1                          78.76%    passed     72.74%
+ 555  EPI2915176|NA|A/South_Africa/R06205/2020|EPI_ISL_18765094|A_/_H1N1                          78.76%    passed     80.34%
+ 556  EPI4976317|NA|A/South_Africa/PATH-CERI-C072336/2025|EPI_ISL_20316744|A_/_H1N1               78.76%    passed     76.77%
+ 557  EPI3509428|NA|A/South_Africa/PET32795/2024|EPI_ISL_19340971|A_/_H1N1                        78.42%    passed     63.47%
+ 558  EPI3474749|NA|A/South_Africa/4375/2024|EPI_ISL_19298961|A_/_H1N1                            78.41%    passed     64.96%
+ 559  EPI3362901|NA|A/South_Africa/NHLS-UCT-K061949/2024|EPI_ISL_19193057|A_/_H1N1                78.76%    passed     74.93%
+ 560  EPI2186727|NA|A/South_Africa/522/2014|EPI_ISL_15146283|A_/_H1N1                             78.63%    passed     78.39%
+ 561  EPI4764458|NA|A/South_Africa/NICD-R08958/2025|EPI_ISL_20226588|A_/_H1N1                     78.76%    passed     74.24%
+ 562  EPI2773842|NA|A/South_Africa/R03645/2022|EPI_ISL_18384958|A_/_H1N1                          78.76%    passed     83.97%
+ 563  EPI3354782|NA|A/South_Africa/R03481/2024|EPI_ISL_19182585|A_/_H1N1                          78.76%    passed     77.68%
+ 564  EPI3827156|NA|A/South_Africa/R04756/2024|EPI_ISL_19680467|A_/_H1N1                          78.76%    passed     79.57%
+ 565  EPI2122046|NA|A/South_Africa/R05701/2022|EPI_ISL_14333250|A_/_H1N1                          78.76%    passed     61.61%
+ 566  EPI3354692|NA|A/South_Africa/R03366/2024|EPI_ISL_19182573|A_/_H1N1                          78.76%    passed     70.80%
+ 567  EPI2111624|NA|A/South_Africa/R05765/2022|EPI_ISL_14115616|A_/_H1N1                          78.76%    passed     57.24%
+ 568  EPI2915189|NA|A/South_Africa/R06854/2018|EPI_ISL_18765096|A_/_H1N1                          78.76%    passed     77.34%
+ 569  EPI3511318|NA|A/South_Africa/R04870/2024|EPI_ISL_19342774|A_/_H1N1                          78.82%    passed     70.46%
+ 570  EPI3499662|NA|A/South_Africa/PATH-CERI-K062634/2024|EPI_ISL_19330429|A_/_H1N1               78.76%    passed     67.43%
+ 571  EPI3354737|NA|A/South_Africa/R03443/2024|EPI_ISL_19182579|A_/_H1N1                          78.76%    passed     70.80%
+ 572  EPI3507667|NA|A/South_Africa/R03879/2024|EPI_ISL_19338107|A_/_H1N1                          78.76%    passed     63.45%
+ 573  EPI3491313|NA|A/South_Africa/R04056/2024|EPI_ISL_19321910|A_/_H1N1                          78.76%    passed     73.70%
+ 574  EPI3066655|NA|A/South_Africa/R05858/2018|EPI_ISL_18931160|A_/_H1N1                          78.76%    passed     77.34%
+ 575  EPI4843202|NA|A/South_Africa/PATH-CERI-C071094/2025|EPI_ISL_20268438|A_/_H1N1               78.76%    passed     62.52%
+ 576  EPI2159226|NA|A/South_Africa/R07390/2022|EPI_ISL_14870880|A_/_H1N1                          78.41%    passed     71.21%
+ 577  EPI1794760|NA|A/South_Africa/2476/2020|EPI_ISL_508562|A_/_H1N1                              78.76%    passed     74.22%
+ 578  EPI3509460|NA|A/South_Africa/PET32890/2024|EPI_ISL_19340980|A_/_H1N1                        78.44%    passed     56.91%
+ 579  EPI4450690|NA|A/South_Africa/PATH-CERI-C068633/2025|EPI_ISL_20048108|A_/_H1N1               78.76%    passed     76.24%
+ 580  EPI3066489|NA|A/South_Africa/R04592/2022|EPI_ISL_18931138|A_/_H1N1                          78.76%    passed     65.17%
+ 581  EPI1796639|NA|A/South_Africa/6187/2020|EPI_ISL_513923|A_/_H1N1                              78.76%    passed     71.48%
+ 582  EPI1796630|NA|A/South_Africa/2475/2020|EPI_ISL_513920|A_/_H1N1                              78.76%    passed     74.22%
+ 583  EPI3481677|NA|A/South_Africa/R04503/2024|EPI_ISL_19302669|A_/_H1N1                          78.76%    passed     72.74%
+ 584  EPI2915311|NA|A/South_Africa/R08507/2018|EPI_ISL_18765112|A_/_H1N1                          78.76%    passed     72.74%
+ 585  EPI3226977|NA|A/South_Africa/R01204/2024|EPI_ISL_19067161|A_/_H1N1                          78.76%    passed     72.01%
+ 586  EPI3510583|NA|A/South_Africa/PET32391/2024|EPI_ISL_19342082|A_/_H1N1                        78.44%    passed     59.94%
+ 587  EPI562002|NA|A/South_Africa/3599/2014|EPI_ISL_171814|A_/_H1N1                               78.73%    passed     77.67%
+ 588  EPI3532970|NA|A/South_Africa/NHLS-UCT-CERI-K062308/2024|EPI_ISL_19378057|A_/_H1N1           78.76%    passed     75.68%
+ 589  EPI1274943|NA|A/South_Africa/VW0429/2018|EPI_ISL_321474|A_/_H1N1                            78.44%    passed     63.80%
+ 590  EPI4843271|NA|A/South_Africa/PATH-CERI-C071471/2025|EPI_ISL_20268492|A_/_H1N1               80.29%    passed     80.58%
+ 591  EPI1270719|NA|A/South_Africa/VW0454/2018|EPI_ISL_320605|A_/_H1N1                            78.44%    passed     58.78%
+ 592  EPI684377|NA|A/South_Africa/4909/2015|EPI_ISL_205293|A_/_H1N1                               78.76%    passed     81.05%
+ 593  EPI3511334|NA|A/South_Africa/R04896/2024|EPI_ISL_19342776|A_/_H1N1                          78.76%    passed     75.53%
+ 594  EPI3372101|NA|A/South_Africa/NHLS-SU-K062061/2024|EPI_ISL_19201867|A_/_H1N1                 78.77%    passed     80.91%
+ 595  EPI4190397|NA|A/South_Africa/PATH-CERI-C066241/2025|EPI_ISL_19805921|A_/_H1N1               78.77%    passed     68.48%
+ 596  EPI1970733|NA|A/South_Africa/R13999/2021|EPI_ISL_9402276|A_/_H1N1                           78.77%    passed     81.38%
+ 597  EPI3231787|NA|A/South_Africa/A_South-Africa-PERCH_034_2013/2013|EPI_ISL_19072396|A_/_H1N1   78.76%    passed     84.34%
+ 598  EPI1316178|NA|A/South_Africa/7667/2018|EPI_ISL_330844|A_/_H1N1                              78.39%    passed     63.16%
+ 599  EPI3533132|NA|A/South_Africa/NHLS-SU-CERI-K062368/2024|EPI_ISL_19378365|A_/_H1N1            78.76%    passed     74.93%
+ 600  EPI3533191|NA|A/South_Africa/NHLS-SU-CERI-K062364/2024|EPI_ISL_19378417|A_/_H1N1            78.76%    passed     68.51%
+ 601  EPI4843263|NA|A/South_Africa/PATH-CERI-C071474/2025|EPI_ISL_20268489|A_/_H1N1               78.76%    passed     59.33%
+ 602  EPI3066964|NA|A/South_Africa/R06809/2018|EPI_ISL_18931202|A_/_H1N1                          78.76%    passed     77.68%
+ 603  EPI1970699|NA|A/South_Africa/R16454/2021|EPI_ISL_9402259|A_/_H1N1                           78.76%    passed     79.70%
+ 604  EPI466617|NA|A/South_Africa/2118/2013|EPI_ISL_145442|A_/_H1N1                               78.76%    passed     82.24%
+ 605  EPI3511428|NA|A/South_Africa/R05929/2024|EPI_ISL_19342820|A_/_H1N1                          78.76%    passed     76.77%
+ 606  EPI286987|NA|A/CapeTown/29/2010|EPI_ISL_81324|A_/_H1N1                                      78.76%    passed     85.54%
+ 607  EPI229427|NA|A/KwaZulu_Natal/272/2008|EPI_ISL_65639|A_/_H1N1                                78.71%    passed     52.56%
+ 608  EPI1449724|NA|A/Johannesburg/R7128/18/2018|EPI_ISL_358160|A_/_H1N1                          78.76%    passed     84.71%
+ 609  EPI1449702|NA|A/Johannesburg/R5856/18/2018|EPI_ISL_358138|A_/_H1N1                          78.76%    passed     77.34%
+ 610  EPI1449729|NA|A/Johannesburg/R7235/18/2018|EPI_ISL_358165|A_/_H1N1                          78.76%    passed     74.97%
+ 611  EPI1449750|NA|A/Johannesburg/R7964/18/2018|EPI_ISL_358186|A_/_H1N1                          78.76%    passed     75.35%
+ 612  EPI1449735|NA|A/Johannesburg/R7659/18/2018|EPI_ISL_358171|A_/_H1N1                          78.76%    passed     77.68%
+ 613  EPI13060|NA|A/Johannesburg/82/96|EPI_ISL_2662|A_/_H1N1                                      78.02%    passed     55.34%
+ 614  EPI508982|NA|A/Johannesburg/39/2008|EPI_ISL_157247|A_/_H1N1                                 78.71%    passed     46.25%
+ 615  EPI1449698|NA|A/Johannesburg/R5832/18/2018|EPI_ISL_358134|A_/_H1N1                          78.76%    passed     74.97%
+ 616  EPI1449711|NA|A/Johannesburg/R6441/18/2018|EPI_ISL_358147|A_/_H1N1                          78.76%    passed     73.65%
+ 617  EPI1449713|NA|A/Johannesburg/R6632/18/2018|EPI_ISL_358149|A_/_H1N1                          78.76%    passed     77.68%
+ 618  EPI1449693|NA|A/Johannesburg/R4226/17/2017|EPI_ISL_358129|A_/_H1N1                          78.76%    passed     80.26%
+ 619  EPI4631974|NA|A/Burkina_Faso/5569/2025|EPI_ISL_20141114|A_/_H1N1                            78.41%    passed     50.87%
+ 620  EPI2598069|NA|A/Burkina_Faso/2970/2023|EPI_ISL_17806107|A_/_H1N1                            78.41%    passed     53.81%
+ 621  EPI1088463|NA|A/Burkina_Faso/066/2017|EPI_ISL_283212|A_/_H1N1                               78.39%    passed     75.51%
+ 622  EPI5006771|NA|A/Burkina_Faso/3035/2025|EPI_ISL_20328007|A_/_H1N1                            78.42%    passed     45.27%
+ 623  EPI4631958|NA|A/Burkina_Faso/2957/2025|EPI_ISL_20141112|A_/_H1N1                            78.41%    passed     47.77%
+ 624  EPI3608227|NA|A/Burkina_Faso/256/2024|EPI_ISL_19495407|A_/_H1N1                             78.41%    passed     58.12%
+ 625  EPI482168|NA|A/Burkina_Faso/875/2013|EPI_ISL_149349|A_/_H1N1                                78.76%    passed     89.34%
+ 626  EPI2598258|NA|A/Burkina_Faso/2718/2023|EPI_ISL_17806131|A_/_H1N1                            78.41%    passed     58.12%
+ 627  EPI1313786|NA|A/Burkina_Faso/906/2018|EPI_ISL_330390|A_/_H1N1                               78.39%    passed     67.30%
+ 628  EPI397724|NA|A/Burkina_Faso/026/2012|EPI_ISL_129701|A_/_H1N1                                78.76%    passed     83.77%
+ 629  EPI2597975|NA|A/Burkina_Faso/1723/2023|EPI_ISL_17806094|A_/_H1N1                            78.42%    passed     55.37%
+ 630  EPI1313661|NA|A/Burkina_Faso/833/2018|EPI_ISL_330374|A_/_H1N1                               78.39%    passed     64.06%
+ 631  EPI2598350|NA|A/Burkina_Faso/3021/2023|EPI_ISL_17806142|A_/_H1N1                            78.41%    passed     61.41%
+ 632  EPI1313716|NA|A/Burkina_Faso/848/2018|EPI_ISL_330381|A_/_H1N1                               78.41%    passed     70.71%
+ 633  EPI1088431|NA|A/Burkina_Faso/007/2017|EPI_ISL_283208|A_/_H1N1                               78.39%    passed     72.26%
+ 634  EPI2598501|NA|A/Burkina_Faso/030/2023|EPI_ISL_17806161|A_/_H1N1                             78.41%    passed     58.12%
+ 635  EPI2598433|NA|A/Burkina_Faso/1662/2023|EPI_ISL_17806152|A_/_H1N1                            78.41%    passed     55.84%
+ 636  EPI1313778|NA|A/Burkina_Faso/885/2018|EPI_ISL_330389|A_/_H1N1                               78.41%    passed     64.54%
+ 637  EPI1175773|NA|A/Tanzania/2426/2017|EPI_ISL_298528|A_/_H1N1                                  78.41%    passed     72.61%
+ 638  EPI418144|NA|A/Tanzania/2074/2012|EPI_ISL_134833|A_/_H1N1                                   78.77%    passed     82.44%
+ 639  EPI1175669|NA|A/Tanzania/4757/2017|EPI_ISL_298515|A_/_H1N1                                  78.41%    passed     76.55%
+ 640  EPI422638|NA|A/Tanzania/332/2012|EPI_ISL_135828|A_/_H1N1                                    78.76%    passed     82.85%
+ 641  EPI716158|NA|A/Tanzania/3884/2015|EPI_ISL_213141|A_/_H1N1                                   78.41%    passed     63.61%
+ 642  EPI827727|NA|A/Tanzania/2192/2016|EPI_ISL_232603|A_/_H1N1                                   78.41%    passed     68.36%
+ 643  EPI422641|NA|A/Tanzania/340/2012|EPI_ISL_135829|A_/_H1N1                                    78.76%    passed     83.20%
+ 644  EPI1017751|NA|A/Tanzania/1783/2017|EPI_ISL_268456|A_/_H1N1                                  78.41%    passed     66.80%
+ 645  EPI217169|NA|A/Tanzania/381/2009|EPI_ISL_62328|A_/_H1N1                                     78.76%    passed     87.43%
+ 646  EPI827743|NA|A/Tanzania/2226/2016|EPI_ISL_232605|A_/_H1N1                                   78.41%    passed     62.50%
+ 647  EPI1207405|NA|A/Congo/600/2017|EPI_ISL_305254|A_/_H1N1                                      78.41%    passed     59.28%
+ 648  EPI1249473|NA|A/Congo/099/2018|EPI_ISL_313596|A_/_H1N1                                      78.42%    passed     72.69%
+ 649  EPI1739299|NA|A/Congo/9756/2019|EPI_ISL_449782|A_/_H1N1                                     78.41%    passed     49.20%
+ 650  EPI4221395|NA|A/Congo/4711/2024|EPI_ISL_19818150|A_/_H1N1                                   78.41%    passed     56.52%
+ 651  EPI4188970|NA|A/Congo/4796/2024|EPI_ISL_19805198|A_/_H1N1                                   78.39%    passed     51.76%
+ 652  EPI1210999|NA|A/Congo/520/2017|EPI_ISL_305940|A_/_H1N1                                      78.41%    passed     62.50%
+ 653  EPI4189038|NA|A/Congo/4852/2024|EPI_ISL_19805207|A_/_H1N1                                   78.41%    passed     58.07%
+ 654  EPI2507162|NA|A/Congo/1892/2022|EPI_ISL_17430499|A_/_H1N1                                   78.41%    passed     58.59%
+ 655  EPI1085244|NA|A/Congo/123/2017|EPI_ISL_282766|A_/_H1N1                                      78.41%    passed     74.99%
+ 656  EPI4189025|NA|A/Congo/4812/2024|EPI_ISL_19805205|A_/_H1N1                                   78.39%    passed     55.98%
+ 657  EPI733218|NA|A/Congo/1939/2015|EPI_ISL_216286|A_/_H1N1                                      78.39%    passed     52.88%
+ 658  EPI3296084|NA|A/Cote_D_Ivoire/0375/2024|EPI_ISL_19141433|A_/_H1N1                           78.41%    passed     65.62%
+ 659  EPI426440|NA|A/Cote_D_Ivoire/1186/2012|EPI_ISL_136463|A_/_H1N1                              78.76%    passed     88.38%
+ 660  EPI4793011|NA|A/Cote_D_Ivoire/2437/2025|EPI_ISL_20247758|A_/_H1N1                           78.41%    passed     42.22%
+ 661  EPI1887904|NA|A/Cote_D_Ivoire/1565/2021|EPI_ISL_3796256|A_/_H1N1                            78.41%    passed     70.01%
+ 662  EPI1885624|NA|A/Cote_D_Ivoire/1040/2021|EPI_ISL_3534831|A_/_H1N1                            78.41%    passed     70.13%
+ 663  EPI1114298|NA|A/Cote_D_Ivoire/961/2017|EPI_ISL_287169|A_/_H1N1                              78.76%    passed     83.72%
+ 664  EPI3296020|NA|A/Cote_D_Ivoire/1060/2024|EPI_ISL_19141425|A_/_H1N1                           78.39%    passed     60.43%
+ 665  EPI1887919|NA|A/Cote_D_Ivoire/1566/2021|EPI_ISL_3796308|A_/_H1N1                            78.41%    passed     70.95%
+ 666  EPI4793019|NA|A/Cote_D_Ivoire/2524/2025|EPI_ISL_20247759|A_/_H1N1                           78.41%    passed     45.26%
+ 667  EPI3728866|NA|A/Cote_D_Ivoire/1061/2024|EPI_ISL_19621761|A_/_H1N1                           78.39%    passed     60.43%
+ 668  EPI791219|NA|A/Cote_D_Ivoire/475/2016|EPI_ISL_227343|A_/_H1N1                               78.76%    passed     76.24%
+ 669  EPI3532238|NA|A/Cote_D_Ivoire/2479/2024|EPI_ISL_19377265|A_/_H1N1                           78.41%    passed     75.54%
+ 670  EPI1885632|NA|A/Cote_D_Ivoire/1901/2021|EPI_ISL_3534832|A_/_H1N1                            78.41%    passed     70.01%
+ 671  EPI4631609|NA|A/Cote_D_Ivoire/1900/2025|EPI_ISL_20141067|A_/_H1N1                           78.41%    passed     50.19%
+ 672  EPI3800468|NA|A/Cote_D_Ivoire/2677/2024|EPI_ISL_19669247|A_/_H1N1                           78.76%    passed     77.62%
+ 673  EPI3532094|NA|A/Cote_D_Ivoire/2393/2024|EPI_ISL_19377247|A_/_H1N1                           78.41%    passed     67.47%
+ 674  EPI1719904|NA|A/Cote_D_Ivoire/2499/2019|EPI_ISL_418616|A_/_H1N1                             78.41%    passed     60.69%
+ 675  EPI2781129|NA|A/Cote_D_Ivoire/2372/2023|EPI_ISL_18451784|A_/_H1N1                           78.41%    passed     61.41%
+ 676  EPI4632355|NA|A/Cote_D_Ivoire/1724/2025|EPI_ISL_20141194|A_/_H1N1                           78.42%    passed     41.30%
+ 677  EPI1114291|NA|A/Cote_D_Ivoire/794/2017|EPI_ISL_287166|A_/_H1N1                              78.76%    passed     84.94%
+ 678  EPI1885496|NA|A/Cote_D_Ivoire/1982/2021|EPI_ISL_3534642|A_/_H1N1                            78.41%    passed     70.01%
+ 679  EPI3187252|NA|A/Cote_D_Ivoire/2553/2023|EPI_ISL_19034560|A_/_H1N1                           78.42%    passed     56.41%
+ 680  EPI1078293|NA|A/Mali/101/2017|EPI_ISL_281585|A_/_H1N1                                       78.39%    passed     75.03%
+ 681  EPI1078514|NA|A/Mali/023/2017|EPI_ISL_281613|A_/_H1N1                                       78.39%    passed     72.26%
+ 682  EPI1078285|NA|A/Mali/099/2017|EPI_ISL_281584|A_/_H1N1                                       78.39%    passed     77.52%
+ 683  EPI1078578|NA|A/Mali/082/2017|EPI_ISL_281621|A_/_H1N1                                       78.39%    passed     75.03%
+ 684  EPI815723|NA|A/Mali/019/2016|EPI_ISL_230529|A_/_H1N1                                        78.41%    passed     75.74%
+ 685  EPI840771|NA|A/Mali/041/2016|EPI_ISL_235012|A_/_H1N1                                        78.42%    passed     61.91%
+ 686  EPI4758172|NA|A/Mali/5130/2025|EPI_ISL_20221393|A_/_H1N1                                    78.41%    passed     50.87%
+ 687  EPI828308|NA|A/Mali/061/2016|EPI_ISL_232678|A_/_H1N1                                        78.41%    passed     66.80%
+ 688  EPI3390382|NA|A/Mali/4014/2024|EPI_ISL_19208875|A_/_H1N1                                    78.41%    passed     54.69%
+ 689  EPI828277|NA|A/Mali/115/2016|EPI_ISL_232674|A_/_H1N1                                        78.41%    passed     69.78%
+ 690  EPI1078586|NA|A/Mali/030/2017|EPI_ISL_281622|A_/_H1N1                                       78.39%    passed     72.26%
+ 691  EPI1078277|NA|A/Mali/032/2017|EPI_ISL_281583|A_/_H1N1                                       78.39%    passed     75.03%
+ 692  EPI1078245|NA|A/Mali/039/2017|EPI_ISL_281579|A_/_H1N1                                       78.39%    passed     75.03%
+ 693  EPI1078562|NA|A/Mali/079/2017|EPI_ISL_281619|A_/_H1N1                                       78.39%    passed     75.03%
+ 694  EPI1757723|NA|A/Mali/145/2019|EPI_ISL_491752|A_/_H1N1                                       78.42%    passed     59.70%
+ 695  EPI211654|NA|A/Mauritius/3KP/2009|EPI_ISL_60872|A_/_H1N1                                    78.76%    passed     84.66%
+ 696  EPI3490163|NA|A/Mauritius/1114714/2024|EPI_ISL_19313768|A_/_H1N1                            78.76%    passed     81.21%
+ 697  EPI2659915|NA|A/Mauritius/P10187_I-14/2023|EPI_ISL_18044282|A_/_H1N1                        78.77%    passed     69.98%
+ 698  EPI1727821|NA|A/Mauritius/I-3030/2019|EPI_ISL_426233|A_/_H1N1                               78.76%    passed     82.60%
+ 699  EPI1647112|NA|A/Mauritius/I-273/2019|EPI_ISL_401744|A_/_H1N1                                78.76%    passed     62.30%
+ 700  EPI1114320|NA|A/Mauritius/340/2017|EPI_ISL_287179|A_/_H1N1                                  78.76%    passed     72.48%
+ 701  EPI2304579|NA|A/Mauritius/CHL-_1084/2017|EPI_ISL_16612301|A_/_H1N1                          80.37%    passed     68.38%
+ 702  EPI2293491|NA|A/Mauritius/CHL-I_11/2019|EPI_ISL_16542184|A_/_H1N1                           80.43%    passed     73.26%
+ 703  EPI2721571|NA|A/Mauritius/P37571/2023|EPI_ISL_18167547|A_/_H1N1                             78.77%    passed     73.16%
+ 704  EPI1727817|NA|A/Mauritius/I-2963/2019|EPI_ISL_426231|A_/_H1N1                               78.76%    passed     77.80%
+ 705  EPI1437400|NA|A/Mauritius/I-28/2019|EPI_ISL_355411|A_/_H1N1                                 78.76%    passed     68.51%
+ 706  EPI1114318|NA|A/Mauritius/325/2017|EPI_ISL_287178|A_/_H1N1                                  78.76%    passed     72.48%
+ 707  EPI2659907|NA|A/Mauritius/P10512_I-18/2023|EPI_ISL_18044278|A_/_H1N1                        78.76%    passed     71.70%
+ 708  EPI1328920|NA|A/Mauritius/I-975/2018|EPI_ISL_332835|A_/_H1N1                                78.76%    passed     73.22%
+ 709  EPI1437404|NA|A/Mauritius/I-47/2019|EPI_ISL_355413|A_/_H1N1                                 78.76%    passed     68.96%
+ 710  EPI3473608|NA|A/Mauritius/1135050/2024|EPI_ISL_19296610|A_/_H1N1                            78.76%    passed     71.70%
+ 711  EPI1114325|NA|A/Mauritius/411/2017|EPI_ISL_287181|A_/_H1N1                                  78.76%    passed     72.48%
+ 712  EPI1647118|NA|A/Mauritius/I-42/2019|EPI_ISL_401747|A_/_H1N1                                 78.76%    passed     68.96%
+ 713  EPI1646886|NA|A/Mauritius/I-313/2019|EPI_ISL_401580|A_/_H1N1                                78.77%    passed     84.24%
+ 714  EPI1646890|NA|A/Mauritius/I-58/2019|EPI_ISL_401585|A_/_H1N1                                 78.76%    passed     73.20%
+ 715  EPI1252697|NA|A/Mauritius/1084/2017|EPI_ISL_314247|A_/_H1N1                                 78.77%    passed     66.14%
+ 716  EPI1437396|NA|A/Mauritius/I-14/2019|EPI_ISL_355409|A_/_H1N1                                 78.76%    passed     80.09%
+ 717  EPI3490162|NA|A/Mauritius/1114714/2024|EPI_ISL_19313768|A_/_H1N1                            78.76%    passed     81.21%
+ 718  EPI1243565|NA|A/Niger/3386/2016|EPI_ISL_312413|A_/_H1N1                                     78.76%    passed     67.26%
+ 719  EPI859024|NA|A/Niger/3607/2016|EPI_ISL_237643|A_/_H1N1                                      78.76%    passed     78.75%
+ 720  EPI2819712|NA|A/Niger/4500/2023|EPI_ISL_18607685|A_/_H1N1                                   78.41%    passed     59.04%
+ 721  EPI1853699|NA|A/Niger/8315/2020|EPI_ISL_1368299|A_/_H1N1                                    78.41%    passed     74.03%
+ 722  EPI1227683|NA|A/Niger/5652/2017|EPI_ISL_309495|A_/_H1N1                                     78.39%    passed     60.84%
+ 723  EPI1227928|NA|A/Niger/5671/2018|EPI_ISL_309526|A_/_H1N1                                     78.41%    passed     65.67%
+ 724  EPI1858709|NA|A/Niger/7879/2020|EPI_ISL_1732529|A_/_H1N1                                    78.41%    passed     58.03%
+ 725  EPI1951520|NA|A/Niger/8832/2021|EPI_ISL_8541554|A_/_H1N1                                    78.39%    passed     66.66%
+ 726  EPI4441569|NA|A/Niger/VR800_HNABD/2025|EPI_ISL_19908486|A_/_H1N1                            78.76%    passed     74.61%
+ 727  EPI1951476|NA|A/Niger/8873/2021|EPI_ISL_8541524|A_/_H1N1                                    78.41%    passed     74.99%
+ 728  EPI1180419|NA|A/Niger/5424/2017|EPI_ISL_299847|A_/_H1N1                                     78.41%    passed     66.80%
+ 729  EPI4441705|NA|A/Niger/VR931_HNN/2025|EPI_ISL_19908511|A_/_H1N1                              78.77%    passed     70.07%
+ 730  EPI4551297|NA|A/Niger/VR1173_HNABD/2025|EPI_ISL_20080415|A_/_H1N1                           78.76%    passed     70.64%
+ 731  EPI4441709|NA|A/Niger/VR934_HNN/2025|EPI_ISL_19908512|A_/_H1N1                              78.76%    passed     67.80%
+ 732  EPI4441714|NA|A/Niger/VR897_CSIYANT/2025|EPI_ISL_19908513|A_/_H1N1                          78.76%    passed     70.64%
+ 733  EPI3187077|NA|A/Niger/7850/2024|EPI_ISL_19034537|A_/_H1N1                                   78.41%    passed     62.28%
+ 734  EPI279900|NA|A/Niger/666/2010|EPI_ISL_79626|A_/_H1N1                                        78.76%    passed     84.92%
+ 735  EPI1843837|NA|A/Tunisia/2458/2020|EPI_ISL_959893|A_/_H1N1                                   78.76%    passed     73.75%
+ 736  EPI1838886|NA|A/Tunisia/3488/2020|EPI_ISL_732302|A_/_H1N1                                   78.76%    passed     73.70%
+ 737  EPI3424603|NA|A/Tunisia/2023/2024|EPI_ISL_19252496|A_/_H1N1                                 78.76%    passed     70.44%
+ 738  EPI3424846|NA|A/Tunisia/1707/2024|EPI_ISL_19252528|A_/_H1N1                                 78.76%    passed     70.44%
+ 739  EPI4311270|NA|A/Tunisia/1494/2025|EPI_ISL_19858893|A_/_H1N1                                 78.76%    passed     63.07%
+ 740  EPI5135515|NA|A/Tunisia/298/2026|EPI_ISL_20360954|A_/_H1N1                                  78.76%    passed     57.57%
+ 741  EPI416438|NA|A/Tunisia/159/2013|EPI_ISL_134134|A_/_H1N1                                     78.76%    passed     84.05%
+ 742  EPI5212318|NA|A/Tunisia/11667/2025|EPI_ISL_20384304|A_/_H1N1                                78.76%    passed     59.62%
+ 743  EPI1843843|NA|A/Tunisia/2682/2020|EPI_ISL_959896|A_/_H1N1                                   78.76%    passed     62.52%
+ 744  EPI461518|NA|A/Tunisia/21516/2009|EPI_ISL_80277|A_/_H1N1                                    89.54%    passed     14.61%
+ 745  EPI983129|NA|A/Tunisia/4185/2016|EPI_ISL_260280|A_/_H1N1                                    78.76%    passed     78.63%
+ 746  EPI983125|NA|A/Tunisia/4000/2016|EPI_ISL_260278|A_/_H1N1                                    78.76%    passed     77.65%
+ 747  EPI983115|NA|A/Tunisia/3486/2016|EPI_ISL_260273|A_/_H1N1                                    78.76%    passed     82.60%
+ 748  EPI3472338|NA|A/Tunisia/657/2024|EPI_ISL_19296435|A_/_H1N1                                  78.76%    passed     72.74%
+ 749  EPI983121|NA|A/Tunisia/3900/2016|EPI_ISL_260276|A_/_H1N1                                    78.76%    passed     80.26%
+ 750  EPI461517|NA|A/Tunisia/18970/2009|EPI_ISL_142749|A_/_H1N1                                   89.54%    passed     17.69%
+ 751  EPI2475550|NA|A/Tebessa/44337/2022|EPI_ISL_17268738|A_/_H1N1                                78.76%    passed     71.70%
+ 752  EPI340864|NA|A/Casablanca/07/2011|EPI_ISL_98597|A_/_H1N1                                    81.00%    passed     94.25%
+ 753  EPI340879|NA|A/Casablanca/124/2011|EPI_ISL_98608|A_/_H1N1                                   81.11%    passed     92.81%
+ 754  EPI3540994|NA|A/Toamasina/01641/2024|EPI_ISL_19386914|A_/_H1N1                              78.76%    passed     75.35%
+ 755  EPI3541148|NA|A/Toamasina/01980/2024|EPI_ISL_19386933|A_/_H1N1                              78.76%    passed     68.51%
+ 756  EPI3541202|NA|A/Toamasina/01947/2024|EPI_ISL_19386940|A_/_H1N1                              78.76%    passed     72.74%
+ 757  EPI3540885|NA|A/Toamasina/01641/2024|EPI_ISL_19386900|A_/_H1N1                              78.76%    passed     75.35%
+ 758  EPI3534651|NA|A/Toamasina/01961/2024|EPI_ISL_19382022|A_/_H1N1                              78.76%    passed     69.86%
+ 759  EPI1241523|NA|A/Toamasina/5139/2017|EPI_ISL_311902|A_/_H1N1                                 78.76%    passed     72.74%
+ 760  EPI539483|NA|A/Gambia/G0070536/2012|EPI_ISL_165507|A_/_H1N1                                 78.76%    passed     88.38%
+ 761  EPI1124369|NA|A/Mozambique/464/2017|EPI_ISL_288566|A_/_H1N1                                 78.39%    passed     60.72%
+ 762  EPI1800644|NA|A/Mozambique/99/2020|EPI_ISL_527255|A_/_H1N1                                  78.76%    passed     77.17%
+ 763  EPI2347265|NA|A/Mozambique/3035/2022|EPI_ISL_16764996|A_/_H1N1                              78.39%    passed     58.20%
+ 764  EPI1118306|NA|A/Mozambique/344/2017|EPI_ISL_287706|A_/_H1N1                                 78.41%    passed     83.28%
+ 765  EPI2678497|NA|A/Mozambique/5951/2023|EPI_ISL_18091878|A_/_H1N1                              78.42%    passed     55.20%
+ 766  EPI2678593|NA|A/Mozambique/0712/2023|EPI_ISL_18091890|A_/_H1N1                              78.41%    passed     56.52%
+ 767  EPI4437738|NA|A/Mozambique/PMB0707079/2024|EPI_ISL_19905630|A_/_H1N1                        78.76%    passed     77.24%
+ 768  EPI2347281|NA|A/Mozambique/7149/2022|EPI_ISL_16764998|A_/_H1N1                              78.41%    passed     58.85%
+ 769  EPI2360553|NA|A/Mozambique/7261/2022|EPI_ISL_16830511|A_/_H1N1                              78.41%    passed     45.64%
+ 770  EPI1271250|NA|A/Mozambique/1118/2018|EPI_ISL_320714|A_/_H1N1                                78.42%    passed     63.02%
+ 771  EPI2763751|NA|A/Algeria/Algiers/2302/2023|EPI_ISL_18338656|A_/_H1N1                         78.76%    passed     76.24%
+ 772  EPI3050350|NA|A/Algeria/2629/2023|EPI_ISL_18913221|A_/_H1N1                                 78.76%    passed     64.73%
+ 773  EPI3080113|NA|A/Algeria/127/2024|EPI_ISL_18942134|A_/_H1N1                                  78.76%    passed     65.54%
+ 774  EPI1201099|NA|A/Algeria/384/2018|EPI_ISL_303885|A_/_H1N1                                    78.76%    passed     81.21%
+ 775  EPI3009677|NA|A/Algeria/2535/2023|EPI_ISL_18880102|A_/_H1N1                                 78.76%    passed     65.54%
+ 776  EPI3079987|NA|A/Algeria/123/2024|EPI_ISL_18942115|A_/_H1N1                                  78.76%    passed     73.31%
+ 777  EPI3080021|NA|A/Algeria/2700/2023|EPI_ISL_18942120|A_/_H1N1                                 78.76%    passed     75.35%
+ 778  EPI3050391|NA|A/Algeria/2664/2023|EPI_ISL_18913227|A_/_H1N1                                 78.77%    passed     70.80%
+ 779  EPI1201091|NA|A/Algeria/128/2017|EPI_ISL_303881|A_/_H1N1                                    78.76%    passed     78.55%
+ 780  EPI3009614|NA|A/Algeria/2367/2023|EPI_ISL_18880091|A_/_H1N1                                 78.76%    passed     72.74%
+ 781  EPI3080008|NA|A/Algeria/2696/2023|EPI_ISL_18942118|A_/_H1N1                                 78.71%    passed     76.52%
+ 782  EPI3050306|NA|A/Algeria/2599/2023|EPI_ISL_18913215|A_/_H1N1                                 78.76%    passed     68.55%
+ 783  EPI172694|NA|A/Nigeria/0023/2008|EPI_ISL_25811|A_/_H1N1                                     78.71%    passed     52.01%
+ 784  EPI1936585|NA|A/Nigeria/5952/2021|EPI_ISL_6857294|A_/_H1N1                                  78.42%    passed     63.55%
+ 785  EPI1420616|NA|A/Nigeria/3556/2018|EPI_ISL_351843|A_/_H1N1                                   78.41%    passed     58.12%
+ 786  EPI4765916|NA|A/Nigeria/21372/2025|EPI_ISL_20227997|A_/_H1N1                                78.41%    passed     51.01%
+ 787  EPI1426999|NA|A/Nigeria/3596/2018|EPI_ISL_353332|A_/_H1N1                                   78.42%    passed     72.18%
+ 788  EPI4780745|NA|A/Nigeria/22712/2025|EPI_ISL_20238619|A_/_H1N1                                78.41%    passed     48.23%
+ 789  EPI1811968|NA|A/Nigeria/4568/2020|EPI_ISL_628795|A_/_H1N1                                   78.39%    passed     70.25%
+ 790  EPI1437629|NA|A/Nigeria/3586/2018|EPI_ISL_355491|A_/_H1N1                                   78.41%    passed     66.80%
+ 791  EPI1807059|NA|A/Nigeria/4547/2020|EPI_ISL_594232|A_/_H1N1                                   78.39%    passed     68.13%
+ 792  EPI4780678|NA|A/Nigeria/22713/2025|EPI_ISL_20238610|A_/_H1N1                                78.41%    passed     46.61%
+ 793  EPI1811936|NA|A/Nigeria/4586/2020|EPI_ISL_628791|A_/_H1N1                                   78.41%    passed     68.14%
+ 794  EPI678953|NA|A/Nigeria/414/2015|EPI_ISL_203293|A_/_H1N1                                     78.77%    passed     72.31%
+ 795  EPI2377075|NA|A/Antananarivo/07513/2022|EPI_ISL_16834452|A_/_H1N1                           78.76%    passed     70.01%
+ 796  EPI3540816|NA|A/Antananarivo/01775/2024|EPI_ISL_19386891|A_/_H1N1                           78.76%    passed     69.05%
+ 797  EPI3251902|NA|A/Antananarivo/02545/2023|EPI_ISL_19085957|A_/_H1N1                           78.76%    passed     73.15%
+ 798  EPI3534663|NA|A/Antananarivo/01900/2024|EPI_ISL_19382024|A_/_H1N1                           78.76%    passed     73.22%
+ 799  EPI3534754|NA|A/Antananarivo/01878/2024|EPI_ISL_19382037|A_/_H1N1                           78.76%    passed     74.02%
+ 800  EPI3534770|NA|A/Antananarivo/01850/2024|EPI_ISL_19382039|A_/_H1N1                           78.76%    passed     72.74%
+ 801  EPI3103296|NA|A/Antananarivo/02515/2023|EPI_ISL_18962609|A_/_H1N1                           78.76%    passed     71.89%
+ 802  EPI1437124|NA|A/Antsirabe/4579/2018|EPI_ISL_355272|A_/_H1N1                                 78.76%    passed     77.55%
+ 803  EPI1188248|NA|A/Antsirabe/5673/2017|EPI_ISL_301303|A_/_H1N1                                 78.76%    passed     72.01%
+ 804  EPI1371160|NA|A/Antsirabe/3941/2018|EPI_ISL_341824|A_/_H1N1                                 78.77%    passed     79.27%
+ 805  EPI748781|NA|A/Antsirabe/4351/2015|EPI_ISL_219569|A_/_H1N1                                  78.76%    passed     86.35%
+ 806  EPI3541180|NA|A/Antsirabe/01918/2024|EPI_ISL_19386937|A_/_H1N1                              78.76%    passed     73.22%
+ 807  EPI1241493|NA|A/Central_African_Republic/618/2016|EPI_ISL_311886|A_/_H1N1                   78.76%    passed     64.21%
+ 808  EPI3507005|NA|A/Moramanga/02084/2024|EPI_ISL_19334297|A_/_H1N1                              78.76%    passed     72.74%
+ 809  EPI1241495|NA|A/Moramanga/5389/2017|EPI_ISL_311887|A_/_H1N1                                 78.76%    passed     69.86%
+ 810  EPI1889785|NA|A/Monastir/TUN_G80/2018|EPI_ISL_4031057|A_/_H1N1                              83.46%    passed     59.04%
+ 811  EPI531927|NA|A/Ethiopia/969/2014|EPI_ISL_162654|A_/_H1N1                                    78.76%    passed     89.93%
+ 812  EPI4890312|NA|A/Ethiopia/5209/2025|EPI_ISL_20289157|A_/_H1N1                                78.41%    passed     52.53%
+ 813  EPI375564|NA|A/Ethiopia/37/2012|EPI_ISL_121243|A_/_H1N1                                     78.76%    passed     86.12%
+ 814  EPI2815998|NA|A/Ethiopia/3/2023|EPI_ISL_18593174|A_/_H1N1                                   78.76%    passed     71.70%
+ 815  EPI2816001|NA|A/Ethiopia/2/2023|EPI_ISL_18593175|A_/_H1N1                                   78.76%    passed     67.43%
+ 816  EPI732724|NA|A/Ethiopia/01/2016|EPI_ISL_216223|A_/_H1N1                                     78.41%    passed     65.62%
+ 817  EPI386035|NA|A/Ethiopia/186/2012|EPI_ISL_124948|A_/_H1N1                                    78.76%    passed     84.34%
+ 818  EPI515722|NA|A/Ethiopia/922/2013|EPI_ISL_159045|A_/_H1N1                                    78.76%    passed     80.22%
+ 819  EPI770734|NA|A/Egypt/1492/2016|EPI_ISL_223945|A_/_H1N1                                      78.76%    passed     77.62%
+ 820  EPI587749|NA|A/Egypt/4758/2014|EPI_ISL_178482|A_/_H1N1                                      78.77%    passed     78.58%
+ 821  EPI824300|NA|A/Egypt/1338/2016|EPI_ISL_231922|A_/_H1N1                                      78.76%    passed     77.24%
+ 822  EPI718176|NA|A/Egypt/1565/2016|EPI_ISL_213729|A_/_H1N1                                      78.76%    passed     80.26%
+ 823  EPI824290|NA|A/Egypt/1322/2016|EPI_ISL_231917|A_/_H1N1                                      78.76%    passed     80.26%
+ 824  EPI824328|NA|A/Egypt/1412/2016|EPI_ISL_231936|A_/_H1N1                                      78.76%    passed     78.88%
+ 825  EPI824326|NA|A/Egypt/1408/2016|EPI_ISL_231935|A_/_H1N1                                      78.80%    passed     77.75%
+ 826  EPI3860971|NA|A/Egypt/HT220807/2022|EPI_ISL_19694915|A_/_H1N1                               78.00%    passed     59.00%
+ 827  EPI824348|NA|A/Egypt/1476/2016|EPI_ISL_231946|A_/_H1N1                                      78.76%    passed     80.26%
+ 828  EPI824336|NA|A/Egypt/1439/2016|EPI_ISL_231940|A_/_H1N1                                      78.77%    passed     80.26%
+ 829  EPI357134|NA|A/Egypt/10/2007|EPI_ISL_106505|A_/_H1N1                                        78.71%    passed     41.98%
+ 830  EPI3605756|NA|A/Egypt/HT220710/2022|EPI_ISL_19491020|A_/_H1N1                               78.03%    passed     62.93%
+ 831  EPI824356|NA|A/Egypt/1493/2016|EPI_ISL_231950|A_/_H1N1                                      78.77%    passed     80.26%
+ 832  EPI718178|NA|A/Egypt/1602/2016|EPI_ISL_213730|A_/_H1N1                                      78.76%    passed     80.26%
+ 833  EPI824254|NA|A/Egypt/1249/2016|EPI_ISL_231899|A_/_H1N1                                      78.76%    passed     76.41%
+ 834  EPI824364|NA|A/Egypt/66/2016|EPI_ISL_231954|A_/_H1N1                                        78.77%    passed     82.60%
+ 835  EPI824360|NA|A/Egypt/1504/2016|EPI_ISL_231952|A_/_H1N1                                      78.79%    passed     78.92%
+ 836  EPI549372|NA|A/Egypt/ALX4048/2014|EPI_ISL_168329|A_/_H1N1                                   78.76%    passed     85.96%
+ 837  EPI405787|NA|A/Adjame/GR_558/2012|EPI_ISL_131954|A_/_H1N1                                   78.77%    passed     88.77%
+ 838  EPI2746746|NA|A/Dakar/0385/2023|EPI_ISL_18274648|A_/_H1N1                                   78.41%    passed     64.51%
+ 839  EPI1188270|NA|A/Dakar/20/2017|EPI_ISL_301314|A_/_H1N1                                       78.76%    passed     77.77%
+ 840  EPI1437196|NA|A/Dakar/31/2018|EPI_ISL_355308|A_/_H1N1                                       78.76%    passed     81.21%
+ 841  EPI1437190|NA|A/Dakar/22/2018|EPI_ISL_355305|A_/_H1N1                                       78.76%    passed     73.70%
+ 842  EPI2046991|NA|A/Dakar/59/2021|EPI_ISL_12942367|A_/_H1N1                                     78.77%    passed     77.79%
+ 843  EPI1054420|NA|A/Dakar/02/2017|EPI_ISL_276863|A_/_H1N1                                       78.76%    passed     82.60%
+ 844  EPI1054418|NA|A/Dakar/01/2017|EPI_ISL_276862|A_/_H1N1                                       78.76%    passed     83.72%
+ 845  EPI539477|NA|A/Dakar/07/2014|EPI_ISL_165504|A_/_H1N1                                        78.76%    passed     88.50%
+ 846  EPI2981319|NA|A/Dakar/35/2023|EPI_ISL_18856608|A_/_H1N1                                     78.76%    passed     80.26%
+ 847  EPI2024378|NA|A/Dakar/11/2021|EPI_ISL_12241613|A_/_H1N1                                     78.76%    passed     81.53%
+ 848  EPI1054430|NA|A/Dakar/07/2017|EPI_ISL_276868|A_/_H1N1                                       78.76%    passed     82.60%
+ 849  EPI1183873|NA|A/Dakar/18/2017|EPI_ISL_300469|A_/_H1N1                                       78.76%    passed     75.68%
+ 850  EPI2046968|NA|A/Dakar/48/2021|EPI_ISL_12942320|A_/_H1N1                                     78.76%    passed     75.74%
+ 851  EPI1973631|NA|A/Dakar/05/2021|EPI_ISL_9533497|A_/_H1N1                                      78.76%    passed     81.53%
+ 852  EPI2983004|NA|A/Dakar/22/2023|EPI_ISL_18856825|A_/_H1N1                                     78.77%    passed     65.13%
+ 853  EPI1437200|NA|A/Dakar/34/2018|EPI_ISL_355310|A_/_H1N1                                       78.76%    passed     74.68%
+ 854  EPI1973629|NA|A/Dakar/04/2021|EPI_ISL_9533496|A_/_H1N1                                      78.76%    passed     81.53%
+ 855  EPI2721065|NA|A/Dakar/13/2023|EPI_ISL_18167294|A_/_H1N1                                     78.76%    passed     73.31%
+ 856  EPI541028|NA|A/Dakar/06/2014|EPI_ISL_166052|A_/_H1N1                                        78.76%    passed     74.02%
+ 857  EPI507832|NA|A/Cote_d_Ivoire/2273/2013|EPI_ISL_156884|A_/_H1N1                              78.76%    passed     85.54%
+ 858  EPI4615343|NA|A/Cote_d_Ivoire/0200/2025|EPI_ISL_20130723|A_/_H1N1                           79.70%    passed     56.56%
+ 859  EPI2024364|NA|A/Cote_d_Ivoire/2943/2021|EPI_ISL_12241606|A_/_H1N1                           78.76%    passed     79.27%
+ 860  EPI405857|NA|A/Yopougon/GR_553/2012|EPI_ISL_131990|A_/_H1N1                                 78.76%    passed     89.31%
+ 861  EPI3129841|NA|A/Western/ARI-23-1189/2023|EPI_ISL_18990359|A_/_H1N1                          78.76%    passed     65.54%
+ 862  EPI3584449|NA|A/Uganda/UVRI_NSY2839/2024|EPI_ISL_19456487|A_/_H1N1                          78.79%    passed     65.44%
+ 863  EPI5095800|NA|A/Uganda/HCL025195202001/2024|EPI_ISL_20352479|A_/_H1N1                       78.57%    passed     63.15%
+ 864  EPI1763966|NA|A/Uganda/UVRI/Entebbe/001/2010-11-22|EPI_ISL_498826|A_/_H1N1                  78.76%    passed     82.24%
+ 865  EPI1764589|NA|A/Uganda/UVRI/Kiswa/010/2018-03-14|EPI_ISL_498910|A_/_H1N1                    78.76%    passed     81.60%
+ 866  EPI5095995|NA|A/Uganda/HCL025195227501/2025|EPI_ISL_20352504|A_/_H1N1                       78.57%    passed     60.12%
+ 867  EPI3584477|NA|A/Uganda/UVRI_TOR3992/2024|EPI_ISL_19456492|A_/_H1N1                          78.76%    passed     68.55%
+ 868  EPI1267212|NA|A/Uganda/6098/2018|EPI_ISL_319837|A_/_H1N1                                    78.39%    passed     65.76%
+ 869  EPI4752224|NA|A/Uganda/UVRI_EBB8154_2025|EPI_ISL_20214916|A_/_H1N1                          78.42%    passed     53.97%
+ 870  EPI1764014|NA|A/Uganda/UVRI/Entebbe/007/2011-01-03|EPI_ISL_498833|A_/_H1N1                  78.76%    passed     84.34%
+ 871  EPI530122|NA|A/Uganda/MUWRP-093/2009|EPI_ISL_162015|A_/_H1N1                                78.44%    passed     76.73%
+ 872  EPI1267235|NA|A/Uganda/6821/2018|EPI_ISL_319840|A_/_H1N1                                    78.41%    passed     73.97%
+ 873  EPI1764154|NA|A/Uganda/UVRI/Entebbe/026/2014-05-01|EPI_ISL_498852|A_/_H1N1                  78.76%    passed     80.59%
+ 874  EPI4937785|NA|A/Uganda/UVRI_KIS7264/2025|EPI_ISL_20306006|A_/_H1N1                          78.39%    passed     45.40%
+ 875  EPI1764720|NA|A/Uganda/UVRI/Nsambya/003/2015-07-30|EPI_ISL_498927|A_/_H1N1                  78.76%    passed     74.09%
+ 876  EPI1764677|NA|A/Uganda/UVRI/Kisenyi/006/2011-07-20|EPI_ISL_498921|A_/_H1N1                  78.76%    passed     80.71%
+ 877  EPI5095853|NA|A/Uganda/HCL025195213101/2024|EPI_ISL_20352486|A_/_H1N1                       78.57%    passed     81.73%
+ 878  EPI1764497|NA|A/Uganda/UVRI/Kawaala/009/2015-06-30|EPI_ISL_498898|A_/_H1N1                  78.76%    passed     76.09%
+ 879  EPI4954063|NA|A/Uganda/8473/2025|EPI_ISL_20309749|A_/_H1N1                                  78.41%    passed     54.69%
+ 880  EPI4111008|NA|A/Uganda/UVRI_KIS6817_2024|EPI_ISL_19780474|A_/_H1N1                          78.76%    passed     75.35%
+ 881  EPI217202|NA|A/Uganda/430/2009|EPI_ISL_62338|A_/_H1N1                                       78.76%    passed     85.55%
+ 882  EPI1764422|NA|A/Uganda/UVRI/Kiswa/001/2011-10-20|EPI_ISL_498887|A_/_H1N1                    78.76%    passed     77.83%
+ 883  EPI1267164|NA|A/Uganda/6675/2018|EPI_ISL_319831|A_/_H1N1                                    78.41%    passed     64.96%
+ 884  EPI3849163|NA|A/Uganda/UVRI_MKN2916_2024|EPI_ISL_19690407|A_/_H1N1                          78.76%    passed     71.70%
+ 885  EPI1764621|NA|A/Uganda/UVRI/Kawaala/016/2018-05-03|EPI_ISL_498914|A_/_H1N1                  78.76%    passed     85.02%
+ 886  EPI1764270|NA|A/Uganda/UVRI/FortPortal/008/2014-12-02|EPI_ISL_498868|A_/_H1N1               78.76%    passed     78.90%
+ 887  EPI4752336|NA|A/Uganda/UVRI_KIS7028_2025|EPI_ISL_20214931|A_/_H1N1                          78.44%    passed     51.39%
+ 888  EPI1764086|NA|A/Uganda/UVRI/Entebbe/017/2011-11-01|EPI_ISL_498843|A_/_H1N1                  78.76%    passed     82.27%
+ 889  EPI4937825|NA|A/Uganda/UVRI_TOR4327/2025|EPI_ISL_20306023|A_/_H1N1                          78.42%    passed     55.37%
+ 890  EPI1267204|NA|A/Uganda/6099/2018|EPI_ISL_319836|A_/_H1N1                                    78.41%    passed     67.68%
+ 891  EPI5095845|NA|A/Uganda/HCL025195212501/2024|EPI_ISL_20352485|A_/_H1N1                       78.57%    passed     81.73%
+ 892  EPI1764210|NA|A/Uganda/UVRI/Entebbe/033/2017-12-08|EPI_ISL_498859|A_/_H1N1                  78.76%    passed     83.31%
+ 893  EPI229022|NA|A/Cameroon/025/2008|EPI_ISL_65399|A_/_H1N1                                     78.71%    passed     49.33%
+ 894  EPI295616|NA|A/Cameroon/10v-813/2010|EPI_ISL_84234|A_/_H1N1                                 78.76%    passed     92.86%
+ 895  EPI1193127|NA|A/Cameroon/9405/2017|EPI_ISL_302431|A_/_H1N1                                  78.76%    passed     74.84%
+ 896  EPI1193150|NA|A/Cameroon/9524/2017|EPI_ISL_302442|A_/_H1N1                                  78.76%    passed     76.41%
+ 897  EPI346692|NA|A/Cameroon/LEID/04/11/1671/2011|EPI_ISL_99921|A_/_H1N1                         78.76%    passed     81.37%
+ 898  EPI1230814|NA|A/Cameroon/9538/2017|EPI_ISL_309952|A_/_H1N1                                  78.76%    passed     82.37%
+ 899  EPI1193154|NA|A/Cameroon/9533/2017|EPI_ISL_302444|A_/_H1N1                                  78.76%    passed     82.22%
+ 900  EPI229015|NA|A/Cameroon/021/2008|EPI_ISL_65394|A_/_H1N1                                     78.71%    passed     38.67%
+ 901  EPI1193148|NA|A/Cameroon/9517/2017|EPI_ISL_302441|A_/_H1N1                                  78.76%    passed     72.32%
+ 902  EPI3542493|NA|A/Cameroon/5052/2024|EPI_ISL_19387190|A_/_H1N1                                78.76%    passed     74.61%
+ 903  EPI424141|NA|A/Cameroon/08-161/2008|EPI_ISL_135966|A_/_H1N1                                 78.88%    passed     50.65%
+ 904  EPI1716195|NA|A/Cameroon/6747/2019|EPI_ISL_416155|A_/_H1N1                                  78.76%    passed     83.72%
+ 905  EPI229018|NA|A/Cameroon/023/2008|EPI_ISL_65396|A_/_H1N1                                     78.71%    passed     47.02%
+ 906  EPI4083861|NA|A/Cameroon/11661/2024|EPI_ISL_19774262|A_/_H1N1                               78.76%    passed     72.74%
+ 907  EPI1536892|NA|A/Cameroon/16v-1470-N1/2016|EPI_ISL_376146|A_/_H1N1                           79.45%    passed     65.50%
+ 908  EPI1193164|NA|A/Cameroon/9755/2017|EPI_ISL_302449|A_/_H1N1                                  78.76%    passed     78.88%
+ 909  EPI3541634|NA|A/Cameroon/5052/2024|EPI_ISL_19387076|A_/_H1N1                                78.76%    passed     74.61%
+ 910  EPI1230802|NA|A/Cameroon/9408/2017|EPI_ISL_309946|A_/_H1N1                                  78.76%    passed     82.22%
+ 911  EPI1716201|NA|A/Cameroon/7500/2019|EPI_ISL_416158|A_/_H1N1                                  78.76%    passed     81.21%
+ 912  EPI487669|NA|A/Cameroon/13V-2644/2013|EPI_ISL_150585|A_/_H1N1                               78.76%    passed     76.65%
+ 913  EPI1230812|NA|A/Cameroon/9535/2017|EPI_ISL_309951|A_/_H1N1                                  78.76%    passed     77.65%
+ 914  EPI3133230|NA|A/Cameroon/12712/2023|EPI_ISL_18991148|A_/_H1N1                               78.76%    passed     83.02%
+ 915  EPI1230834|NA|A/Cameroon/9887/2017|EPI_ISL_309962|A_/_H1N1                                  78.76%    passed     74.93%
+ 916  EPI1193172|NA|A/Cameroon/9882/2017|EPI_ISL_302453|A_/_H1N1                                  78.76%    passed     82.22%
+ 917  EPI3937626|NA|A/Cameroon/12020/2024|EPI_ISL_19723847|A_/_H1N1                               78.76%    passed     77.68%
+ 918  EPI4253230|NA|A/Morocco/881/2025|EPI_ISL_19828787|A_/_H1N1                                  78.76%    passed     66.94%
+ 919  EPI317124|NA|A/Morocco/606/2009|EPI_ISL_90137|A_/_H1N1                                      78.76%    passed     80.83%
+ 920  EPI4518523|NA|A/Morocco/1114/25|EPI_ISL_20072830|A_/_H1N1                                   78.76%    passed     73.16%
+ 921  EPI4063365|NA|A/Morocco/665/2024|EPI_ISL_19767442|A_/_H1N1                                  78.76%    passed     67.80%
+ 922  EPI4063421|NA|A/Morocco/450/2024|EPI_ISL_19767457|A_/_H1N1                                  78.76%    passed     65.53%
+ 923  EPI4229660|NA|A/Morocco/1121/2025|EPI_ISL_19821272|A_/_H1N1                                 78.82%    passed     72.12%
+ 924  EPI3957686|NA|A/Morocco/701/2024|EPI_ISL_19729746|A_/_H1N1                                  78.76%    passed     75.68%
+ 925  EPI4311116|NA|A/Morocco/701/2024|EPI_ISL_19858873|A_/_H1N1                                  78.76%    passed     75.68%
+ 926  EPI2605958|NA|A/Lusaka/01-NIC-157/2023|EPI_ISL_17851773|A_/_H1N1                            77.70%    passed     66.34%
+ 927  EPI3507012|NA|A/Ihosy/02027/2024|EPI_ISL_19334298|A_/_H1N1                                  78.77%    passed     67.15%
+ 928  EPI1478482|NA|A/Sudan/1/2018|EPI_ISL_361988|A_/_H1N1                                        78.77%    passed     68.99%
+ 929  EPI2879100|NA|EPI0003/A/Ethiopia/BGH029/2023|EPI_ISL_18712459|A_/_H1N1                      78.76%    passed     68.55%
+ 930  EPI2879079|NA|EPI0021/A/Ethiopia/KOL196/2023|EPI_ISL_18712454|A_/_H1N1                      78.76%    passed     70.44%
+ 931  EPI2910134|NA|EPI0070/A/Ethiopia/ADR668/2023|EPI_ISL_18758291|A_/_H1N1                      78.76%    passed     63.42%
+ 932  EPI4469043|NA|FS-25-2710|EPI_ISL_20055788|A_/_H1N1                                          80.80%    passed     83.50%
+ 933  EPI1310109|NA|A/SouthAfrica/VW0412/2018|EPI_ISL_329770|A_/_H1N1                             78.76%    passed     79.57%
+ 934  EPI2098005|NA|A/SouthAfrica/PET24069/2022|EPI_ISL_13953853|A_/_H1N1                         76.09%    failed      0.00%
+ 935  EPI3490282|NA|A/SouthAfrica/R04397/24|EPI_ISL_19313779|A_/_H1N1                             78.76%    passed     68.51%
+ 936  EPI2098383|NA|A/SouthAfrica/PET23945/2022|EPI_ISL_13955202|A_/_H1N1                         78.44%    passed     47.12%
+ 937  EPI3490290|NA|A/SouthAfrica/R04388/24|EPI_ISL_19313780|A_/_H1N1                             78.76%    passed     72.74%
+ 938  EPI1277095|NA|A/SouthAfrica/VW0434/2018|EPI_ISL_321840|A_/_H1N1                             78.76%    passed     82.38%
+ 939  EPI1310099|NA|A/SouthAfrica/R07211/2018|EPI_ISL_329765|A_/_H1N1                             78.76%    passed     75.35%
+ 940  EPI2098246|NA|A/SouthAfrica/PET24087/2022|EPI_ISL_13954049|A_/_H1N1                         78.44%    passed     56.91%
+ 941  EPI3490274|NA|A/SouthAfrica/R04387/24|EPI_ISL_19313778|A_/_H1N1                             78.76%    passed     74.61%
+ 942  EPI2213540|NA|A/SouthAfrica/PET25056/2022|EPI_ISL_15724535|A_/_H1N1                         78.44%    passed     49.14%
+ 943  EPI1269324|NA|A/SouthAfrica/R06118/18|EPI_ISL_320430|A_/_H1N1                               78.59%    passed     69.64%
+ 944  EPI2098175|NA|A/SouthAfrica/PET24135/2022|EPI_ISL_13954014|A_/_H1N1                         76.09%    passed     91.43%
+ 945  EPI358075|NA|A/Yaounde/11V-18568/2011|EPI_ISL_107055|A_/_H1N1                               78.77%    passed     83.56%
+ 946  EPI1582933|NA|A/Yaounde/19V-935/2019|EPI_ISL_388854|A_/_H1N1                                78.76%    passed     81.39%
+ 947  EPI228984|NA|A/Seychelles/2230/2008|EPI_ISL_65371|A_/_H1N1                                  78.71%    passed     49.33%
+ 948  EPI2466525|NA|A/Nosy_Be/00014/2023|EPI_ISL_17225260|A_/_H1N1                                78.76%    passed     71.01%
+ 949  EPI466583|NA|A/Mahajanga/1171/2013|EPI_ISL_145425|A_/_H1N1                                  78.76%    passed     77.96%
+ 950  EPI921377|NA|A/MOROCCO/568/2016|EPI_ISL_249596|A_/_H1N1                                     78.76%    passed     77.31%
+ 951  EPI2721565|NA|A/Fianarantsoa/01853/2023|EPI_ISL_18167544|A_/_H1N1                           78.76%    passed     76.03%
+ 952  EPI827615|NA|A/Rwanda/396/2016|EPI_ISL_232588|A_/_H1N1                                      78.41%    passed     70.16%
+ 953  EPI4770707|NA|A/Cote-d_Ivoire/3309/2025|EPI_ISL_20232996|A_/_H1N1                           79.70%    passed     56.56%
+ 954  EPI1252727|NA|A/Rabat_/1320/2018|EPI_ISL_314263|A_/_H1N1                                    78.76%    passed     87.68%
+ 955  EPI1255227|NA|A/Meknes/1302/2018|EPI_ISL_314693|A_/_H1N1                                    78.76%    passed     86.31%
+ 956  EPI1252733|NA|A/Tanger/1388/2018|EPI_ISL_314266|A_/_H1N1                                    78.76%    passed     87.68%
+ 957  EPI4053441|NA|A/GhanaFS-25-0400/2025|EPI_ISL_19762462|A_/_H1N1                              78.76%    passed     73.64%
+ 958  EPI4663339|NA|A/Mozambique-Maputo_City/PMB0748090/2025|EPI_ISL_20155875|A_/_H1N1            78.86%    passed     73.20%
+ 959  EPI1255241|NA|A/Oujda/1493/2018|EPI_ISL_314700|A_/_H1N1                                     78.79%    passed     82.92%
+ 960  EPI2619311|NA|A/Nakonde/10-NIC-92/2023|EPI_ISL_17960794|A_/_H1N1                            77.82%    passed     73.26%
+ 961  EPI2035749|NA|A/Capetown/106/2007|EPI_ISL_12701639|A_/_H1N1                                 79.48%    passed     33.34%
+ 962  EPI491207|NA|A/JOHANNESBURG/8/2013|EPI_ISL_151485|A_/_H1N1                                  78.73%    passed     81.59%
+ 963  EPI4715854|NA|A/DAKAR/007/2025|EPI_ISL_20178606|A_/_H1N1                                    78.76%    passed     65.53%
+ 964  EPI4716916|NA|A/DAKAR/014/2025|EPI_ISL_20178807|A_/_H1N1                                    78.76%    passed     64.13%
+ 965  EPI4742444|NA|A/Bangui/256/2025|EPI_ISL_20205987|A_/_H1N1                                   78.76%    passed     66.65%
+ 966  EPI4742469|NA|A/Bangui/027/2025|EPI_ISL_20205991|A_/_H1N1                                   78.76%    passed     66.65%
+ 967  EPI3534744|NA|A/Taolagnaro/02106/2024|EPI_ISL_19382035|A_/_H1N1                             78.76%    passed     71.70%
+ 968  EPI4770615|NA|A/_Cote-d_Ivoire/3208/2025|EPI_ISL_20232587|A_/_H1N1                          78.76%    passed     83.24%
+ 969  EPI3430261|NA|A/KENYA/NYR-11360/Human/2024|EPI_ISL_19257702|A_/_H1N1                        78.76%    passed     60.34%
+ 970  EPI3430129|NA|A/KENYA/MSA-09049/Human/2024|EPI_ISL_19257026|A_/_H1N1                        78.71%    passed     67.66%
+ 971  EPI3349800|NA|A/Douala/23V-7404/2023|EPI_ISL_19174466|A_/_H1N1                              78.76%    passed     73.31%
+ 972  EPI1566407|NA|A/MUWRP-Uganda/348/2011|EPI_ISL_381591|A_/_H1N1                               78.02%    passed     67.27%
+ 973  EPI352304|NA|A/Abobo/GR753/2011|EPI_ISL_103049|A_/_H1N1                                     78.76%    passed     83.45%
+ 974  EPI243979|NA|A/Egypt-Vacsera162/2009|EPI_ISL_70351|A_/_H1N1                                 78.76%    passed     85.51%
+ 975  EPI243977|NA|A/Egypt-Vacsera/138/2009|EPI_ISL_70350|A_/_H1N1                                78.76%    passed     85.51%
+ 976  EPI3540776|NA|A/Itasy/01841/2024|EPI_ISL_19386886|A_/_H1N1                                  78.76%    passed     70.87%
+ 977  EPI3541156|NA|A/Ambositra/01885/2024|EPI_ISL_19386934|A_/_H1N1                              78.76%    passed     75.68%
+ 978  EPI3534622|NA|A/Toliary/02038/2024|EPI_ISL_19382018|A_/_H1N1                                78.76%    passed     73.22%
+ 979  EPI2359080|NA|A/Tunsia/22363/2022|EPI_ISL_16749418|A_/_H1N1                                 78.76%    passed     59.33%
+ 980  EPI742029|NA|A/Tsiroanomandidy/3864/2015|EPI_ISL_218135|A_/_H1N1                            78.41%    passed     73.86%
+ 981  EPI425963|NA|A/Blida/103/2012|EPI_ISL_136324|A_/_H1N1                                       78.76%    passed     81.84%
+ 982  EPI5167079|NA|A/Gaborone/BHP124039435/2024|EPI_ISL_20370564|A_/_H1N1                        78.76%    passed     72.74%
+ 983  EPI2466640|NA|A/Agadir/151/2022|EPI_ISL_17225318|A_/_H1N1                                   78.76%    passed     64.21%
+ 984  EPI1437228|NA|A/Fes/407/2019|EPI_ISL_355324|A_/_H1N1                                        78.76%    passed     74.61%
+ 985  EPI4807494|NA|A/Kilifi/MAT221467/2023|EPI_ISL_20257261|A_/_H1N1                             78.76%    passed     73.31%
+ 986  EPI4807556|NA|A/Kilifi/MTO231495/2023|EPI_ISL_20257279|A_/_H1N1                             78.76%    passed     67.43%
+ 987  EPI3300733|NA|A/BurkinaFaso/3075/2023|EPI_ISL_19147410|A_/_H1N1                             78.76%    passed     76.24%
+ 988  EPI3251895|NA|A/Manandona/02581/2023|EPI_ISL_19085956|A_/_H1N1                              78.76%    passed     75.06%
+ 989  EPI748821|NA|A/Benimellal/615/2016|EPI_ISL_219589|A_/_H1N1                                  78.76%    passed     84.84%
+ 990  EPI694834|NA|A/Maevatanana/4197/2015|EPI_ISL_207221|A_/_H1N1                                78.76%    passed     87.94%
+ 991  EPI3844292|NA|A/_Cote_D_Ivoire/2678/2024|EPI_ISL_19688272|A_/_H1N1                          78.76%    passed     77.62%
+ 992  EPI2746898|NA|A/Saint-louis/1169/2023|EPI_ISL_18274928|A_/_H1N1                             78.41%    passed     61.41%
+ 993  EPI2265561|NA|A/Reunion/HCL022183845301/2022|EPI_ISL_16311739|A_/_H1N1                      78.57%    passed     76.30%
+ 994  EPI4670564|NA|A/Reunion/CHU724092135901/2024|EPI_ISL_20159842|A_/_H1N1                      78.77%    passed     76.95%
+ 995  EPI4670039|NA|A/Reunion/CHU724120082501/2024|EPI_ISL_20159682|A_/_H1N1                      78.77%    passed     77.52%
+ 996  EPI2569124|NA|A/Reunion/HCL023041614601/2023|EPI_ISL_17694271|A_/_H1N1                      78.57%    passed     62.80%
+ 997  EPI4670648|NA|A/Reunion/CHU724091432201/2024|EPI_ISL_20159853|A_/_H1N1                      78.92%    passed     82.07%
+ 998  EPI4670600|NA|A/Reunion/CHU724091724701/2024|EPI_ISL_20159847|A_/_H1N1                      78.77%    passed     75.16%
+ 999  EPI4670592|NA|A/Reunion/CHU524091928001/2024|EPI_ISL_20159846|A_/_H1N1                      78.77%    passed     76.95%
+1000  EPI4669670|NA|A/Reunion/CHU724071574401/2024|EPI_ISL_20159629|A_/_H1N1                      78.77%    passed     74.09%
+1001  EPI4669966|NA|A/Reunion/CHU724102241501/2024|EPI_ISL_20159672|A_/_H1N1                      78.77%    passed     76.95%
+1002  EPI4670034|NA|A/Reunion/CHU724120140201/2024|EPI_ISL_20159681|A_/_H1N1                      78.77%    passed     75.39%
+1003  EPI4669012|NA|A/Reunion/CHU724070018502/2024|EPI_ISL_20159523|A_/_H1N1                      78.77%    passed     68.26%
+1004  EPI4669126|NA|A/Reunion/CHU724060549101/2024|EPI_ISL_20159537|A_/_H1N1                      78.77%    passed     63.93%
+1005  EPI4670480|NA|A/Reunion/CHU724092903501/2024|EPI_ISL_20159831|A_/_H1N1                      78.77%    passed     75.16%
+1006  EPI4669512|NA|A/Reunion/CHU724080370401/2024|EPI_ISL_20159609|A_/_H1N1                      78.77%    passed     77.16%
+1007  EPI4669727|NA|A/Reunion/CHU724072112601/2024|EPI_ISL_20159636|A_/_H1N1                      78.77%    passed     74.09%
+1008  EPI4669795|NA|A/Reunion/CHU724061945201/2024|EPI_ISL_20159645|A_/_H1N1                      78.77%    passed     71.41%
+1009  EPI2746948|NA|A/Ziguinchor/1199/2023|EPI_ISL_18275633|A_/_H1N1                              78.41%    passed     58.12%
+1010  EPI4785374|NA|A/BOURKINA_FASO/4353/2025|EPI_ISL_20241819|A_/_H1N1                           78.79%    passed     71.97%
+1011  EPI4786950|NA|A/BURKINA_FASO/5642/2025|EPI_ISL_20244202|A_/_H1N1                            78.76%    passed     52.66%
+1012  EPI1506732|NA|A/Chefchaouen/1454/2019|EPI_ISL_367880|A_/_H1N1                               78.76%    passed     86.57%
+1013  EPI1437378|NA|A/Marrakech/355/2019|EPI_ISL_355400|A_/_H1N1                                  78.76%    passed     78.88%
+1014  EPI1223067|NA|A/Rabat/921/2018|EPI_ISL_308505|A_/_H1N1                                      78.76%    passed     74.61%
+1015  EPI1506981|NA|A/Tetoun/1865/2019|EPI_ISL_368005|A_/_H1N1                                    78.76%    passed     82.83%
+1016  EPI503848|NA|A/Niakhar/2064/2013|EPI_ISL_155026|A_/_H1N1                                    78.77%    passed     76.50%
+1017  EPI2115535|NA|A/Somalia/359/2022|EPI_ISL_14212865|A_/_H1N1                                  78.76%    passed     68.51%
+1018  EPI2115523|NA|A/Somalia/405/2022|EPI_ISL_14212859|A_/_H1N1                                  78.77%    passed     68.67%
+1019  EPI561740|NA|A/Setif/02/2015|EPI_ISL_171731|A_/_H1N1                                        78.76%    passed     71.47%
+1020  EPI859058|NA|A/South-Africa/R5236/2016|EPI_ISL_237660|A_/_H1N1                              78.76%    passed     81.39%
+1021  EPI2377084|NA|A/Morondava/07367/2022|EPI_ISL_16834574|A_/_H1N1                              78.76%    passed     73.15%
+1022  EPI443019|NA|A/Kisumu/56/2009|EPI_ISL_139648|A_/_H1N1                                       78.80%    passed     90.97%
+1023  EPI446073|NA|A/Nairobi/3/2009|EPI_ISL_140403|A_/_H1N1                                       78.80%    passed     87.49%
+1024  EPI2746956|NA|A/Sedhiou/1212/2023|EPI_ISL_18276512|A_/_H1N1                                 78.41%    passed     59.04%
+1025  EPI443161|NA|A/Garissa/78/2009|EPI_ISL_139706|A_/_H1N1                                      78.80%    passed     91.53%
+1026  EPI443171|NA|A/Keiyo/96/2009|EPI_ISL_139707|A_/_H1N1                                        78.80%    passed     92.15%
+1027  EPI443193|NA|A/Malindi/238/2009|EPI_ISL_139710|A_/_H1N1                                     78.80%    passed     96.30%
+1028  EPI443200|NA|A/Eldoret/119/2009|EPI_ISL_139711|A_/_H1N1                                     78.80%    passed     90.81%
+1029  EPI1804552|NA|A/Nyeri/2018117207/2019|EPI_ISL_535384|A_/_H1N1                               78.36%    passed     65.86%
+1030  EPI443228|NA|A/Meru/467/2009|EPI_ISL_139715|A_/_H1N1                                        78.80%    passed     90.87%
+1031  EPI443214|NA|A/Embu/169/2009|EPI_ISL_139713|A_/_H1N1                                        78.80%    passed     89.95%
+1032  EPI446014|NA|A/Mombasa/27/2009|EPI_ISL_140395|A_/_H1N1                                      78.80%    passed     89.09%
+1033  EPI1804554|NA|A/Nakuru/2019135048/2019|EPI_ISL_535385|A_/_H1N1                              78.36%    passed     63.22%
+1034  EPI443243|NA|A/Kitale/532/2009|EPI_ISL_139717|A_/_H1N1                                      78.80%    passed     80.40%
+1035  EPI443265|NA|A/Trans-Nzoia/168/2009|EPI_ISL_139720|A_/_H1N1                                 78.80%    passed     92.14%
+1036  EPI358087|NA|A/Hevecam/11V-19274_GVFI/2011|EPI_ISL_107061|A_/_H1N1                          78.76%    passed     84.92%
+1037  EPI3552627|NA|A/Agadez/015/2024|EPI_ISL_19407705|A_/_H1N1                                   78.41%    passed     59.49%
+1038  EPI3804600|NA|A/CA_te_D_Ivoire/2678/2024|EPI_ISL_19669924|A_/_H1N1                          78.76%    passed     83.24%
+1039  EPI255858|NA|A/Helwan746/2009|EPI_ISL_74451|A_/_H1N1                                        78.76%    passed     87.10%
+1040  EPI255860|NA|A/Aswan/2288/2009|EPI_ISL_74452|A_/_H1N1                                       78.76%    passed     87.43%
+1041  EPI1349550|NA|A/Sierra_Leone/129/2018|EPI_ISL_336637|A_/_H1N1                               78.39%    passed     65.01%
+1042  EPI509262|NA|A/Cape_Town/106/2007|EPI_ISL_157365|A_/_H1N1                                   78.71%    passed     41.80%
+1043  EPI2040913|NA|A/Kwazulu_Natal/334/2008|EPI_ISL_12722971|A_/_H1N1                            77.99%    passed     43.39%
+1044  EPI256807|NA|A/Mauritania/009/2010|EPI_ISL_74730|A_/_H1N1                                   78.76%    passed     87.10%
+1045  EPI284106|NA|A/Kisii/7559/2008|EPI_ISL_28475|A_/_H1N1                                       78.71%    passed     57.37%
+1046  EPI1804548|NA|A/Kakamega/2018116581/2019|EPI_ISL_535382|A_/_H1N1                            78.42%    passed     63.62%
+1047  EPI446059|NA|A/Kikuyu/184/2009|EPI_ISL_140401|A_/_H1N1                                      78.80%    passed     94.77%
+1048  EPI446096|NA|A/Kijabe/16/2010|EPI_ISL_140406|A_/_H1N1                                       78.80%    passed     96.26%
+1049  EPI2266313|NA|A/Mayotte/HCL022199534101/2022|EPI_ISL_16311793|A_/_H1N1                      78.57%    passed     66.49%
+1050  EPI2266223|NA|A/Mayotte/HCL022199513601/2022|EPI_ISL_16311787|A_/_H1N1                      78.57%    passed     66.49%
+1051  EPI4816294|NA|A/Cote-D_ivoire/GR3467/2025|EPI_ISL_20259880|A_/_H1N1                         78.76%    passed     83.24%
+1052  EPI1583016|NA|A/Buea/19V-3510/2019|EPI_ISL_388896|A_/_H1N1                                  78.76%    passed     77.68%
+1053  EPI3521605|NA|A/Bertoua/24V-7190_NA/2024|EPI_ISL_19358843|A_/_H1N1                          78.76%    passed     63.10%
+1054  EPI3521602|NA|A/Foumban/24V-6395_NA/2024|EPI_ISL_19358840|A_/_H1N1                          78.76%    passed     66.74%
+1055  EPI1230867|NA|A/Tunis/418/2018|EPI_ISL_309979|A_/_H1N1                                      78.76%    passed     80.26%
+1056  EPI2766498|NA|A/Chipata/14-NIC-012/2023|EPI_ISL_18360590|A_/_H1N1                           78.76%    passed     72.74%
+1057  EPI3842985|NA|A/CoteD_Ivoire/3988/2024|EPI_ISL_19687846|A_/_H1N1                            78.76%    passed     83.24%
+1058  EPI210155|NA|A/Menya/1386/2009|EPI_ISL_60090|A_/_H1N1                                       79.16%    passed     62.13%
+1059  EPI1804556|NA|A/Siaya/2019120096/2019|EPI_ISL_535386|A_/_H1N1                               78.73%    passed     83.44%
+1060  EPI210521|NA|A/MARRAKECH/47/2009|EPI_ISL_60272|A_/_H1N1                                     78.85%    passed     89.13%
+1061  EPI210525|NA|A/Mauritius1FJ/2009|EPI_ISL_60274|A_/_H1N1                                     78.76%    passed     86.70%
+1062  EPI210531|NA|A/Mauritus/MP-t/2009|EPI_ISL_60277|A_/_H1N1                                    78.76%    passed     87.10%
+1063  EPI210539|NA|A/RABAT/72/2009|EPI_ISL_60281|A_/_H1N1                                         78.76%    passed     90.25%
+1064  EPI1437150|NA|A/BeniMellal/413/2019|EPI_ISL_355285|A_/_H1N1                                 78.76%    passed     78.92%
+1065  EPI1437376|NA|A/Marakech/586/2019|EPI_ISL_355399|A_/_H1N1                                   78.76%    passed     75.68%
+1066  EPI1437476|NA|A/Sale/424/2019|EPI_ISL_355449|A_/_H1N1                                       78.76%    passed     83.92%
+1067  EPI4962762|NA|A/Libya/2771/2023|EPI_ISL_20311593|A_/_H1N1                                   79.30%    passed     80.44%
+1068  EPI1437508|NA|A/Temara/408/2019|EPI_ISL_355466|A_/_H1N1                                     78.76%    passed     74.61%
+1069  EPI271975|NA|A/NAIROBI/1/2010|EPI_ISL_77049|A_/_H1N1                                        78.86%    passed     93.45%
+1070  EPI271981|NA|A/KISII/1/2009|EPI_ISL_77051|A_/_H1N1                                          78.95%    passed     93.73%
+1071  EPI271978|NA|A/KITALE/1/2009|EPI_ISL_77050|A_/_H1N1                                         78.91%    passed     86.94%
+1072  EPI271984|NA|A/KAPENGURIA/1/2009|EPI_ISL_77052|A_/_H1N1                                     78.92%    passed     94.68%
+1073  EPI272030|NA|A/KAKAMEGA/1/2009|EPI_ISL_77071|A_/_H1N1                                       78.97%    passed     92.12%
+1074  EPI272036|NA|A/MOMBASA/1/2009|EPI_ISL_77073|A_/_H1N1                                        78.97%    passed     92.12%
+1075  EPI272042|NA|A/MALINDI/1/2009|EPI_ISL_77075|A_/_H1N1                                        78.97%    passed     88.50%
+1076  EPI272039|NA|A/KENYA_CP/1/2009|EPI_ISL_77074|A_/_H1N1                                       78.97%    passed     90.48%
+1077  EPI272045|NA|A/KWANZA/1/2009|EPI_ISL_77076|A_/_H1N1                                         78.95%    passed     87.46%
+1078  EPI624755|NA|A/Tsaralalana/1278/2015|EPI_ISL_191871|A_/_H1N1                                78.76%    passed     85.70%
+1079  EPI284100|NA|A/Kericho/7529/2008|EPI_ISL_28468|A_/_H1N1                                     78.71%    passed     41.46%
+1080  EPI284108|NA|A/Mbagathi/7596/2008|EPI_ISL_28481|A_/_H1N1                                    78.71%    passed     51.01%
+1081  EPI117684|NA|A/Durbin/113/1997|EPI_ISL_12323|A_/_H1N1                                       78.71%    passed     61.02%
+1082  EPI460647|NA|A/Annaba/G687/2012|EPI_ISL_143612|A_/_H1N1                                     78.76%    passed     81.63%
+1083  EPI2611277|NA|A/Ndola/07-NIC-62/2023|EPI_ISL_17953389|A_/_H1N1                              48.24%    failed      0.00%
+1084  EPI278019|NA|A/Bamako/WR2361N/2009|EPI_ISL_78853|A_/_H1N1                                   78.76%    passed     84.92%
+1085  EPI278027|NA|A/Addis_Ababa/WR2848N/2009|EPI_ISL_78854|A_/_H1N1                              78.76%    passed     85.51%
+1086  EPI2747560|NA|A/Thies/1247/2023|EPI_ISL_18281838|A_/_H1N1                                   78.41%    passed     57.80%
+1087  EPI2545186|NA|A/Macha/O1453/2021|EPI_ISL_17626341|A_/_H1N1                                  78.33%    passed     59.42%
+1088  EPI4770621|NA|A/_CA_te-d_Ivoire/3268/2025|EPI_ISL_20232588|A_/_H1N1                         78.76%    passed     77.62%
+1089  EPI282777|NA|A/Lagos/WRAIR1984N/2009|EPI_ISL_80179|A_/_H1N1                                 78.76%    passed     83.31%
+1090  EPI4770697|NA|A/CA_te-d_Ivoire/3276/2025|EPI_ISL_20232990|A_/_H1N1                          78.76%    passed     77.62%
+1091  EPI318399|NA|A/swine/Cameroon/11rs149-198/2010|EPI_ISL_90460|A_/_H1N1                       88.85%    passed     18.64%
+1092  EPI2645213|NA|A/swine/Senegal/096/2018|EPI_ISL_18017683|A_/_H1N1                            77.90%    passed     76.25%
+1093  EPI2645281|NA|A/swine/Senegal/0783/2019|EPI_ISL_18019813|A_/_H1N1                           78.02%    passed     71.85%
+1094  EPI372330|NA|A/shoveler/Egypt/00134-NAMRU3/2005|EPI_ISL_120191|A_/_H1N1                     78.76%    passed     15.07%
+1095  EPI372465|NA|A/teal/Egypt/01351-NAMRU3/2007|EPI_ISL_120208|A_/_H1N1                         78.76%    passed     37.82%
+1096  EPI1184041|NA|A/Olive_baboons/Kenya/PAN3350/2016|EPI_ISL_300561|A_/_H1N1                    72.17%    passed     41.78%
+1097  EPI1593576|NA|A/Common_Shelduck/Egypt/SM-047/2009|EPI_ISL_391382|A_/_H1N1                   79.57%    passed     12.08%
+WARNING: 1096 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                                                                                       78.67%  2 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: EPI1852634|NA|A/Madagascar/218/2020|EPI_ISL_1296440|A_/_H1N1 is identical to EPI1849697|NA|A/Madagascar/218/2020|EPI_ISL_1180146|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3629447|NA|A/Madagascar/02409/2024|EPI_ISL_19530511|A_/_H1N1 is identical to EPI3629578|NA|A/Madagascar/02679/2024|EPI_ISL_19530529|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3629399|NA|A/Madagascar/01758/2024|EPI_ISL_19530503|A_/_H1N1 is identical to EPI3629440|NA|A/Madagascar/02405/2024|EPI_ISL_19530510|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3541156|NA|A/Ambositra/01885/2024|EPI_ISL_19386934|A_/_H1N1 is identical to EPI3629557|NA|A/Madagascar/02654/2024|EPI_ISL_19530526|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4638799|NA|A/Madagascar/01862/2025|EPI_ISL_20144924|A_/_H1N1 is identical to EPI4440401|NA|A/Madagascar/01483/2025|EPI_ISL_19907471|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4440429|NA|A/Madagascar/02003/2025|EPI_ISL_19907476|A_/_H1N1 is identical to EPI4440395|NA|A/Madagascar/01482/2025|EPI_ISL_19907470|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4440441|NA|A/Madagascar/02048/2025|EPI_ISL_19907478|A_/_H1N1 is identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3606789|NA|A/South_Africa/R04162/2024|EPI_ISL_19493757|A_/_H1N1 is identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3629288|NA|A/Madagascar/02791/2024|EPI_ISL_19530485|A_/_H1N1 is identical to EPI3629312|NA|A/Madagascar/02930/2024|EPI_ISL_19530489|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4645202|NA|A/Madagascar/2118/2025|EPI_ISL_20150139|A_/_H1N1 is identical to EPI5154593|NA|A/Madagascar/2547/2025|EPI_ISL_20367038|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI239895|NA|A/Madagascar/6054/2009|EPI_ISL_68858|A_/_H1N1 is identical to EPI239897|NA|A/Madagascar/6081/2009|EPI_ISL_68859|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1705108|NA|A/Madagascar/4987/2019|EPI_ISL_413758|A_/_H1N1 is identical to EPI1703467|NA|A/Madagascar/5333/2019|EPI_ISL_413347|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI301923|NA|A/Madagascar/7473/2010|EPI_ISL_85958|A_/_H1N1 is identical to EPI301925|NA|A/Madagascar/7519/2010|EPI_ISL_85959|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2360576|NA|A/Madagascar/7287/2022|EPI_ISL_16830514|A_/_H1N1 is identical to EPI2360561|NA|A/Madagascar/7318/2022|EPI_ISL_16830512|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2620084|NA|A/Togo/262/2023|EPI_ISL_17981233|A_/_H1N1 is identical to EPI2360584|NA|A/Madagascar/7283/2022|EPI_ISL_16830515|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4783932|NA|A/Madagascar/03617/2025|EPI_ISL_20240061|A_/_H1N1 is identical to EPI4783873|NA|A/Madagascar/03191/2025|EPI_ISL_20240053|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4716706|NA|A/Madagascar/01927/2025|EPI_ISL_20178779|A_/_H1N1 is identical to EPI4638812|NA|A/Madagascar/01927/2025|EPI_ISL_20144926|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI319593|NA|A/Madagascar/0149/2011|EPI_ISL_90788|A_/_H1N1 is identical to EPI319595|NA|A/Madagascar/0149/2011|EPI_ISL_90789|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3935094|NA|A/Madagascar/03221/2024|EPI_ISL_19723423|A_/_H1N1 is identical to EPI3840624|NA|A/Madagascar/03221/2024|EPI_ISL_19687053|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3935148|NA|A/Madagascar/02988/2024|EPI_ISL_19723431|A_/_H1N1 is identical to EPI3840606|NA|A/Madagascar/02988/2024|EPI_ISL_19687049|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3934280|NA|A/Madagascar/03041/2024|EPI_ISL_19723316|A_/_H1N1 is identical to EPI3840645|NA|A/Madagascar/03041/2024|EPI_ISL_19687056|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3879483|NA|A/Madagascar/00021/2025|EPI_ISL_19704258|A_/_H1N1 is identical to EPI3879492|NA|A/Madagascar/00030/2025|EPI_ISL_19704260|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI624755|NA|A/Tsaralalana/1278/2015|EPI_ISL_191871|A_/_H1N1 is identical to EPI621836|NA|A/Madagascar/1566/2015|EPI_ISL_190949|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1282066|NA|A/Madagascar/561/2018|EPI_ISL_322857|A_/_H1N1 is identical to EPI1282114|NA|A/Madagascar/883/2018|EPI_ISL_322863|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1282146|NA|A/Madagascar/425/2018|EPI_ISL_322867|A_/_H1N1 is identical to EPI1282162|NA|A/Madagascar/375/2018|EPI_ISL_322869|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4304201|NA|A/Madagascar/00431/2025|EPI_ISL_19854878|A_/_H1N1 is identical to EPI4304227|NA|A/Madagascar/01242/2025|EPI_ISL_19854882|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI466571|NA|A/Madagascar/01774/2013|EPI_ISL_145419|A_/_H1N1 is identical to EPI466569|NA|A/Madagascar/01708/2013|EPI_ISL_145418|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI982554|NA|A/Madagascar/6380/2016|EPI_ISL_260158|A_/_H1N1 is identical to EPI982548|NA|A/Madagascar/5602/2016|EPI_ISL_260155|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI228937|NA|A/Madagascar/1531/2008|EPI_ISL_65347|A_/_H1N1 is identical to EPI228933|NA|A/Madagascar/2349/2008|EPI_ISL_65344|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI228950|NA|A/Madagascar/2041/2008|EPI_ISL_65351|A_/_H1N1 is identical to EPI228946|NA|A/Madagascar/2042/2008|EPI_ISL_65350|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1727619|NA|A/Kenya/Kilifi-045/2015|EPI_ISL_426157|A_/_H1N1 is identical to EPI2911866|NA|A/Kenya/KEMRI-KI045/2015|EPI_ISL_18759336|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2912357|NA|A/Kenya/KEMRI-NY006/2009|EPI_ISL_18759450|A_/_H1N1 is identical to EPI284130|NA|A/Kenya/0057/2009|EPI_ISL_75515|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI295443|NA|A/Kenya/3840/2010|EPI_ISL_84170|A_/_H1N1 is identical to EPI295446|NA|A/Kenya/3872/2010|EPI_ISL_84171|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2912419|NA|A/Kenya/KEMRI-S039/2011|EPI_ISL_18759471|A_/_H1N1 is identical to EPI2912449|NA|A/Kenya/KEMRI-S051/2011|EPI_ISL_18759482|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2156652|NA|A/Kenya/121/2022|EPI_ISL_14861053|A_/_H1N1 is identical to EPI2156676|NA|A/Kenya/133/2022|EPI_ISL_14861056|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2911285|NA|A/Kenya/KEMRI-NH028/2010|EPI_ISL_18759172|A_/_H1N1 is identical to EPI1733597|NA|A/Kenya/CDC-Nyeri-037/2011|EPI_ISL_428933|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1728119|NA|A/Kenya/CDC-Kakamega-008/2009|EPI_ISL_426345|A_/_H1N1 is identical to EPI1728111|NA|A/Kenya/CDC-Kakamega-007/2009|EPI_ISL_426344|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1321189|NA|A/Kenya/108/2018|EPI_ISL_331564|A_/_H1N1 is identical to EPI1321157|NA|A/Kenya/114/2018|EPI_ISL_331560|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2911243|NA|A/Kenya/KEMRI-N044/2015|EPI_ISL_18759158|A_/_H1N1 is identical to EPI1724507|NA|A/Kenya/CDC-Nakuru-044/2015|EPI_ISL_421571|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI325581|NA|A/Kenya/6758/2011|EPI_ISL_93612|A_/_H1N1 is identical to EPI1728401|NA|A/Kenya/CDC-Kakamega-046/2011|EPI_ISL_426574|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1724643|NA|A/Kenya/CDC-Nakuru-063/2010|EPI_ISL_421693|A_/_H1N1 is identical to EPI2911816|NA|A/Kenya/KEMRI-KI011/2010|EPI_ISL_18759321|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2911394|NA|A/Kenya/KEMRI-NH008/2018|EPI_ISL_18759212|A_/_H1N1 is identical to EPI1724190|NA|A/Kenya/CDC-KNH-008/2018|EPI_ISL_421439|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3247821|NA|A/Kenya/112/2024|EPI_ISL_19083723|A_/_H1N1 is identical to EPI3247869|NA|A/Kenya/105/2024|EPI_ISL_19083729|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2910951|NA|A/Kenya/KEMRI-N010/2018|EPI_ISL_18759060|A_/_H1N1 is identical to EPI1725180|NA|A/Kenya/CDC-Nakuru-010/2018|EPI_ISL_422478|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1724014|NA|A/Kenya/CDC-KNH-054/2011|EPI_ISL_421216|A_/_H1N1 is identical to EPI1722454|NA|A/Kenya/CDC-KNH-040/2011|EPI_ISL_420829|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI284114|NA|A/Kenya/0020/2009|EPI_ISL_75497|A_/_H1N1 is identical to EPI284133|NA|A/Kenya/0024/2009|EPI_ISL_75519|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1733701|NA|A/Kenya/CDC-Nyeri-067/2014|EPI_ISL_428973|A_/_H1N1 is identical to EPI2912473|NA|A/Kenya/KEMRI-NY067/2014|EPI_ISL_18759490|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2911400|NA|A/Kenya/KEMRI-NH009/2018|EPI_ISL_18759214|A_/_H1N1 is identical to EPI2910921|NA|A/Kenya/KEMRI-N001/2018|EPI_ISL_18759050|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI541038|NA|A/Ghana/DILI-0620/2014|EPI_ISL_166057|A_/_H1N1 is identical to EPI541032|NA|A/Ghana/DILI-0567/2014|EPI_ISL_166054|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4710965|NA|A/Ghana/FS-25-6294/2025|EPI_ISL_20174975|A_/_H1N1 is identical to EPI4722282|NA|A/Ghana/FS-25-5535/2025|EPI_ISL_20184602|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2475550|NA|A/Tebessa/44337/2022|EPI_ISL_17268738|A_/_H1N1 is identical to EPI2721045|NA|A/Ghana/1044/2023|EPI_ISL_18167284|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1877455|NA|A/Togo/0153/2021|EPI_ISL_2625851|A_/_H1N1 is identical to EPI1882135|NA|A/Togo/0242/2021|EPI_ISL_2918691|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4758172|NA|A/Mali/5130/2025|EPI_ISL_20221393|A_/_H1N1 is identical to EPI4590881|NA|A/Senegal/IPD-1640/2025|EPI_ISL_20096947|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI672732|NA|A/Zambia/01-00118/2015|EPI_ISL_201782|A_/_H1N1 is identical to EPI672733|NA|A/Zambia/01-00118/2015|EPI_ISL_201782|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI5180067|NA|A/Zambia/0895/2025|EPI_ISL_20373693|A_/_H1N1 is identical to EPI5154656|NA|A/Zambia/0902/2025|EPI_ISL_20367046|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1796642|NA|A/South_Africa/3973/2020|EPI_ISL_513924|A_/_H1N1 is identical to EPI1794792|NA|A/South_Africa/6188/2020|EPI_ISL_508578|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2122058|NA|A/South_Africa/R05509/2022|EPI_ISL_14333256|A_/_H1N1 is identical to EPI2122024|NA|A/South_Africa/R05220/2022|EPI_ISL_14333153|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3509489|NA|A/South_Africa/PET32921/2024|EPI_ISL_19340985|A_/_H1N1 is identical to EPI3509111|NA|A/South_Africa/PET33111/2024|EPI_ISL_19340914|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1970739|NA|A/South_Africa/R14500/2021|EPI_ISL_9402279|A_/_H1N1 is identical to EPI2774394|NA|A/South_Africa/R15629/2021|EPI_ISL_18385069|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1449750|NA|A/Johannesburg/R7964/18/2018|EPI_ISL_358186|A_/_H1N1 is identical to EPI3066673|NA|A/South_Africa/R07360/2018|EPI_ISL_18931163|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3532970|NA|A/South_Africa/NHLS-UCT-CERI-K062308/2024|EPI_ISL_19378057|A_/_H1N1 is identical to EPI3532936|NA|A/South_Africa/NHLS-UCT-CERI-K062305/2024|EPI_ISL_19378052|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4984444|NA|A/South_Africa/PATH-CERI-C073141/2025|EPI_ISL_20320308|A_/_H1N1 is identical to EPI4984381|NA|A/South_Africa/PATH-CERI-C072385/2025|EPI_ISL_20320210|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3490274|NA|A/SouthAfrica/R04387/24|EPI_ISL_19313778|A_/_H1N1 is identical to EPI3481637|NA|A/South_Africa/R04384/2024|EPI_ISL_19302664|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3532988|NA|A/South_Africa/NHLS-UCT-CERI-K062311/2024|EPI_ISL_19378235|A_/_H1N1 is identical to EPI3502133|NA|A/South_Africa/PATH-CERI-K062712/2024|EPI_ISL_19331246|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3354737|NA|A/South_Africa/R03443/2024|EPI_ISL_19182579|A_/_H1N1 is identical to EPI3354692|NA|A/South_Africa/R03366/2024|EPI_ISL_19182573|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3066655|NA|A/South_Africa/R05858/2018|EPI_ISL_18931160|A_/_H1N1 is identical to EPI2915189|NA|A/South_Africa/R06854/2018|EPI_ISL_18765096|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1796630|NA|A/South_Africa/2475/2020|EPI_ISL_513920|A_/_H1N1 is identical to EPI1794760|NA|A/South_Africa/2476/2020|EPI_ISL_508562|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1449735|NA|A/Johannesburg/R7659/18/2018|EPI_ISL_358171|A_/_H1N1 is identical to EPI3066964|NA|A/South_Africa/R06809/2018|EPI_ISL_18931202|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1078514|NA|A/Mali/023/2017|EPI_ISL_281613|A_/_H1N1 is identical to EPI1088431|NA|A/Burkina_Faso/007/2017|EPI_ISL_283208|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1885632|NA|A/Cote_D_Ivoire/1901/2021|EPI_ISL_3534832|A_/_H1N1 is identical to EPI1887904|NA|A/Cote_D_Ivoire/1565/2021|EPI_ISL_3796256|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3728866|NA|A/Cote_D_Ivoire/1061/2024|EPI_ISL_19621761|A_/_H1N1 is identical to EPI3296020|NA|A/Cote_D_Ivoire/1060/2024|EPI_ISL_19141425|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3844292|NA|A/_Cote_D_Ivoire/2678/2024|EPI_ISL_19688272|A_/_H1N1 is identical to EPI3800468|NA|A/Cote_D_Ivoire/2677/2024|EPI_ISL_19669247|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1078578|NA|A/Mali/082/2017|EPI_ISL_281621|A_/_H1N1 is identical to EPI1078293|NA|A/Mali/101/2017|EPI_ISL_281585|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3490162|NA|A/Mauritius/1114714/2024|EPI_ISL_19313768|A_/_H1N1 is identical to EPI3490163|NA|A/Mauritius/1114714/2024|EPI_ISL_19313768|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1114318|NA|A/Mauritius/325/2017|EPI_ISL_287178|A_/_H1N1 is identical to EPI1114320|NA|A/Mauritius/340/2017|EPI_ISL_287179|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4441714|NA|A/Niger/VR897_CSIYANT/2025|EPI_ISL_19908513|A_/_H1N1 is identical to EPI4551297|NA|A/Niger/VR1173_HNABD/2025|EPI_ISL_20080415|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI718176|NA|A/Egypt/1565/2016|EPI_ISL_213729|A_/_H1N1 is identical to EPI983121|NA|A/Tunisia/3900/2016|EPI_ISL_260276|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3540885|NA|A/Toamasina/01641/2024|EPI_ISL_19386900|A_/_H1N1 is identical to EPI3540994|NA|A/Toamasina/01641/2024|EPI_ISL_19386914|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1054430|NA|A/Dakar/07/2017|EPI_ISL_276868|A_/_H1N1 is identical to EPI1054420|NA|A/Dakar/02/2017|EPI_ISL_276863|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1973631|NA|A/Dakar/05/2021|EPI_ISL_9533497|A_/_H1N1 is identical to EPI2024378|NA|A/Dakar/11/2021|EPI_ISL_12241613|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4770707|NA|A/Cote-d_Ivoire/3309/2025|EPI_ISL_20232996|A_/_H1N1 is identical to EPI4615343|NA|A/Cote_d_Ivoire/0200/2025|EPI_ISL_20130723|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI5095845|NA|A/Uganda/HCL025195212501/2024|EPI_ISL_20352485|A_/_H1N1 is identical to EPI5095853|NA|A/Uganda/HCL025195213101/2024|EPI_ISL_20352486|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1230802|NA|A/Cameroon/9408/2017|EPI_ISL_309946|A_/_H1N1 is identical to EPI1193154|NA|A/Cameroon/9533/2017|EPI_ISL_302444|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3541634|NA|A/Cameroon/5052/2024|EPI_ISL_19387076|A_/_H1N1 is identical to EPI3542493|NA|A/Cameroon/5052/2024|EPI_ISL_19387190|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4311116|NA|A/Morocco/701/2024|EPI_ISL_19858873|A_/_H1N1 is identical to EPI3957686|NA|A/Morocco/701/2024|EPI_ISL_19729746|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1252733|NA|A/Tanger/1388/2018|EPI_ISL_314266|A_/_H1N1 is identical to EPI1252727|NA|A/Rabat_/1320/2018|EPI_ISL_314263|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4742469|NA|A/Bangui/027/2025|EPI_ISL_20205991|A_/_H1N1 is identical to EPI4742444|NA|A/Bangui/256/2025|EPI_ISL_20205987|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI3804600|NA|A/CA_te_D_Ivoire/2678/2024|EPI_ISL_19669924|A_/_H1N1 is identical to EPI4770615|NA|A/_Cote-d_Ivoire/3208/2025|EPI_ISL_20232587|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI243977|NA|A/Egypt-Vacsera/138/2009|EPI_ISL_70350|A_/_H1N1 is identical to EPI243979|NA|A/Egypt-Vacsera162/2009|EPI_ISL_70351|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI1437508|NA|A/Temara/408/2019|EPI_ISL_355466|A_/_H1N1 is identical to EPI1437228|NA|A/Fes/407/2019|EPI_ISL_355324|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI4670592|NA|A/Reunion/CHU524091928001/2024|EPI_ISL_20159846|A_/_H1N1 is identical to EPI4670564|NA|A/Reunion/CHU724092135901/2024|EPI_ISL_20159842|A_/_H1N1 but kept for subsequent analysis
+NOTE: EPI2266223|NA|A/Mayotte/HCL022199513601/2022|EPI_ISL_16311787|A_/_H1N1 is identical to EPI2266313|NA|A/Mayotte/HCL022199534101/2022|EPI_ISL_16311793|A_/_H1N1 but kept for subsequent analysis
+Checking for duplicate sequences: done in 0.0106628 secs using 579.3% CPU
+Identifying sites to remove: done in 0.0265728 secs using 192.6% CPU
+NOTE: 75 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: EPI3629462|NA|A/Madagascar/02437/2024|EPI_ISL_19530513|A_/_H1N1 (identical to EPI3629578|NA|A/Madagascar/02679/2024|EPI_ISL_19530529|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3629251|NA|A/Madagascar/02550/2024|EPI_ISL_19530480|A_/_H1N1 (identical to EPI3629578|NA|A/Madagascar/02679/2024|EPI_ISL_19530529|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3541180|NA|A/Antsirabe/01918/2024|EPI_ISL_19386937|A_/_H1N1 (identical to EPI3629578|NA|A/Madagascar/02679/2024|EPI_ISL_19530529|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3534622|NA|A/Toliary/02038/2024|EPI_ISL_19382018|A_/_H1N1 (identical to EPI3629578|NA|A/Madagascar/02679/2024|EPI_ISL_19530529|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3629382|NA|A/Madagascar/01747/2024|EPI_ISL_19530500|A_/_H1N1 (identical to EPI3629440|NA|A/Madagascar/02405/2024|EPI_ISL_19530510|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3629468|NA|A/Madagascar/02465/2024|EPI_ISL_19530514|A_/_H1N1 (identical to EPI3629440|NA|A/Madagascar/02405/2024|EPI_ISL_19530510|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4576350|NA|A/Madagascar/00987/2025|EPI_ISL_20090050|A_/_H1N1 (identical to EPI4440395|NA|A/Madagascar/01482/2025|EPI_ISL_19907470|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4634233|NA|A/Madagascar/02585/2025|EPI_ISL_20142006|A_/_H1N1 (identical to EPI4440395|NA|A/Madagascar/01482/2025|EPI_ISL_19907470|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4634227|NA|A/Madagascar/02557/2025|EPI_ISL_20142005|A_/_H1N1 (identical to EPI4440395|NA|A/Madagascar/01482/2025|EPI_ISL_19907470|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4634259|NA|A/Madagascar/02701/2025|EPI_ISL_20142011|A_/_H1N1 (identical to EPI4440395|NA|A/Madagascar/01482/2025|EPI_ISL_19907470|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4304221|NA|A/Madagascar/01183/2025|EPI_ISL_19854881|A_/_H1N1 (identical to EPI4440395|NA|A/Madagascar/01482/2025|EPI_ISL_19907470|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4440436|NA|A/Madagascar/02012/2025|EPI_ISL_19907477|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4440418|NA|A/Madagascar/01951/2025|EPI_ISL_19907474|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4576355|NA|A/Madagascar/01426/2025|EPI_ISL_20090051|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4576396|NA|A/Madagascar/73139/2025|EPI_ISL_20090057|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4634271|NA|A/Madagascar/02735/2025|EPI_ISL_20142013|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4638843|NA|A/Madagascar/02287/2025|EPI_ISL_20144931|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4638836|NA|A/Madagascar/02191/2025|EPI_ISL_20144930|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4638825|NA|A/Madagascar/02050/2025|EPI_ISL_20144928|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4638819|NA|A/Madagascar/02054/2025|EPI_ISL_20144927|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4716698|NA|A/Madagascar/02191/2025|EPI_ISL_20178778|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4304234|NA|A/Madagascar/01380/2025|EPI_ISL_19854883|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4304208|NA|A/Madagascar/01079/2025|EPI_ISL_19854879|A_/_H1N1 (identical to EPI4440454|NA|A/Madagascar/02097/2025|EPI_ISL_19907480|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3511326|NA|A/South_Africa/R04895/2024|EPI_ISL_19342775|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3827179|NA|A/South_Africa/R04822/2024|EPI_ISL_19680470|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3827252|NA|A/South_Africa/R05602/2024|EPI_ISL_19680541|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3481677|NA|A/South_Africa/R04503/2024|EPI_ISL_19302669|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3472338|NA|A/Tunisia/657/2024|EPI_ISL_19296435|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3541202|NA|A/Toamasina/01947/2024|EPI_ISL_19386940|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3009614|NA|A/Algeria/2367/2023|EPI_ISL_18880091|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3507005|NA|A/Moramanga/02084/2024|EPI_ISL_19334297|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3490290|NA|A/SouthAfrica/R04388/24|EPI_ISL_19313780|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI5167079|NA|A/Gaborone/BHP124039435/2024|EPI_ISL_20370564|A_/_H1N1 (identical to EPI3629237|NA|A/Madagascar/01791/2024|EPI_ISL_19530478|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4645322|NA|A/Madagascar/1730/2025|EPI_ISL_20150154|A_/_H1N1 (identical to EPI5154593|NA|A/Madagascar/2547/2025|EPI_ISL_20367038|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1705139|NA|A/Madagascar/5254/2019|EPI_ISL_413763|A_/_H1N1 (identical to EPI1703467|NA|A/Madagascar/5333/2019|EPI_ISL_413347|A_/_H1N1) is ignored but added at the end
+NOTE: EPI2927325|NA|A/Madagascar/356/2023|EPI_ISL_18785958|A_/_H1N1 (identical to EPI2360561|NA|A/Madagascar/7318/2022|EPI_ISL_16830512|A_/_H1N1) is ignored but added at the end
+NOTE: EPI2747640|NA|A/Senegal/1306/2023|EPI_ISL_18282711|A_/_H1N1 (identical to EPI2360584|NA|A/Madagascar/7283/2022|EPI_ISL_16830515|A_/_H1N1) is ignored but added at the end
+NOTE: EPI2747576|NA|A/Senegal/1273/2023|EPI_ISL_18282091|A_/_H1N1 (identical to EPI2360584|NA|A/Madagascar/7283/2022|EPI_ISL_16830515|A_/_H1N1) is ignored but added at the end
+NOTE: EPI2598258|NA|A/Burkina_Faso/2718/2023|EPI_ISL_17806131|A_/_H1N1 (identical to EPI2360584|NA|A/Madagascar/7283/2022|EPI_ISL_16830515|A_/_H1N1) is ignored but added at the end
+NOTE: EPI2598501|NA|A/Burkina_Faso/030/2023|EPI_ISL_17806161|A_/_H1N1 (identical to EPI2360584|NA|A/Madagascar/7283/2022|EPI_ISL_16830515|A_/_H1N1) is ignored but added at the end
+NOTE: EPI5191542|NA|A/Madagascar/03792/2025|EPI_ISL_20379673|A_/_H1N1 (identical to EPI4783873|NA|A/Madagascar/03191/2025|EPI_ISL_20240053|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3879675|NA|A/Madagascar/00031/2025|EPI_ISL_19704287|A_/_H1N1 (identical to EPI3879492|NA|A/Madagascar/00030/2025|EPI_ISL_19704260|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4304196|NA|A/Madagascar/00426/2025|EPI_ISL_19854877|A_/_H1N1 (identical to EPI4304227|NA|A/Madagascar/01242/2025|EPI_ISL_19854882|A_/_H1N1) is ignored but added at the end
+NOTE: EPI466565|NA|A/Madagascar/01123/2013|EPI_ISL_145416|A_/_H1N1 (identical to EPI466569|NA|A/Madagascar/01708/2013|EPI_ISL_145418|A_/_H1N1) is ignored but added at the end
+NOTE: EPI466567|NA|A/Madagascar/01430/2013|EPI_ISL_145417|A_/_H1N1 (identical to EPI466569|NA|A/Madagascar/01708/2013|EPI_ISL_145418|A_/_H1N1) is ignored but added at the end
+NOTE: EPI466581|NA|A/Madagascar/02064/2013|EPI_ISL_145424|A_/_H1N1 (identical to EPI466569|NA|A/Madagascar/01708/2013|EPI_ISL_145418|A_/_H1N1) is ignored but added at the end
+NOTE: EPI2912565|NA|A/Kenya/KEMRI-S001/2009|EPI_ISL_18759964|A_/_H1N1 (identical to EPI284130|NA|A/Kenya/0057/2009|EPI_ISL_75515|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1733922|NA|A/Kenya/CDC-Siaya-012/2009|EPI_ISL_429244|A_/_H1N1 (identical to EPI284130|NA|A/Kenya/0057/2009|EPI_ISL_75515|A_/_H1N1) is ignored but added at the end
+NOTE: EPI2912398|NA|A/Kenya/KEMRI-S032/2011|EPI_ISL_18759464|A_/_H1N1 (identical to EPI2912449|NA|A/Kenya/KEMRI-S051/2011|EPI_ISL_18759482|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1734122|NA|A/Kenya/CDC-Siaya-040/2011|EPI_ISL_429823|A_/_H1N1 (identical to EPI2912449|NA|A/Kenya/KEMRI-S051/2011|EPI_ISL_18759482|A_/_H1N1) is ignored but added at the end
+NOTE: EPI2156708|NA|A/Kenya/120/2022|EPI_ISL_14861153|A_/_H1N1 (identical to EPI2156676|NA|A/Kenya/133/2022|EPI_ISL_14861056|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1724683|NA|A/Kenya/CDC-Nakuru-071/2010|EPI_ISL_421698|A_/_H1N1 (identical to EPI2911816|NA|A/Kenya/KEMRI-KI011/2010|EPI_ISL_18759321|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3792971|NA|A/Zambia/100384/2024|EPI_ISL_19667822|A_/_H1N1 (identical to EPI3247869|NA|A/Kenya/105/2024|EPI_ISL_19083729|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3458742|NA|A/Zambia/0109/2024|EPI_ISL_19284401|A_/_H1N1 (identical to EPI3247869|NA|A/Kenya/105/2024|EPI_ISL_19083729|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3474773|NA|A/South_Africa/3989/2024|EPI_ISL_19298964|A_/_H1N1 (identical to EPI3247869|NA|A/Kenya/105/2024|EPI_ISL_19083729|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4495857|NA|A/Ghana/FS-25-3942/2025|EPI_ISL_20066621|A_/_H1N1 (identical to EPI4722282|NA|A/Ghana/FS-25-5535/2025|EPI_ISL_20184602|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4722258|NA|A/Ghana/FS-25-5306/2025|EPI_ISL_20184595|A_/_H1N1 (identical to EPI4722282|NA|A/Ghana/FS-25-5535/2025|EPI_ISL_20184602|A_/_H1N1) is ignored but added at the end
+NOTE: EPI2815998|NA|A/Ethiopia/3/2023|EPI_ISL_18593174|A_/_H1N1 (identical to EPI2721045|NA|A/Ghana/1044/2023|EPI_ISL_18167284|A_/_H1N1) is ignored but added at the end
+NOTE: EPI3509460|NA|A/South_Africa/PET32890/2024|EPI_ISL_19340980|A_/_H1N1 (identical to EPI3509111|NA|A/South_Africa/PET33111/2024|EPI_ISL_19340914|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1310099|NA|A/SouthAfrica/R07211/2018|EPI_ISL_329765|A_/_H1N1 (identical to EPI3066673|NA|A/South_Africa/R07360/2018|EPI_ISL_18931163|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1449702|NA|A/Johannesburg/R5856/18/2018|EPI_ISL_358138|A_/_H1N1 (identical to EPI2915189|NA|A/South_Africa/R06854/2018|EPI_ISL_18765096|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1449713|NA|A/Johannesburg/R6632/18/2018|EPI_ISL_358149|A_/_H1N1 (identical to EPI3066964|NA|A/South_Africa/R06809/2018|EPI_ISL_18931202|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1885496|NA|A/Cote_D_Ivoire/1982/2021|EPI_ISL_3534642|A_/_H1N1 (identical to EPI1887904|NA|A/Cote_D_Ivoire/1565/2021|EPI_ISL_3796256|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4770621|NA|A/_CA_te-d_Ivoire/3268/2025|EPI_ISL_20232588|A_/_H1N1 (identical to EPI3800468|NA|A/Cote_D_Ivoire/2677/2024|EPI_ISL_19669247|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4770697|NA|A/CA_te-d_Ivoire/3276/2025|EPI_ISL_20232990|A_/_H1N1 (identical to EPI3800468|NA|A/Cote_D_Ivoire/2677/2024|EPI_ISL_19669247|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1078277|NA|A/Mali/032/2017|EPI_ISL_281583|A_/_H1N1 (identical to EPI1078293|NA|A/Mali/101/2017|EPI_ISL_281585|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1078245|NA|A/Mali/039/2017|EPI_ISL_281579|A_/_H1N1 (identical to EPI1078293|NA|A/Mali/101/2017|EPI_ISL_281585|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1078562|NA|A/Mali/079/2017|EPI_ISL_281619|A_/_H1N1 (identical to EPI1078293|NA|A/Mali/101/2017|EPI_ISL_281585|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1114325|NA|A/Mauritius/411/2017|EPI_ISL_287181|A_/_H1N1 (identical to EPI1114320|NA|A/Mauritius/340/2017|EPI_ISL_287179|A_/_H1N1) is ignored but added at the end
+NOTE: EPI824290|NA|A/Egypt/1322/2016|EPI_ISL_231917|A_/_H1N1 (identical to EPI983121|NA|A/Tunisia/3900/2016|EPI_ISL_260276|A_/_H1N1) is ignored but added at the end
+NOTE: EPI824348|NA|A/Egypt/1476/2016|EPI_ISL_231946|A_/_H1N1 (identical to EPI983121|NA|A/Tunisia/3900/2016|EPI_ISL_260276|A_/_H1N1) is ignored but added at the end
+NOTE: EPI718178|NA|A/Egypt/1602/2016|EPI_ISL_213730|A_/_H1N1 (identical to EPI983121|NA|A/Tunisia/3900/2016|EPI_ISL_260276|A_/_H1N1) is ignored but added at the end
+NOTE: EPI1973629|NA|A/Dakar/04/2021|EPI_ISL_9533496|A_/_H1N1 (identical to EPI2024378|NA|A/Dakar/11/2021|EPI_ISL_12241613|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4816294|NA|A/Cote-D_ivoire/GR3467/2025|EPI_ISL_20259880|A_/_H1N1 (identical to EPI4770615|NA|A/_Cote-d_Ivoire/3208/2025|EPI_ISL_20232587|A_/_H1N1) is ignored but added at the end
+NOTE: EPI4669966|NA|A/Reunion/CHU724102241501/2024|EPI_ISL_20159672|A_/_H1N1 (identical to EPI4670564|NA|A/Reunion/CHU724092135901/2024|EPI_ISL_20159842|A_/_H1N1) is ignored but added at the end
+Alignment was printed to /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/NA_H1N1.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to /pasteur/appa/scratch/cduitama/EDID/Madagascar_influenza/trees/NA_H1N1.uniqueseq.phy
+Creating fast initial parsimony tree by random order stepwise addition...
+18.573 seconds, parsimony score: 3807 (based on 1183 sites)
+
+NOTE: 153 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -33350.893
+2. Current log-likelihood: -30419.088
+3. Current log-likelihood: -30094.116
+4. Current log-likelihood: -30033.776
+5. Current log-likelihood: -29965.462
+6. Current log-likelihood: -29885.665
+7. Current log-likelihood: -29789.672
+8. Current log-likelihood: -29669.197
+9. Current log-likelihood: -29507.846
+10. Current log-likelihood: -29273.406
+11. Current log-likelihood: -29100.540
+12. Current log-likelihood: -29098.628
+Optimal log-likelihood: -29098.624
+Rate parameters:  A-C: 1.00000  A-G: 8.72337  A-T: 1.00000  C-G: 1.00000  C-T: 8.72337  G-T: 1.00000
+Base frequencies:  A: 0.311  C: 0.193  G: 0.237  T: 0.260
+Gamma shape alpha: 0.551
+Parameters optimization took 12 rounds (6.930 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 1.03517 secs using 794.5% CPU
+Computing ML distances took 1.039926 sec (of wall-clock time) 8.235439 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 0.0123567 secs using 286.4% CPU
+Constructing RapidNJ tree: done in 3.06025 secs using 62.27% CPU
+Computing RapidNJ tree took 3.072762 sec (of wall-clock time) 1.941400 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -29406.927
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 43.564 second
+Computing log-likelihood of 98 initial trees ... 27.468 seconds
+Current best score: -29098.624
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -29017.887
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 2: -28941.598
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 5: -28925.439
+Iteration 10 / LogL: -28968.756 / Time: 0h:3m:14s
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 19: -28914.087
+Iteration 20 / LogL: -28967.455 / Time: 0h:5m:4s
+Finish initializing candidate tree set (20)
+Current best tree score: -28914.087 / CPU time: 268.777
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -28959.241 / Time: 0h:6m:56s (0h:20m:20s left)
+Iteration 40 / LogL: -28962.526 / Time: 0h:8m:51s (0h:17m:18s left)
+Iteration 50 / LogL: -28950.064 / Time: 0h:10m:24s (0h:14m:13s left)
+Iteration 60 / LogL: -29009.733 / Time: 0h:11m:44s (0h:11m:25s left)
+Iteration 70 / LogL: -28965.440 / Time: 0h:13m:4s (0h:9m:3s left)
+Iteration 80 / LogL: -28992.194 / Time: 0h:14m:14s (0h:6m:52s left)
+Iteration 90 / LogL: -28976.509 / Time: 0h:15m:32s (0h:4m:57s left)
+Iteration 100 / LogL: -28964.687 / Time: 0h:16m:50s (0h:3m:10s left)
+Iteration 110 / LogL: -28993.356 / Time: 0h:18m:3s (0h:1m:27s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 112: -28909.133
+Iteration 120 / LogL: -28967.073 / Time: 0h:20m:43s (0h:15m:46s left)
+Iteration 130 / LogL: -28963.499 / Time: 0h:21m:56s (0h:13m:45s left)
+Iteration 140 / LogL: -28983.244 / Time: 0h:23m:9s (0h:11m:50s left)
+Iteration 150 / LogL: -28975.884 / Time: 0h:24m:55s (0h:10m:14s left)
+Iteration 160 / LogL: -28977.176 / Time: 0h:27m:37s (0h:8m:55s left)
+Iteration 170 / LogL: -28919.124 / Time: 0h:29m:4s (0h:7m:8s left)
+Iteration 180 / LogL: -28973.353 / Time: 0h:30m:15s (0h:5m:21s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 189: -28906.249
+Iteration 190 / LogL: -29251.462 / Time: 0h:31m:34s (0h:16m:22s left)
+Iteration 200 / LogL: -28913.781 / Time: 0h:32m:48s (0h:14m:31s left)
+Iteration 210 / LogL: -28976.673 / Time: 0h:34m:28s (0h:12m:54s left)
+Iteration 220 / LogL: -28938.050 / Time: 0h:35m:40s (0h:11m:8s left)
+Iteration 230 / LogL: -28929.899 / Time: 0h:36m:56s (0h:9m:26s left)
+Iteration 240 / LogL: -28928.060 / Time: 0h:38m:6s (0h:7m:44s left)

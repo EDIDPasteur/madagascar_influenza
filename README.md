@@ -103,7 +103,7 @@ Unpublished avian influenza sequences from Madagascar collected by Norosoa Razan
 
 ### Why per-segment, never concatenated
 
-Influenza has 8 independent genomic segments that can **reassort** — meaning different segments can have different evolutionary histories within the same host.
+Influenza genome comprise 8 independent segments, each of which encodes a different protein. When two influenza viruses co-infect the same host cell, their genome segments can reassort. As a result, reconstructing the virus evolutionary history accurately we need to create one independent phylogeny for each gene.
 
 ### What is being aligned
 
