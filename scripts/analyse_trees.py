@@ -10,25 +10,25 @@ ONLY Madagascar sequences and has >= 2 tips.  "Maximal" means the clade is not
 contained within a larger all-Madagascar clade — we count the top-level ones.
 
 Metrics reported per clade:
-  - n_tips         : number of Madagascar sequences in the clade
-  - total_bl       : sum of all branch lengths within the clade (internal
-                     diversity — how much evolution has happened inside)
-  - mean_tip_dist  : mean pairwise tip-to-tip distance within the clade
-                     (average evolutionary distance between two Malagasy seqs)
-  - dist_to_sister : branch length from the clade root to its parent node
-                     (how far this Malagasy lineage has diverged from its
-                     nearest African relative)
+  - n_tips        : number of Madagascar sequences in the clade
+  - internal_bl   : sum of all branch lengths within the clade (internal
+                    diversity — how much evolution has happened inside)
+  - mean_tip_dist : mean pairwise tip-to-tip distance within the clade
+                    (average evolutionary distance between two Malagasy seqs)
+  - stem_bl       : branch length from the clade root to its parent node
+                    (how far this Malagasy lineage has diverged from its
+                    nearest African relative)
 
 Summary per tree:
-  - n_mdg_tips          : total Madagascar tips in tree
-  - n_africa_tips       : total non-Madagascar tips in tree
-  - n_mdg_clades        : number of monophyletic Madagascar clades (>= 2 tips)
-  - n_mdg_singletons    : Madagascar tips NOT in any clade (scattered importations)
-  - pct_mdg_in_clades   : % Madagascar sequences that are in a clade
-  - total_mdg_bl        : total branch length of all Malagasy tips + their
-                          internal branches (Faith's PD proxy)
-  - mean_clade_size     : mean clade tip count
-  - mean_dist_to_sister : mean dist_to_sister across all clades
+  - n_mdg_tips        : total Madagascar tips in tree
+  - n_africa_tips     : total non-Madagascar tips in tree
+  - n_mdg_clades      : number of monophyletic Madagascar clades (>= 2 tips)
+  - n_mdg_singletons  : Madagascar tips NOT in any clade (scattered importations)
+  - pct_mdg_in_clades : % Madagascar sequences that are in a clade
+  - total_mdg_bl      : sum of all branch lengths exclusively connecting
+                        Madagascar sequences (Faith's PD proxy)
+  - mean_clade_size   : mean clade tip count
+  - mean_stem_bl      : mean stem_bl across all clades
 
 Outputs:
   results/clade_summary.tsv    — one row per tree
@@ -42,7 +42,6 @@ import argparse
 import csv
 import sys
 from pathlib import Path
-from collections import defaultdict
 
 try:
     from ete3 import Tree
@@ -68,8 +67,8 @@ def is_madagascar(leaf_name: str) -> bool:
     'Madagascar', avoiding partial matches like 'Madagascar-traveler'.
     """
     isolate = leaf_name.split("|")[2] if "|" in leaf_name else leaf_name
-    # Remove trailing segment/subtype suffix that Norosoa appends after last '_'
-    # e.g. '2023_H9N2_HA' — not part of geographic name, ignore
+    # Split on '/' and test each component; Norosoa suffixes like '_H9N2_HA'
+    # remain attached to the year field and do not equal 'Madagascar'.
     parts = isolate.split("/")
     return any(p == "Madagascar" for p in parts)
 
@@ -126,9 +125,11 @@ def find_mdg_clades(tree):
         if len(leaves) < 2:
             continue
         if all(is_madagascar(lf.name) for lf in leaves):
-            # Check parent: if parent is also all-Madagascar, skip (not maximal)
+            # Check parent: if parent is also all-Madagascar, skip (not maximal).
+            # We must check even when parent is root — if the whole tree is
+            # Madagascar, the root's children should not each be reported.
             parent = node.up
-            if parent and not parent.is_root():
+            if parent is not None:
                 parent_leaves = parent.get_leaves()
                 if all(is_madagascar(lf.name) for lf in parent_leaves):
                     continue  # parent is a larger qualifying clade; skip this one
@@ -150,7 +151,11 @@ def analyse_tree(treefile: Path) -> tuple[dict, list[dict]]:
     # Root the tree before any clade detection — IQ-TREE outputs unrooted
     # Newick files; searching for monophyletic groups on an unrooted tree
     # produces arbitrary, starting-point-dependent results.
-    tree.set_outgroup(tree.get_midpoint_outgroup())
+    # get_midpoint_outgroup() returns None for star-topology or single-branch
+    # trees; guard against that to avoid a crash.
+    outgroup = tree.get_midpoint_outgroup()
+    if outgroup is not None:
+        tree.set_outgroup(outgroup)
 
     all_leaves   = tree.get_leaves()
     mdg_leaves   = [lf for lf in all_leaves if     is_madagascar(lf.name)]
@@ -167,11 +172,9 @@ def analyse_tree(treefile: Path) -> tuple[dict, list[dict]]:
     n_singletons = sum(1 for lf in mdg_leaves if lf.name not in clade_tips)
     pct_in_clades = len(clade_tips) / n_mdg * 100 if n_mdg else 0.0
 
-    # Faith's PD proxy: branch lengths attributed to Madagascar tips
-    # = sum of dist from each Mdg tip to the root, divided by number of Mdg tips
-    # We use a simpler proxy: total branch length of all edges in the minimal
-    # spanning subtree of all Mdg leaves (ETE3: tree.get_common_ancestor()..)
-    # For simplicity: sum of all branches whose descendant set is a subset of Mdg
+    # Faith's PD proxy: sum of all branch lengths for edges whose entire
+    # descendant leaf set consists only of Madagascar sequences — every branch
+    # that is exclusively part of the Malagasy portion of the tree.
     mdg_set = {lf.name for lf in mdg_leaves}
     mdg_bl = 0.0
     for node in tree.traverse():
@@ -224,6 +227,8 @@ def main():
                         help="Directory containing *.treefile (default: trees/)")
     parser.add_argument("--out-dir",  default="results",
                         help="Output directory (default: results/)")
+    parser.add_argument("--force", action="store_true",
+                        help="Overwrite existing output files (default: abort)")
     args = parser.parse_args()
 
     tree_dir = Path(args.tree_dir)
@@ -244,6 +249,11 @@ def main():
 
     summary_path = out_dir / "clade_summary.tsv"
     details_path = out_dir / "clade_details.tsv"
+
+    if not args.force:
+        for p in [summary_path, details_path]:
+            if p.exists():
+                sys.exit(f"ERROR: {p} already exists. Use --force to overwrite.")
 
     with open(summary_path, "w", newline="") as sf, \
          open(details_path, "w", newline="") as df:
@@ -270,18 +280,23 @@ def main():
     print(f"  {summary_path}")
     print(f"  {details_path}")
 
-    # Print summary table to stdout
-    print("\n" + "="*85)
-    print(f"{'Tree':<12} {'Mdg':>5} {'Afr':>6} {'Clades':>7} {'Singles':>8} "
-          f"{'%InClade':>9} {'MeanSize':>9} {'MeanStemBL':>12}")
-    print("-"*85)
+    # Print summary table to stdout — compute column width dynamically so
+    # long tree names don't corrupt alignment.
     with open(summary_path) as f:
-        for row in csv.DictReader(f, delimiter="\t"):
-            print(f"{row['tree']:<12} {row['n_mdg_tips']:>5} {row['n_africa_tips']:>6} "
-                  f"{row['n_mdg_clades']:>7} {row['n_mdg_singletons']:>8} "
-                  f"{row['pct_mdg_in_clades']:>9} {row['mean_clade_size']:>9} "
-                  f"{row['mean_stem_bl']:>12}")
-    print("="*85)
+        table_rows = list(csv.DictReader(f, delimiter="\t"))
+    name_w  = max((len(r["tree"]) for r in table_rows), default=4)
+    name_w  = max(name_w, len("Tree"))
+    total_w = name_w + 63  # fixed columns total to 63 chars after the name
+    print("\n" + "="*total_w)
+    print(f"{'Tree':<{name_w}} {'Mdg':>5} {'Afr':>6} {'Clades':>7} {'Singles':>8} "
+          f"{'%InClade':>9} {'MeanSize':>9} {'MeanStemBL':>12}")
+    print("-"*total_w)
+    for row in table_rows:
+        print(f"{row['tree']:<{name_w}} {row['n_mdg_tips']:>5} {row['n_africa_tips']:>6} "
+              f"{row['n_mdg_clades']:>7} {row['n_mdg_singletons']:>8} "
+              f"{row['pct_mdg_in_clades']:>9} {row['mean_clade_size']:>9} "
+              f"{row['mean_stem_bl']:>12}")
+    print("="*total_w)
 
 
 if __name__ == "__main__":
