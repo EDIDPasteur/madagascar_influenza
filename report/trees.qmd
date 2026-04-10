@@ -1,0 +1,327 @@
+---
+title: "Madagascar Influenza — Phylogenetic Analysis"
+subtitle: "IQ-TREE ML trees · Monophyletic clade analysis · Tree visualizations"
+author: "Camila Duitama"
+date: today
+format:
+  html:
+    embed-resources: true
+    output-file: "trees.html"
+    output-dir: "../docs"
+    toc: true
+    toc-depth: 3
+    toc-title: "Contents"
+    number-sections: true
+    theme: cosmo
+    fig-width: 10
+    fig-height: 6
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{python}
+#| label: setup
+#| include: false
+
+from pathlib import Path
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+
+RESULTS_DIR = Path("../results")
+TREES_IMG   = Path("trees_img")   # relative to docs/ — where rendered PNGs live
+TREES_DIR   = Path("../trees")
+
+trees_sum = pd.read_csv(RESULTS_DIR / "clade_summary.tsv", sep="\t")
+trees_det = pd.read_csv(RESULTS_DIR / "clade_details.tsv",  sep="\t")
+
+PALETTE = px.colors.qualitative.Bold
+
+def seg_type(name):
+    if name.startswith("HA_"):  return "HA (surface)"
+    if name.startswith("NA_"):  return "NA (surface)"
+    return "Internal segment"
+
+trees_sum["type"]    = trees_sum["tree"].apply(seg_type)
+trees_det["type"]    = trees_det["tree"].apply(seg_type)
+trees_sum["subtype"] = trees_sum["tree"].str.replace(r"^(HA_|NA_)", "", regex=True)
+```
+
+← [Back to main report](index.html)
+
+---
+
+## Study question
+
+**Does Madagascar influenza surveillance capture unique African genetic diversity?**
+Or do Malagasy viruses simply mirror the continental gene pool, making in-country
+sequencing epidemiologically redundant?
+
+To answer this, we need to know whether Madagascar sequences form **monophyletic clades**
+(groups sharing a common ancestor exclusive to Madagascar — evidence of locally-sustained
+lineages) or are **singletons** scattered within an otherwise African tree (evidence of
+sporadic importation with no local persistence).
+
+---
+
+## Pipeline
+
+### Tree design
+
+**16 maximum-likelihood trees** (IQ-TREE 3.1.0, HKY+G substitution model, seed 42)
+were built across all segment × subtype combinations with ≥ 10 Madagascar and ≥ 20 African sequences.
+
+| Category | Segments | Strategy | Trees |
+|----------|----------|----------|-------|
+| HA per-subtype | HA | One tree per HA subtype | 5 |
+| NA per-subtype | NA | One tree per NA subtype | 5 |
+| Internal merged | PB2, PB1, PA, NP, MP, NS | All subtypes merged per segment | 6 |
+| **Total** | | | **16** |
+
+**Why merge internal segments across subtypes?** Internal genes (PB2, PB1, PA, NP, MP, NS)
+do not cluster by HxNy subtype — they reassort freely. Merging recovers the full
+evolutionary history of each internal gene, including reassortment signatures.
+
+**Why keep HA and NA per-subtype?** HA and NA subtypes represent distinct antigenic lineages
+separated by very long branches. Mixing them produces an unresolvable star topology.
+
+### Subsampling design
+
+| Input | Strategy |
+|-------|----------|
+| Madagascar sequences | All kept |
+| Africa (non-Madagascar) | Proportionally sampled by country to **4 × n_Madagascar** |
+
+The 4× ratio ensures the tree reflects Africa's geographic diversity without being
+overwhelmed by African bulk. Trees were **midpoint-rooted** before clade detection.
+
+### Clade detection (`scripts/analyse_trees.py`)
+
+A **monophyletic Madagascar clade** is a maximal subtree (≥ 2 tips) whose entire leaf set
+consists only of Madagascar sequences. Maximal = the clade's parent still contains
+non-Madagascar leaves (it is not engulfed by a larger all-Madagascar clade).
+
+Two metrics per clade:
+
+- **`internal_bl`** — sum of branch lengths within the clade: measures internal diversity
+  (how much evolution happened inside Madagascar)
+- **`stem_bl`** — the branch from the clade root to its parent node: measures divergence
+  from the nearest African ancestor (how isolated the lineage became)
+
+### Tree inventory
+
+```{python}
+#| label: tbl-tree-inventory
+
+# Read IQ-TREE log sizes to get actual input counts per tree
+display_cols = {
+    "tree":              "Tree",
+    "n_mdg_tips":        "Mdg tips",
+    "n_africa_tips":     "Africa tips",
+    "n_mdg_clades":      "Clades",
+    "n_mdg_singletons":  "Singletons",
+    "pct_mdg_in_clades": "% Mdg in clades",
+    "mean_clade_size":   "Mean clade size",
+    "mean_stem_bl":      "Mean stem BL",
+}
+trees_sum.rename(columns=display_cols)[list(display_cols.values())].to_html(
+    index=False, classes="table table-sm table-striped table-bordered", border=0
+)
+```
+
+---
+
+## Clade analysis results
+
+### Clades vs. singletons per tree
+
+High clade count + many singletons → repeated short-lived importations.
+Few large clades → sustained local transmission after founder event(s).
+
+```{python}
+#| label: fig-clades-bar
+
+bar_df = trees_sum[["tree", "n_mdg_clades", "n_mdg_singletons", "type"]].copy()
+bar_df = bar_df.sort_values(["type", "tree"])
+bar_long = bar_df.melt(
+    id_vars=["tree", "type"],
+    value_vars=["n_mdg_clades", "n_mdg_singletons"],
+    var_name="Category", value_name="Count",
+)
+bar_long["Category"] = bar_long["Category"].map(
+    {"n_mdg_clades": "Clades (≥2 tips)", "n_mdg_singletons": "Singletons"}
+)
+
+fig = px.bar(
+    bar_long,
+    x="Count", y="tree",
+    color="Category",
+    facet_col="type",
+    orientation="h",
+    barmode="stack",
+    color_discrete_map={"Clades (≥2 tips)": PALETTE[2], "Singletons": PALETTE[5]},
+    labels={"tree": "Tree", "Count": "Madagascar sequences", "Category": ""},
+    title="Monophyletic Madagascar clades vs. singletons per tree",
+    category_orders={"type": ["HA (surface)", "NA (surface)", "Internal segment"]},
+)
+fig.update_layout(height=520)
+fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
+fig.show()
+```
+
+### Stem branch length vs. clade size
+
+The **stem branch length** measures how far Madagascar sequences have diverged from their
+nearest African relative. High stem BL + large clades = long isolated local circulation.
+Low stem BL + many small clades = recent frequent importations.
+
+```{python}
+#| label: fig-scatter
+
+fig = px.scatter(
+    trees_sum,
+    x="mean_stem_bl",
+    y="mean_clade_size",
+    size="n_mdg_clades",
+    color="type",
+    text="tree",
+    color_discrete_sequence=PALETTE,
+    labels={
+        "mean_stem_bl":    "Mean stem branch length",
+        "mean_clade_size": "Mean clade size (tips)",
+        "n_mdg_clades":    "Number of clades",
+        "type":            "Segment type",
+    },
+    title="Stem BL vs. clade size — bubble size = number of clades",
+    size_max=30,
+)
+fig.update_traces(textposition="top center", textfont_size=9)
+fig.update_layout(height=520)
+fig.show()
+```
+
+### Clade size distribution across trees
+
+```{python}
+#| label: fig-clade-sizes
+
+fig = px.box(
+    trees_det,
+    x="tree", y="n_tips",
+    color="type",
+    color_discrete_sequence=PALETTE,
+    points="outliers",
+    labels={"n_tips": "Clade size (tips)", "tree": "Tree", "type": "Segment type"},
+    title="Distribution of Madagascar clade sizes across all 16 trees",
+    category_orders={"type": ["HA (surface)", "NA (surface)", "Internal segment"]},
+)
+fig.update_layout(xaxis_tickangle=-40, height=480)
+fig.show()
+```
+
+### Internal branch length vs. stem branch length per clade
+
+Each dot is a single clade. High `internal_bl` = diverse sequences inside Madagascar.
+High `stem_bl` = large divergence from African ancestor.
+
+```{python}
+#| label: fig-clade-scatter
+
+fig = px.scatter(
+    trees_det,
+    x="stem_bl",
+    y="internal_bl",
+    size="n_tips",
+    color="type",
+    hover_data=["tree", "clade_id", "n_tips", "mean_tip_dist"],
+    color_discrete_sequence=PALETTE,
+    labels={
+        "stem_bl":     "Stem branch length (divergence from Africa)",
+        "internal_bl": "Internal branch length (within-clade diversity)",
+        "n_tips":      "Clade size",
+        "type":        "Segment type",
+    },
+    title="Within-clade diversity vs. divergence from Africa — per clade",
+    size_max=25,
+    opacity=0.7,
+)
+fig.update_layout(height=520)
+fig.show()
+```
+
+### Interpretation
+
+The stem BL vs. clade size scatter separates two biological regimes:
+
+- **H6N2 and H9N2** *(top-right)*: 1–2 very large clades, `mean_stem_bl` 0.017–0.031 — an
+  order of magnitude higher than seasonal subtypes. These avian subtypes entered Madagascar
+  in **one or few founder events** and circulated locally long enough to accumulate
+  substantial divergence from the continental gene pool. Madagascar H6N2 and H9N2 viruses
+  are **genuinely distinct** and would not be recovered by any other country's surveillance.
+
+- **Seasonal subtypes** (H1N1, H3N2, Flu B) *(bottom-left)*: 31–43 small clades,
+  `mean_stem_bl` 0.001–0.002. Consistent with **annual reintroduction** from the global
+  pool, each seeding a short-lived local chain. Surveillance still detects these
+  importations in real time, but the sequences are not unique to Madagascar.
+
+- **Internal segments** *(middle)*: 51–71 clades driven by reassortment — the same segment
+  can arrive in different genetic backgrounds. The fragmented landscape is expected and
+  not interpretable as independent introductions.
+
+**Conclusion:** Madagascar influenza surveillance is **justified** from a genomic-epidemiology
+perspective. Avian lineages (H6N2, H9N2) show founder-effect local divergence. Seasonal
+human viruses show importation + local amplification patterns that would be invisible
+without in-country sequencing.
+
+---
+
+## Tree visualizations
+
+Trees were rendered with **ETE3** (`scripts/render_trees.py`).
+Each image shows Madagascar tips in **red**, African tips in **grey**,
+and **blue boxes** around detected monophyletic clades annotated with
+clade size (`n=`) and stem branch length (`s=`).
+
+Run to generate/refresh PNGs:
+
+```bash
+# On a headless server (HPC), wrap with xvfb-run:
+xvfb-run -a mamba run -p ./env python scripts/render_trees.py --force
+```
+
+```{python}
+#| label: fig-trees-gallery
+#| output: asis
+
+from IPython.display import display, HTML
+img_dir = Path("trees_img")
+treefiles = sorted(Path("../trees").glob("*.treefile"))
+
+chunks = []
+for tf in treefiles:
+    img_path = img_dir / f"{tf.stem}.png"
+    if img_path.exists():
+        chunks.append(
+            f'<div style="margin-bottom:2em">'
+            f'<h3 style="font-size:1em;margin-bottom:4px">{tf.stem}</h3>'
+            f'<img src="{img_path}" style="max-width:100%;border:1px solid #ddd" '
+            f'alt="{tf.stem} tree"/></div>'
+        )
+    else:
+        row = trees_sum[trees_sum["tree"] == tf.stem]
+        clades = int(row["n_mdg_clades"].iloc[0]) if len(row) else "?"
+        mdg    = int(row["n_mdg_tips"].iloc[0])   if len(row) else "?"
+        afr    = int(row["n_africa_tips"].iloc[0]) if len(row) else "?"
+        chunks.append(
+            f'<div style="margin-bottom:2em;padding:1em;background:#f8f9fa;'
+            f'border:1px dashed #aaa">'
+            f'<strong>{tf.stem}</strong> — PNG not yet generated<br>'
+            f'<em>{mdg} Mdg tips · {afr} Africa tips · {clades} clades</em><br>'
+            f'<code>xvfb-run -a mamba run -p ./env python scripts/render_trees.py --force</code>'
+            f'</div>'
+        )
+
+display(HTML("\n".join(chunks)))
+```
