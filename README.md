@@ -1,13 +1,12 @@
 # Madagascar Influenza
 
-*Last updated: 2026-03-31*
+*Last updated: 2026-04-10*
 
 **Report: https://edidpasteur.github.io/madagascar_influenza/**
 
 ## Table of Contents
 
 - [Goal](#goal)
-- [Resources](#resources)
 - [Data](#data)
   - [GISAID data](#gisaid-data)
   - [Unpublished avian data (Norosoa)](#unpublished-avian-data-norosoa)
@@ -26,12 +25,6 @@ Characterize influenza sequences from Madagascar and Africa available in GISAID:
 - Which isolates are suitable for phylogenetic analysis (all 8 segments present and of sufficient length)?
 - **Does Madagascar sequencing capture unique African genetic diversity?** Do Malagasy viruses form distinct local lineages (monophyletic clades), or are they sporadic importations from the broader African gene pool? This determines whether sustained in-country influenza surveillance in Madagascar is justified from a genomic-epidemiology perspective.
 
-## Resources
-
-- **GISAIDR** — R package for programmatic access to GISAID: https://github.com/Wytamma/GISAIDR
-  - Note: GISAIDR does not support EpiFlu. Data was downloaded manually from the GISAID EpiFlu interface.
-- **Nextstrain avian-flu**: https://nextstrain.org/avian-flu/h5n1/ha/2y
-- **Nextstrain avian-flu pipeline**: https://github.com/nextstrain/avian-flu
 
 ## Data
 
@@ -86,7 +79,7 @@ Isolates that are not phylo-ready are listed in `data/madagascar_missing_metadat
 
 ### Unpublished avian data (Norosoa)
 
-Unpublished avian influenza sequences from Madagascar collected by Norosoa Raharinosy (Institut Pasteur de Madagascar, 2021–2023). Provided as 7 FASTA files organised by HA/NA subtype, covering **109 unique isolates** (830 segment sequences in total). Raw files are in `data/` and are **not tracked by git**.
+Unpublished avian influenza sequences from Madagascar collected by Norosoa Razanajatovo (Institut Pasteur de Madagascar, 2021–2023). Provided as 7 FASTA files organised by HA/NA subtype, covering **109 unique isolates** (830 segment sequences in total). Raw files are in `data/` and are **not tracked by git**.
 
 | File | Subtype(s) | Isolates | Sequences |
 |------|-----------|----------|-----------|
@@ -290,8 +283,8 @@ make report    # → docs/index.html
 - [x] Unpublished avian sequences from Norosoa (109 isolates, 830 segments) added to `data/`
 - [x] All sequences split by segment × subtype × scope; 67 partial-subtype combos excluded
 - [x] **358 per-segment alignments completed** (MAFFT, resource-tiered, via `parallel+srun`)
-- [x] **16 ML trees queued** (IQ-TREE 3.1.0, HKY+G — 5 HA + 5 NA per-subtype, 6 internal segments merged; all Madagascar + 4× Africa)
-- [ ] Run tree jobs and verify 16 treefiles
-- [ ] Count monophyletic Madagascar clades per tree (≥ 2 Mdg tips, exclusive common ancestor)
-- [ ] Measure branch lengths within Madagascar clades vs. between Madagascar and Africa
-- [ ] Assess reassortment across segments for key subtypes (H9N2, H3N2, H1N1, B)
+- [x] **16 ML trees completed** (IQ-TREE 3.1.0, HKY+G — 5 HA + 5 NA per-subtype, 6 internal segments merged; all 16 treefiles verified April 9 2026)
+- [x] **Monophyletic clade analysis completed** (`scripts/analyse_trees.py`, ete3) — results in `results/clade_summary.tsv` and `results/clade_details.tsv`; 74–100 % of Madagascar sequences form local clades depending on subtype
+- [x] Report extended: Norosoa data section + phylogenetic analysis section
+- [ ] Render trees as annotated PNG/HTML for visual inspection (ETE3 or Auspice)
+- [ ] Assess reassortment signal across segments for key subtypes (H9N2, H3N2, H1N1, B)

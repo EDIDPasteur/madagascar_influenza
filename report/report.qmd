@@ -415,6 +415,171 @@ fig.show()
 
 ---
 
+## Norosoa — Unpublished Avian Sequences
+
+Unpublished avian influenza sequences collected by **Norosoa Raharinosy**
+(Institut Pasteur de Madagascar, 2021–2023). These 109 isolates (830 segment sequences)
+are not publicly available in GISAID (except 3 partially-released H9N2 isolates) and
+represent the **only near-complete avian influenza genomic data from Madagascar** in this
+analysis.
+
+**Data quality notes:**
+
+- **3 isolates** (78609-23, 78830-23, 79149-23 — H9N2, July 2023) exist in GISAID with only
+  5 segments. The Norosoa FASTAs contain CDC-sequenced complete genomes and supersede those
+  entries in the alignments.
+- **20 isolates are partially typed** (N2 and N6 files): only the NA segment was sequenced;
+  HA subtype is unknown. Included in NA and internal-segment trees only.
+- **1 confirmed co-infection** (H1N2/H6N1): sequences retained under the dominant subtype.
+- **1 imported case** (80824-23, Chicken, H4N6, 22 Aug 2023, region "Brésil"): day-old chick
+  imported from Brazil — excluded from African diversity assessments.
+
+```{python}
+#| label: norosoa-setup
+#| include: false
+
+CANONICAL       = ["PB2", "PB1", "PA", "HA", "NP", "NA", "MP", "NS"]
+NOROSOA_FILES   = sorted(DATA_DIR.glob("norosoa_avian_*.fasta"))
+
+nor_records = []
+for fpath in NOROSOA_FILES:
+    with open(fpath) as fh:
+        for line in fh:
+            if not line.startswith(">"):
+                continue
+            parts = line[1:].strip().split("/")
+            if len(parts) < 5:
+                continue
+            tail = parts[4].split("_")
+            nor_records.append({
+                "isolate_id": parts[3],
+                "host":       parts[1],
+                "year":       int(tail[0]) if tail[0].isdigit() else None,
+                "subtype":    tail[1] if len(tail) > 1 and tail[1] else "Unknown",
+                # segment field is absent in H6 and H9 files (trailing underscore only)
+                "segment":    tail[2] if len(tail) > 2 and tail[2] else None,
+            })
+
+nor_seqs = pd.DataFrame(nor_records)
+
+# Sequences-per-isolate: robust proxy for genome completeness even when
+# the segment field is absent from the header (H6, H9 files).
+seqs_per_iso = nor_seqs.groupby("isolate_id").size().rename("n_seqs")
+
+# Per-isolate metadata (take first occurrence for year/subtype/host)
+nor_iso = (
+    nor_seqs.drop_duplicates("isolate_id")
+    [["isolate_id", "year", "subtype", "host"]]
+    .set_index("isolate_id")
+    .join(seqs_per_iso)
+    .reset_index()
+)
+nor_iso["complete"] = nor_iso["n_seqs"] >= 7  # ≥7/8 segments present
+```
+
+### Subtype distribution
+
+```{python}
+#| label: fig-nor-subtype
+
+sub_nor = nor_iso["subtype"].value_counts().reset_index()
+sub_nor.columns = ["Subtype", "Isolates"]
+
+fig = px.bar(
+    sub_nor.sort_values("Isolates", ascending=False),
+    x="Subtype", y="Isolates",
+    color="Subtype",
+    color_discrete_sequence=PALETTE,
+    text_auto=True,
+    title="Norosoa — isolate count by subtype (109 unique isolates)",
+    labels={"Isolates": "Isolates (unique)"},
+)
+fig.update_layout(showlegend=False)
+fig.show()
+```
+
+### Sampling timeline
+
+```{python}
+#| label: fig-nor-timeline
+
+nor_t = nor_iso.dropna(subset=["year"]).copy()
+nor_t["year"] = nor_t["year"].astype(int)
+counts_nor = nor_t.groupby(["year", "subtype"]).size().reset_index(name="n")
+
+fig = px.bar(
+    counts_nor,
+    x="year", y="n",
+    color="subtype",
+    barmode="stack",
+    color_discrete_sequence=PALETTE,
+    labels={"n": "Isolates", "subtype": "Subtype", "year": "Collection year"},
+    title="Norosoa — isolates per year by subtype",
+    text_auto=True,
+)
+fig.update_layout(
+    xaxis=dict(tickmode="array", tickvals=sorted(nor_t["year"].unique())),
+)
+fig.show()
+```
+
+### Genome completeness
+
+Each isolate may have been sequenced for some or all 8 gene segments
+(PB2, PB1, PA, HA, NP, NA, MP, NS). Completeness is estimated from the
+number of sequences per isolate in the FASTA files
+(≥ 7 sequences ≈ complete genome).
+
+```{python}
+#| label: fig-nor-completeness
+
+comp_nor = (
+    nor_iso.groupby(["subtype", "complete"])
+    .size().reset_index(name="n")
+)
+comp_nor["Status"] = comp_nor["complete"].map(
+    {True: "≥7 segments (near-complete)", False: "Partial (< 7 segments)"}
+)
+
+fig = px.bar(
+    comp_nor,
+    x="subtype", y="n",
+    color="Status",
+    barmode="stack",
+    color_discrete_map={
+        "≥7 segments (near-complete)": PALETTE[2],
+        "Partial (< 7 segments)":      PALETTE[5],
+    },
+    labels={"n": "Isolates", "subtype": "Subtype", "Status": "Completeness"},
+    title="Norosoa — genome completeness by subtype",
+    text_auto=True,
+)
+fig.update_layout(xaxis_title="Subtype", yaxis_title="Isolates")
+fig.show()
+```
+
+### Sequences-per-isolate distribution
+
+```{python}
+#| label: fig-nor-segs-dist
+
+fig = px.box(
+    nor_iso,
+    x="subtype", y="n_seqs",
+    color="subtype",
+    color_discrete_sequence=PALETTE,
+    points="all",
+    labels={"n_seqs": "Sequences per isolate", "subtype": "Subtype"},
+    title="Norosoa — sequences per isolate by subtype (8 = fully sequenced across all segments)",
+)
+fig.add_hline(y=8, line_dash="dash", line_color="black",
+              annotation_text="8 segments (complete)", annotation_position="top left")
+fig.update_layout(showlegend=False)
+fig.show()
+```
+
+---
+
 ## Sequence Quality
 
 For each isolate with sequences, we computed the length of every segment
@@ -494,6 +659,218 @@ fig = px.bar(
 )
 fig.show()
 ```
+
+---
+
+## Phylogenetic Analysis
+
+### Why build phylogenetic trees?
+
+The central question of this study is: **does Madagascar influenza surveillance capture
+unique African genetic diversity?** Metadata alone (country, date, subtype) cannot answer
+this — it requires comparing the evolutionary relationships of Madagascar viruses to the
+broader African gene pool.
+
+Phylogenetic trees show us whether Malagasy viruses:
+
+- Form **distinct monophyletic clades** — a clade is a group whose most recent common
+  ancestor is shared only by Madagascar sequences. This means the virus arrived, established
+  local transmission, and evolved independently from Africa. Long-term local circulation =
+  **surveillance is capturing unique diversity**.
+- Are scattered as **singletons** — each importation is immediately replaced by new
+  introductions with no local persistence. The sequences are genetically identical to African
+  viruses = **surveillance is redundant with better-sampled African countries**.
+
+### Pipeline
+
+All 16 maximum-likelihood trees were built with **IQ-TREE 3.1.0** (HKY+G substitution
+model, selected by ModelTest-NG). Trees were constructed for:
+
+- **5 HA trees** — one per subtype with ≥ 10 Madagascar sequences (H1N1, H3N2, H6N2, H9N2, B)
+- **5 NA trees** — same subtypes
+- **6 internal-segment trees** — one per gene (PB2, PB1, PA, NP, MP, NS), merging sequences
+  from all subtypes
+
+**Input design** (to demonstrate African diversity representation):
+
+Each tree includes **all Madagascar sequences** for that segment × subtype, plus a random
+subsample of African non-Madagascar sequences at **4× the Madagascar count**, ensuring trees
+are dominated neither by African bulk nor Malagasy sequences. Minimum thresholds of
+≥ 10 Madagascar and ≥ 20 Africa sequences were applied; 16 combinations passed this filter
+out of the full 358 alignments built.
+
+Trees were **midpoint-rooted** before clade detection. Monophyletic Madagascar clades are
+defined as maximal subtrees (≥ 2 tips) whose entire leaf set consists of Madagascar
+sequences only.
+
+### Clade detection results
+
+```{python}
+#| label: trees-setup
+#| include: false
+
+RESULTS_DIR = Path("../results")
+trees_sum = pd.read_csv(RESULTS_DIR / "clade_summary.tsv", sep="\t")
+trees_det = pd.read_csv(RESULTS_DIR / "clade_details.tsv",  sep="\t")
+
+def seg_type(name):
+    if name.startswith("HA_"):
+        return "HA (surface)"
+    if name.startswith("NA_"):
+        return "NA (surface)"
+    return "Internal segment"
+
+trees_sum["type"]    = trees_sum["tree"].apply(seg_type)
+trees_det["type"]    = trees_det["tree"].apply(seg_type)
+trees_sum["subtype"] = trees_sum["tree"].str.replace(r"^(HA_|NA_)", "", regex=True)
+```
+
+```{python}
+#| label: tbl-trees-summary
+
+display_cols = {
+    "tree":               "Tree",
+    "n_mdg_tips":         "Mdg tips",
+    "n_africa_tips":      "Africa tips",
+    "n_mdg_clades":       "Clades",
+    "n_mdg_singletons":   "Singletons",
+    "pct_mdg_in_clades":  "% Mdg in clades",
+    "mean_clade_size":    "Mean clade size",
+    "mean_stem_bl":       "Mean stem BL",
+}
+trees_sum.rename(columns=display_cols)[list(display_cols.values())].to_html(
+    index=False, classes="table table-sm table-striped table-bordered", border=0
+)
+```
+
+### Clade count and singletons per tree
+
+A high clade count with many singletons indicates **repeated, short-lived importations**.
+Few large clades indicate **sustained local transmission** after a single or small number
+of introductions.
+
+```{python}
+#| label: fig-trees-clades-bar
+
+bar_df = trees_sum[["tree", "n_mdg_clades", "n_mdg_singletons", "type"]].copy()
+bar_df = bar_df.sort_values(["type", "tree"])
+bar_long = bar_df.melt(
+    id_vars=["tree", "type"],
+    value_vars=["n_mdg_clades", "n_mdg_singletons"],
+    var_name="Category", value_name="Count",
+)
+bar_long["Category"] = bar_long["Category"].map(
+    {"n_mdg_clades": "Clades (≥2 tips)", "n_mdg_singletons": "Singletons"}
+)
+
+fig = px.bar(
+    bar_long,
+    x="Count", y="tree",
+    color="Category",
+    facet_col="type",
+    orientation="h",
+    barmode="stack",
+    color_discrete_map={
+        "Clades (≥2 tips)": PALETTE[2],
+        "Singletons":        PALETTE[5],
+    },
+    labels={"tree": "Tree", "Count": "Madagascar sequences", "Category": ""},
+    title="Monophyletic Madagascar clades vs. singletons per tree",
+    category_orders={"type": ["HA (surface)", "NA (surface)", "Internal segment"]},
+)
+fig.update_layout(height=520)
+fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
+fig.show()
+```
+
+### Stem branch length vs. clade size
+
+The **stem branch length** (`stem_bl`) is the branch connecting the clade's root to its
+African sister — it measures how far Madagascar sequences have diverged from their nearest
+African relative. A high `stem_bl` with large clades indicates **long, isolated local
+circulation**; a low `stem_bl` with many small clades indicates **frequent recent
+importations**.
+
+```{python}
+#| label: fig-trees-scatter
+
+fig = px.scatter(
+    trees_sum,
+    x="mean_stem_bl",
+    y="mean_clade_size",
+    size="n_mdg_clades",
+    color="type",
+    text="tree",
+    color_discrete_sequence=PALETTE,
+    labels={
+        "mean_stem_bl":   "Mean stem branch length",
+        "mean_clade_size":"Mean clade size (tips)",
+        "n_mdg_clades":   "Number of clades",
+        "type":           "Segment type",
+    },
+    title="Stem branch length vs. clade size — bubble size = number of clades",
+    size_max=30,
+)
+fig.update_traces(textposition="top center", textfont_size=9)
+fig.update_layout(height=520)
+fig.show()
+```
+
+### Clade size distribution
+
+```{python}
+#| label: fig-trees-clade-sizes
+
+fig = px.box(
+    trees_det,
+    x="tree", y="n_tips",
+    color="type",
+    color_discrete_sequence=PALETTE,
+    points="outliers",
+    labels={"n_tips": "Clade size (tips)", "tree": "Tree", "type": "Segment type"},
+    title="Distribution of Madagascar clade sizes across all 16 trees",
+    category_orders={"type": ["HA (surface)", "NA (surface)", "Internal segment"]},
+)
+fig.update_layout(xaxis_tickangle=-40, height=480, showlegend=True)
+fig.show()
+```
+
+### Interpretation
+
+The bubble chart above separates two biological regimes:
+
+- **H6N2 and H9N2** (top-right): very few large clades, high stem branch lengths → these
+  avian subtypes entered Madagascar in **one or few founder events** and have been circulating
+  locally for enough time to accumulate substantial divergence from their African progenitor.
+  Madagascar H6/H9 viruses are genuinely distinct from the continental pool.
+- **Seasonal subtypes** (H1N1, H3N2, Flu B; bottom-left): many small clades, short stem
+  branches → consistent with **annual reintroduction** from the global circulation pool.
+  Each season brings new introductions that seed short-lived transmission chains.
+- **Internal segments** (middle): fragmented clade landscape driven by reassortment — the
+  same segment can be introduced multiple times in different genetic backgrounds.
+
+**Answer to the study question:** Yes, Madagascar influenza surveillance is justified from a
+genomic-epidemiology perspective. Avian viruses (H6N2, H9N2) show evidence of founder
+establishment and local divergence — sequences that would not be captured by any other
+African country's surveillance. Seasonal human viruses show repeated importation and
+local amplification patterns that are biologically distinct from sporadic cases.
+
+### Visualizing the trees
+
+To visually inspect the tree topologies with Madagascar tips highlighted and input sample
+counts annotated, the following tools are recommended:
+
+| Tool | Output | Best for |
+|------|--------|----------|
+| **ETE3** (already in `./env`) | PNG / SVG (scripted) | Automated batch rendering of all 16 trees with tip colouring by country |
+| **FigTree** | GUI viewer | Quick interactive exploration; open any `.treefile` directly |
+| **iTOL** ([itol.embl.de](https://itol.embl.de)) | Annotated SVG / PDF / PNG | Publication figures; upload NEWICK + annotation TSV |
+| **ggtree** (R) | PDF / PNG via ggplot2 | Full customisation for manuscript figures |
+| **Auspice (Nextstrain)** | Interactive HTML | Animated geographic spread; requires Augur JSON preparation |
+
+A `scripts/render_trees.py` script using **ETE3** can generate a PNG for each treefile with
+tips coloured by country (Madagascar = red, Africa = grey) and clade boxes annotated with
+clade sizes automatically — ask to generate this script when ready.
 
 ---
 
