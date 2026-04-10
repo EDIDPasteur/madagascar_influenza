@@ -183,6 +183,7 @@ def analyse_tree(treefile: Path) -> tuple[dict, list[dict]]:
             mdg_bl += node.dist
 
     clade_rows = []
+    tip_rows   = []
     dist_to_sisters = []
     for i, clade in enumerate(clades):
         n_tips       = len(clade.get_leaves())
@@ -200,6 +201,27 @@ def analyse_tree(treefile: Path) -> tuple[dict, list[dict]]:
             "stem_bl":     round(stem_bl, 6),
             "mean_tip_dist": round(mpd, 6),
         })
+        for lf in clade.get_leaves():
+            epi_isl = lf.name.split("|")[3] if lf.name.count("|") >= 3 else ""
+            tip_rows.append({
+                "tree":         name,
+                "clade_id":     i + 1,
+                "tip_name":     lf.name,
+                "epi_isl_id":   epi_isl,
+                "is_singleton": False,
+            })
+
+    # Singletons: Madagascar leaves that did not fall inside any clade
+    for lf in mdg_leaves:
+        if lf.name not in clade_tips:
+            epi_isl = lf.name.split("|")[3] if lf.name.count("|") >= 3 else ""
+            tip_rows.append({
+                "tree":         name,
+                "clade_id":     "singleton",
+                "tip_name":     lf.name,
+                "epi_isl_id":   epi_isl,
+                "is_singleton": True,
+            })
 
     summary = {
         "tree":                name,
@@ -213,7 +235,7 @@ def analyse_tree(treefile: Path) -> tuple[dict, list[dict]]:
         "mean_stem_bl":        round(sum(dist_to_sisters) / len(dist_to_sisters), 6) if dist_to_sisters else 0.0,
     }
 
-    return summary, clade_rows
+    return summary, clade_rows, tip_rows
 
 
 # ---------------------------------------------------------------------------
@@ -246,32 +268,38 @@ def main():
                     "mean_clade_size", "mean_stem_bl"]
     CLADE_COLS   = ["tree", "clade_id", "n_tips", "internal_bl",
                     "stem_bl", "mean_tip_dist"]
+    TIPS_COLS    = ["tree", "clade_id", "tip_name", "epi_isl_id", "is_singleton"]
 
     summary_path = out_dir / "clade_summary.tsv"
     details_path = out_dir / "clade_details.tsv"
+    tips_path    = out_dir / "clade_tips.tsv"
 
     if not args.force:
-        for p in [summary_path, details_path]:
+        for p in [summary_path, details_path, tips_path]:
             if p.exists():
                 sys.exit(f"ERROR: {p} already exists. Use --force to overwrite.")
 
     with open(summary_path, "w", newline="") as sf, \
-         open(details_path, "w", newline="") as df:
+         open(details_path, "w", newline="") as df, \
+         open(tips_path,    "w", newline="") as tf_out:
 
-        sw = csv.DictWriter(sf, fieldnames=SUMMARY_COLS, delimiter="\t")
-        dw = csv.DictWriter(df, fieldnames=CLADE_COLS,   delimiter="\t")
+        sw = csv.DictWriter(sf,     fieldnames=SUMMARY_COLS, delimiter="\t")
+        dw = csv.DictWriter(df,     fieldnames=CLADE_COLS,   delimiter="\t")
+        tw = csv.DictWriter(tf_out, fieldnames=TIPS_COLS,    delimiter="\t")
         sw.writeheader()
         dw.writeheader()
+        tw.writeheader()
 
         for tf in treefiles:
             print(f"  Analysing {tf.name} ...", end=" ", flush=True)
             try:
-                summary, clade_rows = analyse_tree(tf)
+                summary, clade_rows, tip_rows = analyse_tree(tf)
             except Exception as e:
                 print(f"ERROR: {e}")
                 continue
             sw.writerow(summary)
             dw.writerows(clade_rows)
+            tw.writerows(tip_rows)
             print(f"{summary['n_mdg_clades']} clades, "
                   f"{summary['n_mdg_singletons']} singletons "
                   f"({summary['pct_mdg_in_clades']}% Mdg in clades)")
@@ -279,6 +307,7 @@ def main():
     print(f"\nResults written to:")
     print(f"  {summary_path}")
     print(f"  {details_path}")
+    print(f"  {tips_path}")
 
     # Print summary table to stdout — compute column width dynamically so
     # long tree names don't corrupt alignment.
