@@ -15,3 +15,9 @@ __pycache__/
 /.quarto/
 *_files/
 env/
+
+# Large generated outputs — excluded from GitHub due to >100 MB file size limit
+# (tracked historically on GitLab; regenerate with MAFFT/IQ-TREE)
+trees/*.mldist
+alignments/aligned/*.fasta
+alignments/benchmark/*.fasta
