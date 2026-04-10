@@ -231,10 +231,8 @@ fig.show()
 
 ## Tree images
 
-Generate PNGs with `scripts/render_trees.py` (ETE3, headless via `xvfb-run`):
-
 ```bash
-xvfb-run -a mamba run -p ./env python scripts/render_trees.py --force
+mamba run -p ./env python scripts/render_trees.py --force
 ```
 
 Tips: Madagascar = red, Africa = grey. Blue boxes = monophyletic Madagascar clades (`n=` size, `s=` stem BL).

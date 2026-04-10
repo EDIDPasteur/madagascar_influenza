@@ -1,28 +1,22 @@
 #!/usr/bin/env python3
 """
-render_trees.py
-===============
-Render all 16 IQ-TREE treefiles as annotated PNG images using ETE3.
+Render all 16 IQ-TREE treefiles as annotated PNGs (ETE3).
 
-Each image shows:
-  - Tips coloured by country: Madagascar = red (#c0392b), Africa = grey (#95a5a6)
-  - Tip labels hidden (trees are too large to read labels)
-  - Blue rectangles around each maximal monophyletic Madagascar clade (≥ 2 tips)
-  - Clade annotation: n_tips / stem_bl (branch length to African ancestor)
-  - Title with tree name, input sample counts (Mdg / Africa)
-
-Output: one PNG per treefile in docs/trees_img/<tree>.png
+Tips: Madagascar = red, Africa = grey. Blue boxes = monophyletic Mdg clades.
+Output: docs/trees_img/<tree>.png
 
 Usage:
-  python scripts/render_trees.py [--tree-dir trees] [--out-dir docs/trees_img]
-
-On a headless server (no display), wrap with xvfb-run:
-  xvfb-run -a python scripts/render_trees.py
+  python scripts/render_trees.py [--force]
+  mamba run -p ./env python scripts/render_trees.py --force
 """
 
 import argparse
+import os
 import sys
 from pathlib import Path
+
+# Headless Qt rendering — no xvfb-run needed
+os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 try:
     from ete3 import Tree, TreeStyle, NodeStyle, TextFace, RectFace, AttrFace
