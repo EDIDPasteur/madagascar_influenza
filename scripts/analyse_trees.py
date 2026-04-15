@@ -7,28 +7,36 @@ and measure their phylogenetic distances.
 
 A "monophyletic Madagascar clade" is a maximal subtree whose leaf set contains
 ONLY Madagascar sequences and has >= 2 tips.  "Maximal" means the clade is not
-contained within a larger all-Madagascar clade — we count the top-level ones.
+contained within a larger all-Madagascar clade.
+
+Before clade detection, internal nodes with UFBoot2 support < BOOTSTRAP_THRESHOLD
+are collapsed into polytomies to avoid counting spurious monophyletic groups
+that arise from unresolved or poorly supported splits.
 
 Metrics reported per clade:
-  - n_tips        : number of Madagascar sequences in the clade
-  - internal_bl   : sum of all branch lengths within the clade (internal
-                    diversity — how much evolution has happened inside)
-  - mean_tip_dist : mean pairwise tip-to-tip distance within the clade
-                    (average evolutionary distance between two Malagasy seqs)
-  - stem_bl       : branch length from the clade root to its parent node
-                    (how far this Malagasy lineage has diverged from its
-                    nearest African relative)
+  - n_tips              : number of Madagascar sequences in the clade
+  - internal_bl         : sum of all branch lengths within the clade
+  - stem_bl             : branch from clade root to its parent node
+  - mean_tip_dist       : mean pairwise tip-to-tip distance within the clade
+  - clade_prop_tree_bl  : internal_bl / total tree branch length
+                          (what proportion of total tree diversity this clade holds)
 
-Summary per tree:
-  - n_mdg_tips        : total Madagascar tips in tree
-  - n_africa_tips     : total non-Madagascar tips in tree
-  - n_mdg_clades      : number of monophyletic Madagascar clades (>= 2 tips)
-  - n_mdg_singletons  : Madagascar tips NOT in any clade (scattered importations)
-  - pct_mdg_in_clades : % Madagascar sequences that are in a clade
-  - total_mdg_bl      : sum of all branch lengths exclusively connecting
-                        Madagascar sequences (Faith's PD proxy)
-  - mean_clade_size   : mean clade tip count
-  - mean_stem_bl      : mean stem_bl across all clades
+Metrics reported per tree:
+  - n_mdg_tips          : total Madagascar tips in tree
+  - n_africa_tips       : total non-Madagascar tips in tree
+  - n_mdg_clades        : number of monophyletic Madagascar clades (>= 2 tips)
+  - n_mdg_singletons    : Madagascar tips NOT in any clade (sporadic importations)
+  - pct_mdg_in_clades   : % Madagascar sequences that are in a clade
+  - total_tree_bl       : sum of all branch lengths in tree
+  - total_mdg_bl        : Faith's PD of Malagasy (branch lengths exclusively
+                          connecting Madagascar sequences)
+  - mdg_pd_fraction     : total_mdg_bl / total_tree_bl
+  - mrca_subtree_fraction: (branch lengths within subtree rooted at MRCA of all
+                           Malagasy tips) / total_tree_bl
+                           — small = Malagasy sequences are scattered throughout
+                             the tree; large = all cluster in one region
+  - mean_clade_size     : mean clade tip count
+  - mean_stem_bl        : mean stem_bl across all clades
 
 Outputs:
   results/clade_summary.tsv    — one row per tree
@@ -48,10 +56,30 @@ try:
 except ImportError:
     sys.exit("ERROR: ete3 not installed. Run: conda install -c conda-forge ete3")
 
+BOOTSTRAP_THRESHOLD = 70  # collapse branches below this UFBoot2 support
+
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+def collapse_low_support(tree, threshold=BOOTSTRAP_THRESHOLD):
+    """Collapse internal nodes with UFBoot2 support < threshold into polytomies.
+
+    Processes a snapshot of all nodes so that deletions during iteration do
+    not corrupt traversal.  Each deleted node’s children are grafted onto
+    its parent (standard ete3 node.delete() behaviour).
+    """
+    for node in list(tree.traverse("postorder")):
+        if node.is_leaf() or node.is_root() or node.up is None:
+            continue
+        try:
+            support = float(node.name) if node.name else 100.0
+        except (ValueError, TypeError):
+            support = 100.0
+        if support < threshold:
+            node.delete(prevent_nondicotomic=False)
+
 
 def is_madagascar(leaf_name: str) -> bool:
     """Return True if the sequence country field is exactly 'Madagascar'.
@@ -148,20 +176,22 @@ def analyse_tree(treefile: Path) -> tuple[dict, list[dict]]:
     name = treefile.stem  # e.g. "HA_H3N2"
     tree = Tree(str(treefile), format=1)
 
-    # Root the tree before any clade detection — IQ-TREE outputs unrooted
-    # Newick files; searching for monophyletic groups on an unrooted tree
-    # produces arbitrary, starting-point-dependent results.
-    # get_midpoint_outgroup() returns None for star-topology or single-branch
-    # trees; guard against that to avoid a crash.
+    # Root the tree before any clade detection.
     outgroup = tree.get_midpoint_outgroup()
     if outgroup is not None:
         tree.set_outgroup(outgroup)
+
+    # Collapse low-support branches to prevent spurious monophyletic groups.
+    collapse_low_support(tree)
 
     all_leaves   = tree.get_leaves()
     mdg_leaves   = [lf for lf in all_leaves if     is_madagascar(lf.name)]
     afr_leaves   = [lf for lf in all_leaves if not is_madagascar(lf.name)]
     n_mdg        = len(mdg_leaves)
     n_afr        = len(afr_leaves)
+
+    # Total tree branch length (Faith's PD of the whole tree)
+    total_tree_bl = sum(n.dist for n in tree.traverse())
 
     clades       = find_mdg_clades(tree)
     clade_tips   = set()
@@ -172,15 +202,32 @@ def analyse_tree(treefile: Path) -> tuple[dict, list[dict]]:
     n_singletons = sum(1 for lf in mdg_leaves if lf.name not in clade_tips)
     pct_in_clades = len(clade_tips) / n_mdg * 100 if n_mdg else 0.0
 
-    # Faith's PD proxy: sum of all branch lengths for edges whose entire
-    # descendant leaf set consists only of Madagascar sequences — every branch
-    # that is exclusively part of the Malagasy portion of the tree.
+    # Faith's PD proxy: sum of branch lengths exclusively connecting Malagasy tips.
     mdg_set = {lf.name for lf in mdg_leaves}
     mdg_bl = 0.0
     for node in tree.traverse():
         node_leaves = {lf.name for lf in node.get_leaves()}
         if node_leaves and node_leaves.issubset(mdg_set):
             mdg_bl += node.dist
+
+    # MRCA subtree fraction: what share of total tree PD is spanned by the
+    # common ancestor of ALL Malagasy sequences?
+    #   ≈ 1.0  → all diversity is ‘inside’ the Malagasy clade (single region)
+    #   ≈ 0    → Malagasy sequences are scattered throughout the whole tree
+    if len(mdg_leaves) > 1:
+        mrca_node = tree.get_common_ancestor(mdg_leaves)
+    elif len(mdg_leaves) == 1:
+        mrca_node = mdg_leaves[0]
+    else:
+        mrca_node = None
+
+    if mrca_node is not None and total_tree_bl > 0:
+        mrca_subtree_bl = sum(n.dist for n in mrca_node.traverse())
+        mrca_fraction   = mrca_subtree_bl / total_tree_bl
+    else:
+        mrca_fraction = 0.0
+
+    mdg_pd_fraction = mdg_bl / total_tree_bl if total_tree_bl > 0 else 0.0
 
     clade_rows = []
     tip_rows   = []
@@ -194,12 +241,13 @@ def analyse_tree(treefile: Path) -> tuple[dict, list[dict]]:
         mpd          = mean_pairwise_dist(clade)
         dist_to_sisters.append(stem_bl)
         clade_rows.append({
-            "tree":        name,
-            "clade_id":    i + 1,
-            "n_tips":      n_tips,
-            "internal_bl": round(internal_bl, 6),
-            "stem_bl":     round(stem_bl, 6),
-            "mean_tip_dist": round(mpd, 6),
+            "tree":               name,
+            "clade_id":          i + 1,
+            "n_tips":            n_tips,
+            "internal_bl":       round(internal_bl, 6),
+            "stem_bl":           round(stem_bl, 6),
+            "mean_tip_dist":     round(mpd, 6),
+            "clade_prop_tree_bl": round(internal_bl / total_tree_bl, 6) if total_tree_bl > 0 else 0.0,
         })
         for lf in clade.get_leaves():
             epi_isl = lf.name.split("|")[3] if lf.name.count("|") >= 3 else ""
@@ -224,15 +272,18 @@ def analyse_tree(treefile: Path) -> tuple[dict, list[dict]]:
             })
 
     summary = {
-        "tree":                name,
-        "n_mdg_tips":          n_mdg,
-        "n_africa_tips":       n_afr,
-        "n_mdg_clades":        len(clades),
-        "n_mdg_singletons":    n_singletons,
-        "pct_mdg_in_clades":   round(pct_in_clades, 1),
-        "total_mdg_bl":        round(mdg_bl, 6),
-        "mean_clade_size":     round(sum(r["n_tips"] for r in clade_rows) / len(clades), 2) if clades else 0.0,
-        "mean_stem_bl":        round(sum(dist_to_sisters) / len(dist_to_sisters), 6) if dist_to_sisters else 0.0,
+        "tree":                    name,
+        "n_mdg_tips":              n_mdg,
+        "n_africa_tips":           n_afr,
+        "n_mdg_clades":            len(clades),
+        "n_mdg_singletons":        n_singletons,
+        "pct_mdg_in_clades":       round(pct_in_clades, 1),
+        "total_tree_bl":           round(total_tree_bl, 6),
+        "total_mdg_bl":            round(mdg_bl, 6),
+        "mdg_pd_fraction":         round(mdg_pd_fraction, 4),
+        "mrca_subtree_fraction":   round(mrca_fraction, 4),
+        "mean_clade_size":         round(sum(r["n_tips"] for r in clade_rows) / len(clades), 2) if clades else 0.0,
+        "mean_stem_bl":            round(sum(dist_to_sisters) / len(dist_to_sisters), 6) if dist_to_sisters else 0.0,
     }
 
     return summary, clade_rows, tip_rows
@@ -264,10 +315,12 @@ def main():
     print(f"Found {len(treefiles)} treefiles in {tree_dir}/\n")
 
     SUMMARY_COLS = ["tree", "n_mdg_tips", "n_africa_tips", "n_mdg_clades",
-                    "n_mdg_singletons", "pct_mdg_in_clades", "total_mdg_bl",
+                    "n_mdg_singletons", "pct_mdg_in_clades",
+                    "total_tree_bl", "total_mdg_bl", "mdg_pd_fraction",
+                    "mrca_subtree_fraction",
                     "mean_clade_size", "mean_stem_bl"]
     CLADE_COLS   = ["tree", "clade_id", "n_tips", "internal_bl",
-                    "stem_bl", "mean_tip_dist"]
+                    "stem_bl", "mean_tip_dist", "clade_prop_tree_bl"]
     TIPS_COLS    = ["tree", "clade_id", "tip_name", "epi_isl_id", "is_singleton"]
 
     summary_path = out_dir / "clade_summary.tsv"
@@ -315,15 +368,18 @@ def main():
         table_rows = list(csv.DictReader(f, delimiter="\t"))
     name_w  = max((len(r["tree"]) for r in table_rows), default=4)
     name_w  = max(name_w, len("Tree"))
-    total_w = name_w + 63  # fixed columns total to 63 chars after the name
+    total_w = name_w + 75
     print("\n" + "="*total_w)
     print(f"{'Tree':<{name_w}} {'Mdg':>5} {'Afr':>6} {'Clades':>7} {'Singles':>8} "
-          f"{'%InClade':>9} {'MeanSize':>9} {'MeanStemBL':>12}")
+          f"{'%InClade':>9} {'MdgPD%':>7} {'MRCAFrac':>9} {'MeanSize':>9} {'MeanStemBL':>12}")
     print("-"*total_w)
     for row in table_rows:
+        mdg_pct = round(float(row['mdg_pd_fraction']) * 100, 1)
         print(f"{row['tree']:<{name_w}} {row['n_mdg_tips']:>5} {row['n_africa_tips']:>6} "
               f"{row['n_mdg_clades']:>7} {row['n_mdg_singletons']:>8} "
-              f"{row['pct_mdg_in_clades']:>9} {row['mean_clade_size']:>9} "
+              f"{row['pct_mdg_in_clades']:>9} {mdg_pct:>6.1f}% "
+              f"{row['mrca_subtree_fraction']:>9} "
+              f"{row['mean_clade_size']:>9} "
               f"{row['mean_stem_bl']:>12}")
     print("="*total_w)
 
