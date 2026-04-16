@@ -62,7 +62,7 @@ echo "[$(date +%H:%M:%S)] START ${NAME} (n=${N_SEQS}, cpus=${CPUS}, mem=${MEM}, 
 if [[ "${NEEDS_REALIGN}" == "true" ]]; then
     # Internal merged segment: MAFFT re-alignment then IQ-TREE with UFBoot2
     ALIGNED="${INPUT%.fasta}.aln.fasta"
-    srun --partition=seqbio --cpus-per-task="${CPUS}" --mem="${MEM}" --time="${TIME}" \
+    srun --partition=edid --cpus-per-task="${CPUS}" --mem="${MEM}" --time="${TIME}" \
         bash -c "
             source /opt/gensoft/adm/Modules/5.6.1/init/bash
             module load fasta ruby mafft/7.526 IQ-TREE/3.1.0
@@ -72,7 +72,7 @@ if [[ "${NEEDS_REALIGN}" == "true" ]]; then
         "
 else
     # HA / NA per-subtype: already aligned, run IQ-TREE with UFBoot2 directly
-    srun --partition=seqbio --cpus-per-task="${CPUS}" --mem="${MEM}" --time="${TIME}" \
+    srun --partition=edid --cpus-per-task="${CPUS}" --mem="${MEM}" --time="${TIME}" \
         bash -c "
             source /opt/gensoft/adm/Modules/5.6.1/init/bash
             module load IQ-TREE/3.1.0

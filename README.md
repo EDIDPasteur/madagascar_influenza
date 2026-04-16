@@ -1,6 +1,6 @@
 # Madagascar Influenza
 
-*Last updated: 2026-04-10*
+*Last updated: 2026-04-16*
 
 **Report:** <https://edidpasteur.github.io/madagascar_influenza/>
 
@@ -68,35 +68,35 @@ squeue -u $USER                         # monitor
 
 ## Phylogenetic tree pipeline
 
-**16 ML trees** (IQ-TREE 3.1.0, HKY+G, seed 42) — 5 HA + 5 NA per-subtype, 6 internal segments merged across subtypes.
-Africa subsampled to 4 × n_Madagascar per tree (proportional by country, seed 42).
+**10 HA/NA ML trees** (IQ-TREE 3.1.0, HKY+G, UFBoot2 1000 replicates, seed 42) — one tree per HA/NA subtype with ≥ 10 Madagascar and ≥ 20 African sequences.
+All sequences are used — **no subsampling**. UFBoot2 branches < 70 are collapsed before clade detection.
+Internal segments (PB2, PB1, PA, NP, MP, NS) pending.
 
 ```bash
-bash scripts/run_trees.sh               # submits all 16 jobs (resumable)
+bash scripts/run_trees.sh --ha-na-only  # submits HA/NA jobs (resumable, skips done)
+bash scripts/run_trees.sh               # all 16 including internal segments
 ```
 
-Trees: `trees/<NAME>.treefile`. Clade analysis results: `results/clade_summary.tsv`.
+Trees: `trees/<NAME>.treefile`. Clade analysis: `results/clade_summary.tsv`.
 
-**Key results:**
+**Preliminary results (10 HA/NA trees, full sequences):**
 
-| Pattern | Subtypes | Interpretation |
-|---------|----------|----------------|
-| 1–2 large clades, stem BL ~0.02–0.03 | **H6N2, H9N2** (avian) | Founder event → sustained local circulation; distinct from continental pool |
-| 31–43 small clades, stem BL ~0.001–0.002 | **H1N1, H3N2, Flu B** (seasonal) | Annual reintroductions, no lasting local lineage |
-| 51–71 fragmented clades | **Internal segments** | Reassortment signature |
+| Pattern | Subtypes | n_clades | %InClade | mrca_frac | Interpretation |
+|---------|----------|----------|----------|-----------|----------------|
+| 1–2 large clades, mean size 14–26 | **H6N2, H9N2** (avian) | 1–2 | 100% | 0.03–0.72 | Founder event → sustained local circulation |
+| 19–57 small clades, mean size 4–12 | **H1N1, H3N2, Flu B** (seasonal) | 19–57 | 54–78% | 0.48–1.0 | Recurrent reintroductions, limited local persistence |
 
-Surveillance is justified: avian lineages (H6N2, H9N2) would be invisible to any other African country's programme.
+Surveillance is justified: avian lineages (H6N2, H9N2) are distinct from the continental pool and would go undetected without Madagascar-specific sampling.
 
 | Script | Purpose |
 |--------|---------|
-| `scripts/run_trees.sh` | Subsamples inputs, submits IQ-TREE jobs |
-| `scripts/run_one_tree.sh` | Single job: re-align (internal segments) + IQ-TREE |
-| `scripts/analyse_trees.py` | Detects monophyletic Madagascar clades (ete3) |
-| `scripts/render_trees.py` | Renders annotated PNGs (ETE3, headless) |
+| `scripts/run_trees.sh` | Prepares inputs, submits IQ-TREE jobs via SLURM (resumable) |
+| `scripts/run_one_tree.sh` | Single job: re-align (internal segments) + IQ-TREE + UFBoot2 |
+| `scripts/analyse_trees.py` | Collapses low-support branches, detects monophyletic Madagascar clades (ete3) |
 
 ```bash
-# Render tree images
-mamba run -p ./env python scripts/render_trees.py --force
+# Analyse trees and write results/
+mamba run -p ./env python scripts/analyse_trees.py --tree-dir trees --out-dir results --force
 ```
 
 ## Reproducing the analysis
@@ -118,6 +118,10 @@ make report    # → docs/index.html
 - [x] Metadata analysis + Quarto report published
 - [x] Norosoa avian data (109 isolates) added
 - [x] 358 alignments completed (MAFFT)
+- [x] 10 HA/NA trees built (IQ-TREE, UFBoot2, full sequences — no subsampling)
+- [x] Monophyletic clade analysis run (`analyse_trees.py`)
+- [ ] Internal segment trees (PB2, PB1, PA, NP, MP, NS) — pending
+- [ ] Quarto report (`trees.qmd`) updated with results
 - [x] 16 ML trees completed (IQ-TREE 3.1.0, HKY+G)
 - [x] Monophyletic clade analysis (`results/clade_summary.tsv`)
 - [x] Report: Norosoa section + phylogenetic analysis section

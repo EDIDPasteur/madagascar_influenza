@@ -42,14 +42,23 @@ LOG_DIR="${TREE_DIR}/logs"
 
 DRY_RUN=false
 BATCH_SIZE=0   # 0 = unlimited
+HA_NA_ONLY=false
+RESET_LOG=false
 
 ARGS=("$@")
 for (( i=0; i<${#ARGS[@]}; i++ )); do
     case "${ARGS[$i]}" in
-        --dry-run)    DRY_RUN=true ;;
-        --batch-size) BATCH_SIZE="${ARGS[$((i+1))]}"; i=$((i+1)) ;;
+        --dry-run)     DRY_RUN=true ;;
+        --batch-size)  BATCH_SIZE="${ARGS[$((i+1))]}"; i=$((i+1)) ;;
+        --ha-na-only)  HA_NA_ONLY=true ;;
+        --reset-log)   RESET_LOG=true ;;
     esac
 done
+
+if "${RESET_LOG}"; then
+    rm -f "${LOG_DIR}/parallel_trees.log"
+    echo "Cleared parallel job log."
+fi
 
 source /opt/gensoft/adm/Modules/5.6.1/init/bash
 module load parallel/20200222
@@ -133,25 +142,8 @@ for aln_file in sorted(ALN_DIR.glob('*.africa.aln.fasta')):
     print(f"  {name:<30} {'aligned':<12} {len(records):>7,}  {n_mdg_tot:>4}  {n_afr_tot:>4}")
     written += 1
 
-# Phase 1B: internal segments — merge ALL subtypes from unaligned split files
-# (will be re-aligned by MAFFT inside run_one_tree.sh)
-for seg in sorted(INTERNAL_SEGS):
-    split_files = sorted(SPLIT_DIR.glob(f'{seg}_*.africa.fasta'))
-    if not split_files:
-        continue
-    all_records = []
-    for sf in split_files:
-        all_records.extend(read_fasta(sf, strip_gaps=False))
-    n_mdg_tot = sum(1 for h, _ in all_records if     is_madagascar(h))
-    n_afr_tot = sum(1 for h, _ in all_records if not is_madagascar(h))
-    if n_mdg_tot < MDG_MIN or n_afr_tot < AFR_MIN:
-        print(f"  {seg:<30} {'SKIP':<12} {len(all_records):>7,}  {n_mdg_tot:>4}  {n_afr_tot:>4}")
-        skipped += 1
-        continue
-    out = FULL_DIR / f"{seg}.africa.full.fasta"   # no subtype → signals realign needed
-    write_fasta(out, all_records)
-    print(f"  {seg:<30} {'split+merge':<12} {len(all_records):>7,}  {n_mdg_tot:>4}  {n_afr_tot:>4}")
-    written += 1
+# Phase 1B: internal segments — SKIPPED for now (will be run separately)
+# print(f"  {'[internal segments skipped]':<30}")
 
 print(f"\n  Written: {written}  Skipped (filter): {skipped}")
 print(f"  Output: {FULL_DIR}/")
@@ -170,6 +162,10 @@ JOBS="${BATCH_SIZE}"
 PENDING=()
 for INPUT in "${FULL_DIR}"/*.africa.full.fasta; do
     NAME=$(basename "${INPUT}" .africa.full.fasta)
+    # Skip internal segments when --ha-na-only is set
+    if "${HA_NA_ONLY}" && [[ ! "${NAME}" =~ ^(HA|NA)_ ]]; then
+        continue
+    fi
     if [[ -f "${TREE_DIR}/${NAME}.treefile" ]]; then
         continue
     fi
