@@ -30,6 +30,24 @@ import pandas as pd
 
 RESULTS_DIR = Path("../results")
 TREES_DIR   = Path("../trees")
+DATA_DIR    = Path("../data")
+
+summary = pd.read_csv(RESULTS_DIR / "clade_summary.tsv", sep="\t")
+details = pd.read_csv(RESULTS_DIR / "clade_details.tsv", sep="\t")
+metadata = pd.read_csv(DATA_DIR / "combined_metadata.tsv", sep="\t", low_memory=False)
+
+# Subtype → metadata Subtype label
+SUBTYPE_MAP = {
+    "H3N2": "A / H3N2",
+    "H1N1": "A / H1N1",
+    "B":    "B",
+    "H9N2": "A / H9N2",
+    "H6N2": "A / H6N2",
+}
+
+def parse_tree_name(name):
+    parts = name.split("_", 1)
+    return parts[0], parts[1]  # seg, subtype
 ```
 
 ← [Back to main report](index.html)
@@ -38,10 +56,10 @@ TREES_DIR   = Path("../trees")
 
 ## Pipeline
 
-**Up to 16 maximum-likelihood trees** (IQ-TREE 3.1.0, HKY+G, UFBoot2 1000 replicates, seed 42) across all segment × subtype combinations with ≥ 10 Madagascar and ≥ 20 African sequences.
-All sequences are used — **no subsampling**.
-
 **Question:** do Madagascar sequences form monophyletic clades (local transmission) or are they singletons (sporadic importation)?
+
+Up to **16 maximum-likelihood trees** are built across all segment × subtype combinations with ≥ 10 Madagascar and ≥ 20 other African sequences.
+All sequences are used — **no subsampling**.
 
 | Category | Segments | Strategy | Trees |
 |----------|----------|----------|-------|
@@ -53,9 +71,34 @@ All sequences are used — **no subsampling**.
 Internal segments are merged across subtypes (they reassort freely and do not cluster by HxNy).
 HA/NA are kept per-subtype (distinct antigenic lineages with long inter-subtype branches).
 
+### IQ-TREE parameters
+
+Each tree was built with **IQ-TREE 3.1.0** using the following command:
+
+```bash
+iqtree3 -s <alignment.fasta> \
+        -m HKY+G          \ # substitution model: HKY (transitions ≠ transversions) + Gamma rate variation
+        -B 1000           \ # ultrafast bootstrap (UFBoot2): 1000 replicates, values shown as node labels
+        -T <N_CPUs>       \ # multi-threading
+        --seed 42         \ # reproducibility
+        --prefix <NAME>   \ # output prefix
+        --redo               # overwrite existing run
+```
+
+| Parameter | Value | Meaning |
+|-----------|-------|--------|
+| `-m HKY+G` | HKY + Gamma | 2-parameter nucleotide model (κ for ts/tv ratio) with 4 discrete rate categories |
+| `-B 1000` | UFBoot2 | Ultrafast bootstrap approximation; node support values are bootstrap percentages |
+| `--seed 42` | 42 | Fixed random seed for reproducibility |
+| No `-bb` / no `-alrt` | — | Only UFBoot2 support; no SH-aLRT |
+
+**Branch support:** node labels are UFBoot2 percentages (0–100). Values ≥ 95 are considered strongly supported.
+
+**No subsampling:** all Africa sequences (Madagascar + rest of Africa) with the relevant segment enter the alignment directly. IQ-TREE internally deduplicates identical sequences for the ML optimisation, but adds them back as tips in the final tree — so **every input sequence appears in the treefile**.
+
 ### Clade detection
 
-Branches with UFBoot2 support < 70 are collapsed into polytomies before clade detection (`scripts/analyse_trees.py`, ete3). A **monophyletic Madagascar clade** = maximal subtree (≥ 2 tips) whose leaves are exclusively Madagascar sequences.
+Branches with UFBoot2 support **< 70** are collapsed into polytomies before clade detection (`scripts/analyse_trees.py`, ete3). This prevents counting spurious monophyletic groups that arise from unresolved or poorly-supported splits. A **monophyletic Madagascar clade** = maximal subtree (≥ 2 tips) whose leaves are exclusively Madagascar sequences.
 
 ### Statistics computed per tree
 
@@ -74,5 +117,143 @@ Branches with UFBoot2 support < 70 are collapsed into polytomies before clade de
 | `clade_prop_tree_bl` | `internal_bl` ÷ total tree branch length — clade's share of total tree diversity |
 
 ::: {.callout-note}
-**TODO:** Re-run `scripts/run_trees.sh` (trees pending with full sequences + UFBoot2), then re-run `scripts/analyse_trees.py --force` and update this report.
+Results are based on **10 HA/NA trees** (full Africa sequences, no subsampling, UFBoot2 1000 replicates).
+Internal segment trees (6 segments) are pending.
 :::
+
+---
+
+## Input data coverage
+
+For each tree, **every** Africa sequence with the relevant segment was used — no subsampling.
+IQ-TREE deduplicates identical sequences internally during ML optimisation, but re-attaches them as tips in the final tree, so the treefile contains all input sequences.
+The discrepancy between GISAID isolate counts and tree tips reflects isolates for which the segment was not sequenced or not included in the GISAID download.
+
+```{python}
+#| label: tbl-coverage
+#| tbl-cap: "Input sequences per tree. *Tips in tree* = all input sequences (identical duplicates are re-attached after ML optimisation). *Identical (deduped)* = sequences removed during ML search only, added back at the end. *GISAID isolates* = total Africa isolates in metadata; difference from tree tips = isolates without this segment."
+
+rows = []
+for _, row in summary.iterrows():
+    name    = row["tree"]
+    n_mdg   = int(row["n_mdg_tips"])
+    n_afr   = int(row["n_africa_tips"])
+    n_tips  = n_mdg + n_afr   # = all input sequences (identical re-attached)
+
+    seg, sub = parse_tree_name(name)
+    meta_label = SUBTYPE_MAP.get(sub)
+    n_gisaid = int((metadata["Subtype"] == meta_label).sum()) if meta_label else None
+    no_segment = (n_gisaid - n_tips) if n_gisaid else None
+
+    rows.append({
+        "Tree":             name,
+        "Tips in tree":    f"{n_tips:,}",
+        "Madagascar":      f"{n_mdg:,}",
+        "Other Africa":    f"{n_afr:,}",
+        "% Madagascar":    f"{100*n_mdg/n_tips:.1f}%",
+        "GISAID isolates¹": f"{n_gisaid:,}" if n_gisaid else "—",
+        "No segment²":     f"{no_segment:,}" if no_segment is not None else "—",
+    })
+
+cov = pd.DataFrame(rows).set_index("Tree")
+cov.style.set_properties(**{"text-align": "right"}).set_table_styles(
+    [{"selector": "th", "props": [("text-align", "center")]}]
+)
+```
+¹ Total GISAID Africa isolates with this subtype (all hosts, from `combined_metadata.tsv`).  
+² Isolates in GISAID but not in the tree: segment not sequenced or absent from the download.
+
+---
+
+## Clade analysis results
+
+### Summary per tree
+
+```{python}
+#| label: tbl-summary
+#| tbl-cap: "Per-tree clade statistics. Branches with UFBoot2 < 70 were collapsed before clade detection."
+
+disp = summary[[
+    "tree", "n_mdg_tips", "n_africa_tips", "n_mdg_clades",
+    "n_mdg_singletons", "pct_mdg_in_clades",
+    "mdg_pd_fraction", "mrca_subtree_fraction",
+    "mean_clade_size", "mean_stem_bl"
+]].copy()
+
+disp.columns = [
+    "Tree", "Mdg seqs", "Africa seqs", "Clades",
+    "Singletons", "% Mdg in clades",
+    "Mdg PD %", "MRCA frac",
+    "Mean clade size", "Mean stem BL"
+]
+
+disp["Mdg PD %"]  = (disp["Mdg PD %"]  * 100).round(1).astype(str) + "%"
+disp["MRCA frac"] = disp["MRCA frac"].round(3)
+disp["Mean stem BL"] = disp["Mean stem BL"].map("{:.4f}".format)
+disp["Mean clade size"] = disp["Mean clade size"].round(1)
+disp["% Mdg in clades"] = disp["% Mdg in clades"].astype(str) + "%"
+
+disp.set_index("Tree").style
+```
+
+### Top clades per tree
+
+```{python}
+#| label: tbl-top-clades
+#| tbl-cap: "Five largest monophyletic Madagascar clades per tree (ranked by tip count)."
+
+top = (
+    details
+    .sort_values(["tree", "n_tips"], ascending=[True, False])
+    .groupby("tree")
+    .head(5)[["tree", "clade_id", "n_tips", "internal_bl", "stem_bl", "clade_prop_tree_bl"]]
+    .rename(columns={
+        "tree": "Tree", "clade_id": "Clade",
+        "n_tips": "Tips", "internal_bl": "Internal BL",
+        "stem_bl": "Stem BL", "clade_prop_tree_bl": "% Tree BL"
+    })
+)
+top["% Tree BL"] = (top["% Tree BL"] * 100).round(2).astype(str) + "%"
+top["Internal BL"] = top["Internal BL"].map("{:.4f}".format)
+top["Stem BL"]     = top["Stem BL"].map("{:.4f}".format)
+top.set_index("Tree").style
+```
+
+---
+
+## Interpretation
+
+The 10 HA/NA trees reveal two contrasting patterns of Madagascar influenza circulation:
+
+### Avian lineages — founder effect and local persistence (H6N2, H9N2)
+
+All Madagascar sequences form just **1–2 large monophyletic clades** with 100% clade membership,
+large mean clade sizes (14–26 tips), and notably long stem branches (0.02–0.03 substitutions/site).
+This is the signature of a **founder event** followed by sustained in-country circulation: a single
+introduction diverged from the continental gene pool and established a local lineage.
+
+NA_H9N2 has an `mrca_subtree_fraction` of only **0.027** — all Malagasy H9N2 NA sequences occupy
+just 2.7% of the total tree's branch length, confirming extreme geographic clustering.
+
+NA_H6N2 shows the most striking diversity: its single Malagasy clade accounts for **20.4%** of the
+entire tree's branch length (vs 3–4% for seasonal subtypes).
+
+### Seasonal lineages — recurrent importations (H1N1, H3N2, Flu B)
+
+Madagascar sequences are distributed across **19–57 small clades** (mean size 3–12 tips), with
+30–46% of sequences as singletons. The `mrca_subtree_fraction` equals **1.0** for Flu B and
+H3N2 HA — Madagascar sequences are scattered across the full span of African diversity,
+indicating no persistent local lineage. Each epidemic season likely involves fresh
+reintroductions from the continental pool.
+
+H3N2 HA is intermediate: 25 clades with mean size 12.5 tips, suggesting some degree of
+within-season amplification before replacement.
+
+### Surveillance implications
+
+Avian lineages circulating in Madagascar (H6N2, H9N2) would be entirely invisible to any other
+African country's surveillance programme. Sustained Madagascar-specific sampling is therefore
+justified on genomic-epidemiology grounds for avian influenza monitoring.
+Seasonal human influenza shows no evidence of local persistence and is likely seeded annually
+from the broader African/global pool.
+
