@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Camila Duitama">
-<meta name="dcterms.date" content="2026-04-17">
+<meta name="dcterms.date" content="2026-04-21">
 
 <title>Madagascar Influenza — Phylogenetic Analysis</title>
 <style>
@@ -2229,20 +2229,24 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
   <ul class="collapse">
   <li><a href="#iq-tree-parameters" id="toc-iq-tree-parameters" class="nav-link" data-scroll-target="#iq-tree-parameters"><span class="header-section-number">1.1</span> IQ-TREE parameters</a></li>
   <li><a href="#clade-detection" id="toc-clade-detection" class="nav-link" data-scroll-target="#clade-detection"><span class="header-section-number">1.2</span> Clade detection</a></li>
-  <li><a href="#statistics-computed-per-tree" id="toc-statistics-computed-per-tree" class="nav-link" data-scroll-target="#statistics-computed-per-tree"><span class="header-section-number">1.3</span> Statistics computed per tree</a></li>
-  <li><a href="#statistics-computed-per-clade" id="toc-statistics-computed-per-clade" class="nav-link" data-scroll-target="#statistics-computed-per-clade"><span class="header-section-number">1.4</span> Statistics computed per clade</a></li>
   </ul></li>
-  <li><a href="#input-data-coverage" id="toc-input-data-coverage" class="nav-link" data-scroll-target="#input-data-coverage"><span class="header-section-number">2</span> Input data coverage</a></li>
-  <li><a href="#clade-analysis-results" id="toc-clade-analysis-results" class="nav-link" data-scroll-target="#clade-analysis-results"><span class="header-section-number">3</span> Clade analysis results</a>
+  <li><a href="#statistics-computed-per-tree" id="toc-statistics-computed-per-tree" class="nav-link" data-scroll-target="#statistics-computed-per-tree"><span class="header-section-number">2</span> Statistics computed per tree</a></li>
+  <li><a href="#statistics-computed-per-clade" id="toc-statistics-computed-per-clade" class="nav-link" data-scroll-target="#statistics-computed-per-clade"><span class="header-section-number">3</span> Statistics computed per clade</a></li>
+  <li><a href="#input-data-coverage" id="toc-input-data-coverage" class="nav-link" data-scroll-target="#input-data-coverage"><span class="header-section-number">4</span> Input data coverage</a></li>
+  <li><a href="#clade-analysis-results" id="toc-clade-analysis-results" class="nav-link" data-scroll-target="#clade-analysis-results"><span class="header-section-number">5</span> Clade analysis results</a>
   <ul class="collapse">
-  <li><a href="#summary-per-tree" id="toc-summary-per-tree" class="nav-link" data-scroll-target="#summary-per-tree"><span class="header-section-number">3.1</span> Summary per tree</a></li>
-  <li><a href="#top-clades-per-tree" id="toc-top-clades-per-tree" class="nav-link" data-scroll-target="#top-clades-per-tree"><span class="header-section-number">3.2</span> Top clades per tree</a></li>
+  <li><a href="#summary-per-tree" id="toc-summary-per-tree" class="nav-link" data-scroll-target="#summary-per-tree"><span class="header-section-number">5.1</span> Summary per tree</a></li>
+  <li><a href="#top-clades-per-tree" id="toc-top-clades-per-tree" class="nav-link" data-scroll-target="#top-clades-per-tree"><span class="header-section-number">5.2</span> Top clades per tree</a></li>
   </ul></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">4</span> Interpretation</a>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">6</span> Interpretation</a>
   <ul class="collapse">
-  <li><a href="#avian-lineages-founder-effect-and-local-persistence-h6n2-h9n2" id="toc-avian-lineages-founder-effect-and-local-persistence-h6n2-h9n2" class="nav-link" data-scroll-target="#avian-lineages-founder-effect-and-local-persistence-h6n2-h9n2"><span class="header-section-number">4.1</span> Avian lineages — founder effect and local persistence (H6N2, H9N2)</a></li>
-  <li><a href="#seasonal-lineages-recurrent-importations-h1n1-h3n2-flu-b" id="toc-seasonal-lineages-recurrent-importations-h1n1-h3n2-flu-b" class="nav-link" data-scroll-target="#seasonal-lineages-recurrent-importations-h1n1-h3n2-flu-b"><span class="header-section-number">4.2</span> Seasonal lineages — recurrent importations (H1N1, H3N2, Flu B)</a></li>
-  <li><a href="#surveillance-implications" id="toc-surveillance-implications" class="nav-link" data-scroll-target="#surveillance-implications"><span class="header-section-number">4.3</span> Surveillance implications</a></li>
+  <li><a href="#avian-subtypes-h6n2-h9n2" id="toc-avian-subtypes-h6n2-h9n2" class="nav-link" data-scroll-target="#avian-subtypes-h6n2-h9n2"><span class="header-section-number">6.1</span> Avian subtypes (H6N2, H9N2)</a></li>
+  <li><a href="#seasonal-human-subtypes-h1n1-h3n2-flu-b" id="toc-seasonal-human-subtypes-h1n1-h3n2-flu-b" class="nav-link" data-scroll-target="#seasonal-human-subtypes-h1n1-h3n2-flu-b"><span class="header-section-number">6.2</span> Seasonal human subtypes (H1N1, H3N2, Flu B)</a></li>
+  </ul></li>
+  <li><a href="#tree-visualisation" id="toc-tree-visualisation" class="nav-link" data-scroll-target="#tree-visualisation"><span class="header-section-number">7</span> Tree visualisation</a>
+  <ul class="collapse">
+  <li><a href="#subsampling-for-visualisation" id="toc-subsampling-for-visualisation" class="nav-link" data-scroll-target="#subsampling-for-visualisation"><span class="header-section-number">7.1</span> Subsampling for visualisation</a></li>
+  <li><a href="#trees-selected-for-display" id="toc-trees-selected-for-display" class="nav-link" data-scroll-target="#trees-selected-for-display"><span class="header-section-number">7.2</span> Trees selected for display</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2269,7 +2273,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 17, 2026</p>
+      <p class="date">April 21, 2026</p>
     </div>
   </div>
   
@@ -2329,7 +2333,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 </tr>
 </tbody>
 </table>
-<p>Internal segments are merged across subtypes (they reassort freely and do not cluster by HxNy). HA/NA are kept per-subtype (distinct antigenic lineages with long inter-subtype branches).</p>
+<p><strong>Tree naming:</strong> each tree is named <code>&lt;segment&gt;_&lt;subtype&gt;</code>. For example, <code>HA_B</code> means the <strong>Hemagglutinin (HA) gene segment</strong> of <strong>Influenza B</strong> viruses; <code>NA_H3N2</code> means the <strong>Neuraminidase (NA) gene segment</strong> of <strong>H3N2</strong> viruses. HA and NA are the two surface proteins that determine subtype (the H and N numbers) and are the main targets of the immune response.</p>
 <section id="iq-tree-parameters" class="level3" data-number="1.1">
 <h3 data-number="1.1" class="anchored" data-anchor-id="iq-tree-parameters"><span class="header-section-number">1.1</span> IQ-TREE parameters</h3>
 <p>Each tree was built with <strong>IQ-TREE 3.1.0</strong> using the following command:</p>
@@ -2381,10 +2385,12 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 </section>
 <section id="clade-detection" class="level3" data-number="1.2">
 <h3 data-number="1.2" class="anchored" data-anchor-id="clade-detection"><span class="header-section-number">1.2</span> Clade detection</h3>
-<p>Branches with UFBoot2 support <strong>&lt; 70</strong> are collapsed into polytomies before clade detection (<code>scripts/analyse_trees.py</code>, ete3). This prevents counting spurious monophyletic groups that arise from unresolved or poorly-supported splits. A <strong>monophyletic Madagascar clade</strong> = maximal subtree (≥ 2 tips) whose leaves are exclusively Madagascar sequences.</p>
+<p>Before looking for Madagascar-only groups, every tree branch with UFBoot2 support <strong>&lt; 70</strong> is collapsed into a polytomy (a node with more than two children, representing uncertainty). This is because UFBoot2 values — like all bootstrap values — are a measure of confidence: a value of 70 means that in 70% of bootstrap replicates the same branching pattern was recovered. Keeping branches below this threshold would mean counting groupings that are essentially random noise. Collapsing them is a conservative choice that avoids artificially inflating the number of clades.</p>
+<p>A <strong>monophyletic Madagascar clade</strong> is then defined as the largest group of tree tips (≥ 2) that are all exclusively from Madagascar and share a common ancestor not shared with any non-Madagascar sequence.</p>
 </section>
-<section id="statistics-computed-per-tree" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="statistics-computed-per-tree"><span class="header-section-number">1.3</span> Statistics computed per tree</h3>
+</section>
+<section id="statistics-computed-per-tree" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="statistics-computed-per-tree"><span class="header-section-number">2</span> Statistics computed per tree</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 47%">
@@ -2403,17 +2409,25 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 </tr>
 <tr class="even">
 <td><code>mdg_pd_fraction</code></td>
-<td>Malagasy Faith’s PD ÷ total tree PD — share of total tree diversity that is exclusively Malagasy</td>
+<td>What fraction of the tree’s total branch length is “owned” by Madagascar sequences (see below)</td>
 </tr>
 <tr class="odd">
 <td><code>mrca_subtree_fraction</code></td>
-<td>Branch lengths within the MRCA subtree of all Malagasy tips ÷ total tree PD — how concentrated the Malagasy sequences are in the tree</td>
+<td>How much of the tree sits inside the subtree that spans all Madagascar sequences (see below)</td>
 </tr>
 </tbody>
 </table>
+<p><strong><code>mdg_pd_fraction</code> — how much of the tree’s evolutionary space do Madagascar sequences cover?</strong></p>
+<p>Imagine the tree as a road map: every branch is a road segment with a length equal to the number of mutations along that branch. Faith’s Phylogenetic Diversity (PD) for Madagascar is the total length of all roads you need to drive to visit every Madagascar sequence starting from the root. If Madagascar sequences are scattered all over the tree, you need to drive almost the entire map — high PD fraction. If they all cluster in one corner, you only need a short detour — low PD fraction. This metric is divided by the total map length so it becomes a percentage of the whole tree.</p>
+<p><strong><code>mrca_subtree_fraction</code> — how spread out are Madagascar sequences across the tree?</strong></p>
+<p>The <strong>MRCA (Most Recent Common Ancestor)</strong> of all Madagascar sequences is the single node in the tree that is the common ancestor of every Madagascar tip. It is essentially the point where all Madagascar lineages diverge. The subtree <em>below</em> that node contains everything nested between Madagascar sequences — including non-Madagascar sequences that happen to sit among them. <code>mrca_subtree_fraction</code> is the branch-length sum of that whole subtree divided by the total tree length.</p>
+<ul>
+<li><strong>Value ≈ 1.0</strong> (e.g., Flu B, H3N2): The MRCA is near the root, meaning Madagascar sequences span almost the entire tree. This happens when Madagascar has sequences in many different global lineages — consistent with frequent re-importation every season.</li>
+<li><strong>Value ≈ 0.03</strong> (e.g., NA_H9N2): The MRCA subtree covers only 3% of the tree. All Madagascar sequences are bunched together in a tiny corner — consistent with a single introduction that stayed isolated.</li>
+</ul>
 </section>
-<section id="statistics-computed-per-clade" class="level3" data-number="1.4">
-<h3 data-number="1.4" class="anchored" data-anchor-id="statistics-computed-per-clade"><span class="header-section-number">1.4</span> Statistics computed per clade</h3>
+<section id="statistics-computed-per-clade" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="statistics-computed-per-clade"><span class="header-section-number">3</span> Statistics computed per clade</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 47%">
@@ -2455,37 +2469,37 @@ Note
 </div>
 <hr>
 </section>
-</section>
-<section id="input-data-coverage" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="input-data-coverage"><span class="header-section-number">2</span> Input data coverage</h2>
-<p>For each tree, <strong>every</strong> Africa sequence with the relevant segment was used — no subsampling. IQ-TREE deduplicates identical sequences internally during ML optimisation, but re-attaches them as tips in the final tree, so the treefile contains all input sequences. The discrepancy between GISAID isolate counts and tree tips reflects isolates for which the segment was not sequenced or not included in the GISAID download.</p>
+<section id="input-data-coverage" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="input-data-coverage"><span class="header-section-number">4</span> Input data coverage</h2>
+<p>For each tree, <strong>every</strong> Africa sequence with the relevant segment was used — no subsampling. IQ-TREE removes sequences that are 100% identical during the ML tree search (to save computation), but adds them back as tips in the final tree — so the treefile contains all input sequences and no sequence is truly excluded. The difference between GISAID isolate counts and tree tips reflects isolates that exist in GISAID but for which the relevant gene segment (HA or NA) was never sequenced or was not included in the GISAID download.</p>
 <div class="cell" data-execution_count="2">
 <div id="tbl-coverage" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-coverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 1: Input sequences per tree. <em>Tips in tree</em> = all input sequences (identical duplicates are re-attached after ML optimisation). <em>Identical (deduped)</em> = sequences removed during ML search only, added back at the end. <em>GISAID isolates</em> = total Africa isolates in metadata; difference from tree tips = isolates without this segment.
+Table 1: Input sequences per tree. <em>Tips in tree</em> = all sequences provided as input (IQ-TREE re-attaches identical sequences at the end, so none are lost). <em>GISAID isolates</em> = total Africa isolates with this subtype in metadata. <em>Missing segment</em> = isolates in GISAID that do not have this gene segment sequenced.
 </figcaption>
 <div aria-describedby="tbl-coverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <style type="text/css">
-#T_3c75e th {
+#T_71472 th {
 text-align: center;
 }
-#T_3c75e_row0_col0, #T_3c75e_row0_col1, #T_3c75e_row0_col2, #T_3c75e_row0_col3, #T_3c75e_row0_col4, #T_3c75e_row0_col5, #T_3c75e_row1_col0, #T_3c75e_row1_col1, #T_3c75e_row1_col2, #T_3c75e_row1_col3, #T_3c75e_row1_col4, #T_3c75e_row1_col5, #T_3c75e_row2_col0, #T_3c75e_row2_col1, #T_3c75e_row2_col2, #T_3c75e_row2_col3, #T_3c75e_row2_col4, #T_3c75e_row2_col5, #T_3c75e_row3_col0, #T_3c75e_row3_col1, #T_3c75e_row3_col2, #T_3c75e_row3_col3, #T_3c75e_row3_col4, #T_3c75e_row3_col5, #T_3c75e_row4_col0, #T_3c75e_row4_col1, #T_3c75e_row4_col2, #T_3c75e_row4_col3, #T_3c75e_row4_col4, #T_3c75e_row4_col5, #T_3c75e_row5_col0, #T_3c75e_row5_col1, #T_3c75e_row5_col2, #T_3c75e_row5_col3, #T_3c75e_row5_col4, #T_3c75e_row5_col5, #T_3c75e_row6_col0, #T_3c75e_row6_col1, #T_3c75e_row6_col2, #T_3c75e_row6_col3, #T_3c75e_row6_col4, #T_3c75e_row6_col5, #T_3c75e_row7_col0, #T_3c75e_row7_col1, #T_3c75e_row7_col2, #T_3c75e_row7_col3, #T_3c75e_row7_col4, #T_3c75e_row7_col5, #T_3c75e_row8_col0, #T_3c75e_row8_col1, #T_3c75e_row8_col2, #T_3c75e_row8_col3, #T_3c75e_row8_col4, #T_3c75e_row8_col5, #T_3c75e_row9_col0, #T_3c75e_row9_col1, #T_3c75e_row9_col2, #T_3c75e_row9_col3, #T_3c75e_row9_col4, #T_3c75e_row9_col5 {
+#T_71472_row0_col0, #T_71472_row0_col1, #T_71472_row0_col2, #T_71472_row0_col3, #T_71472_row0_col4, #T_71472_row0_col5, #T_71472_row0_col6, #T_71472_row1_col0, #T_71472_row1_col1, #T_71472_row1_col2, #T_71472_row1_col3, #T_71472_row1_col4, #T_71472_row1_col5, #T_71472_row1_col6, #T_71472_row2_col0, #T_71472_row2_col1, #T_71472_row2_col2, #T_71472_row2_col3, #T_71472_row2_col4, #T_71472_row2_col5, #T_71472_row2_col6, #T_71472_row3_col0, #T_71472_row3_col1, #T_71472_row3_col2, #T_71472_row3_col3, #T_71472_row3_col4, #T_71472_row3_col5, #T_71472_row3_col6, #T_71472_row4_col0, #T_71472_row4_col1, #T_71472_row4_col2, #T_71472_row4_col3, #T_71472_row4_col4, #T_71472_row4_col5, #T_71472_row4_col6, #T_71472_row5_col0, #T_71472_row5_col1, #T_71472_row5_col2, #T_71472_row5_col3, #T_71472_row5_col4, #T_71472_row5_col5, #T_71472_row5_col6, #T_71472_row6_col0, #T_71472_row6_col1, #T_71472_row6_col2, #T_71472_row6_col3, #T_71472_row6_col4, #T_71472_row6_col5, #T_71472_row6_col6, #T_71472_row7_col0, #T_71472_row7_col1, #T_71472_row7_col2, #T_71472_row7_col3, #T_71472_row7_col4, #T_71472_row7_col5, #T_71472_row7_col6, #T_71472_row8_col0, #T_71472_row8_col1, #T_71472_row8_col2, #T_71472_row8_col3, #T_71472_row8_col4, #T_71472_row8_col5, #T_71472_row8_col6, #T_71472_row9_col0, #T_71472_row9_col1, #T_71472_row9_col2, #T_71472_row9_col3, #T_71472_row9_col4, #T_71472_row9_col5, #T_71472_row9_col6 {
 text-align: right;
 }
 </style>
 
-<table id="T_3c75e" class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table id="T_71472" class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank level0" data-quarto-table-cell-role="th"> </th>
-<th id="T_3c75e_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Tips in tree</th>
-<th id="T_3c75e_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Madagascar</th>
-<th id="T_3c75e_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Other Africa</th>
-<th id="T_3c75e_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">% Madagascar</th>
-<th id="T_3c75e_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">GISAID isolates¹</th>
-<th id="T_3c75e_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">No segment²</th>
+<th id="T_71472_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Tips in tree</th>
+<th id="T_71472_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Madagascar</th>
+<th id="T_71472_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Other Africa</th>
+<th id="T_71472_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">% Madagascar</th>
+<th id="T_71472_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">GISAID isolates¹</th>
+<th id="T_71472_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Missing segment²</th>
+<th id="T_71472_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">% missing²</th>
 </tr>
 <tr class="even">
 <th class="index_name level0" data-quarto-table-cell-role="th">Tree</th>
@@ -2495,98 +2509,109 @@ text-align: right;
 <th class="blank col3" data-quarto-table-cell-role="th"> </th>
 <th class="blank col4" data-quarto-table-cell-role="th"> </th>
 <th class="blank col5" data-quarto-table-cell-role="th"> </th>
+<th class="blank col6" data-quarto-table-cell-role="th"> </th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th id="T_3c75e_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_3c75e_row0_col0" class="data row0 col0">5,015</td>
-<td id="T_3c75e_row0_col1" class="data row0 col1">365</td>
-<td id="T_3c75e_row0_col2" class="data row0 col2">4,650</td>
-<td id="T_3c75e_row0_col3" class="data row0 col3">7.3%</td>
-<td id="T_3c75e_row0_col4" class="data row0 col4">5,081</td>
-<td id="T_3c75e_row0_col5" class="data row0 col5">66</td>
+<th id="T_71472_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_71472_row0_col0" class="data row0 col0">5,015</td>
+<td id="T_71472_row0_col1" class="data row0 col1">365</td>
+<td id="T_71472_row0_col2" class="data row0 col2">4,650</td>
+<td id="T_71472_row0_col3" class="data row0 col3">7.3%</td>
+<td id="T_71472_row0_col4" class="data row0 col4">5,081</td>
+<td id="T_71472_row0_col5" class="data row0 col5">66</td>
+<td id="T_71472_row0_col6" class="data row0 col6">1.3%</td>
 </tr>
 <tr class="even">
-<th id="T_3c75e_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_3c75e_row1_col0" class="data row1 col0">8,621</td>
-<td id="T_3c75e_row1_col1" class="data row1 col1">234</td>
-<td id="T_3c75e_row1_col2" class="data row1 col2">8,387</td>
-<td id="T_3c75e_row1_col3" class="data row1 col3">2.7%</td>
-<td id="T_3c75e_row1_col4" class="data row1 col4">9,449</td>
-<td id="T_3c75e_row1_col5" class="data row1 col5">828</td>
+<th id="T_71472_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_71472_row1_col0" class="data row1 col0">8,621</td>
+<td id="T_71472_row1_col1" class="data row1 col1">234</td>
+<td id="T_71472_row1_col2" class="data row1 col2">8,387</td>
+<td id="T_71472_row1_col3" class="data row1 col3">2.7%</td>
+<td id="T_71472_row1_col4" class="data row1 col4">9,449</td>
+<td id="T_71472_row1_col5" class="data row1 col5">828</td>
+<td id="T_71472_row1_col6" class="data row1 col6">8.8%</td>
 </tr>
 <tr class="odd">
-<th id="T_3c75e_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_3c75e_row2_col0" class="data row2 col0">9,587</td>
-<td id="T_3c75e_row2_col1" class="data row2 col1">375</td>
-<td id="T_3c75e_row2_col2" class="data row2 col2">9,212</td>
-<td id="T_3c75e_row2_col3" class="data row2 col3">3.9%</td>
-<td id="T_3c75e_row2_col4" class="data row2 col4">10,004</td>
-<td id="T_3c75e_row2_col5" class="data row2 col5">417</td>
+<th id="T_71472_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_71472_row2_col0" class="data row2 col0">9,587</td>
+<td id="T_71472_row2_col1" class="data row2 col1">375</td>
+<td id="T_71472_row2_col2" class="data row2 col2">9,212</td>
+<td id="T_71472_row2_col3" class="data row2 col3">3.9%</td>
+<td id="T_71472_row2_col4" class="data row2 col4">10,004</td>
+<td id="T_71472_row2_col5" class="data row2 col5">417</td>
+<td id="T_71472_row2_col6" class="data row2 col6">4.2%</td>
 </tr>
 <tr class="even">
-<th id="T_3c75e_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
-<td id="T_3c75e_row3_col0" class="data row3 col0">64</td>
-<td id="T_3c75e_row3_col1" class="data row3 col1">27</td>
-<td id="T_3c75e_row3_col2" class="data row3 col2">37</td>
-<td id="T_3c75e_row3_col3" class="data row3 col3">42.2%</td>
-<td id="T_3c75e_row3_col4" class="data row3 col4">67</td>
-<td id="T_3c75e_row3_col5" class="data row3 col5">3</td>
+<th id="T_71472_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
+<td id="T_71472_row3_col0" class="data row3 col0">64</td>
+<td id="T_71472_row3_col1" class="data row3 col1">27</td>
+<td id="T_71472_row3_col2" class="data row3 col2">37</td>
+<td id="T_71472_row3_col3" class="data row3 col3">42.2%</td>
+<td id="T_71472_row3_col4" class="data row3 col4">67</td>
+<td id="T_71472_row3_col5" class="data row3 col5">3</td>
+<td id="T_71472_row3_col6" class="data row3 col6">4.5%</td>
 </tr>
 <tr class="odd">
-<th id="T_3c75e_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
-<td id="T_3c75e_row4_col0" class="data row4 col0">1,268</td>
-<td id="T_3c75e_row4_col1" class="data row4 col1">51</td>
-<td id="T_3c75e_row4_col2" class="data row4 col2">1,217</td>
-<td id="T_3c75e_row4_col3" class="data row4 col3">4.0%</td>
-<td id="T_3c75e_row4_col4" class="data row4 col4">1,444</td>
-<td id="T_3c75e_row4_col5" class="data row4 col5">176</td>
+<th id="T_71472_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
+<td id="T_71472_row4_col0" class="data row4 col0">1,268</td>
+<td id="T_71472_row4_col1" class="data row4 col1">51</td>
+<td id="T_71472_row4_col2" class="data row4 col2">1,217</td>
+<td id="T_71472_row4_col3" class="data row4 col3">4.0%</td>
+<td id="T_71472_row4_col4" class="data row4 col4">1,444</td>
+<td id="T_71472_row4_col5" class="data row4 col5">176</td>
+<td id="T_71472_row4_col6" class="data row4 col6">12.2%</td>
 </tr>
 <tr class="even">
-<th id="T_3c75e_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_3c75e_row5_col0" class="data row5 col0">3,668</td>
-<td id="T_3c75e_row5_col1" class="data row5 col1">258</td>
-<td id="T_3c75e_row5_col2" class="data row5 col2">3,410</td>
-<td id="T_3c75e_row5_col3" class="data row5 col3">7.0%</td>
-<td id="T_3c75e_row5_col4" class="data row5 col4">5,081</td>
-<td id="T_3c75e_row5_col5" class="data row5 col5">1,413</td>
+<th id="T_71472_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_71472_row5_col0" class="data row5 col0">3,668</td>
+<td id="T_71472_row5_col1" class="data row5 col1">258</td>
+<td id="T_71472_row5_col2" class="data row5 col2">3,410</td>
+<td id="T_71472_row5_col3" class="data row5 col3">7.0%</td>
+<td id="T_71472_row5_col4" class="data row5 col4">5,081</td>
+<td id="T_71472_row5_col5" class="data row5 col5">1,413</td>
+<td id="T_71472_row5_col6" class="data row5 col6">27.8%</td>
 </tr>
 <tr class="odd">
-<th id="T_3c75e_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_3c75e_row6_col0" class="data row6 col0">7,959</td>
-<td id="T_3c75e_row6_col1" class="data row6 col1">203</td>
-<td id="T_3c75e_row6_col2" class="data row6 col2">7,756</td>
-<td id="T_3c75e_row6_col3" class="data row6 col3">2.6%</td>
-<td id="T_3c75e_row6_col4" class="data row6 col4">9,449</td>
-<td id="T_3c75e_row6_col5" class="data row6 col5">1,490</td>
+<th id="T_71472_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_71472_row6_col0" class="data row6 col0">7,959</td>
+<td id="T_71472_row6_col1" class="data row6 col1">203</td>
+<td id="T_71472_row6_col2" class="data row6 col2">7,756</td>
+<td id="T_71472_row6_col3" class="data row6 col3">2.6%</td>
+<td id="T_71472_row6_col4" class="data row6 col4">9,449</td>
+<td id="T_71472_row6_col5" class="data row6 col5">1,490</td>
+<td id="T_71472_row6_col6" class="data row6 col6">15.8%</td>
 </tr>
 <tr class="even">
-<th id="T_3c75e_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_3c75e_row7_col0" class="data row7 col0">8,965</td>
-<td id="T_3c75e_row7_col1" class="data row7 col1">369</td>
-<td id="T_3c75e_row7_col2" class="data row7 col2">8,596</td>
-<td id="T_3c75e_row7_col3" class="data row7 col3">4.1%</td>
-<td id="T_3c75e_row7_col4" class="data row7 col4">10,004</td>
-<td id="T_3c75e_row7_col5" class="data row7 col5">1,039</td>
+<th id="T_71472_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_71472_row7_col0" class="data row7 col0">8,965</td>
+<td id="T_71472_row7_col1" class="data row7 col1">369</td>
+<td id="T_71472_row7_col2" class="data row7 col2">8,596</td>
+<td id="T_71472_row7_col3" class="data row7 col3">4.1%</td>
+<td id="T_71472_row7_col4" class="data row7 col4">10,004</td>
+<td id="T_71472_row7_col5" class="data row7 col5">1,039</td>
+<td id="T_71472_row7_col6" class="data row7 col6">10.4%</td>
 </tr>
 <tr class="odd">
-<th id="T_3c75e_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
-<td id="T_3c75e_row8_col0" class="data row8 col0">65</td>
-<td id="T_3c75e_row8_col1" class="data row8 col1">28</td>
-<td id="T_3c75e_row8_col2" class="data row8 col2">37</td>
-<td id="T_3c75e_row8_col3" class="data row8 col3">43.1%</td>
-<td id="T_3c75e_row8_col4" class="data row8 col4">67</td>
-<td id="T_3c75e_row8_col5" class="data row8 col5">2</td>
+<th id="T_71472_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
+<td id="T_71472_row8_col0" class="data row8 col0">65</td>
+<td id="T_71472_row8_col1" class="data row8 col1">28</td>
+<td id="T_71472_row8_col2" class="data row8 col2">37</td>
+<td id="T_71472_row8_col3" class="data row8 col3">43.1%</td>
+<td id="T_71472_row8_col4" class="data row8 col4">67</td>
+<td id="T_71472_row8_col5" class="data row8 col5">2</td>
+<td id="T_71472_row8_col6" class="data row8 col6">3.0%</td>
 </tr>
 <tr class="even">
-<th id="T_3c75e_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
-<td id="T_3c75e_row9_col0" class="data row9 col0">868</td>
-<td id="T_3c75e_row9_col1" class="data row9 col1">53</td>
-<td id="T_3c75e_row9_col2" class="data row9 col2">815</td>
-<td id="T_3c75e_row9_col3" class="data row9 col3">6.1%</td>
-<td id="T_3c75e_row9_col4" class="data row9 col4">1,444</td>
-<td id="T_3c75e_row9_col5" class="data row9 col5">576</td>
+<th id="T_71472_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
+<td id="T_71472_row9_col0" class="data row9 col0">868</td>
+<td id="T_71472_row9_col1" class="data row9 col1">53</td>
+<td id="T_71472_row9_col2" class="data row9 col2">815</td>
+<td id="T_71472_row9_col3" class="data row9 col3">6.1%</td>
+<td id="T_71472_row9_col4" class="data row9 col4">1,444</td>
+<td id="T_71472_row9_col5" class="data row9 col5">576</td>
+<td id="T_71472_row9_col6" class="data row9 col6">39.9%</td>
 </tr>
 </tbody>
 </table>
@@ -2596,37 +2621,37 @@ text-align: right;
 </div>
 </div>
 <p>¹ Total GISAID Africa isolates with this subtype (all hosts, from <code>combined_metadata.tsv</code>).<br>
-² Isolates in GISAID but not in the tree: segment not sequenced or absent from the download.</p>
+² Isolates in GISAID that do not have the relevant gene segment (HA or NA) sequenced; these were not part of any tree.</p>
 <hr>
 </section>
-<section id="clade-analysis-results" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="clade-analysis-results"><span class="header-section-number">3</span> Clade analysis results</h2>
-<section id="summary-per-tree" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="summary-per-tree"><span class="header-section-number">3.1</span> Summary per tree</h3>
+<section id="clade-analysis-results" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="clade-analysis-results"><span class="header-section-number">5</span> Clade analysis results</h2>
+<section id="summary-per-tree" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="summary-per-tree"><span class="header-section-number">5.1</span> Summary per tree</h3>
 <div class="cell" data-execution_count="3">
 <div id="tbl-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 2: Per-tree clade statistics. Branches with UFBoot2 &lt; 70 were collapsed before clade detection.
+Table 2: Per-tree clade statistics. Only groupings with at least 70% bootstrap support were counted as clades; weaker groupings were treated as unresolved.
 </figcaption>
 <div aria-describedby="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <style type="text/css">
 </style>
 
-<table id="T_fb13d" class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table id="T_7c4f3" class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank level0" data-quarto-table-cell-role="th"> </th>
-<th id="T_fb13d_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Mdg seqs</th>
-<th id="T_fb13d_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Africa seqs</th>
-<th id="T_fb13d_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Clades</th>
-<th id="T_fb13d_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Singletons</th>
-<th id="T_fb13d_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">% Mdg in clades</th>
-<th id="T_fb13d_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Mdg PD %</th>
-<th id="T_fb13d_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">MRCA frac</th>
-<th id="T_fb13d_level0_col7" class="col_heading level0 col7" data-quarto-table-cell-role="th">Mean clade size</th>
-<th id="T_fb13d_level0_col8" class="col_heading level0 col8" data-quarto-table-cell-role="th">Mean stem BL</th>
+<th id="T_7c4f3_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Mdg seqs</th>
+<th id="T_7c4f3_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Africa seqs</th>
+<th id="T_7c4f3_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Clades</th>
+<th id="T_7c4f3_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Singletons</th>
+<th id="T_7c4f3_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">% Mdg in clades</th>
+<th id="T_7c4f3_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Mdg PD %</th>
+<th id="T_7c4f3_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">MRCA frac</th>
+<th id="T_7c4f3_level0_col7" class="col_heading level0 col7" data-quarto-table-cell-role="th">Mean clade size</th>
+<th id="T_7c4f3_level0_col8" class="col_heading level0 col8" data-quarto-table-cell-role="th">Mean stem BL</th>
 </tr>
 <tr class="even">
 <th class="index_name level0" data-quarto-table-cell-role="th">Tree</th>
@@ -2643,124 +2668,124 @@ Table 2: Per-tree clade statistics. Branches with UFBoot2 &lt; 70 were collapse
 </thead>
 <tbody>
 <tr class="odd">
-<th id="T_fb13d_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_fb13d_row0_col0" class="data row0 col0">365</td>
-<td id="T_fb13d_row0_col1" class="data row0 col1">4650</td>
-<td id="T_fb13d_row0_col2" class="data row0 col2">57</td>
-<td id="T_fb13d_row0_col3" class="data row0 col3">110</td>
-<td id="T_fb13d_row0_col4" class="data row0 col4">69.9%</td>
-<td id="T_fb13d_row0_col5" class="data row0 col5">3.7%</td>
-<td id="T_fb13d_row0_col6" class="data row0 col6">1.000000</td>
-<td id="T_fb13d_row0_col7" class="data row0 col7">4.500000</td>
-<td id="T_fb13d_row0_col8" class="data row0 col8">0.0009</td>
+<th id="T_7c4f3_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_7c4f3_row0_col0" class="data row0 col0">365</td>
+<td id="T_7c4f3_row0_col1" class="data row0 col1">4650</td>
+<td id="T_7c4f3_row0_col2" class="data row0 col2">57</td>
+<td id="T_7c4f3_row0_col3" class="data row0 col3">110</td>
+<td id="T_7c4f3_row0_col4" class="data row0 col4">69.9%</td>
+<td id="T_7c4f3_row0_col5" class="data row0 col5">3.7%</td>
+<td id="T_7c4f3_row0_col6" class="data row0 col6">1.000000</td>
+<td id="T_7c4f3_row0_col7" class="data row0 col7">4.500000</td>
+<td id="T_7c4f3_row0_col8" class="data row0 col8">0.0009</td>
 </tr>
 <tr class="even">
-<th id="T_fb13d_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_fb13d_row1_col0" class="data row1 col0">234</td>
-<td id="T_fb13d_row1_col1" class="data row1 col1">8387</td>
-<td id="T_fb13d_row1_col2" class="data row1 col2">36</td>
-<td id="T_fb13d_row1_col3" class="data row1 col3">100</td>
-<td id="T_fb13d_row1_col4" class="data row1 col4">57.3%</td>
-<td id="T_fb13d_row1_col5" class="data row1 col5">2.0%</td>
-<td id="T_fb13d_row1_col6" class="data row1 col6">1.000000</td>
-<td id="T_fb13d_row1_col7" class="data row1 col7">3.700000</td>
-<td id="T_fb13d_row1_col8" class="data row1 col8">0.0061</td>
+<th id="T_7c4f3_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_7c4f3_row1_col0" class="data row1 col0">234</td>
+<td id="T_7c4f3_row1_col1" class="data row1 col1">8387</td>
+<td id="T_7c4f3_row1_col2" class="data row1 col2">36</td>
+<td id="T_7c4f3_row1_col3" class="data row1 col3">100</td>
+<td id="T_7c4f3_row1_col4" class="data row1 col4">57.3%</td>
+<td id="T_7c4f3_row1_col5" class="data row1 col5">2.0%</td>
+<td id="T_7c4f3_row1_col6" class="data row1 col6">1.000000</td>
+<td id="T_7c4f3_row1_col7" class="data row1 col7">3.700000</td>
+<td id="T_7c4f3_row1_col8" class="data row1 col8">0.0061</td>
 </tr>
 <tr class="odd">
-<th id="T_fb13d_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_fb13d_row2_col0" class="data row2 col0">375</td>
-<td id="T_fb13d_row2_col1" class="data row2 col1">9212</td>
-<td id="T_fb13d_row2_col2" class="data row2 col2">25</td>
-<td id="T_fb13d_row2_col3" class="data row2 col3">63</td>
-<td id="T_fb13d_row2_col4" class="data row2 col4">83.2%</td>
-<td id="T_fb13d_row2_col5" class="data row2 col5">2.8%</td>
-<td id="T_fb13d_row2_col6" class="data row2 col6">1.000000</td>
-<td id="T_fb13d_row2_col7" class="data row2 col7">12.500000</td>
-<td id="T_fb13d_row2_col8" class="data row2 col8">0.0035</td>
+<th id="T_7c4f3_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_7c4f3_row2_col0" class="data row2 col0">375</td>
+<td id="T_7c4f3_row2_col1" class="data row2 col1">9212</td>
+<td id="T_7c4f3_row2_col2" class="data row2 col2">25</td>
+<td id="T_7c4f3_row2_col3" class="data row2 col3">63</td>
+<td id="T_7c4f3_row2_col4" class="data row2 col4">83.2%</td>
+<td id="T_7c4f3_row2_col5" class="data row2 col5">2.8%</td>
+<td id="T_7c4f3_row2_col6" class="data row2 col6">1.000000</td>
+<td id="T_7c4f3_row2_col7" class="data row2 col7">12.500000</td>
+<td id="T_7c4f3_row2_col8" class="data row2 col8">0.0035</td>
 </tr>
 <tr class="even">
-<th id="T_fb13d_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
-<td id="T_fb13d_row3_col0" class="data row3 col0">27</td>
-<td id="T_fb13d_row3_col1" class="data row3 col1">37</td>
-<td id="T_fb13d_row3_col2" class="data row3 col2">1</td>
-<td id="T_fb13d_row3_col3" class="data row3 col3">1</td>
-<td id="T_fb13d_row3_col4" class="data row3 col4">96.3%</td>
-<td id="T_fb13d_row3_col5" class="data row3 col5">11.4%</td>
-<td id="T_fb13d_row3_col6" class="data row3 col6">0.215000</td>
-<td id="T_fb13d_row3_col7" class="data row3 col7">26.000000</td>
-<td id="T_fb13d_row3_col8" class="data row3 col8">0.0313</td>
+<th id="T_7c4f3_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
+<td id="T_7c4f3_row3_col0" class="data row3 col0">27</td>
+<td id="T_7c4f3_row3_col1" class="data row3 col1">37</td>
+<td id="T_7c4f3_row3_col2" class="data row3 col2">1</td>
+<td id="T_7c4f3_row3_col3" class="data row3 col3">1</td>
+<td id="T_7c4f3_row3_col4" class="data row3 col4">96.3%</td>
+<td id="T_7c4f3_row3_col5" class="data row3 col5">11.4%</td>
+<td id="T_7c4f3_row3_col6" class="data row3 col6">0.215000</td>
+<td id="T_7c4f3_row3_col7" class="data row3 col7">26.000000</td>
+<td id="T_7c4f3_row3_col8" class="data row3 col8">0.0313</td>
 </tr>
 <tr class="odd">
-<th id="T_fb13d_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
-<td id="T_fb13d_row4_col0" class="data row4 col0">51</td>
-<td id="T_fb13d_row4_col1" class="data row4 col1">1217</td>
-<td id="T_fb13d_row4_col2" class="data row4 col2">2</td>
-<td id="T_fb13d_row4_col3" class="data row4 col3">0</td>
-<td id="T_fb13d_row4_col4" class="data row4 col4">100.0%</td>
-<td id="T_fb13d_row4_col5" class="data row4 col5">1.8%</td>
-<td id="T_fb13d_row4_col6" class="data row4 col6">0.714000</td>
-<td id="T_fb13d_row4_col7" class="data row4 col7">25.500000</td>
-<td id="T_fb13d_row4_col8" class="data row4 col8">0.0240</td>
+<th id="T_7c4f3_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
+<td id="T_7c4f3_row4_col0" class="data row4 col0">51</td>
+<td id="T_7c4f3_row4_col1" class="data row4 col1">1217</td>
+<td id="T_7c4f3_row4_col2" class="data row4 col2">2</td>
+<td id="T_7c4f3_row4_col3" class="data row4 col3">0</td>
+<td id="T_7c4f3_row4_col4" class="data row4 col4">100.0%</td>
+<td id="T_7c4f3_row4_col5" class="data row4 col5">1.8%</td>
+<td id="T_7c4f3_row4_col6" class="data row4 col6">0.714000</td>
+<td id="T_7c4f3_row4_col7" class="data row4 col7">25.500000</td>
+<td id="T_7c4f3_row4_col8" class="data row4 col8">0.0240</td>
 </tr>
 <tr class="even">
-<th id="T_fb13d_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_fb13d_row5_col0" class="data row5 col0">258</td>
-<td id="T_fb13d_row5_col1" class="data row5 col1">3410</td>
-<td id="T_fb13d_row5_col2" class="data row5 col2">31</td>
-<td id="T_fb13d_row5_col3" class="data row5 col3">93</td>
-<td id="T_fb13d_row5_col4" class="data row5 col4">64.0%</td>
-<td id="T_fb13d_row5_col5" class="data row5 col5">3.9%</td>
-<td id="T_fb13d_row5_col6" class="data row5 col6">1.000000</td>
-<td id="T_fb13d_row5_col7" class="data row5 col7">5.300000</td>
-<td id="T_fb13d_row5_col8" class="data row5 col8">0.0010</td>
+<th id="T_7c4f3_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_7c4f3_row5_col0" class="data row5 col0">258</td>
+<td id="T_7c4f3_row5_col1" class="data row5 col1">3410</td>
+<td id="T_7c4f3_row5_col2" class="data row5 col2">31</td>
+<td id="T_7c4f3_row5_col3" class="data row5 col3">93</td>
+<td id="T_7c4f3_row5_col4" class="data row5 col4">64.0%</td>
+<td id="T_7c4f3_row5_col5" class="data row5 col5">3.9%</td>
+<td id="T_7c4f3_row5_col6" class="data row5 col6">1.000000</td>
+<td id="T_7c4f3_row5_col7" class="data row5 col7">5.300000</td>
+<td id="T_7c4f3_row5_col8" class="data row5 col8">0.0010</td>
 </tr>
 <tr class="odd">
-<th id="T_fb13d_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_fb13d_row6_col0" class="data row6 col0">203</td>
-<td id="T_fb13d_row6_col1" class="data row6 col1">7756</td>
-<td id="T_fb13d_row6_col2" class="data row6 col2">29</td>
-<td id="T_fb13d_row6_col3" class="data row6 col3">95</td>
-<td id="T_fb13d_row6_col4" class="data row6 col4">53.2%</td>
-<td id="T_fb13d_row6_col5" class="data row6 col5">1.8%</td>
-<td id="T_fb13d_row6_col6" class="data row6 col6">0.694000</td>
-<td id="T_fb13d_row6_col7" class="data row6 col7">3.700000</td>
-<td id="T_fb13d_row6_col8" class="data row6 col8">0.0063</td>
+<th id="T_7c4f3_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_7c4f3_row6_col0" class="data row6 col0">203</td>
+<td id="T_7c4f3_row6_col1" class="data row6 col1">7756</td>
+<td id="T_7c4f3_row6_col2" class="data row6 col2">29</td>
+<td id="T_7c4f3_row6_col3" class="data row6 col3">95</td>
+<td id="T_7c4f3_row6_col4" class="data row6 col4">53.2%</td>
+<td id="T_7c4f3_row6_col5" class="data row6 col5">1.8%</td>
+<td id="T_7c4f3_row6_col6" class="data row6 col6">0.694000</td>
+<td id="T_7c4f3_row6_col7" class="data row6 col7">3.700000</td>
+<td id="T_7c4f3_row6_col8" class="data row6 col8">0.0063</td>
 </tr>
 <tr class="even">
-<th id="T_fb13d_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_fb13d_row7_col0" class="data row7 col0">369</td>
-<td id="T_fb13d_row7_col1" class="data row7 col1">8596</td>
-<td id="T_fb13d_row7_col2" class="data row7 col2">37</td>
-<td id="T_fb13d_row7_col3" class="data row7 col3">120</td>
-<td id="T_fb13d_row7_col4" class="data row7 col4">67.5%</td>
-<td id="T_fb13d_row7_col5" class="data row7 col5">1.8%</td>
-<td id="T_fb13d_row7_col6" class="data row7 col6">0.507000</td>
-<td id="T_fb13d_row7_col7" class="data row7 col7">6.700000</td>
-<td id="T_fb13d_row7_col8" class="data row7 col8">0.0012</td>
+<th id="T_7c4f3_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_7c4f3_row7_col0" class="data row7 col0">369</td>
+<td id="T_7c4f3_row7_col1" class="data row7 col1">8596</td>
+<td id="T_7c4f3_row7_col2" class="data row7 col2">37</td>
+<td id="T_7c4f3_row7_col3" class="data row7 col3">120</td>
+<td id="T_7c4f3_row7_col4" class="data row7 col4">67.5%</td>
+<td id="T_7c4f3_row7_col5" class="data row7 col5">1.8%</td>
+<td id="T_7c4f3_row7_col6" class="data row7 col6">0.507000</td>
+<td id="T_7c4f3_row7_col7" class="data row7 col7">6.700000</td>
+<td id="T_7c4f3_row7_col8" class="data row7 col8">0.0012</td>
 </tr>
 <tr class="odd">
-<th id="T_fb13d_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
-<td id="T_fb13d_row8_col0" class="data row8 col0">28</td>
-<td id="T_fb13d_row8_col1" class="data row8 col1">37</td>
-<td id="T_fb13d_row8_col2" class="data row8 col2">2</td>
-<td id="T_fb13d_row8_col3" class="data row8 col3">0</td>
-<td id="T_fb13d_row8_col4" class="data row8 col4">100.0%</td>
-<td id="T_fb13d_row8_col5" class="data row8 col5">20.4%</td>
-<td id="T_fb13d_row8_col6" class="data row8 col6">0.292000</td>
-<td id="T_fb13d_row8_col7" class="data row8 col7">14.000000</td>
-<td id="T_fb13d_row8_col8" class="data row8 col8">0.0179</td>
+<th id="T_7c4f3_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
+<td id="T_7c4f3_row8_col0" class="data row8 col0">28</td>
+<td id="T_7c4f3_row8_col1" class="data row8 col1">37</td>
+<td id="T_7c4f3_row8_col2" class="data row8 col2">2</td>
+<td id="T_7c4f3_row8_col3" class="data row8 col3">0</td>
+<td id="T_7c4f3_row8_col4" class="data row8 col4">100.0%</td>
+<td id="T_7c4f3_row8_col5" class="data row8 col5">20.4%</td>
+<td id="T_7c4f3_row8_col6" class="data row8 col6">0.292000</td>
+<td id="T_7c4f3_row8_col7" class="data row8 col7">14.000000</td>
+<td id="T_7c4f3_row8_col8" class="data row8 col8">0.0179</td>
 </tr>
 <tr class="even">
-<th id="T_fb13d_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
-<td id="T_fb13d_row9_col0" class="data row9 col0">53</td>
-<td id="T_fb13d_row9_col1" class="data row9 col1">815</td>
-<td id="T_fb13d_row9_col2" class="data row9 col2">2</td>
-<td id="T_fb13d_row9_col3" class="data row9 col3">0</td>
-<td id="T_fb13d_row9_col4" class="data row9 col4">100.0%</td>
-<td id="T_fb13d_row9_col5" class="data row9 col5">1.6%</td>
-<td id="T_fb13d_row9_col6" class="data row9 col6">0.027000</td>
-<td id="T_fb13d_row9_col7" class="data row9 col7">26.500000</td>
-<td id="T_fb13d_row9_col8" class="data row9 col8">0.0216</td>
+<th id="T_7c4f3_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
+<td id="T_7c4f3_row9_col0" class="data row9 col0">53</td>
+<td id="T_7c4f3_row9_col1" class="data row9 col1">815</td>
+<td id="T_7c4f3_row9_col2" class="data row9 col2">2</td>
+<td id="T_7c4f3_row9_col3" class="data row9 col3">0</td>
+<td id="T_7c4f3_row9_col4" class="data row9 col4">100.0%</td>
+<td id="T_7c4f3_row9_col5" class="data row9 col5">1.6%</td>
+<td id="T_7c4f3_row9_col6" class="data row9 col6">0.027000</td>
+<td id="T_7c4f3_row9_col7" class="data row9 col7">26.500000</td>
+<td id="T_7c4f3_row9_col8" class="data row9 col8">0.0216</td>
 </tr>
 </tbody>
 </table>
@@ -2770,8 +2795,8 @@ Table 2: Per-tree clade statistics. Branches with UFBoot2 &lt; 70 were collapse
 </div>
 </div>
 </section>
-<section id="top-clades-per-tree" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="top-clades-per-tree"><span class="header-section-number">3.2</span> Top clades per tree</h3>
+<section id="top-clades-per-tree" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="top-clades-per-tree"><span class="header-section-number">5.2</span> Top clades per tree</h3>
 <div class="cell" data-execution_count="4">
 <div id="tbl-top-clades" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -2783,15 +2808,15 @@ Table 3: Five largest monophyletic Madagascar clades per tree (ranked by tip co
 <style type="text/css">
 </style>
 
-<table id="T_b5e61" class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table id="T_6c681" class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank level0" data-quarto-table-cell-role="th"> </th>
-<th id="T_b5e61_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Clade</th>
-<th id="T_b5e61_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Tips</th>
-<th id="T_b5e61_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Internal BL</th>
-<th id="T_b5e61_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Stem BL</th>
-<th id="T_b5e61_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">% Tree BL</th>
+<th id="T_6c681_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Clade</th>
+<th id="T_6c681_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Tips</th>
+<th id="T_6c681_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Internal BL</th>
+<th id="T_6c681_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Stem BL</th>
+<th id="T_6c681_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">% Tree BL</th>
 </tr>
 <tr class="even">
 <th class="index_name level0" data-quarto-table-cell-role="th">Tree</th>
@@ -2804,300 +2829,300 @@ Table 3: Five largest monophyletic Madagascar clades per tree (ranked by tip co
 </thead>
 <tbody>
 <tr class="odd">
-<th id="T_b5e61_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_b5e61_row0_col0" class="data row0 col0">51</td>
-<td id="T_b5e61_row0_col1" class="data row0 col1">36</td>
-<td id="T_b5e61_row0_col2" class="data row0 col2">0.0069</td>
-<td id="T_b5e61_row0_col3" class="data row0 col3">0.0006</td>
-<td id="T_b5e61_row0_col4" class="data row0 col4">0.14%</td>
+<th id="T_6c681_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_6c681_row0_col0" class="data row0 col0">51</td>
+<td id="T_6c681_row0_col1" class="data row0 col1">36</td>
+<td id="T_6c681_row0_col2" class="data row0 col2">0.0069</td>
+<td id="T_6c681_row0_col3" class="data row0 col3">0.0006</td>
+<td id="T_6c681_row0_col4" class="data row0 col4">0.14%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_b5e61_row1_col0" class="data row1 col0">3</td>
-<td id="T_b5e61_row1_col1" class="data row1 col1">19</td>
-<td id="T_b5e61_row1_col2" class="data row1 col2">0.0212</td>
-<td id="T_b5e61_row1_col3" class="data row1 col3">0.0036</td>
-<td id="T_b5e61_row1_col4" class="data row1 col4">0.42%</td>
+<th id="T_6c681_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_6c681_row1_col0" class="data row1 col0">3</td>
+<td id="T_6c681_row1_col1" class="data row1 col1">19</td>
+<td id="T_6c681_row1_col2" class="data row1 col2">0.0212</td>
+<td id="T_6c681_row1_col3" class="data row1 col3">0.0036</td>
+<td id="T_6c681_row1_col4" class="data row1 col4">0.42%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_b5e61_row2_col0" class="data row2 col0">43</td>
-<td id="T_b5e61_row2_col1" class="data row2 col1">17</td>
-<td id="T_b5e61_row2_col2" class="data row2 col2">0.0039</td>
-<td id="T_b5e61_row2_col3" class="data row2 col3">0.0007</td>
-<td id="T_b5e61_row2_col4" class="data row2 col4">0.08%</td>
+<th id="T_6c681_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_6c681_row2_col0" class="data row2 col0">43</td>
+<td id="T_6c681_row2_col1" class="data row2 col1">17</td>
+<td id="T_6c681_row2_col2" class="data row2 col2">0.0039</td>
+<td id="T_6c681_row2_col3" class="data row2 col3">0.0007</td>
+<td id="T_6c681_row2_col4" class="data row2 col4">0.08%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_b5e61_row3_col0" class="data row3 col0">45</td>
-<td id="T_b5e61_row3_col1" class="data row3 col1">16</td>
-<td id="T_b5e61_row3_col2" class="data row3 col2">0.0000</td>
-<td id="T_b5e61_row3_col3" class="data row3 col3">0.0000</td>
-<td id="T_b5e61_row3_col4" class="data row3 col4">0.0%</td>
+<th id="T_6c681_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_6c681_row3_col0" class="data row3 col0">45</td>
+<td id="T_6c681_row3_col1" class="data row3 col1">16</td>
+<td id="T_6c681_row3_col2" class="data row3 col2">0.0000</td>
+<td id="T_6c681_row3_col3" class="data row3 col3">0.0000</td>
+<td id="T_6c681_row3_col4" class="data row3 col4">0.0%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_b5e61_row4_col0" class="data row4 col0">39</td>
-<td id="T_b5e61_row4_col1" class="data row4 col1">12</td>
-<td id="T_b5e61_row4_col2" class="data row4 col2">0.0000</td>
-<td id="T_b5e61_row4_col3" class="data row4 col3">0.0000</td>
-<td id="T_b5e61_row4_col4" class="data row4 col4">0.0%</td>
+<th id="T_6c681_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_6c681_row4_col0" class="data row4 col0">39</td>
+<td id="T_6c681_row4_col1" class="data row4 col1">12</td>
+<td id="T_6c681_row4_col2" class="data row4 col2">0.0000</td>
+<td id="T_6c681_row4_col3" class="data row4 col3">0.0000</td>
+<td id="T_6c681_row4_col4" class="data row4 col4">0.0%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_b5e61_row5_col0" class="data row5 col0">21</td>
-<td id="T_b5e61_row5_col1" class="data row5 col1">16</td>
-<td id="T_b5e61_row5_col2" class="data row5 col2">0.0435</td>
-<td id="T_b5e61_row5_col3" class="data row5 col3">0.0019</td>
-<td id="T_b5e61_row5_col4" class="data row5 col4">0.12%</td>
+<th id="T_6c681_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_6c681_row5_col0" class="data row5 col0">21</td>
+<td id="T_6c681_row5_col1" class="data row5 col1">16</td>
+<td id="T_6c681_row5_col2" class="data row5 col2">0.0435</td>
+<td id="T_6c681_row5_col3" class="data row5 col3">0.0019</td>
+<td id="T_6c681_row5_col4" class="data row5 col4">0.12%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_b5e61_row6_col0" class="data row6 col0">11</td>
-<td id="T_b5e61_row6_col1" class="data row6 col1">9</td>
-<td id="T_b5e61_row6_col2" class="data row6 col2">0.0141</td>
-<td id="T_b5e61_row6_col3" class="data row6 col3">0.0020</td>
-<td id="T_b5e61_row6_col4" class="data row6 col4">0.04%</td>
+<th id="T_6c681_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_6c681_row6_col0" class="data row6 col0">11</td>
+<td id="T_6c681_row6_col1" class="data row6 col1">9</td>
+<td id="T_6c681_row6_col2" class="data row6 col2">0.0141</td>
+<td id="T_6c681_row6_col3" class="data row6 col3">0.0020</td>
+<td id="T_6c681_row6_col4" class="data row6 col4">0.04%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_b5e61_row7_col0" class="data row7 col0">24</td>
-<td id="T_b5e61_row7_col1" class="data row7 col1">8</td>
-<td id="T_b5e61_row7_col2" class="data row7 col2">0.0040</td>
-<td id="T_b5e61_row7_col3" class="data row7 col3">0.0012</td>
-<td id="T_b5e61_row7_col4" class="data row7 col4">0.01%</td>
+<th id="T_6c681_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_6c681_row7_col0" class="data row7 col0">24</td>
+<td id="T_6c681_row7_col1" class="data row7 col1">8</td>
+<td id="T_6c681_row7_col2" class="data row7 col2">0.0040</td>
+<td id="T_6c681_row7_col3" class="data row7 col3">0.0012</td>
+<td id="T_6c681_row7_col4" class="data row7 col4">0.01%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_b5e61_row8_col0" class="data row8 col0">2</td>
-<td id="T_b5e61_row8_col1" class="data row8 col1">7</td>
-<td id="T_b5e61_row8_col2" class="data row8 col2">0.0100</td>
-<td id="T_b5e61_row8_col3" class="data row8 col3">0.0066</td>
-<td id="T_b5e61_row8_col4" class="data row8 col4">0.03%</td>
+<th id="T_6c681_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_6c681_row8_col0" class="data row8 col0">2</td>
+<td id="T_6c681_row8_col1" class="data row8 col1">7</td>
+<td id="T_6c681_row8_col2" class="data row8 col2">0.0100</td>
+<td id="T_6c681_row8_col3" class="data row8 col3">0.0066</td>
+<td id="T_6c681_row8_col4" class="data row8 col4">0.03%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_b5e61_row9_col0" class="data row9 col0">6</td>
-<td id="T_b5e61_row9_col1" class="data row9 col1">6</td>
-<td id="T_b5e61_row9_col2" class="data row9 col2">0.0175</td>
-<td id="T_b5e61_row9_col3" class="data row9 col3">0.0040</td>
-<td id="T_b5e61_row9_col4" class="data row9 col4">0.05%</td>
+<th id="T_6c681_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_6c681_row9_col0" class="data row9 col0">6</td>
+<td id="T_6c681_row9_col1" class="data row9 col1">6</td>
+<td id="T_6c681_row9_col2" class="data row9 col2">0.0175</td>
+<td id="T_6c681_row9_col3" class="data row9 col3">0.0040</td>
+<td id="T_6c681_row9_col4" class="data row9 col4">0.05%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_b5e61_row10_col0" class="data row10 col0">21</td>
-<td id="T_b5e61_row10_col1" class="data row10 col1">108</td>
-<td id="T_b5e61_row10_col2" class="data row10 col2">0.2402</td>
-<td id="T_b5e61_row10_col3" class="data row10 col3">0.0040</td>
-<td id="T_b5e61_row10_col4" class="data row10 col4">0.74%</td>
+<th id="T_6c681_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_6c681_row10_col0" class="data row10 col0">21</td>
+<td id="T_6c681_row10_col1" class="data row10 col1">108</td>
+<td id="T_6c681_row10_col2" class="data row10 col2">0.2402</td>
+<td id="T_6c681_row10_col3" class="data row10 col3">0.0040</td>
+<td id="T_6c681_row10_col4" class="data row10 col4">0.74%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row11" class="row_heading level0 row11" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_b5e61_row11_col0" class="data row11 col0">22</td>
-<td id="T_b5e61_row11_col1" class="data row11 col1">53</td>
-<td id="T_b5e61_row11_col2" class="data row11 col2">0.0800</td>
-<td id="T_b5e61_row11_col3" class="data row11 col3">0.0205</td>
-<td id="T_b5e61_row11_col4" class="data row11 col4">0.25%</td>
+<th id="T_6c681_level0_row11" class="row_heading level0 row11" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_6c681_row11_col0" class="data row11 col0">22</td>
+<td id="T_6c681_row11_col1" class="data row11 col1">53</td>
+<td id="T_6c681_row11_col2" class="data row11 col2">0.0800</td>
+<td id="T_6c681_row11_col3" class="data row11 col3">0.0205</td>
+<td id="T_6c681_row11_col4" class="data row11 col4">0.25%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_b5e61_row12_col0" class="data row12 col0">17</td>
-<td id="T_b5e61_row12_col1" class="data row12 col1">27</td>
-<td id="T_b5e61_row12_col2" class="data row12 col2">0.0764</td>
-<td id="T_b5e61_row12_col3" class="data row12 col3">0.0020</td>
-<td id="T_b5e61_row12_col4" class="data row12 col4">0.24%</td>
+<th id="T_6c681_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_6c681_row12_col0" class="data row12 col0">17</td>
+<td id="T_6c681_row12_col1" class="data row12 col1">27</td>
+<td id="T_6c681_row12_col2" class="data row12 col2">0.0764</td>
+<td id="T_6c681_row12_col3" class="data row12 col3">0.0020</td>
+<td id="T_6c681_row12_col4" class="data row12 col4">0.24%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row13" class="row_heading level0 row13" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_b5e61_row13_col0" class="data row13 col0">20</td>
-<td id="T_b5e61_row13_col1" class="data row13 col1">25</td>
-<td id="T_b5e61_row13_col2" class="data row13 col2">0.0228</td>
-<td id="T_b5e61_row13_col3" class="data row13 col3">0.0042</td>
-<td id="T_b5e61_row13_col4" class="data row13 col4">0.07%</td>
+<th id="T_6c681_level0_row13" class="row_heading level0 row13" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_6c681_row13_col0" class="data row13 col0">20</td>
+<td id="T_6c681_row13_col1" class="data row13 col1">25</td>
+<td id="T_6c681_row13_col2" class="data row13 col2">0.0228</td>
+<td id="T_6c681_row13_col3" class="data row13 col3">0.0042</td>
+<td id="T_6c681_row13_col4" class="data row13 col4">0.07%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row14" class="row_heading level0 row14" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_b5e61_row14_col0" class="data row14 col0">25</td>
-<td id="T_b5e61_row14_col1" class="data row14 col1">16</td>
-<td id="T_b5e61_row14_col2" class="data row14 col2">0.0729</td>
-<td id="T_b5e61_row14_col3" class="data row14 col3">0.0063</td>
-<td id="T_b5e61_row14_col4" class="data row14 col4">0.22%</td>
+<th id="T_6c681_level0_row14" class="row_heading level0 row14" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_6c681_row14_col0" class="data row14 col0">25</td>
+<td id="T_6c681_row14_col1" class="data row14 col1">16</td>
+<td id="T_6c681_row14_col2" class="data row14 col2">0.0729</td>
+<td id="T_6c681_row14_col3" class="data row14 col3">0.0063</td>
+<td id="T_6c681_row14_col4" class="data row14 col4">0.22%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row15" class="row_heading level0 row15" data-quarto-table-cell-role="th">HA_H6N2</th>
-<td id="T_b5e61_row15_col0" class="data row15 col0">1</td>
-<td id="T_b5e61_row15_col1" class="data row15 col1">26</td>
-<td id="T_b5e61_row15_col2" class="data row15 col2">0.0509</td>
-<td id="T_b5e61_row15_col3" class="data row15 col3">0.0313</td>
-<td id="T_b5e61_row15_col4" class="data row15 col4">4.75%</td>
+<th id="T_6c681_level0_row15" class="row_heading level0 row15" data-quarto-table-cell-role="th">HA_H6N2</th>
+<td id="T_6c681_row15_col0" class="data row15 col0">1</td>
+<td id="T_6c681_row15_col1" class="data row15 col1">26</td>
+<td id="T_6c681_row15_col2" class="data row15 col2">0.0509</td>
+<td id="T_6c681_row15_col3" class="data row15 col3">0.0313</td>
+<td id="T_6c681_row15_col4" class="data row15 col4">4.75%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row16" class="row_heading level0 row16" data-quarto-table-cell-role="th">HA_H9N2</th>
-<td id="T_b5e61_row16_col0" class="data row16 col0">2</td>
-<td id="T_b5e61_row16_col1" class="data row16 col1">36</td>
-<td id="T_b5e61_row16_col2" class="data row16 col2">0.0685</td>
-<td id="T_b5e61_row16_col3" class="data row16 col3">0.0317</td>
-<td id="T_b5e61_row16_col4" class="data row16 col4">0.78%</td>
+<th id="T_6c681_level0_row16" class="row_heading level0 row16" data-quarto-table-cell-role="th">HA_H9N2</th>
+<td id="T_6c681_row16_col0" class="data row16 col0">2</td>
+<td id="T_6c681_row16_col1" class="data row16 col1">36</td>
+<td id="T_6c681_row16_col2" class="data row16 col2">0.0685</td>
+<td id="T_6c681_row16_col3" class="data row16 col3">0.0317</td>
+<td id="T_6c681_row16_col4" class="data row16 col4">0.78%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row17" class="row_heading level0 row17" data-quarto-table-cell-role="th">HA_H9N2</th>
-<td id="T_b5e61_row17_col0" class="data row17 col0">1</td>
-<td id="T_b5e61_row17_col1" class="data row17 col1">15</td>
-<td id="T_b5e61_row17_col2" class="data row17 col2">0.0437</td>
-<td id="T_b5e61_row17_col3" class="data row17 col3">0.0163</td>
-<td id="T_b5e61_row17_col4" class="data row17 col4">0.5%</td>
+<th id="T_6c681_level0_row17" class="row_heading level0 row17" data-quarto-table-cell-role="th">HA_H9N2</th>
+<td id="T_6c681_row17_col0" class="data row17 col0">1</td>
+<td id="T_6c681_row17_col1" class="data row17 col1">15</td>
+<td id="T_6c681_row17_col2" class="data row17 col2">0.0437</td>
+<td id="T_6c681_row17_col3" class="data row17 col3">0.0163</td>
+<td id="T_6c681_row17_col4" class="data row17 col4">0.5%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row18" class="row_heading level0 row18" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_b5e61_row18_col0" class="data row18 col0">29</td>
-<td id="T_b5e61_row18_col1" class="data row18 col1">28</td>
-<td id="T_b5e61_row18_col2" class="data row18 col2">0.0120</td>
-<td id="T_b5e61_row18_col3" class="data row18 col3">0.0007</td>
-<td id="T_b5e61_row18_col4" class="data row18 col4">0.3%</td>
+<th id="T_6c681_level0_row18" class="row_heading level0 row18" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_6c681_row18_col0" class="data row18 col0">29</td>
+<td id="T_6c681_row18_col1" class="data row18 col1">28</td>
+<td id="T_6c681_row18_col2" class="data row18 col2">0.0120</td>
+<td id="T_6c681_row18_col3" class="data row18 col3">0.0007</td>
+<td id="T_6c681_row18_col4" class="data row18 col4">0.3%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row19" class="row_heading level0 row19" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_b5e61_row19_col0" class="data row19 col0">3</td>
-<td id="T_b5e61_row19_col1" class="data row19 col1">18</td>
-<td id="T_b5e61_row19_col2" class="data row19 col2">0.0157</td>
-<td id="T_b5e61_row19_col3" class="data row19 col3">0.0030</td>
-<td id="T_b5e61_row19_col4" class="data row19 col4">0.4%</td>
+<th id="T_6c681_level0_row19" class="row_heading level0 row19" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_6c681_row19_col0" class="data row19 col0">3</td>
+<td id="T_6c681_row19_col1" class="data row19 col1">18</td>
+<td id="T_6c681_row19_col2" class="data row19 col2">0.0157</td>
+<td id="T_6c681_row19_col3" class="data row19 col3">0.0030</td>
+<td id="T_6c681_row19_col4" class="data row19 col4">0.4%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row20" class="row_heading level0 row20" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_b5e61_row20_col0" class="data row20 col0">25</td>
-<td id="T_b5e61_row20_col1" class="data row20 col1">14</td>
-<td id="T_b5e61_row20_col2" class="data row20 col2">0.0060</td>
-<td id="T_b5e61_row20_col3" class="data row20 col3">0.0000</td>
-<td id="T_b5e61_row20_col4" class="data row20 col4">0.15%</td>
+<th id="T_6c681_level0_row20" class="row_heading level0 row20" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_6c681_row20_col0" class="data row20 col0">25</td>
+<td id="T_6c681_row20_col1" class="data row20 col1">14</td>
+<td id="T_6c681_row20_col2" class="data row20 col2">0.0060</td>
+<td id="T_6c681_row20_col3" class="data row20 col3">0.0000</td>
+<td id="T_6c681_row20_col4" class="data row20 col4">0.15%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row21" class="row_heading level0 row21" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_b5e61_row21_col0" class="data row21 col0">5</td>
-<td id="T_b5e61_row21_col1" class="data row21 col1">11</td>
-<td id="T_b5e61_row21_col2" class="data row21 col2">0.0067</td>
-<td id="T_b5e61_row21_col3" class="data row21 col3">0.0015</td>
-<td id="T_b5e61_row21_col4" class="data row21 col4">0.17%</td>
+<th id="T_6c681_level0_row21" class="row_heading level0 row21" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_6c681_row21_col0" class="data row21 col0">5</td>
+<td id="T_6c681_row21_col1" class="data row21 col1">11</td>
+<td id="T_6c681_row21_col2" class="data row21 col2">0.0067</td>
+<td id="T_6c681_row21_col3" class="data row21 col3">0.0015</td>
+<td id="T_6c681_row21_col4" class="data row21 col4">0.17%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row22" class="row_heading level0 row22" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_b5e61_row22_col0" class="data row22 col0">22</td>
-<td id="T_b5e61_row22_col1" class="data row22 col1">11</td>
-<td id="T_b5e61_row22_col2" class="data row22 col2">0.0051</td>
-<td id="T_b5e61_row22_col3" class="data row22 col3">0.0000</td>
-<td id="T_b5e61_row22_col4" class="data row22 col4">0.13%</td>
+<th id="T_6c681_level0_row22" class="row_heading level0 row22" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_6c681_row22_col0" class="data row22 col0">22</td>
+<td id="T_6c681_row22_col1" class="data row22 col1">11</td>
+<td id="T_6c681_row22_col2" class="data row22 col2">0.0051</td>
+<td id="T_6c681_row22_col3" class="data row22 col3">0.0000</td>
+<td id="T_6c681_row22_col4" class="data row22 col4">0.13%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row23" class="row_heading level0 row23" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_b5e61_row23_col0" class="data row23 col0">14</td>
-<td id="T_b5e61_row23_col1" class="data row23 col1">13</td>
-<td id="T_b5e61_row23_col2" class="data row23 col2">0.0000</td>
-<td id="T_b5e61_row23_col3" class="data row23 col3">0.0000</td>
-<td id="T_b5e61_row23_col4" class="data row23 col4">0.0%</td>
+<th id="T_6c681_level0_row23" class="row_heading level0 row23" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_6c681_row23_col0" class="data row23 col0">14</td>
+<td id="T_6c681_row23_col1" class="data row23 col1">13</td>
+<td id="T_6c681_row23_col2" class="data row23 col2">0.0000</td>
+<td id="T_6c681_row23_col3" class="data row23 col3">0.0000</td>
+<td id="T_6c681_row23_col4" class="data row23 col4">0.0%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row24" class="row_heading level0 row24" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_b5e61_row24_col0" class="data row24 col0">25</td>
-<td id="T_b5e61_row24_col1" class="data row24 col1">9</td>
-<td id="T_b5e61_row24_col2" class="data row24 col2">0.0126</td>
-<td id="T_b5e61_row24_col3" class="data row24 col3">0.0025</td>
-<td id="T_b5e61_row24_col4" class="data row24 col4">0.04%</td>
+<th id="T_6c681_level0_row24" class="row_heading level0 row24" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_6c681_row24_col0" class="data row24 col0">25</td>
+<td id="T_6c681_row24_col1" class="data row24 col1">9</td>
+<td id="T_6c681_row24_col2" class="data row24 col2">0.0126</td>
+<td id="T_6c681_row24_col3" class="data row24 col3">0.0025</td>
+<td id="T_6c681_row24_col4" class="data row24 col4">0.04%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row25" class="row_heading level0 row25" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_b5e61_row25_col0" class="data row25 col0">3</td>
-<td id="T_b5e61_row25_col1" class="data row25 col1">7</td>
-<td id="T_b5e61_row25_col2" class="data row25 col2">0.0202</td>
-<td id="T_b5e61_row25_col3" class="data row25 col3">0.0076</td>
-<td id="T_b5e61_row25_col4" class="data row25 col4">0.06%</td>
+<th id="T_6c681_level0_row25" class="row_heading level0 row25" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_6c681_row25_col0" class="data row25 col0">3</td>
+<td id="T_6c681_row25_col1" class="data row25 col1">7</td>
+<td id="T_6c681_row25_col2" class="data row25 col2">0.0202</td>
+<td id="T_6c681_row25_col3" class="data row25 col3">0.0076</td>
+<td id="T_6c681_row25_col4" class="data row25 col4">0.06%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row26" class="row_heading level0 row26" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_b5e61_row26_col0" class="data row26 col0">10</td>
-<td id="T_b5e61_row26_col1" class="data row26 col1">7</td>
-<td id="T_b5e61_row26_col2" class="data row26 col2">0.0148</td>
-<td id="T_b5e61_row26_col3" class="data row26 col3">0.0024</td>
-<td id="T_b5e61_row26_col4" class="data row26 col4">0.04%</td>
+<th id="T_6c681_level0_row26" class="row_heading level0 row26" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_6c681_row26_col0" class="data row26 col0">10</td>
+<td id="T_6c681_row26_col1" class="data row26 col1">7</td>
+<td id="T_6c681_row26_col2" class="data row26 col2">0.0148</td>
+<td id="T_6c681_row26_col3" class="data row26 col3">0.0024</td>
+<td id="T_6c681_row26_col4" class="data row26 col4">0.04%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row27" class="row_heading level0 row27" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_b5e61_row27_col0" class="data row27 col0">26</td>
-<td id="T_b5e61_row27_col1" class="data row27 col1">7</td>
-<td id="T_b5e61_row27_col2" class="data row27 col2">0.0554</td>
-<td id="T_b5e61_row27_col3" class="data row27 col3">0.0000</td>
-<td id="T_b5e61_row27_col4" class="data row27 col4">0.16%</td>
+<th id="T_6c681_level0_row27" class="row_heading level0 row27" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_6c681_row27_col0" class="data row27 col0">26</td>
+<td id="T_6c681_row27_col1" class="data row27 col1">7</td>
+<td id="T_6c681_row27_col2" class="data row27 col2">0.0554</td>
+<td id="T_6c681_row27_col3" class="data row27 col3">0.0000</td>
+<td id="T_6c681_row27_col4" class="data row27 col4">0.16%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row28" class="row_heading level0 row28" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_b5e61_row28_col0" class="data row28 col0">20</td>
-<td id="T_b5e61_row28_col1" class="data row28 col1">52</td>
-<td id="T_b5e61_row28_col2" class="data row28 col2">0.0499</td>
-<td id="T_b5e61_row28_col3" class="data row28 col3">0.0050</td>
-<td id="T_b5e61_row28_col4" class="data row28 col4">0.28%</td>
+<th id="T_6c681_level0_row28" class="row_heading level0 row28" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_6c681_row28_col0" class="data row28 col0">20</td>
+<td id="T_6c681_row28_col1" class="data row28 col1">52</td>
+<td id="T_6c681_row28_col2" class="data row28 col2">0.0499</td>
+<td id="T_6c681_row28_col3" class="data row28 col3">0.0050</td>
+<td id="T_6c681_row28_col4" class="data row28 col4">0.28%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row29" class="row_heading level0 row29" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_b5e61_row29_col0" class="data row29 col0">34</td>
-<td id="T_b5e61_row29_col1" class="data row29 col1">25</td>
-<td id="T_b5e61_row29_col2" class="data row29 col2">0.0217</td>
-<td id="T_b5e61_row29_col3" class="data row29 col3">0.0009</td>
-<td id="T_b5e61_row29_col4" class="data row29 col4">0.12%</td>
+<th id="T_6c681_level0_row29" class="row_heading level0 row29" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_6c681_row29_col0" class="data row29 col0">34</td>
+<td id="T_6c681_row29_col1" class="data row29 col1">25</td>
+<td id="T_6c681_row29_col2" class="data row29 col2">0.0217</td>
+<td id="T_6c681_row29_col3" class="data row29 col3">0.0009</td>
+<td id="T_6c681_row29_col4" class="data row29 col4">0.12%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row30" class="row_heading level0 row30" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_b5e61_row30_col0" class="data row30 col0">22</td>
-<td id="T_b5e61_row30_col1" class="data row30 col1">16</td>
-<td id="T_b5e61_row30_col2" class="data row30 col2">0.0104</td>
-<td id="T_b5e61_row30_col3" class="data row30 col3">0.0009</td>
-<td id="T_b5e61_row30_col4" class="data row30 col4">0.06%</td>
+<th id="T_6c681_level0_row30" class="row_heading level0 row30" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_6c681_row30_col0" class="data row30 col0">22</td>
+<td id="T_6c681_row30_col1" class="data row30 col1">16</td>
+<td id="T_6c681_row30_col2" class="data row30 col2">0.0104</td>
+<td id="T_6c681_row30_col3" class="data row30 col3">0.0009</td>
+<td id="T_6c681_row30_col4" class="data row30 col4">0.06%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row31" class="row_heading level0 row31" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_b5e61_row31_col0" class="data row31 col0">8</td>
-<td id="T_b5e61_row31_col1" class="data row31 col1">13</td>
-<td id="T_b5e61_row31_col2" class="data row31 col2">0.0124</td>
-<td id="T_b5e61_row31_col3" class="data row31 col3">0.0010</td>
-<td id="T_b5e61_row31_col4" class="data row31 col4">0.07%</td>
+<th id="T_6c681_level0_row31" class="row_heading level0 row31" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_6c681_row31_col0" class="data row31 col0">8</td>
+<td id="T_6c681_row31_col1" class="data row31 col1">13</td>
+<td id="T_6c681_row31_col2" class="data row31 col2">0.0124</td>
+<td id="T_6c681_row31_col3" class="data row31 col3">0.0010</td>
+<td id="T_6c681_row31_col4" class="data row31 col4">0.07%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row32" class="row_heading level0 row32" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_b5e61_row32_col0" class="data row32 col0">7</td>
-<td id="T_b5e61_row32_col1" class="data row32 col1">11</td>
-<td id="T_b5e61_row32_col2" class="data row32 col2">0.0048</td>
-<td id="T_b5e61_row32_col3" class="data row32 col3">0.0010</td>
-<td id="T_b5e61_row32_col4" class="data row32 col4">0.03%</td>
+<th id="T_6c681_level0_row32" class="row_heading level0 row32" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_6c681_row32_col0" class="data row32 col0">7</td>
+<td id="T_6c681_row32_col1" class="data row32 col1">11</td>
+<td id="T_6c681_row32_col2" class="data row32 col2">0.0048</td>
+<td id="T_6c681_row32_col3" class="data row32 col3">0.0010</td>
+<td id="T_6c681_row32_col4" class="data row32 col4">0.03%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row33" class="row_heading level0 row33" data-quarto-table-cell-role="th">NA_H6N2</th>
-<td id="T_b5e61_row33_col0" class="data row33 col0">2</td>
-<td id="T_b5e61_row33_col1" class="data row33 col1">18</td>
-<td id="T_b5e61_row33_col2" class="data row33 col2">0.0273</td>
-<td id="T_b5e61_row33_col3" class="data row33 col3">0.0184</td>
-<td id="T_b5e61_row33_col4" class="data row33 col4">3.71%</td>
+<th id="T_6c681_level0_row33" class="row_heading level0 row33" data-quarto-table-cell-role="th">NA_H6N2</th>
+<td id="T_6c681_row33_col0" class="data row33 col0">2</td>
+<td id="T_6c681_row33_col1" class="data row33 col1">18</td>
+<td id="T_6c681_row33_col2" class="data row33 col2">0.0273</td>
+<td id="T_6c681_row33_col3" class="data row33 col3">0.0184</td>
+<td id="T_6c681_row33_col4" class="data row33 col4">3.71%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row34" class="row_heading level0 row34" data-quarto-table-cell-role="th">NA_H6N2</th>
-<td id="T_b5e61_row34_col0" class="data row34 col0">1</td>
-<td id="T_b5e61_row34_col1" class="data row34 col1">10</td>
-<td id="T_b5e61_row34_col2" class="data row34 col2">0.0874</td>
-<td id="T_b5e61_row34_col3" class="data row34 col3">0.0173</td>
-<td id="T_b5e61_row34_col4" class="data row34 col4">11.87%</td>
+<th id="T_6c681_level0_row34" class="row_heading level0 row34" data-quarto-table-cell-role="th">NA_H6N2</th>
+<td id="T_6c681_row34_col0" class="data row34 col0">1</td>
+<td id="T_6c681_row34_col1" class="data row34 col1">10</td>
+<td id="T_6c681_row34_col2" class="data row34 col2">0.0874</td>
+<td id="T_6c681_row34_col3" class="data row34 col3">0.0173</td>
+<td id="T_6c681_row34_col4" class="data row34 col4">11.87%</td>
 </tr>
 <tr class="even">
-<th id="T_b5e61_level0_row35" class="row_heading level0 row35" data-quarto-table-cell-role="th">NA_H9N2</th>
-<td id="T_b5e61_row35_col0" class="data row35 col0">1</td>
-<td id="T_b5e61_row35_col1" class="data row35 col1">40</td>
-<td id="T_b5e61_row35_col2" class="data row35 col2">0.1468</td>
-<td id="T_b5e61_row35_col3" class="data row35 col3">0.0182</td>
-<td id="T_b5e61_row35_col4" class="data row35 col4">1.05%</td>
+<th id="T_6c681_level0_row35" class="row_heading level0 row35" data-quarto-table-cell-role="th">NA_H9N2</th>
+<td id="T_6c681_row35_col0" class="data row35 col0">1</td>
+<td id="T_6c681_row35_col1" class="data row35 col1">40</td>
+<td id="T_6c681_row35_col2" class="data row35 col2">0.1468</td>
+<td id="T_6c681_row35_col3" class="data row35 col3">0.0182</td>
+<td id="T_6c681_row35_col4" class="data row35 col4">1.05%</td>
 </tr>
 <tr class="odd">
-<th id="T_b5e61_level0_row36" class="row_heading level0 row36" data-quarto-table-cell-role="th">NA_H9N2</th>
-<td id="T_b5e61_row36_col0" class="data row36 col0">2</td>
-<td id="T_b5e61_row36_col1" class="data row36 col1">13</td>
-<td id="T_b5e61_row36_col2" class="data row36 col2">0.0283</td>
-<td id="T_b5e61_row36_col3" class="data row36 col3">0.0249</td>
-<td id="T_b5e61_row36_col4" class="data row36 col4">0.2%</td>
+<th id="T_6c681_level0_row36" class="row_heading level0 row36" data-quarto-table-cell-role="th">NA_H9N2</th>
+<td id="T_6c681_row36_col0" class="data row36 col0">2</td>
+<td id="T_6c681_row36_col1" class="data row36 col1">13</td>
+<td id="T_6c681_row36_col2" class="data row36 col2">0.0283</td>
+<td id="T_6c681_row36_col3" class="data row36 col3">0.0249</td>
+<td id="T_6c681_row36_col4" class="data row36 col4">0.2%</td>
 </tr>
 </tbody>
 </table>
@@ -3109,23 +3134,32 @@ Table 3: Five largest monophyletic Madagascar clades per tree (ranked by tip co
 <hr>
 </section>
 </section>
-<section id="interpretation" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">4</span> Interpretation</h2>
-<p>The 10 HA/NA trees reveal two contrasting patterns of Madagascar influenza circulation:</p>
-<section id="avian-lineages-founder-effect-and-local-persistence-h6n2-h9n2" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="avian-lineages-founder-effect-and-local-persistence-h6n2-h9n2"><span class="header-section-number">4.1</span> Avian lineages — founder effect and local persistence (H6N2, H9N2)</h3>
-<p>All Madagascar sequences form just <strong>1–2 large monophyletic clades</strong> with 100% clade membership, large mean clade sizes (14–26 tips), and notably long stem branches (0.02–0.03 substitutions/site). This is the signature of a <strong>founder event</strong> followed by sustained in-country circulation: a single introduction diverged from the continental gene pool and established a local lineage.</p>
-<p>NA_H9N2 has an <code>mrca_subtree_fraction</code> of only <strong>0.027</strong> — all Malagasy H9N2 NA sequences occupy just 2.7% of the total tree’s branch length, confirming extreme geographic clustering.</p>
-<p>NA_H6N2 shows the most striking diversity: its single Malagasy clade accounts for <strong>20.4%</strong> of the entire tree’s branch length (vs 3–4% for seasonal subtypes).</p>
+<section id="interpretation" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">6</span> Interpretation</h2>
+<p>The 10 HA/NA trees show two broad patterns in how Madagascar sequences relate to the rest of African diversity.</p>
+<section id="avian-subtypes-h6n2-h9n2" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="avian-subtypes-h6n2-h9n2"><span class="header-section-number">6.1</span> Avian subtypes (H6N2, H9N2)</h3>
+<p>Madagascar sequences form <strong>1–2 large monophyletic clades</strong> with 96–100% clade membership and mean clade sizes of 14–26 tips. Stem branch lengths are notably long (0.02–0.03 substitutions/site), indicating substantial divergence from the nearest African sequences. These patterns are consistent with <strong>geographic isolation</strong> of Malagasy avian influenza from the continental gene pool.</p>
 </section>
-<section id="seasonal-lineages-recurrent-importations-h1n1-h3n2-flu-b" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="seasonal-lineages-recurrent-importations-h1n1-h3n2-flu-b"><span class="header-section-number">4.2</span> Seasonal lineages — recurrent importations (H1N1, H3N2, Flu B)</h3>
-<p>Madagascar sequences are distributed across <strong>19–57 small clades</strong> (mean size 3–12 tips), with 30–46% of sequences as singletons. The <code>mrca_subtree_fraction</code> equals <strong>1.0</strong> for Flu B and H3N2 HA — Madagascar sequences are scattered across the full span of African diversity, indicating no persistent local lineage. Each epidemic season likely involves fresh reintroductions from the continental pool.</p>
-<p>H3N2 HA is intermediate: 25 clades with mean size 12.5 tips, suggesting some degree of within-season amplification before replacement.</p>
+<section id="seasonal-human-subtypes-h1n1-h3n2-flu-b" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="seasonal-human-subtypes-h1n1-h3n2-flu-b"><span class="header-section-number">6.2</span> Seasonal human subtypes (H1N1, H3N2, Flu B)</h3>
+<p>Madagascar sequences are distributed across <strong>25–57 small clades</strong> (mean size 3–12 tips), with 30–46% of sequences not falling into any clade (singletons). Stem branch lengths are short (0.001–0.006 substitutions/site), suggesting little divergence from other African sequences. These patterns are consistent with <strong>repeated exchange</strong> between Madagascar and the African continent, though the direction and frequency cannot be determined from topology alone.</p>
 </section>
-<section id="surveillance-implications" class="level3" data-number="4.3">
-<h3 data-number="4.3" class="anchored" data-anchor-id="surveillance-implications"><span class="header-section-number">4.3</span> Surveillance implications</h3>
-<p>Avian lineages circulating in Madagascar (H6N2, H9N2) would be entirely invisible to any other African country’s surveillance programme. Sustained Madagascar-specific sampling is therefore justified on genomic-epidemiology grounds for avian influenza monitoring. Seasonal human influenza shows no evidence of local persistence and is likely seeded annually from the broader African/global pool.</p>
+</section>
+<section id="tree-visualisation" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="tree-visualisation"><span class="header-section-number">7</span> Tree visualisation</h2>
+<section id="subsampling-for-visualisation" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="subsampling-for-visualisation"><span class="header-section-number">7.1</span> Subsampling for visualisation</h3>
+<p>Full trees can contain thousands of sequences, making them impossible to read visually. To produce viewable trees, we subsampled each tree keeping <strong>all Madagascar sequences</strong> and selecting up to <strong>150 non-Madagascar sequences</strong> using <a href="https://github.com/fmenardo/Treemmer">Treemmer</a> (Menardo et al. 2018, <em>BMC Bioinformatics</em> 19:164).</p>
+<p>Each tree was reduced using the following command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> Treemmer_v0.3.py <span class="op">&lt;</span>tree.nwk<span class="op">&gt;</span> -X <span class="op">&lt;</span>target<span class="op">&gt;</span> -lm protected.csv <span class="at">-mc</span> <span class="op">&lt;</span>n_mdg<span class="op">&gt;</span> -np <span class="at">-c</span> 4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>where <code>-X</code> sets the target number of tips, <code>-lm protected.csv</code> is a file listing all Madagascar tip names with the tag <code>Madagascar</code>, and <code>-mc &lt;n_mdg&gt;</code> forces Treemmer to always keep at least that many Madagascar-tagged sequences (equal to the total number of Madagascar tips, so none can be removed). All 10 subsampled trees were annotated with tip colours (Madagascar = red, other Africa = grey) and readable tip labels (Madagascar sequences only) for upload to <a href="https://itol.embl.de/">iTOL</a>.</p>
+</section>
+<section id="trees-selected-for-display" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="trees-selected-for-display"><span class="header-section-number">7.2</span> Trees selected for display</h3>
+<p>Two trees were chosen to illustrate the two contrasting patterns:</p>
+<p><strong>NA_H9N2</strong> (203 tips after subsampling: 53 Madagascar + 150 other) — displayed in rectangular layout. This tree shows the avian pattern most clearly: Madagascar sequences form 1–2 tight clades sitting on long branches, visually separated from continental diversity. N9 was chosen over H6 because H9N2 has more sequences and the pattern is more striking.</p>
+<p><strong>HA_H3N2</strong> (525 tips after subsampling: 375 Madagascar + 150 other) — displayed in circular layout. This tree shows the seasonal pattern: Madagascar sequences are scattered throughout the tree in many small clusters interleaved with non-Madagascar sequences, reflecting repeated importation events. H3N2 was chosen because it is the most recognisable human influenza subtype and has the largest Madagascar dataset.</p>
 </section>
 </section>
 

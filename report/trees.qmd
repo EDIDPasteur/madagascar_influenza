@@ -68,8 +68,7 @@ All sequences are used — **no subsampling**.
 | Internal merged | PB2, PB1, PA, NP, MP, NS | All subtypes merged per segment | 6 |
 | **Total** | | | **up to 16** |
 
-Internal segments are merged across subtypes (they reassort freely and do not cluster by HxNy).
-HA/NA are kept per-subtype (distinct antigenic lineages with long inter-subtype branches).
+**Tree naming:** each tree is named `<segment>_<subtype>`. For example, `HA_B` means the **Hemagglutinin (HA) gene segment** of **Influenza B** viruses; `NA_H3N2` means the **Neuraminidase (NA) gene segment** of **H3N2** viruses. HA and NA are the two surface proteins that determine subtype (the H and N numbers) and are the main targets of the immune response.
 
 ### IQ-TREE parameters
 
@@ -98,17 +97,30 @@ iqtree3 -s <alignment.fasta> \
 
 ### Clade detection
 
-Branches with UFBoot2 support **< 70** are collapsed into polytomies before clade detection (`scripts/analyse_trees.py`, ete3). This prevents counting spurious monophyletic groups that arise from unresolved or poorly-supported splits. A **monophyletic Madagascar clade** = maximal subtree (≥ 2 tips) whose leaves are exclusively Madagascar sequences.
+Before looking for Madagascar-only groups, every tree branch with UFBoot2 support **< 70** is collapsed into a polytomy (a node with more than two children, representing uncertainty). This is because UFBoot2 values — like all bootstrap values — are a measure of confidence: a value of 70 means that in 70% of bootstrap replicates the same branching pattern was recovered. Keeping branches below this threshold would mean counting groupings that are essentially random noise. Collapsing them is a conservative choice that avoids artificially inflating the number of clades.
 
-### Statistics computed per tree
+A **monophyletic Madagascar clade** is then defined as the largest group of tree tips (≥ 2) that are all exclusively from Madagascar and share a common ancestor not shared with any non-Madagascar sequence.
+
+## Statistics computed per tree
 
 | Metric | Meaning |
 |--------|---------|
 | `n_mdg_clades` | Number of monophyletic Madagascar clades (≥ 2 tips) |
-| `mdg_pd_fraction` | Malagasy Faith's PD ÷ total tree PD — share of total tree diversity that is exclusively Malagasy |
-| `mrca_subtree_fraction` | Branch lengths within the MRCA subtree of all Malagasy tips ÷ total tree PD — how concentrated the Malagasy sequences are in the tree |
+| `mdg_pd_fraction` | What fraction of the tree's total branch length is "owned" by Madagascar sequences (see below) |
+| `mrca_subtree_fraction` | How much of the tree sits inside the subtree that spans all Madagascar sequences (see below) |
 
-### Statistics computed per clade
+**`mdg_pd_fraction` — how much of the tree's evolutionary space do Madagascar sequences cover?**
+
+Imagine the tree as a road map: every branch is a road segment with a length equal to the number of mutations along that branch. Faith's Phylogenetic Diversity (PD) for Madagascar is the total length of all roads you need to drive to visit every Madagascar sequence starting from the root. If Madagascar sequences are scattered all over the tree, you need to drive almost the entire map — high PD fraction. If they all cluster in one corner, you only need a short detour — low PD fraction. This metric is divided by the total map length so it becomes a percentage of the whole tree.
+
+**`mrca_subtree_fraction` — how spread out are Madagascar sequences across the tree?**
+
+The **MRCA (Most Recent Common Ancestor)** of all Madagascar sequences is the single node in the tree that is the common ancestor of every Madagascar tip. It is essentially the point where all Madagascar lineages diverge. The subtree *below* that node contains everything nested between Madagascar sequences — including non-Madagascar sequences that happen to sit among them. `mrca_subtree_fraction` is the branch-length sum of that whole subtree divided by the total tree length.
+
+- **Value ≈ 1.0** (e.g., Flu B, H3N2): The MRCA is near the root, meaning Madagascar sequences span almost the entire tree. This happens when Madagascar has sequences in many different global lineages — consistent with frequent re-importation every season.
+- **Value ≈ 0.03** (e.g., NA_H9N2): The MRCA subtree covers only 3% of the tree. All Madagascar sequences are bunched together in a tiny corner — consistent with a single introduction that stayed isolated.
+
+## Statistics computed per clade
 
 | Metric | Meaning |
 |--------|---------|
@@ -126,33 +138,35 @@ Internal segment trees (6 segments) are pending.
 ## Input data coverage
 
 For each tree, **every** Africa sequence with the relevant segment was used — no subsampling.
-IQ-TREE deduplicates identical sequences internally during ML optimisation, but re-attaches them as tips in the final tree, so the treefile contains all input sequences.
-The discrepancy between GISAID isolate counts and tree tips reflects isolates for which the segment was not sequenced or not included in the GISAID download.
+IQ-TREE removes sequences that are 100% identical during the ML tree search (to save computation), but adds them back as tips in the final tree — so the treefile contains all input sequences and no sequence is truly excluded.
+The difference between GISAID isolate counts and tree tips reflects isolates that exist in GISAID but for which the relevant gene segment (HA or NA) was never sequenced or was not included in the GISAID download.
 
 ```{python}
 #| label: tbl-coverage
-#| tbl-cap: "Input sequences per tree. *Tips in tree* = all input sequences (identical duplicates are re-attached after ML optimisation). *Identical (deduped)* = sequences removed during ML search only, added back at the end. *GISAID isolates* = total Africa isolates in metadata; difference from tree tips = isolates without this segment."
+#| tbl-cap: "Input sequences per tree. *Tips in tree* = all sequences provided as input (IQ-TREE re-attaches identical sequences at the end, so none are lost). *GISAID isolates* = total Africa isolates with this subtype in metadata. *Missing segment* = isolates in GISAID that do not have this gene segment sequenced."
 
 rows = []
 for _, row in summary.iterrows():
     name    = row["tree"]
     n_mdg   = int(row["n_mdg_tips"])
     n_afr   = int(row["n_africa_tips"])
-    n_tips  = n_mdg + n_afr   # = all input sequences (identical re-attached)
+    n_tips  = n_mdg + n_afr
 
     seg, sub = parse_tree_name(name)
     meta_label = SUBTYPE_MAP.get(sub)
     n_gisaid = int((metadata["Subtype"] == meta_label).sum()) if meta_label else None
     no_segment = (n_gisaid - n_tips) if n_gisaid else None
+    pct_missing = (100 * no_segment / n_gisaid) if (n_gisaid and no_segment is not None) else None
 
     rows.append({
-        "Tree":             name,
-        "Tips in tree":    f"{n_tips:,}",
-        "Madagascar":      f"{n_mdg:,}",
-        "Other Africa":    f"{n_afr:,}",
-        "% Madagascar":    f"{100*n_mdg/n_tips:.1f}%",
+        "Tree":              name,
+        "Tips in tree":     f"{n_tips:,}",
+        "Madagascar":       f"{n_mdg:,}",
+        "Other Africa":     f"{n_afr:,}",
+        "% Madagascar":     f"{100*n_mdg/n_tips:.1f}%",
         "GISAID isolates¹": f"{n_gisaid:,}" if n_gisaid else "—",
-        "No segment²":     f"{no_segment:,}" if no_segment is not None else "—",
+        "Missing segment²": f"{no_segment:,}" if no_segment is not None else "—",
+        "% missing²":       f"{pct_missing:.1f}%" if pct_missing is not None else "—",
     })
 
 cov = pd.DataFrame(rows).set_index("Tree")
@@ -161,7 +175,7 @@ cov.style.set_properties(**{"text-align": "right"}).set_table_styles(
 )
 ```
 ¹ Total GISAID Africa isolates with this subtype (all hosts, from `combined_metadata.tsv`).  
-² Isolates in GISAID but not in the tree: segment not sequenced or absent from the download.
+² Isolates in GISAID that do not have the relevant gene segment (HA or NA) sequenced; these were not part of any tree.
 
 ---
 
@@ -171,7 +185,7 @@ cov.style.set_properties(**{"text-align": "right"}).set_table_styles(
 
 ```{python}
 #| label: tbl-summary
-#| tbl-cap: "Per-tree clade statistics. Branches with UFBoot2 < 70 were collapsed before clade detection."
+#| tbl-cap: "Per-tree clade statistics. Only groupings with at least 70% bootstrap support were counted as clades; weaker groupings were treated as unresolved."
 
 disp = summary[[
     "tree", "n_mdg_tips", "n_africa_tips", "n_mdg_clades",
@@ -223,37 +237,35 @@ top.set_index("Tree").style
 
 ## Interpretation
 
-The 10 HA/NA trees reveal two contrasting patterns of Madagascar influenza circulation:
+The 10 HA/NA trees show two broad patterns in how Madagascar sequences relate to the rest of African diversity.
 
-### Avian lineages — founder effect and local persistence (H6N2, H9N2)
+### Avian subtypes (H6N2, H9N2)
 
-All Madagascar sequences form just **1–2 large monophyletic clades** with 100% clade membership,
-large mean clade sizes (14–26 tips), and notably long stem branches (0.02–0.03 substitutions/site).
-This is the signature of a **founder event** followed by sustained in-country circulation: a single
-introduction diverged from the continental gene pool and established a local lineage.
+Madagascar sequences form **1–2 large monophyletic clades** with 96–100% clade membership and mean clade sizes of 14–26 tips. Stem branch lengths are notably long (0.02–0.03 substitutions/site), indicating substantial divergence from the nearest African sequences. These patterns are consistent with **geographic isolation** of Malagasy avian influenza from the continental gene pool.
 
-NA_H9N2 has an `mrca_subtree_fraction` of only **0.027** — all Malagasy H9N2 NA sequences occupy
-just 2.7% of the total tree's branch length, confirming extreme geographic clustering.
+### Seasonal human subtypes (H1N1, H3N2, Flu B)
 
-NA_H6N2 shows the most striking diversity: its single Malagasy clade accounts for **20.4%** of the
-entire tree's branch length (vs 3–4% for seasonal subtypes).
+Madagascar sequences are distributed across **25–57 small clades** (mean size 3–12 tips), with 30–46% of sequences not falling into any clade (singletons). Stem branch lengths are short (0.001–0.006 substitutions/site), suggesting little divergence from other African sequences. These patterns are consistent with **repeated exchange** between Madagascar and the African continent, though the direction and frequency cannot be determined from topology alone.
 
-### Seasonal lineages — recurrent importations (H1N1, H3N2, Flu B)
+## Tree visualisation
 
-Madagascar sequences are distributed across **19–57 small clades** (mean size 3–12 tips), with
-30–46% of sequences as singletons. The `mrca_subtree_fraction` equals **1.0** for Flu B and
-H3N2 HA — Madagascar sequences are scattered across the full span of African diversity,
-indicating no persistent local lineage. Each epidemic season likely involves fresh
-reintroductions from the continental pool.
+### Subsampling for visualisation
 
-H3N2 HA is intermediate: 25 clades with mean size 12.5 tips, suggesting some degree of
-within-season amplification before replacement.
+Full trees can contain thousands of sequences, making them impossible to read visually. To produce viewable trees, we subsampled each tree keeping **all Madagascar sequences** and selecting up to **150 non-Madagascar sequences** using [Treemmer](https://github.com/fmenardo/Treemmer) (Menardo et al. 2018, *BMC Bioinformatics* 19:164).
 
-### Surveillance implications
+Each tree was reduced using the following command:
 
-Avian lineages circulating in Madagascar (H6N2, H9N2) would be entirely invisible to any other
-African country's surveillance programme. Sustained Madagascar-specific sampling is therefore
-justified on genomic-epidemiology grounds for avian influenza monitoring.
-Seasonal human influenza shows no evidence of local persistence and is likely seeded annually
-from the broader African/global pool.
+```bash
+python Treemmer_v0.3.py <tree.nwk> -X <target> -lm protected.csv -mc <n_mdg> -np -c 4
+```
+
+where `-X` sets the target number of tips, `-lm protected.csv` is a file listing all Madagascar tip names with the tag `Madagascar`, and `-mc <n_mdg>` forces Treemmer to always keep at least that many Madagascar-tagged sequences (equal to the total number of Madagascar tips, so none can be removed). All 10 subsampled trees were annotated with tip colours (Madagascar = red, other Africa = grey) and readable tip labels (Madagascar sequences only) for upload to [iTOL](https://itol.embl.de/).
+
+### Trees selected for display
+
+Two trees were chosen to illustrate the two contrasting patterns:
+
+**NA_H9N2** (203 tips after subsampling: 53 Madagascar + 150 other) — displayed in rectangular layout. This tree shows the avian pattern most clearly: Madagascar sequences form 1–2 tight clades sitting on long branches, visually separated from continental diversity. N9 was chosen over H6 because H9N2 has more sequences and the pattern is more striking.
+
+**HA_H3N2** (525 tips after subsampling: 375 Madagascar + 150 other) — displayed in circular layout. This tree shows the seasonal pattern: Madagascar sequences are scattered throughout the tree in many small clusters interleaved with non-Madagascar sequences, reflecting repeated importation events. H3N2 was chosen because it is the most recognisable human influenza subtype and has the largest Madagascar dataset.
 

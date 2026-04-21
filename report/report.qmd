@@ -646,11 +646,6 @@ fig.show()
 combinations with ≥ 10 Madagascar sequences. Monophyletic Madagascar clades were detected
 with `scripts/analyse_trees.py` (ete3, midpoint-rooted, maximal all-Madagascar subtrees ≥ 2 tips).
 
-**Key finding:** 74–100% of Madagascar sequences fall into local monophyletic clades
-depending on subtype. Avian H6N2 and H9N2 show founder-effect patterns (1–2 large clades,
-high stem branch lengths ~0.02–0.03), while seasonal human subtypes show many small clades
-consistent with annual reintroduction.
-
 → **[Full phylogenetic analysis, tree visualizations and clade statistics](trees.html)**
 
 ---
