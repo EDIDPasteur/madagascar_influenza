@@ -261,11 +261,26 @@ python Treemmer_v0.3.py <tree.nwk> -X <target> -lm protected.csv -mc <n_mdg> -np
 
 where `-X` sets the target number of tips, `-lm protected.csv` is a file listing all Madagascar tip names with the tag `Madagascar`, and `-mc <n_mdg>` forces Treemmer to always keep at least that many Madagascar-tagged sequences (equal to the total number of Madagascar tips, so none can be removed). All 10 subsampled trees were annotated with tip colours (Madagascar = red, other Africa = grey) and readable tip labels (Madagascar sequences only) for upload to [iTOL](https://itol.embl.de/).
 
+The table below summarises the composition of each subsampled tree:
+
+| Tree | Original tips | Madagascar tips | Non-Madagascar tips kept | Total after subsampling |
+|------|:---:|:---:|:---:|:---:|
+| HA_B | 5,015 | 365 | 150 | 515 |
+| HA_H1N1 | 8,621 | 234 | 150 | 384 |
+| HA_H3N2 | 9,587 | 375 | 150 | 525 |
+| HA_H6N2 | 64 | 27 | 37 | 64 *(full tree, below target)* |
+| HA_H9N2 | 1,268 | 51 | 150 | 201 |
+| NA_B | 4,292 | 258 | 150 | 408 |
+| NA_H1N1 | 7,186 | 203 | 150 | 353 |
+| NA_H3N2 | 8,114 | 369 | 150 | 519 |
+| NA_H6N2 | 65 | 28 | 37 | 65 *(full tree, below target)* |
+| NA_H9N2 | 1,456 | 53 | 150 | 203 |
+
 ### Trees selected for display
 
-Two trees were chosen to illustrate the two contrasting patterns:
+Two trees were chosen to represent the two contrasting patterns identified in the analysis — one avian, one seasonal. The selection criteria were: (1) the tree must clearly illustrate the pattern, (2) the subtype must be biologically meaningful to a non-specialist audience.
 
-**NA_H9N2** (203 tips after subsampling: 53 Madagascar + 150 other) — displayed in rectangular layout. This tree shows the avian pattern most clearly: Madagascar sequences form 1–2 tight clades sitting on long branches, visually separated from continental diversity. N9 was chosen over H6 because H9N2 has more sequences and the pattern is more striking.
+**NA_H9N2** (203 tips: 53 Madagascar + 150 other) — represents the **avian isolation** pattern. It was chosen over HA_H6N2 because H9N2 has far more sequences (201 vs 64 tips), making the clade structure more convincing visually. Displayed in **rectangular** layout, which makes it easy to see the long branches separating the Madagascar clade from the rest.
 
-**HA_H3N2** (525 tips after subsampling: 375 Madagascar + 150 other) — displayed in circular layout. This tree shows the seasonal pattern: Madagascar sequences are scattered throughout the tree in many small clusters interleaved with non-Madagascar sequences, reflecting repeated importation events. H3N2 was chosen because it is the most recognisable human influenza subtype and has the largest Madagascar dataset.
+**HA_H3N2** (525 tips: 375 Madagascar + 150 other) — represents the **seasonal exchange** pattern. H3N2 is the most familiar human influenza subtype and has the largest Madagascar dataset (375 sequences), so the scattered distribution across the tree is clearly visible. Displayed in **circular** layout, which makes it easier to see that Madagascar sequences (red) are spread throughout all parts of the tree.
 
