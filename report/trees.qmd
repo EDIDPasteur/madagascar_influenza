@@ -56,8 +56,6 @@ def parse_tree_name(name):
 
 ## Pipeline
 
-**Question:** do Madagascar sequences form monophyletic clades (local transmission) or are they singletons (sporadic importation)?
-
 Up to **16 maximum-likelihood trees** are built across all segment × subtype combinations with ≥ 10 Madagascar and ≥ 20 other African sequences.
 All sequences are used — **no subsampling**.
 
@@ -97,7 +95,7 @@ iqtree3 -s <alignment.fasta> \
 
 ### Clade detection
 
-Before looking for Madagascar-only groups, every tree branch with UFBoot2 support **< 70** is collapsed into a polytomy (a node with more than two children, representing uncertainty). This is because UFBoot2 values — like all bootstrap values — are a measure of confidence: a value of 70 means that in 70% of bootstrap replicates the same branching pattern was recovered. Keeping branches below this threshold would mean counting groupings that are essentially random noise. Collapsing them is a conservative choice that avoids artificially inflating the number of clades.
+Before looking for Madagascar-only groups, every tree branch with UFBoot2 support **< 70** is collapsed into a polytomy.
 
 A **monophyletic Madagascar clade** is then defined as the largest group of tree tips (≥ 2) that are all exclusively from Madagascar and share a common ancestor not shared with any non-Madagascar sequence.
 
@@ -185,7 +183,7 @@ cov.style.set_properties(**{"text-align": "right"}).set_table_styles(
 
 ```{python}
 #| label: tbl-summary
-#| tbl-cap: "Per-tree clade statistics. Only groupings with at least 70% bootstrap support were counted as clades; weaker groupings were treated as unresolved."
+#| tbl-cap: "Per-tree clade statistics. Only groupings with at least 70% bootstrap support were counted as clades; weaker groupings were treated as unresolved. **Mdg seqs**: total Madagascar sequences in the tree. **Africa seqs**: total non-Madagascar African sequences. **Clades**: number of monophyletic Madagascar-only groups (≥ 2 sequences). **Singletons**: Madagascar sequences not assigned to any clade. **% Mdg in clades**: percentage of Madagascar sequences that fall inside a clade. **Mdg PD %**: fraction of total tree phylogenetic diversity attributable to Madagascar sequences. **MRCA frac**: fraction of the tree spanned by the subtree rooted at the most recent common ancestor of all Madagascar sequences (1 = spans the whole tree). **Mean clade size**: average number of Madagascar sequences per clade. **Mean stem BL**: average length of the branch leading into each Madagascar clade (longer = more diverged from non-Madagascar relatives)."
 
 disp = summary[[
     "tree", "n_mdg_tips", "n_africa_tips", "n_mdg_clades",
@@ -201,20 +199,62 @@ disp.columns = [
     "Mean clade size", "Mean stem BL"
 ]
 
-disp["Mdg PD %"]  = (disp["Mdg PD %"]  * 100).round(1).astype(str) + "%"
-disp["MRCA frac"] = disp["MRCA frac"].round(3)
-disp["Mean stem BL"] = disp["Mean stem BL"].map("{:.4f}".format)
-disp["Mean clade size"] = disp["Mean clade size"].round(1)
-disp["% Mdg in clades"] = disp["% Mdg in clades"].astype(str) + "%"
+# Numeric columns for mean/std (before formatting)
+num_cols = ["Mdg seqs", "Africa seqs", "Clades", "Singletons",
+            "% Mdg in clades", "Mdg PD %", "MRCA frac",
+            "Mean clade size", "Mean stem BL"]
 
-disp.set_index("Tree").style
+import pandas as pd
+means = disp[num_cols].mean()
+stds  = disp[num_cols].std()
+
+# Format display columns
+disp["Mdg PD %"]        = (disp["Mdg PD %"]  * 100).round(1)
+disp["% Mdg in clades"] = disp["% Mdg in clades"].round(1)
+disp["MRCA frac"]       = disp["MRCA frac"].round(3)
+disp["Mean stem BL"]    = disp["Mean stem BL"].round(4)
+disp["Mean clade size"] = disp["Mean clade size"].round(1)
+
+# Build mean and std rows
+def fmt_mean_std(col, mean_val, std_val):
+    if col in ("Mdg PD %", "% Mdg in clades"):
+        return f"{mean_val*100:.1f}%" if col == "Mdg PD %" else f"{mean_val:.1f}%", \
+               f"{std_val*100:.1f}%" if col == "Mdg PD %" else f"{std_val:.1f}%"
+    if col == "MRCA frac":
+        return f"{mean_val:.3f}", f"{std_val:.3f}"
+    if col == "Mean stem BL":
+        return f"{mean_val:.4f}", f"{std_val:.4f}"
+    if col in ("Mean clade size",):
+        return f"{mean_val:.1f}", f"{std_val:.1f}"
+    return f"{mean_val:.1f}", f"{std_val:.1f}"
+
+mean_row = {"Tree": "**Mean**"}
+std_row  = {"Tree": "**SD**"}
+for col in num_cols:
+    m, s = fmt_mean_std(col, means[col], stds[col])
+    mean_row[col] = m
+    std_row[col]  = s
+
+# Format display table
+disp["Mdg PD %"]        = disp["Mdg PD %"].map("{:.1f}%".format)
+disp["% Mdg in clades"] = disp["% Mdg in clades"].map("{:.1f}%".format)
+disp["MRCA frac"]       = disp["MRCA frac"].map("{:.3f}".format)
+disp["Mean stem BL"]    = disp["Mean stem BL"].map("{:.4f}".format)
+disp["Mean clade size"] = disp["Mean clade size"].map("{:.1f}".format)
+disp["Mdg seqs"]        = disp["Mdg seqs"].astype(str)
+disp["Africa seqs"]     = disp["Africa seqs"].astype(str)
+disp["Clades"]          = disp["Clades"].astype(str)
+disp["Singletons"]      = disp["Singletons"].astype(str)
+
+disp_full = pd.concat([disp, pd.DataFrame([mean_row, std_row])], ignore_index=True)
+disp_full.set_index("Tree").style
 ```
 
 ### Top clades per tree
 
 ```{python}
 #| label: tbl-top-clades
-#| tbl-cap: "Five largest monophyletic Madagascar clades per tree (ranked by tip count)."
+#| tbl-cap: "The five largest monophyletic Madagascar clades per tree, ranked by the number of Madagascar sequences they contain. **Clade**: a sequential identifier for each clade within that tree. **Tips**: number of Madagascar sequences in the clade. **Internal BL**: sum of all branch lengths within the clade (total evolutionary distance among clade members — larger means more internal diversity). **Stem BL**: length of the single branch leading into the clade from the rest of the tree (longer = more diverged from non-Madagascar relatives). **% Tree BL**: percentage of the whole tree's total branch length that this clade accounts for (how much of the overall diversity this clade represents)."
 
 top = (
     details
@@ -227,25 +267,29 @@ top = (
         "stem_bl": "Stem BL", "clade_prop_tree_bl": "% Tree BL"
     })
 )
-top["% Tree BL"] = (top["% Tree BL"] * 100).round(2).astype(str) + "%"
-top["Internal BL"] = top["Internal BL"].map("{:.4f}".format)
-top["Stem BL"]     = top["Stem BL"].map("{:.4f}".format)
-top.set_index("Tree").style
+top["% Tree BL"] = (top["% Tree BL"] * 100).round(2)
+top["Internal BL"] = top["Internal BL"].round(4)
+top["Stem BL"]     = top["Stem BL"].round(4)
+
+# Mean row (numeric columns only)
+mean_vals = top[["Tips", "Internal BL", "Stem BL", "% Tree BL"]].mean()
+mean_df = top.iloc[:0].copy()
+mean_df.loc["mean"] = {
+    "Tree": "**Mean**", "Clade": "",
+    "Tips": round(mean_vals["Tips"], 1),
+    "Internal BL": round(mean_vals["Internal BL"], 4),
+    "Stem BL": round(mean_vals["Stem BL"], 4),
+    "% Tree BL": round(mean_vals["% Tree BL"], 2)
+}
+
+import pandas as pd
+top_display = pd.concat([top, mean_df], ignore_index=True)
+top_display["% Tree BL"] = top_display["% Tree BL"].map("{:.2f}%".format)
+top_display["Internal BL"] = top_display["Internal BL"].map("{:.4f}".format)
+top_display["Stem BL"]     = top_display["Stem BL"].map("{:.4f}".format)
+top_display["Tips"]        = top_display["Tips"].map(lambda x: f"{x:.1f}" if isinstance(x, float) else str(x))
+top_display.set_index("Tree").style
 ```
-
----
-
-## Interpretation
-
-The 10 HA/NA trees show two broad patterns in how Madagascar sequences relate to the rest of African diversity.
-
-### Avian subtypes (H6N2, H9N2)
-
-Madagascar sequences form **1–2 large monophyletic clades** with 96–100% clade membership and mean clade sizes of 14–26 tips. Stem branch lengths are notably long (0.02–0.03 substitutions/site), indicating substantial divergence from the nearest African sequences. These patterns are consistent with **geographic isolation** of Malagasy avian influenza from the continental gene pool.
-
-### Seasonal human subtypes (H1N1, H3N2, Flu B)
-
-Madagascar sequences are distributed across **25–57 small clades** (mean size 3–12 tips), with 30–46% of sequences not falling into any clade (singletons). Stem branch lengths are short (0.001–0.006 substitutions/site), suggesting little divergence from other African sequences. These patterns are consistent with **repeated exchange** between Madagascar and the African continent, though the direction and frequency cannot be determined from topology alone.
 
 ## Tree visualisation
 
@@ -284,7 +328,16 @@ Two trees were chosen to represent the two contrasting patterns identified in th
 
 **HA_H3N2** (525 tips: 375 Madagascar + 150 other) — represents the **seasonal exchange** pattern. H3N2 is the most familiar human influenza subtype and has the largest Madagascar dataset (375 sequences), so the scattered distribution across the tree is clearly visible. Displayed in **circular** layout, which makes it easier to see that Madagascar sequences (red) are spread throughout all parts of the tree.
 
-![NA segment of H9N2 (203 tips: 53 Madagascar in red, 150 other Africa in grey). Madagascar sequences form a single deep-branching clade, consistent with an isolated avian reservoir with no ongoing exchange with the continent.](figures/NA_H9N2_sub203.svg){#fig-na-h9n2 fig-alt="Rectangular phylogenetic tree of NA H9N2. Madagascar sequences cluster in one distinct clade separated by long branches from the rest." width="100%"}
+```{python}
+#| label: fig-na-h9n2
+#| fig-cap: "NA segment of H9N2 (203 tips: 53 Madagascar in red, 150 other Africa in grey). Madagascar sequences form a single deep-branching clade, consistent with an isolated avian reservoir with no ongoing exchange with the continent."
+from IPython.display import SVG, display
+display(SVG(filename="figures/NA_H9N2_sub203.svg"))
+```
 
-![HA segment of H3N2 (525 tips: 375 Madagascar in red, 150 other Africa in grey). Madagascar sequences are distributed throughout the tree with no dominant clade, consistent with repeated seasonal introductions from the global pool.](figures/HA_H3N2_sub525.svg){#fig-ha-h3n2 fig-alt="Circular phylogenetic tree of HA H3N2. Madagascar sequences are scattered across all branches of the tree." width="100%"}
+```{python}
+#| label: fig-ha-h3n2
+#| fig-cap: "HA segment of H3N2 (525 tips: 375 Madagascar in red, 150 other Africa in grey). Madagascar sequences are distributed throughout the tree with no dominant clade, consistent with repeated seasonal introductions from the global pool."
+display(SVG(filename="figures/HA_H3N2_sub525.svg"))
+```
 
