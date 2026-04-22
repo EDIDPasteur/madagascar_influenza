@@ -284,3 +284,7 @@ Two trees were chosen to represent the two contrasting patterns identified in th
 
 **HA_H3N2** (525 tips: 375 Madagascar + 150 other) — represents the **seasonal exchange** pattern. H3N2 is the most familiar human influenza subtype and has the largest Madagascar dataset (375 sequences), so the scattered distribution across the tree is clearly visible. Displayed in **circular** layout, which makes it easier to see that Madagascar sequences (red) are spread throughout all parts of the tree.
 
+![NA segment of H9N2 (203 tips: 53 Madagascar in red, 150 other Africa in grey). Madagascar sequences form a single deep-branching clade, consistent with an isolated avian reservoir with no ongoing exchange with the continent.](figures/NA_H9N2_sub203.svg){#fig-na-h9n2 fig-alt="Rectangular phylogenetic tree of NA H9N2. Madagascar sequences cluster in one distinct clade separated by long branches from the rest." width="100%"}
+
+![HA segment of H3N2 (525 tips: 375 Madagascar in red, 150 other Africa in grey). Madagascar sequences are distributed throughout the tree with no dominant clade, consistent with repeated seasonal introductions from the global pool.](figures/HA_H3N2_sub525.svg){#fig-ha-h3n2 fig-alt="Circular phylogenetic tree of HA H3N2. Madagascar sequences are scattered across all branches of the tree." width="100%"}
+
