@@ -87,7 +87,6 @@ iqtree3 -s <alignment.fasta> \
 | `-m HKY+G` | HKY + Gamma | 2-parameter nucleotide model (κ for ts/tv ratio) with 4 discrete rate categories |
 | `-B 1000` | UFBoot2 | Ultrafast bootstrap approximation; node support values are bootstrap percentages |
 | `--seed 42` | 42 | Fixed random seed for reproducibility |
-| No `-bb` / no `-alrt` | — | Only UFBoot2 support; no SH-aLRT |
 
 **Branch support:** node labels are UFBoot2 percentages (0–100). Values ≥ 95 are considered strongly supported.
 
@@ -95,7 +94,7 @@ iqtree3 -s <alignment.fasta> \
 
 ### Clade detection
 
-Before looking for Madagascar-only groups, every tree branch with UFBoot2 support **< 70** is collapsed into a polytomy.
+Before looking for Madagascar-only groups, every tree branch with UFBoot2 support **< 70** is collapsed.
 
 A **monophyletic Madagascar clade** is then defined as the largest group of tree tips (≥ 2) that are all exclusively from Madagascar and share a common ancestor not shared with any non-Madagascar sequence.
 
@@ -175,6 +174,13 @@ cov.style.set_properties(**{"text-align": "right"}).set_table_styles(
 ¹ Total GISAID Africa isolates with this subtype (all hosts, from `combined_metadata.tsv`).  
 ² Isolates in GISAID that do not have the relevant gene segment (HA or NA) sequenced; these were not part of any tree.
 
+```{python}
+#| output: asis
+n_total = summary["n_mdg_tips"] + summary["n_africa_tips"]
+mdg_pct = 100 * summary["n_mdg_tips"] / n_total
+print(f"*Trees range from {int(n_total.min()):,} ({summary.loc[n_total.idxmin(), 'tree']}) to {int(n_total.max()):,} ({summary.loc[n_total.idxmax(), 'tree']}) sequences; Madagascar sequences account for {mdg_pct.min():.1f}–{mdg_pct.max():.1f}% of each tree.*")
+```
+
 ---
 
 ## Clade analysis results
@@ -215,25 +221,21 @@ disp["MRCA frac"]       = disp["MRCA frac"].round(3)
 disp["Mean stem BL"]    = disp["Mean stem BL"].round(4)
 disp["Mean clade size"] = disp["Mean clade size"].round(1)
 
-# Build mean and std rows
-def fmt_mean_std(col, mean_val, std_val):
+# Build mean ± SD summary row
+def fmt_mean_sd(col, mean_val, std_val):
     if col in ("Mdg PD %", "% Mdg in clades"):
-        return f"{mean_val*100:.1f}%" if col == "Mdg PD %" else f"{mean_val:.1f}%", \
-               f"{std_val*100:.1f}%" if col == "Mdg PD %" else f"{std_val:.1f}%"
+        m = mean_val * 100 if col == "Mdg PD %" else mean_val
+        s = std_val  * 100 if col == "Mdg PD %" else std_val
+        return f"{m:.1f} ± {s:.1f}%"
     if col == "MRCA frac":
-        return f"{mean_val:.3f}", f"{std_val:.3f}"
+        return f"{mean_val:.3f} ± {std_val:.3f}"
     if col == "Mean stem BL":
-        return f"{mean_val:.4f}", f"{std_val:.4f}"
-    if col in ("Mean clade size",):
-        return f"{mean_val:.1f}", f"{std_val:.1f}"
-    return f"{mean_val:.1f}", f"{std_val:.1f}"
+        return f"{mean_val:.4f} ± {std_val:.4f}"
+    return f"{mean_val:.1f} ± {std_val:.1f}"
 
-mean_row = {"Tree": "**Mean**"}
-std_row  = {"Tree": "**SD**"}
+summary_row = {"Tree": "**Mean ± SD**"}
 for col in num_cols:
-    m, s = fmt_mean_std(col, means[col], stds[col])
-    mean_row[col] = m
-    std_row[col]  = s
+    summary_row[col] = fmt_mean_sd(col, means[col], stds[col])
 
 # Format display table
 disp["Mdg PD %"]        = disp["Mdg PD %"].map("{:.1f}%".format)
@@ -246,49 +248,64 @@ disp["Africa seqs"]     = disp["Africa seqs"].astype(str)
 disp["Clades"]          = disp["Clades"].astype(str)
 disp["Singletons"]      = disp["Singletons"].astype(str)
 
-disp_full = pd.concat([disp, pd.DataFrame([mean_row, std_row])], ignore_index=True)
+disp_full = pd.concat([disp, pd.DataFrame([summary_row])], ignore_index=True)
 disp_full.set_index("Tree").style
+```
+
+```{python}
+#| output: asis
+_mrca = summary["mrca_subtree_fraction"]
+_clades = summary["n_mdg_clades"]
+_pct = summary["pct_mdg_in_clades"]
+print(f"*Across the 10 trees, Madagascar sequences form {_clades.mean():.1f} \u00b1 {_clades.std():.1f} clades per tree on average, grouping {_pct.mean():.0f}% of sequences; MRCA fraction ranges from {_mrca.min():.3f} ({summary.loc[_mrca.idxmin(), 'tree']}) to {_mrca.max():.3f} ({summary.loc[_mrca.idxmax(), 'tree']}), spanning tight local clustering to broad seasonal spread.*")
 ```
 
 ### Top clades per tree
 
 ```{python}
 #| label: tbl-top-clades
-#| tbl-cap: "The five largest monophyletic Madagascar clades per tree, ranked by the number of Madagascar sequences they contain. **Clade**: a sequential identifier for each clade within that tree. **Tips**: number of Madagascar sequences in the clade. **Internal BL**: sum of all branch lengths within the clade (total evolutionary distance among clade members — larger means more internal diversity). **Stem BL**: length of the single branch leading into the clade from the rest of the tree (longer = more diverged from non-Madagascar relatives). **% Tree BL**: percentage of the whole tree's total branch length that this clade accounts for (how much of the overall diversity this clade represents)."
+#| tbl-cap: "Per-tree mean ± SD across the five largest monophyletic Madagascar clades. **Tips**: number of Madagascar sequences in the clade. **Internal BL**: sum of all branch lengths within the clade (total evolutionary distance among clade members). **Stem BL**: length of the branch leading into the clade from the rest of the tree (longer = more diverged from non-Madagascar relatives). **% Tree BL**: percentage of the whole tree's total branch length that this clade accounts for."
 
-top = (
+import pandas as pd
+
+top5 = (
     details
     .sort_values(["tree", "n_tips"], ascending=[True, False])
     .groupby("tree")
-    .head(5)[["tree", "clade_id", "n_tips", "internal_bl", "stem_bl", "clade_prop_tree_bl"]]
-    .rename(columns={
-        "tree": "Tree", "clade_id": "Clade",
-        "n_tips": "Tips", "internal_bl": "Internal BL",
-        "stem_bl": "Stem BL", "clade_prop_tree_bl": "% Tree BL"
-    })
+    .head(5)
+    .copy()
 )
-top["% Tree BL"] = (top["% Tree BL"] * 100).round(2)
-top["Internal BL"] = top["Internal BL"].round(4)
-top["Stem BL"]     = top["Stem BL"].round(4)
+top5["clade_prop_tree_bl"] = top5["clade_prop_tree_bl"] * 100
 
-# Mean row (numeric columns only)
-mean_vals = top[["Tips", "Internal BL", "Stem BL", "% Tree BL"]].mean()
-mean_df = top.iloc[:0].copy()
-mean_df.loc["mean"] = {
-    "Tree": "**Mean**", "Clade": "",
-    "Tips": round(mean_vals["Tips"], 1),
-    "Internal BL": round(mean_vals["Internal BL"], 4),
-    "Stem BL": round(mean_vals["Stem BL"], 4),
-    "% Tree BL": round(mean_vals["% Tree BL"], 2)
+col_map = {
+    "n_tips": "Tips",
+    "internal_bl": "Internal BL",
+    "stem_bl": "Stem BL",
+    "clade_prop_tree_bl": "% Tree BL"
 }
 
-import pandas as pd
-top_display = pd.concat([top, mean_df], ignore_index=True)
-top_display["% Tree BL"] = top_display["% Tree BL"].map("{:.2f}%".format)
-top_display["Internal BL"] = top_display["Internal BL"].map("{:.4f}".format)
-top_display["Stem BL"]     = top_display["Stem BL"].map("{:.4f}".format)
-top_display["Tips"]        = top_display["Tips"].map(lambda x: f"{x:.1f}" if isinstance(x, float) else str(x))
-top_display.set_index("Tree").style
+def fmt_t3(mean_val, std_val, col):
+    if col == "clade_prop_tree_bl":
+        return f"{mean_val:.2f} ± {std_val:.2f}%"
+    if col in ("internal_bl", "stem_bl"):
+        return f"{mean_val:.4f} ± {std_val:.4f}"
+    return f"{mean_val:.1f} ± {std_val:.1f}"
+
+rows = []
+for tree, grp in top5.groupby("tree"):
+    row = {"Tree": tree}
+    for col, label in col_map.items():
+        row[label] = fmt_t3(grp[col].mean(), grp[col].std(ddof=1), col)
+    rows.append(row)
+
+pd.DataFrame(rows).set_index("Tree").style
+```
+
+```{python}
+#| output: asis
+_top5_mean = top5.groupby("tree")["n_tips"].mean()
+_largest = _top5_mean.idxmax()
+print(f"*{_largest} has the largest top clades on average ({_top5_mean[_largest]:.0f} Madagascar sequences per clade); across all trees the five largest clades contain {top5['n_tips'].mean():.1f} \u00b1 {top5['n_tips'].std():.1f} sequences on average.*")
 ```
 
 ## Tree visualisation
@@ -322,11 +339,7 @@ The table below summarises the composition of each subsampled tree:
 
 ### Trees selected for display
 
-Two trees were chosen to represent the two contrasting patterns identified in the analysis — one avian, one seasonal. The selection criteria were: (1) the tree must clearly illustrate the pattern, (2) the subtype must be biologically meaningful to a non-specialist audience.
-
-**NA_H9N2** (203 tips: 53 Madagascar + 150 other) — represents the **avian isolation** pattern. It was chosen over HA_H6N2 because H9N2 has far more sequences (201 vs 64 tips), making the clade structure more convincing visually. Displayed in **rectangular** layout, which makes it easy to see the long branches separating the Madagascar clade from the rest.
-
-**HA_H3N2** (525 tips: 375 Madagascar + 150 other) — represents the **seasonal exchange** pattern. H3N2 is the most familiar human influenza subtype and has the largest Madagascar dataset (375 sequences), so the scattered distribution across the tree is clearly visible. Displayed in **circular** layout, which makes it easier to see that Madagascar sequences (red) are spread throughout all parts of the tree.
+Two representative trees are shown below; all 10 subsampled trees are available for upload to iTOL.
 
 ```{python}
 #| label: fig-na-h9n2
@@ -335,9 +348,13 @@ from IPython.display import SVG, display
 display(SVG(filename="figures/NA_H9N2_sub203.svg"))
 ```
 
+*All 53 Madagascar H9N2 sequences cluster into a single deep-branching clade, separated from other African lineages by long branches — consistent with an isolated avian reservoir with no detected ongoing exchange with the continent.*
+
 ```{python}
 #| label: fig-ha-h3n2
 #| fig-cap: "HA segment of H3N2 (525 tips: 375 Madagascar in red, 150 other Africa in grey). Madagascar sequences are distributed throughout the tree with no dominant clade, consistent with repeated seasonal introductions from the global pool."
 display(SVG(filename="figures/HA_H3N2_sub525.svg"))
 ```
+
+*Madagascar H3N2 sequences (red) are spread throughout all major clades with no dominant cluster, consistent with repeated seasonal reintroduction from the global influenza pool each year.*
 
