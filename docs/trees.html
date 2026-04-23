@@ -2285,14 +2285,8 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <hr>
 <section id="pipeline" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="pipeline"><span class="header-section-number">1</span> Pipeline</h2>
-<p>Up to <strong>16 maximum-likelihood trees</strong> are built across all segment × subtype combinations with ≥ 10 Madagascar and ≥ 20 other African sequences. All sequences are used — <strong>no subsampling</strong>.</p>
+<p><strong>10 maximum-likelihood trees</strong> have been built across HA and NA segments for all subtypes with ≥ 10 Madagascar and ≥ 20 other African sequences. All sequences are used — <strong>no subsampling</strong>.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 27%">
-<col style="width: 27%">
-<col style="width: 18%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Category</th>
@@ -2306,25 +2300,19 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <td>HA per-subtype</td>
 <td>HA</td>
 <td>One tree per HA subtype</td>
-<td>up to 5</td>
+<td>5</td>
 </tr>
 <tr class="even">
 <td>NA per-subtype</td>
 <td>NA</td>
 <td>One tree per NA subtype</td>
-<td>up to 5</td>
+<td>5</td>
 </tr>
 <tr class="odd">
-<td>Internal merged</td>
-<td>PB2, PB1, PA, NP, MP, NS</td>
-<td>All subtypes merged per segment</td>
-<td>6</td>
-</tr>
-<tr class="even">
-<td><strong>Total</strong></td>
+<td><strong>Total (current)</strong></td>
 <td></td>
 <td></td>
-<td><strong>up to 16</strong></td>
+<td><strong>10</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2458,7 +2446,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Results are based on <strong>10 HA/NA trees</strong> (full Africa sequences, no subsampling, UFBoot2 1000 replicates). Internal segment trees (6 segments) are pending.</p>
+<p>Results are based on <strong>10 maximum-likelihood trees</strong> (5 HA + 5 NA, full Africa sequences, no subsampling, UFBoot2 1000 replicates).</p>
 </div>
 </div>
 <hr>
@@ -2475,25 +2463,25 @@ Table 1: Input sequences per tree. <em>Tips in tree</em> = all sequences provid
 <div aria-describedby="tbl-coverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <style type="text/css">
-#T_98211 th {
+#T_079e6 th {
 text-align: center;
 }
-#T_98211_row0_col0, #T_98211_row0_col1, #T_98211_row0_col2, #T_98211_row0_col3, #T_98211_row0_col4, #T_98211_row0_col5, #T_98211_row0_col6, #T_98211_row1_col0, #T_98211_row1_col1, #T_98211_row1_col2, #T_98211_row1_col3, #T_98211_row1_col4, #T_98211_row1_col5, #T_98211_row1_col6, #T_98211_row2_col0, #T_98211_row2_col1, #T_98211_row2_col2, #T_98211_row2_col3, #T_98211_row2_col4, #T_98211_row2_col5, #T_98211_row2_col6, #T_98211_row3_col0, #T_98211_row3_col1, #T_98211_row3_col2, #T_98211_row3_col3, #T_98211_row3_col4, #T_98211_row3_col5, #T_98211_row3_col6, #T_98211_row4_col0, #T_98211_row4_col1, #T_98211_row4_col2, #T_98211_row4_col3, #T_98211_row4_col4, #T_98211_row4_col5, #T_98211_row4_col6, #T_98211_row5_col0, #T_98211_row5_col1, #T_98211_row5_col2, #T_98211_row5_col3, #T_98211_row5_col4, #T_98211_row5_col5, #T_98211_row5_col6, #T_98211_row6_col0, #T_98211_row6_col1, #T_98211_row6_col2, #T_98211_row6_col3, #T_98211_row6_col4, #T_98211_row6_col5, #T_98211_row6_col6, #T_98211_row7_col0, #T_98211_row7_col1, #T_98211_row7_col2, #T_98211_row7_col3, #T_98211_row7_col4, #T_98211_row7_col5, #T_98211_row7_col6, #T_98211_row8_col0, #T_98211_row8_col1, #T_98211_row8_col2, #T_98211_row8_col3, #T_98211_row8_col4, #T_98211_row8_col5, #T_98211_row8_col6, #T_98211_row9_col0, #T_98211_row9_col1, #T_98211_row9_col2, #T_98211_row9_col3, #T_98211_row9_col4, #T_98211_row9_col5, #T_98211_row9_col6 {
+#T_079e6_row0_col0, #T_079e6_row0_col1, #T_079e6_row0_col2, #T_079e6_row0_col3, #T_079e6_row0_col4, #T_079e6_row0_col5, #T_079e6_row0_col6, #T_079e6_row1_col0, #T_079e6_row1_col1, #T_079e6_row1_col2, #T_079e6_row1_col3, #T_079e6_row1_col4, #T_079e6_row1_col5, #T_079e6_row1_col6, #T_079e6_row2_col0, #T_079e6_row2_col1, #T_079e6_row2_col2, #T_079e6_row2_col3, #T_079e6_row2_col4, #T_079e6_row2_col5, #T_079e6_row2_col6, #T_079e6_row3_col0, #T_079e6_row3_col1, #T_079e6_row3_col2, #T_079e6_row3_col3, #T_079e6_row3_col4, #T_079e6_row3_col5, #T_079e6_row3_col6, #T_079e6_row4_col0, #T_079e6_row4_col1, #T_079e6_row4_col2, #T_079e6_row4_col3, #T_079e6_row4_col4, #T_079e6_row4_col5, #T_079e6_row4_col6, #T_079e6_row5_col0, #T_079e6_row5_col1, #T_079e6_row5_col2, #T_079e6_row5_col3, #T_079e6_row5_col4, #T_079e6_row5_col5, #T_079e6_row5_col6, #T_079e6_row6_col0, #T_079e6_row6_col1, #T_079e6_row6_col2, #T_079e6_row6_col3, #T_079e6_row6_col4, #T_079e6_row6_col5, #T_079e6_row6_col6, #T_079e6_row7_col0, #T_079e6_row7_col1, #T_079e6_row7_col2, #T_079e6_row7_col3, #T_079e6_row7_col4, #T_079e6_row7_col5, #T_079e6_row7_col6, #T_079e6_row8_col0, #T_079e6_row8_col1, #T_079e6_row8_col2, #T_079e6_row8_col3, #T_079e6_row8_col4, #T_079e6_row8_col5, #T_079e6_row8_col6, #T_079e6_row9_col0, #T_079e6_row9_col1, #T_079e6_row9_col2, #T_079e6_row9_col3, #T_079e6_row9_col4, #T_079e6_row9_col5, #T_079e6_row9_col6 {
 text-align: right;
 }
 </style>
 
-<table id="T_98211" class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table id="T_079e6" class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank level0" data-quarto-table-cell-role="th"> </th>
-<th id="T_98211_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Tips in tree</th>
-<th id="T_98211_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Madagascar</th>
-<th id="T_98211_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Other Africa</th>
-<th id="T_98211_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">% Madagascar</th>
-<th id="T_98211_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">GISAID isolates¹</th>
-<th id="T_98211_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Missing segment²</th>
-<th id="T_98211_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">% missing²</th>
+<th id="T_079e6_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Tips in tree</th>
+<th id="T_079e6_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Madagascar</th>
+<th id="T_079e6_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Other Africa</th>
+<th id="T_079e6_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">% Madagascar</th>
+<th id="T_079e6_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">GISAID isolates¹</th>
+<th id="T_079e6_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Missing segment²</th>
+<th id="T_079e6_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">% missing²</th>
 </tr>
 <tr class="even">
 <th class="index_name level0" data-quarto-table-cell-role="th">Tree</th>
@@ -2508,104 +2496,104 @@ text-align: right;
 </thead>
 <tbody>
 <tr class="odd">
-<th id="T_98211_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_98211_row0_col0" class="data row0 col0">5,015</td>
-<td id="T_98211_row0_col1" class="data row0 col1">365</td>
-<td id="T_98211_row0_col2" class="data row0 col2">4,650</td>
-<td id="T_98211_row0_col3" class="data row0 col3">7.3%</td>
-<td id="T_98211_row0_col4" class="data row0 col4">5,081</td>
-<td id="T_98211_row0_col5" class="data row0 col5">66</td>
-<td id="T_98211_row0_col6" class="data row0 col6">1.3%</td>
+<th id="T_079e6_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_079e6_row0_col0" class="data row0 col0">5,015</td>
+<td id="T_079e6_row0_col1" class="data row0 col1">365</td>
+<td id="T_079e6_row0_col2" class="data row0 col2">4,650</td>
+<td id="T_079e6_row0_col3" class="data row0 col3">7.3%</td>
+<td id="T_079e6_row0_col4" class="data row0 col4">5,081</td>
+<td id="T_079e6_row0_col5" class="data row0 col5">66</td>
+<td id="T_079e6_row0_col6" class="data row0 col6">1.3%</td>
 </tr>
 <tr class="even">
-<th id="T_98211_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_98211_row1_col0" class="data row1 col0">8,621</td>
-<td id="T_98211_row1_col1" class="data row1 col1">234</td>
-<td id="T_98211_row1_col2" class="data row1 col2">8,387</td>
-<td id="T_98211_row1_col3" class="data row1 col3">2.7%</td>
-<td id="T_98211_row1_col4" class="data row1 col4">9,449</td>
-<td id="T_98211_row1_col5" class="data row1 col5">828</td>
-<td id="T_98211_row1_col6" class="data row1 col6">8.8%</td>
+<th id="T_079e6_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_079e6_row1_col0" class="data row1 col0">8,621</td>
+<td id="T_079e6_row1_col1" class="data row1 col1">234</td>
+<td id="T_079e6_row1_col2" class="data row1 col2">8,387</td>
+<td id="T_079e6_row1_col3" class="data row1 col3">2.7%</td>
+<td id="T_079e6_row1_col4" class="data row1 col4">9,449</td>
+<td id="T_079e6_row1_col5" class="data row1 col5">828</td>
+<td id="T_079e6_row1_col6" class="data row1 col6">8.8%</td>
 </tr>
 <tr class="odd">
-<th id="T_98211_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_98211_row2_col0" class="data row2 col0">9,587</td>
-<td id="T_98211_row2_col1" class="data row2 col1">375</td>
-<td id="T_98211_row2_col2" class="data row2 col2">9,212</td>
-<td id="T_98211_row2_col3" class="data row2 col3">3.9%</td>
-<td id="T_98211_row2_col4" class="data row2 col4">10,004</td>
-<td id="T_98211_row2_col5" class="data row2 col5">417</td>
-<td id="T_98211_row2_col6" class="data row2 col6">4.2%</td>
+<th id="T_079e6_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_079e6_row2_col0" class="data row2 col0">9,587</td>
+<td id="T_079e6_row2_col1" class="data row2 col1">375</td>
+<td id="T_079e6_row2_col2" class="data row2 col2">9,212</td>
+<td id="T_079e6_row2_col3" class="data row2 col3">3.9%</td>
+<td id="T_079e6_row2_col4" class="data row2 col4">10,004</td>
+<td id="T_079e6_row2_col5" class="data row2 col5">417</td>
+<td id="T_079e6_row2_col6" class="data row2 col6">4.2%</td>
 </tr>
 <tr class="even">
-<th id="T_98211_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
-<td id="T_98211_row3_col0" class="data row3 col0">64</td>
-<td id="T_98211_row3_col1" class="data row3 col1">27</td>
-<td id="T_98211_row3_col2" class="data row3 col2">37</td>
-<td id="T_98211_row3_col3" class="data row3 col3">42.2%</td>
-<td id="T_98211_row3_col4" class="data row3 col4">67</td>
-<td id="T_98211_row3_col5" class="data row3 col5">3</td>
-<td id="T_98211_row3_col6" class="data row3 col6">4.5%</td>
+<th id="T_079e6_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
+<td id="T_079e6_row3_col0" class="data row3 col0">64</td>
+<td id="T_079e6_row3_col1" class="data row3 col1">27</td>
+<td id="T_079e6_row3_col2" class="data row3 col2">37</td>
+<td id="T_079e6_row3_col3" class="data row3 col3">42.2%</td>
+<td id="T_079e6_row3_col4" class="data row3 col4">67</td>
+<td id="T_079e6_row3_col5" class="data row3 col5">3</td>
+<td id="T_079e6_row3_col6" class="data row3 col6">4.5%</td>
 </tr>
 <tr class="odd">
-<th id="T_98211_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
-<td id="T_98211_row4_col0" class="data row4 col0">1,268</td>
-<td id="T_98211_row4_col1" class="data row4 col1">51</td>
-<td id="T_98211_row4_col2" class="data row4 col2">1,217</td>
-<td id="T_98211_row4_col3" class="data row4 col3">4.0%</td>
-<td id="T_98211_row4_col4" class="data row4 col4">1,444</td>
-<td id="T_98211_row4_col5" class="data row4 col5">176</td>
-<td id="T_98211_row4_col6" class="data row4 col6">12.2%</td>
+<th id="T_079e6_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
+<td id="T_079e6_row4_col0" class="data row4 col0">1,268</td>
+<td id="T_079e6_row4_col1" class="data row4 col1">51</td>
+<td id="T_079e6_row4_col2" class="data row4 col2">1,217</td>
+<td id="T_079e6_row4_col3" class="data row4 col3">4.0%</td>
+<td id="T_079e6_row4_col4" class="data row4 col4">1,444</td>
+<td id="T_079e6_row4_col5" class="data row4 col5">176</td>
+<td id="T_079e6_row4_col6" class="data row4 col6">12.2%</td>
 </tr>
 <tr class="even">
-<th id="T_98211_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_98211_row5_col0" class="data row5 col0">3,668</td>
-<td id="T_98211_row5_col1" class="data row5 col1">258</td>
-<td id="T_98211_row5_col2" class="data row5 col2">3,410</td>
-<td id="T_98211_row5_col3" class="data row5 col3">7.0%</td>
-<td id="T_98211_row5_col4" class="data row5 col4">5,081</td>
-<td id="T_98211_row5_col5" class="data row5 col5">1,413</td>
-<td id="T_98211_row5_col6" class="data row5 col6">27.8%</td>
+<th id="T_079e6_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_079e6_row5_col0" class="data row5 col0">3,668</td>
+<td id="T_079e6_row5_col1" class="data row5 col1">258</td>
+<td id="T_079e6_row5_col2" class="data row5 col2">3,410</td>
+<td id="T_079e6_row5_col3" class="data row5 col3">7.0%</td>
+<td id="T_079e6_row5_col4" class="data row5 col4">5,081</td>
+<td id="T_079e6_row5_col5" class="data row5 col5">1,413</td>
+<td id="T_079e6_row5_col6" class="data row5 col6">27.8%</td>
 </tr>
 <tr class="odd">
-<th id="T_98211_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_98211_row6_col0" class="data row6 col0">7,959</td>
-<td id="T_98211_row6_col1" class="data row6 col1">203</td>
-<td id="T_98211_row6_col2" class="data row6 col2">7,756</td>
-<td id="T_98211_row6_col3" class="data row6 col3">2.6%</td>
-<td id="T_98211_row6_col4" class="data row6 col4">9,449</td>
-<td id="T_98211_row6_col5" class="data row6 col5">1,490</td>
-<td id="T_98211_row6_col6" class="data row6 col6">15.8%</td>
+<th id="T_079e6_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_079e6_row6_col0" class="data row6 col0">7,959</td>
+<td id="T_079e6_row6_col1" class="data row6 col1">203</td>
+<td id="T_079e6_row6_col2" class="data row6 col2">7,756</td>
+<td id="T_079e6_row6_col3" class="data row6 col3">2.6%</td>
+<td id="T_079e6_row6_col4" class="data row6 col4">9,449</td>
+<td id="T_079e6_row6_col5" class="data row6 col5">1,490</td>
+<td id="T_079e6_row6_col6" class="data row6 col6">15.8%</td>
 </tr>
 <tr class="even">
-<th id="T_98211_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_98211_row7_col0" class="data row7 col0">8,965</td>
-<td id="T_98211_row7_col1" class="data row7 col1">369</td>
-<td id="T_98211_row7_col2" class="data row7 col2">8,596</td>
-<td id="T_98211_row7_col3" class="data row7 col3">4.1%</td>
-<td id="T_98211_row7_col4" class="data row7 col4">10,004</td>
-<td id="T_98211_row7_col5" class="data row7 col5">1,039</td>
-<td id="T_98211_row7_col6" class="data row7 col6">10.4%</td>
+<th id="T_079e6_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_079e6_row7_col0" class="data row7 col0">8,965</td>
+<td id="T_079e6_row7_col1" class="data row7 col1">369</td>
+<td id="T_079e6_row7_col2" class="data row7 col2">8,596</td>
+<td id="T_079e6_row7_col3" class="data row7 col3">4.1%</td>
+<td id="T_079e6_row7_col4" class="data row7 col4">10,004</td>
+<td id="T_079e6_row7_col5" class="data row7 col5">1,039</td>
+<td id="T_079e6_row7_col6" class="data row7 col6">10.4%</td>
 </tr>
 <tr class="odd">
-<th id="T_98211_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
-<td id="T_98211_row8_col0" class="data row8 col0">65</td>
-<td id="T_98211_row8_col1" class="data row8 col1">28</td>
-<td id="T_98211_row8_col2" class="data row8 col2">37</td>
-<td id="T_98211_row8_col3" class="data row8 col3">43.1%</td>
-<td id="T_98211_row8_col4" class="data row8 col4">67</td>
-<td id="T_98211_row8_col5" class="data row8 col5">2</td>
-<td id="T_98211_row8_col6" class="data row8 col6">3.0%</td>
+<th id="T_079e6_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
+<td id="T_079e6_row8_col0" class="data row8 col0">65</td>
+<td id="T_079e6_row8_col1" class="data row8 col1">28</td>
+<td id="T_079e6_row8_col2" class="data row8 col2">37</td>
+<td id="T_079e6_row8_col3" class="data row8 col3">43.1%</td>
+<td id="T_079e6_row8_col4" class="data row8 col4">67</td>
+<td id="T_079e6_row8_col5" class="data row8 col5">2</td>
+<td id="T_079e6_row8_col6" class="data row8 col6">3.0%</td>
 </tr>
 <tr class="even">
-<th id="T_98211_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
-<td id="T_98211_row9_col0" class="data row9 col0">868</td>
-<td id="T_98211_row9_col1" class="data row9 col1">53</td>
-<td id="T_98211_row9_col2" class="data row9 col2">815</td>
-<td id="T_98211_row9_col3" class="data row9 col3">6.1%</td>
-<td id="T_98211_row9_col4" class="data row9 col4">1,444</td>
-<td id="T_98211_row9_col5" class="data row9 col5">576</td>
-<td id="T_98211_row9_col6" class="data row9 col6">39.9%</td>
+<th id="T_079e6_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
+<td id="T_079e6_row9_col0" class="data row9 col0">868</td>
+<td id="T_079e6_row9_col1" class="data row9 col1">53</td>
+<td id="T_079e6_row9_col2" class="data row9 col2">815</td>
+<td id="T_079e6_row9_col3" class="data row9 col3">6.1%</td>
+<td id="T_079e6_row9_col4" class="data row9 col4">1,444</td>
+<td id="T_079e6_row9_col5" class="data row9 col5">576</td>
+<td id="T_079e6_row9_col6" class="data row9 col6">39.9%</td>
 </tr>
 </tbody>
 </table>
@@ -2634,19 +2622,19 @@ Table 2: Per-tree clade statistics. Only groupings with at least 70% bootstrap 
 <style type="text/css">
 </style>
 
-<table id="T_3b3a6" class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table id="T_04ff4" class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank level0" data-quarto-table-cell-role="th"> </th>
-<th id="T_3b3a6_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Mdg seqs</th>
-<th id="T_3b3a6_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Africa seqs</th>
-<th id="T_3b3a6_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Clades</th>
-<th id="T_3b3a6_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Singletons</th>
-<th id="T_3b3a6_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">% Mdg in clades</th>
-<th id="T_3b3a6_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Mdg PD %</th>
-<th id="T_3b3a6_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">MRCA frac</th>
-<th id="T_3b3a6_level0_col7" class="col_heading level0 col7" data-quarto-table-cell-role="th">Mean clade size</th>
-<th id="T_3b3a6_level0_col8" class="col_heading level0 col8" data-quarto-table-cell-role="th">Mean stem BL</th>
+<th id="T_04ff4_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Mdg seqs</th>
+<th id="T_04ff4_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Africa seqs</th>
+<th id="T_04ff4_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Clades</th>
+<th id="T_04ff4_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Singletons</th>
+<th id="T_04ff4_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">% Mdg in clades</th>
+<th id="T_04ff4_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Mdg PD %</th>
+<th id="T_04ff4_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">MRCA frac</th>
+<th id="T_04ff4_level0_col7" class="col_heading level0 col7" data-quarto-table-cell-role="th">Mean clade size</th>
+<th id="T_04ff4_level0_col8" class="col_heading level0 col8" data-quarto-table-cell-role="th">Mean stem BL</th>
 </tr>
 <tr class="even">
 <th class="index_name level0" data-quarto-table-cell-role="th">Tree</th>
@@ -2663,136 +2651,136 @@ Table 2: Per-tree clade statistics. Only groupings with at least 70% bootstrap 
 </thead>
 <tbody>
 <tr class="odd">
-<th id="T_3b3a6_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_3b3a6_row0_col0" class="data row0 col0">365</td>
-<td id="T_3b3a6_row0_col1" class="data row0 col1">4650</td>
-<td id="T_3b3a6_row0_col2" class="data row0 col2">57</td>
-<td id="T_3b3a6_row0_col3" class="data row0 col3">110</td>
-<td id="T_3b3a6_row0_col4" class="data row0 col4">69.9%</td>
-<td id="T_3b3a6_row0_col5" class="data row0 col5">3.7%</td>
-<td id="T_3b3a6_row0_col6" class="data row0 col6">1.000</td>
-<td id="T_3b3a6_row0_col7" class="data row0 col7">4.5</td>
-<td id="T_3b3a6_row0_col8" class="data row0 col8">0.0009</td>
+<th id="T_04ff4_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_04ff4_row0_col0" class="data row0 col0">365</td>
+<td id="T_04ff4_row0_col1" class="data row0 col1">4650</td>
+<td id="T_04ff4_row0_col2" class="data row0 col2">57</td>
+<td id="T_04ff4_row0_col3" class="data row0 col3">110</td>
+<td id="T_04ff4_row0_col4" class="data row0 col4">69.9%</td>
+<td id="T_04ff4_row0_col5" class="data row0 col5">3.7%</td>
+<td id="T_04ff4_row0_col6" class="data row0 col6">1.000</td>
+<td id="T_04ff4_row0_col7" class="data row0 col7">4.5</td>
+<td id="T_04ff4_row0_col8" class="data row0 col8">0.0009</td>
 </tr>
 <tr class="even">
-<th id="T_3b3a6_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_3b3a6_row1_col0" class="data row1 col0">234</td>
-<td id="T_3b3a6_row1_col1" class="data row1 col1">8387</td>
-<td id="T_3b3a6_row1_col2" class="data row1 col2">36</td>
-<td id="T_3b3a6_row1_col3" class="data row1 col3">100</td>
-<td id="T_3b3a6_row1_col4" class="data row1 col4">57.3%</td>
-<td id="T_3b3a6_row1_col5" class="data row1 col5">2.0%</td>
-<td id="T_3b3a6_row1_col6" class="data row1 col6">1.000</td>
-<td id="T_3b3a6_row1_col7" class="data row1 col7">3.7</td>
-<td id="T_3b3a6_row1_col8" class="data row1 col8">0.0061</td>
+<th id="T_04ff4_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_04ff4_row1_col0" class="data row1 col0">234</td>
+<td id="T_04ff4_row1_col1" class="data row1 col1">8387</td>
+<td id="T_04ff4_row1_col2" class="data row1 col2">36</td>
+<td id="T_04ff4_row1_col3" class="data row1 col3">100</td>
+<td id="T_04ff4_row1_col4" class="data row1 col4">57.3%</td>
+<td id="T_04ff4_row1_col5" class="data row1 col5">2.0%</td>
+<td id="T_04ff4_row1_col6" class="data row1 col6">1.000</td>
+<td id="T_04ff4_row1_col7" class="data row1 col7">3.7</td>
+<td id="T_04ff4_row1_col8" class="data row1 col8">0.0061</td>
 </tr>
 <tr class="odd">
-<th id="T_3b3a6_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_3b3a6_row2_col0" class="data row2 col0">375</td>
-<td id="T_3b3a6_row2_col1" class="data row2 col1">9212</td>
-<td id="T_3b3a6_row2_col2" class="data row2 col2">25</td>
-<td id="T_3b3a6_row2_col3" class="data row2 col3">63</td>
-<td id="T_3b3a6_row2_col4" class="data row2 col4">83.2%</td>
-<td id="T_3b3a6_row2_col5" class="data row2 col5">2.8%</td>
-<td id="T_3b3a6_row2_col6" class="data row2 col6">1.000</td>
-<td id="T_3b3a6_row2_col7" class="data row2 col7">12.5</td>
-<td id="T_3b3a6_row2_col8" class="data row2 col8">0.0035</td>
+<th id="T_04ff4_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_04ff4_row2_col0" class="data row2 col0">375</td>
+<td id="T_04ff4_row2_col1" class="data row2 col1">9212</td>
+<td id="T_04ff4_row2_col2" class="data row2 col2">25</td>
+<td id="T_04ff4_row2_col3" class="data row2 col3">63</td>
+<td id="T_04ff4_row2_col4" class="data row2 col4">83.2%</td>
+<td id="T_04ff4_row2_col5" class="data row2 col5">2.8%</td>
+<td id="T_04ff4_row2_col6" class="data row2 col6">1.000</td>
+<td id="T_04ff4_row2_col7" class="data row2 col7">12.5</td>
+<td id="T_04ff4_row2_col8" class="data row2 col8">0.0035</td>
 </tr>
 <tr class="even">
-<th id="T_3b3a6_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
-<td id="T_3b3a6_row3_col0" class="data row3 col0">27</td>
-<td id="T_3b3a6_row3_col1" class="data row3 col1">37</td>
-<td id="T_3b3a6_row3_col2" class="data row3 col2">1</td>
-<td id="T_3b3a6_row3_col3" class="data row3 col3">1</td>
-<td id="T_3b3a6_row3_col4" class="data row3 col4">96.3%</td>
-<td id="T_3b3a6_row3_col5" class="data row3 col5">11.4%</td>
-<td id="T_3b3a6_row3_col6" class="data row3 col6">0.215</td>
-<td id="T_3b3a6_row3_col7" class="data row3 col7">26.0</td>
-<td id="T_3b3a6_row3_col8" class="data row3 col8">0.0313</td>
+<th id="T_04ff4_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
+<td id="T_04ff4_row3_col0" class="data row3 col0">27</td>
+<td id="T_04ff4_row3_col1" class="data row3 col1">37</td>
+<td id="T_04ff4_row3_col2" class="data row3 col2">1</td>
+<td id="T_04ff4_row3_col3" class="data row3 col3">1</td>
+<td id="T_04ff4_row3_col4" class="data row3 col4">96.3%</td>
+<td id="T_04ff4_row3_col5" class="data row3 col5">11.4%</td>
+<td id="T_04ff4_row3_col6" class="data row3 col6">0.215</td>
+<td id="T_04ff4_row3_col7" class="data row3 col7">26.0</td>
+<td id="T_04ff4_row3_col8" class="data row3 col8">0.0313</td>
 </tr>
 <tr class="odd">
-<th id="T_3b3a6_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
-<td id="T_3b3a6_row4_col0" class="data row4 col0">51</td>
-<td id="T_3b3a6_row4_col1" class="data row4 col1">1217</td>
-<td id="T_3b3a6_row4_col2" class="data row4 col2">2</td>
-<td id="T_3b3a6_row4_col3" class="data row4 col3">0</td>
-<td id="T_3b3a6_row4_col4" class="data row4 col4">100.0%</td>
-<td id="T_3b3a6_row4_col5" class="data row4 col5">1.8%</td>
-<td id="T_3b3a6_row4_col6" class="data row4 col6">0.714</td>
-<td id="T_3b3a6_row4_col7" class="data row4 col7">25.5</td>
-<td id="T_3b3a6_row4_col8" class="data row4 col8">0.0240</td>
+<th id="T_04ff4_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
+<td id="T_04ff4_row4_col0" class="data row4 col0">51</td>
+<td id="T_04ff4_row4_col1" class="data row4 col1">1217</td>
+<td id="T_04ff4_row4_col2" class="data row4 col2">2</td>
+<td id="T_04ff4_row4_col3" class="data row4 col3">0</td>
+<td id="T_04ff4_row4_col4" class="data row4 col4">100.0%</td>
+<td id="T_04ff4_row4_col5" class="data row4 col5">1.8%</td>
+<td id="T_04ff4_row4_col6" class="data row4 col6">0.714</td>
+<td id="T_04ff4_row4_col7" class="data row4 col7">25.5</td>
+<td id="T_04ff4_row4_col8" class="data row4 col8">0.0240</td>
 </tr>
 <tr class="even">
-<th id="T_3b3a6_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_3b3a6_row5_col0" class="data row5 col0">258</td>
-<td id="T_3b3a6_row5_col1" class="data row5 col1">3410</td>
-<td id="T_3b3a6_row5_col2" class="data row5 col2">31</td>
-<td id="T_3b3a6_row5_col3" class="data row5 col3">93</td>
-<td id="T_3b3a6_row5_col4" class="data row5 col4">64.0%</td>
-<td id="T_3b3a6_row5_col5" class="data row5 col5">3.9%</td>
-<td id="T_3b3a6_row5_col6" class="data row5 col6">1.000</td>
-<td id="T_3b3a6_row5_col7" class="data row5 col7">5.3</td>
-<td id="T_3b3a6_row5_col8" class="data row5 col8">0.0010</td>
+<th id="T_04ff4_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_04ff4_row5_col0" class="data row5 col0">258</td>
+<td id="T_04ff4_row5_col1" class="data row5 col1">3410</td>
+<td id="T_04ff4_row5_col2" class="data row5 col2">31</td>
+<td id="T_04ff4_row5_col3" class="data row5 col3">93</td>
+<td id="T_04ff4_row5_col4" class="data row5 col4">64.0%</td>
+<td id="T_04ff4_row5_col5" class="data row5 col5">3.9%</td>
+<td id="T_04ff4_row5_col6" class="data row5 col6">1.000</td>
+<td id="T_04ff4_row5_col7" class="data row5 col7">5.3</td>
+<td id="T_04ff4_row5_col8" class="data row5 col8">0.0010</td>
 </tr>
 <tr class="odd">
-<th id="T_3b3a6_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_3b3a6_row6_col0" class="data row6 col0">203</td>
-<td id="T_3b3a6_row6_col1" class="data row6 col1">7756</td>
-<td id="T_3b3a6_row6_col2" class="data row6 col2">29</td>
-<td id="T_3b3a6_row6_col3" class="data row6 col3">95</td>
-<td id="T_3b3a6_row6_col4" class="data row6 col4">53.2%</td>
-<td id="T_3b3a6_row6_col5" class="data row6 col5">1.8%</td>
-<td id="T_3b3a6_row6_col6" class="data row6 col6">0.694</td>
-<td id="T_3b3a6_row6_col7" class="data row6 col7">3.7</td>
-<td id="T_3b3a6_row6_col8" class="data row6 col8">0.0063</td>
+<th id="T_04ff4_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_04ff4_row6_col0" class="data row6 col0">203</td>
+<td id="T_04ff4_row6_col1" class="data row6 col1">7756</td>
+<td id="T_04ff4_row6_col2" class="data row6 col2">29</td>
+<td id="T_04ff4_row6_col3" class="data row6 col3">95</td>
+<td id="T_04ff4_row6_col4" class="data row6 col4">53.2%</td>
+<td id="T_04ff4_row6_col5" class="data row6 col5">1.8%</td>
+<td id="T_04ff4_row6_col6" class="data row6 col6">0.694</td>
+<td id="T_04ff4_row6_col7" class="data row6 col7">3.7</td>
+<td id="T_04ff4_row6_col8" class="data row6 col8">0.0063</td>
 </tr>
 <tr class="even">
-<th id="T_3b3a6_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_3b3a6_row7_col0" class="data row7 col0">369</td>
-<td id="T_3b3a6_row7_col1" class="data row7 col1">8596</td>
-<td id="T_3b3a6_row7_col2" class="data row7 col2">37</td>
-<td id="T_3b3a6_row7_col3" class="data row7 col3">120</td>
-<td id="T_3b3a6_row7_col4" class="data row7 col4">67.5%</td>
-<td id="T_3b3a6_row7_col5" class="data row7 col5">1.8%</td>
-<td id="T_3b3a6_row7_col6" class="data row7 col6">0.507</td>
-<td id="T_3b3a6_row7_col7" class="data row7 col7">6.7</td>
-<td id="T_3b3a6_row7_col8" class="data row7 col8">0.0012</td>
+<th id="T_04ff4_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_04ff4_row7_col0" class="data row7 col0">369</td>
+<td id="T_04ff4_row7_col1" class="data row7 col1">8596</td>
+<td id="T_04ff4_row7_col2" class="data row7 col2">37</td>
+<td id="T_04ff4_row7_col3" class="data row7 col3">120</td>
+<td id="T_04ff4_row7_col4" class="data row7 col4">67.5%</td>
+<td id="T_04ff4_row7_col5" class="data row7 col5">1.8%</td>
+<td id="T_04ff4_row7_col6" class="data row7 col6">0.507</td>
+<td id="T_04ff4_row7_col7" class="data row7 col7">6.7</td>
+<td id="T_04ff4_row7_col8" class="data row7 col8">0.0012</td>
 </tr>
 <tr class="odd">
-<th id="T_3b3a6_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
-<td id="T_3b3a6_row8_col0" class="data row8 col0">28</td>
-<td id="T_3b3a6_row8_col1" class="data row8 col1">37</td>
-<td id="T_3b3a6_row8_col2" class="data row8 col2">2</td>
-<td id="T_3b3a6_row8_col3" class="data row8 col3">0</td>
-<td id="T_3b3a6_row8_col4" class="data row8 col4">100.0%</td>
-<td id="T_3b3a6_row8_col5" class="data row8 col5">20.4%</td>
-<td id="T_3b3a6_row8_col6" class="data row8 col6">0.292</td>
-<td id="T_3b3a6_row8_col7" class="data row8 col7">14.0</td>
-<td id="T_3b3a6_row8_col8" class="data row8 col8">0.0179</td>
+<th id="T_04ff4_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
+<td id="T_04ff4_row8_col0" class="data row8 col0">28</td>
+<td id="T_04ff4_row8_col1" class="data row8 col1">37</td>
+<td id="T_04ff4_row8_col2" class="data row8 col2">2</td>
+<td id="T_04ff4_row8_col3" class="data row8 col3">0</td>
+<td id="T_04ff4_row8_col4" class="data row8 col4">100.0%</td>
+<td id="T_04ff4_row8_col5" class="data row8 col5">20.4%</td>
+<td id="T_04ff4_row8_col6" class="data row8 col6">0.292</td>
+<td id="T_04ff4_row8_col7" class="data row8 col7">14.0</td>
+<td id="T_04ff4_row8_col8" class="data row8 col8">0.0179</td>
 </tr>
 <tr class="even">
-<th id="T_3b3a6_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
-<td id="T_3b3a6_row9_col0" class="data row9 col0">53</td>
-<td id="T_3b3a6_row9_col1" class="data row9 col1">815</td>
-<td id="T_3b3a6_row9_col2" class="data row9 col2">2</td>
-<td id="T_3b3a6_row9_col3" class="data row9 col3">0</td>
-<td id="T_3b3a6_row9_col4" class="data row9 col4">100.0%</td>
-<td id="T_3b3a6_row9_col5" class="data row9 col5">1.6%</td>
-<td id="T_3b3a6_row9_col6" class="data row9 col6">0.027</td>
-<td id="T_3b3a6_row9_col7" class="data row9 col7">26.5</td>
-<td id="T_3b3a6_row9_col8" class="data row9 col8">0.0216</td>
+<th id="T_04ff4_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
+<td id="T_04ff4_row9_col0" class="data row9 col0">53</td>
+<td id="T_04ff4_row9_col1" class="data row9 col1">815</td>
+<td id="T_04ff4_row9_col2" class="data row9 col2">2</td>
+<td id="T_04ff4_row9_col3" class="data row9 col3">0</td>
+<td id="T_04ff4_row9_col4" class="data row9 col4">100.0%</td>
+<td id="T_04ff4_row9_col5" class="data row9 col5">1.6%</td>
+<td id="T_04ff4_row9_col6" class="data row9 col6">0.027</td>
+<td id="T_04ff4_row9_col7" class="data row9 col7">26.5</td>
+<td id="T_04ff4_row9_col8" class="data row9 col8">0.0216</td>
 </tr>
 <tr class="odd">
-<th id="T_3b3a6_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">**Mean ± SD**</th>
-<td id="T_3b3a6_row10_col0" class="data row10 col0">196.3 ± 146.9</td>
-<td id="T_3b3a6_row10_col1" class="data row10 col1">4411.7 ± 3800.8</td>
-<td id="T_3b3a6_row10_col2" class="data row10 col2">22.2 ± 19.5</td>
-<td id="T_3b3a6_row10_col3" class="data row10 col3">58.2 ± 51.9</td>
-<td id="T_3b3a6_row10_col4" class="data row10 col4">79.1 ± 18.9%</td>
-<td id="T_3b3a6_row10_col5" class="data row10 col5">5.1 ± 6.1%</td>
-<td id="T_3b3a6_row10_col6" class="data row10 col6">0.645 ± 0.369</td>
-<td id="T_3b3a6_row10_col7" class="data row10 col7">12.8 ± 9.7</td>
-<td id="T_3b3a6_row10_col8" class="data row10 col8">0.0114 ± 0.0113</td>
+<th id="T_04ff4_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">**Mean ± SD**</th>
+<td id="T_04ff4_row10_col0" class="data row10 col0">196.3 ± 146.9</td>
+<td id="T_04ff4_row10_col1" class="data row10 col1">4411.7 ± 3800.8</td>
+<td id="T_04ff4_row10_col2" class="data row10 col2">22.2 ± 19.5</td>
+<td id="T_04ff4_row10_col3" class="data row10 col3">58.2 ± 51.9</td>
+<td id="T_04ff4_row10_col4" class="data row10 col4">79.1 ± 18.9%</td>
+<td id="T_04ff4_row10_col5" class="data row10 col5">5.1 ± 6.1%</td>
+<td id="T_04ff4_row10_col6" class="data row10 col6">0.645 ± 0.369</td>
+<td id="T_04ff4_row10_col7" class="data row10 col7">12.8 ± 9.7</td>
+<td id="T_04ff4_row10_col8" class="data row10 col8">0.0114 ± 0.0113</td>
 </tr>
 </tbody>
 </table>
@@ -2816,14 +2804,14 @@ Table 3: Per-tree mean ± SD across the five largest monophyletic Madagascar cl
 <style type="text/css">
 </style>
 
-<table id="T_f3caa" class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table id="T_8fe4d" class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank level0" data-quarto-table-cell-role="th"> </th>
-<th id="T_f3caa_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Tips</th>
-<th id="T_f3caa_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Internal BL</th>
-<th id="T_f3caa_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Stem BL</th>
-<th id="T_f3caa_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">% Tree BL</th>
+<th id="T_8fe4d_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Tips</th>
+<th id="T_8fe4d_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Internal BL</th>
+<th id="T_8fe4d_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Stem BL</th>
+<th id="T_8fe4d_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">% Tree BL</th>
 </tr>
 <tr class="even">
 <th class="index_name level0" data-quarto-table-cell-role="th">Tree</th>
@@ -2835,74 +2823,74 @@ Table 3: Per-tree mean ± SD across the five largest monophyletic Madagascar cl
 </thead>
 <tbody>
 <tr class="odd">
-<th id="T_f3caa_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
-<td id="T_f3caa_row0_col0" class="data row0 col0">20.0 ± 9.3</td>
-<td id="T_f3caa_row0_col1" class="data row0 col1">0.0064 ± 0.0088</td>
-<td id="T_f3caa_row0_col2" class="data row0 col2">0.0010 ± 0.0015</td>
-<td id="T_f3caa_row0_col3" class="data row0 col3">0.13 ± 0.18%</td>
+<th id="T_8fe4d_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">HA_B</th>
+<td id="T_8fe4d_row0_col0" class="data row0 col0">20.0 ± 9.3</td>
+<td id="T_8fe4d_row0_col1" class="data row0 col1">0.0064 ± 0.0088</td>
+<td id="T_8fe4d_row0_col2" class="data row0 col2">0.0010 ± 0.0015</td>
+<td id="T_8fe4d_row0_col3" class="data row0 col3">0.13 ± 0.18%</td>
 </tr>
 <tr class="even">
-<th id="T_f3caa_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
-<td id="T_f3caa_row1_col0" class="data row1 col0">9.2 ± 4.0</td>
-<td id="T_f3caa_row1_col1" class="data row1 col1">0.0178 ± 0.0152</td>
-<td id="T_f3caa_row1_col2" class="data row1 col2">0.0031 ± 0.0022</td>
-<td id="T_f3caa_row1_col3" class="data row1 col3">0.05 ± 0.04%</td>
+<th id="T_8fe4d_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">HA_H1N1</th>
+<td id="T_8fe4d_row1_col0" class="data row1 col0">9.2 ± 4.0</td>
+<td id="T_8fe4d_row1_col1" class="data row1 col1">0.0178 ± 0.0152</td>
+<td id="T_8fe4d_row1_col2" class="data row1 col2">0.0031 ± 0.0022</td>
+<td id="T_8fe4d_row1_col3" class="data row1 col3">0.05 ± 0.04%</td>
 </tr>
 <tr class="odd">
-<th id="T_f3caa_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
-<td id="T_f3caa_row2_col0" class="data row2 col0">45.8 ± 37.4</td>
-<td id="T_f3caa_row2_col1" class="data row2 col1">0.0985 ± 0.0826</td>
-<td id="T_f3caa_row2_col2" class="data row2 col2">0.0074 ± 0.0075</td>
-<td id="T_f3caa_row2_col3" class="data row2 col3">0.30 ± 0.25%</td>
+<th id="T_8fe4d_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">HA_H3N2</th>
+<td id="T_8fe4d_row2_col0" class="data row2 col0">45.8 ± 37.4</td>
+<td id="T_8fe4d_row2_col1" class="data row2 col1">0.0985 ± 0.0826</td>
+<td id="T_8fe4d_row2_col2" class="data row2 col2">0.0074 ± 0.0075</td>
+<td id="T_8fe4d_row2_col3" class="data row2 col3">0.30 ± 0.25%</td>
 </tr>
 <tr class="even">
-<th id="T_f3caa_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
-<td id="T_f3caa_row3_col0" class="data row3 col0">26.0 ± nan</td>
-<td id="T_f3caa_row3_col1" class="data row3 col1">0.0509 ± nan</td>
-<td id="T_f3caa_row3_col2" class="data row3 col2">0.0313 ± nan</td>
-<td id="T_f3caa_row3_col3" class="data row3 col3">4.75 ± nan%</td>
+<th id="T_8fe4d_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">HA_H6N2</th>
+<td id="T_8fe4d_row3_col0" class="data row3 col0">26.0 ± nan</td>
+<td id="T_8fe4d_row3_col1" class="data row3 col1">0.0509 ± nan</td>
+<td id="T_8fe4d_row3_col2" class="data row3 col2">0.0313 ± nan</td>
+<td id="T_8fe4d_row3_col3" class="data row3 col3">4.75 ± nan%</td>
 </tr>
 <tr class="odd">
-<th id="T_f3caa_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
-<td id="T_f3caa_row4_col0" class="data row4 col0">25.5 ± 14.8</td>
-<td id="T_f3caa_row4_col1" class="data row4 col1">0.0561 ± 0.0176</td>
-<td id="T_f3caa_row4_col2" class="data row4 col2">0.0240 ± 0.0109</td>
-<td id="T_f3caa_row4_col3" class="data row4 col3">0.64 ± 0.20%</td>
+<th id="T_8fe4d_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">HA_H9N2</th>
+<td id="T_8fe4d_row4_col0" class="data row4 col0">25.5 ± 14.8</td>
+<td id="T_8fe4d_row4_col1" class="data row4 col1">0.0561 ± 0.0176</td>
+<td id="T_8fe4d_row4_col2" class="data row4 col2">0.0240 ± 0.0109</td>
+<td id="T_8fe4d_row4_col3" class="data row4 col3">0.64 ± 0.20%</td>
 </tr>
 <tr class="even">
-<th id="T_f3caa_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
-<td id="T_f3caa_row5_col0" class="data row5 col0">16.4 ± 7.1</td>
-<td id="T_f3caa_row5_col1" class="data row5 col1">0.0091 ± 0.0046</td>
-<td id="T_f3caa_row5_col2" class="data row5 col2">0.0010 ± 0.0013</td>
-<td id="T_f3caa_row5_col3" class="data row5 col3">0.23 ± 0.12%</td>
+<th id="T_8fe4d_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">NA_B</th>
+<td id="T_8fe4d_row5_col0" class="data row5 col0">16.4 ± 7.1</td>
+<td id="T_8fe4d_row5_col1" class="data row5 col1">0.0091 ± 0.0046</td>
+<td id="T_8fe4d_row5_col2" class="data row5 col2">0.0010 ± 0.0013</td>
+<td id="T_8fe4d_row5_col3" class="data row5 col3">0.23 ± 0.12%</td>
 </tr>
 <tr class="odd">
-<th id="T_f3caa_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
-<td id="T_f3caa_row6_col0" class="data row6 col0">8.6 ± 2.6</td>
-<td id="T_f3caa_row6_col1" class="data row6 col1">0.0206 ± 0.0208</td>
-<td id="T_f3caa_row6_col2" class="data row6 col2">0.0025 ± 0.0031</td>
-<td id="T_f3caa_row6_col3" class="data row6 col3">0.06 ± 0.06%</td>
+<th id="T_8fe4d_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">NA_H1N1</th>
+<td id="T_8fe4d_row6_col0" class="data row6 col0">8.6 ± 2.6</td>
+<td id="T_8fe4d_row6_col1" class="data row6 col1">0.0206 ± 0.0208</td>
+<td id="T_8fe4d_row6_col2" class="data row6 col2">0.0025 ± 0.0031</td>
+<td id="T_8fe4d_row6_col3" class="data row6 col3">0.06 ± 0.06%</td>
 </tr>
 <tr class="even">
-<th id="T_f3caa_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
-<td id="T_f3caa_row7_col0" class="data row7 col0">23.4 ± 16.9</td>
-<td id="T_f3caa_row7_col1" class="data row7 col1">0.0198 ± 0.0179</td>
-<td id="T_f3caa_row7_col2" class="data row7 col2">0.0017 ± 0.0018</td>
-<td id="T_f3caa_row7_col3" class="data row7 col3">0.11 ± 0.10%</td>
+<th id="T_8fe4d_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">NA_H3N2</th>
+<td id="T_8fe4d_row7_col0" class="data row7 col0">23.4 ± 16.9</td>
+<td id="T_8fe4d_row7_col1" class="data row7 col1">0.0198 ± 0.0179</td>
+<td id="T_8fe4d_row7_col2" class="data row7 col2">0.0017 ± 0.0018</td>
+<td id="T_8fe4d_row7_col3" class="data row7 col3">0.11 ± 0.10%</td>
 </tr>
 <tr class="odd">
-<th id="T_f3caa_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
-<td id="T_f3caa_row8_col0" class="data row8 col0">14.0 ± 5.7</td>
-<td id="T_f3caa_row8_col1" class="data row8 col1">0.0574 ± 0.0425</td>
-<td id="T_f3caa_row8_col2" class="data row8 col2">0.0179 ± 0.0008</td>
-<td id="T_f3caa_row8_col3" class="data row8 col3">7.79 ± 5.77%</td>
+<th id="T_8fe4d_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">NA_H6N2</th>
+<td id="T_8fe4d_row8_col0" class="data row8 col0">14.0 ± 5.7</td>
+<td id="T_8fe4d_row8_col1" class="data row8 col1">0.0574 ± 0.0425</td>
+<td id="T_8fe4d_row8_col2" class="data row8 col2">0.0179 ± 0.0008</td>
+<td id="T_8fe4d_row8_col3" class="data row8 col3">7.79 ± 5.77%</td>
 </tr>
 <tr class="even">
-<th id="T_f3caa_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
-<td id="T_f3caa_row9_col0" class="data row9 col0">26.5 ± 19.1</td>
-<td id="T_f3caa_row9_col1" class="data row9 col1">0.0875 ± 0.0838</td>
-<td id="T_f3caa_row9_col2" class="data row9 col2">0.0216 ± 0.0047</td>
-<td id="T_f3caa_row9_col3" class="data row9 col3">0.62 ± 0.60%</td>
+<th id="T_8fe4d_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">NA_H9N2</th>
+<td id="T_8fe4d_row9_col0" class="data row9 col0">26.5 ± 19.1</td>
+<td id="T_8fe4d_row9_col1" class="data row9 col1">0.0875 ± 0.0838</td>
+<td id="T_8fe4d_row9_col2" class="data row9 col2">0.0216 ± 0.0047</td>
+<td id="T_8fe4d_row9_col3" class="data row9 col3">0.62 ± 0.60%</td>
 </tr>
 </tbody>
 </table>

@@ -56,15 +56,14 @@ def parse_tree_name(name):
 
 ## Pipeline
 
-Up to **16 maximum-likelihood trees** are built across all segment × subtype combinations with ≥ 10 Madagascar and ≥ 20 other African sequences.
+**10 maximum-likelihood trees** have been built across HA and NA segments for all subtypes with ≥ 10 Madagascar and ≥ 20 other African sequences.
 All sequences are used — **no subsampling**.
 
 | Category | Segments | Strategy | Trees |
 |----------|----------|----------|-------|
-| HA per-subtype | HA | One tree per HA subtype | up to 5 |
-| NA per-subtype | NA | One tree per NA subtype | up to 5 |
-| Internal merged | PB2, PB1, PA, NP, MP, NS | All subtypes merged per segment | 6 |
-| **Total** | | | **up to 16** |
+| HA per-subtype | HA | One tree per HA subtype | 5 |
+| NA per-subtype | NA | One tree per NA subtype | 5 |
+| **Total (current)** | | | **10** |
 
 **Tree naming:** each tree is named `<segment>_<subtype>`. For example, `HA_B` means the **Hemagglutinin (HA) gene segment** of **Influenza B** viruses; `NA_H3N2` means the **Neuraminidase (NA) gene segment** of **H3N2** viruses. HA and NA are the two surface proteins that determine subtype (the H and N numbers) and are the main targets of the immune response.
 
@@ -130,8 +129,7 @@ The **MRCA (Most Recent Common Ancestor)** of all Madagascar sequences is the si
 | `clade_prop_tree_bl` | `internal_bl` ÷ total tree branch length — clade's share of total tree diversity |
 
 ::: {.callout-note}
-Results are based on **10 HA/NA trees** (full Africa sequences, no subsampling, UFBoot2 1000 replicates).
-Internal segment trees (6 segments) are pending.
+Results are based on **10 maximum-likelihood trees** (5 HA + 5 NA, full Africa sequences, no subsampling, UFBoot2 1000 replicates).
 :::
 
 ---
