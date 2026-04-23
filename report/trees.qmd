@@ -92,6 +92,10 @@ iqtree3 -s <alignment.fasta> \
 
 **No subsampling:** all Africa sequences (Madagascar + rest of Africa) with the relevant segment enter the alignment directly. IQ-TREE internally deduplicates identical sequences for the ML optimisation, but adds them back as tips in the final tree — so **every input sequence appears in the treefile**.
 
+### Tree rooting
+
+IQ-TREE outputs unrooted trees (no `-o` outgroup was specified). Before any clade detection, each tree is **midpoint-rooted**: the root is placed at the midpoint of the longest tip-to-tip path in the tree. This is implemented via ete3's `get_midpoint_outgroup()` / `set_outgroup()` and is a standard approach when no outgroup sequence is available.
+
 ### Clade detection
 
 Before looking for Madagascar-only groups, every tree branch with UFBoot2 support **< 70** is collapsed.
@@ -357,4 +361,131 @@ display(SVG(filename="figures/HA_H3N2_sub525.svg"))
 ```
 
 *Madagascar H3N2 sequences (red) are spread throughout all major clades with no dominant cluster, consistent with repeated seasonal reintroduction from the global influenza pool each year.*
+
+---
+
+### ete3 circular plots
+
+Trees are plotted with **ete3** in circular mode. Branch lengths are **log-transformed** (`log(1 + d/m)` where `m` is the median non-zero branch length across all branches) before rendering so that both short and long branches are visible in the same image — the absolute scale is not meaningful, only the relative spread matters. **Madagascar sequences** are shown in red; **other Africa** in grey. All trees are midpoint-rooted.
+
+For each tree, two versions are shown: the **subsampled tree** (all Madagascar + up to 150 other Africa, used for iTOL upload) and the **full tree** (all Africa sequences used for IQ-TREE). HA_H6N2 and NA_H6N2 had fewer tips than the subsample target, so their subsampled and full trees are identical.
+
+```{python}
+#| label: ete3-setup
+#| include: false
+import os, numpy as np
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
+
+from pathlib import Path
+from ete3 import Tree, TreeStyle, NodeStyle
+from IPython.display import Image, display as ipy_display
+
+TREES_DIR = Path("../trees")
+VIZ_DIR   = Path("../viz")
+FIG_DIR   = Path("figures")
+FIG_DIR.mkdir(exist_ok=True)
+
+MDG_COLOR   = "#c0392b"
+OTHER_COLOR = "#bbbbbb"
+
+def _log_transform(tree):
+    dists = [n.dist for n in tree.traverse() if n.dist > 0]
+    if not dists:
+        return
+    scale = float(np.median(dists))
+    for n in tree.traverse():
+        n.dist = float(np.log1p(n.dist / scale))
+
+def plot_tree_ete3(treefile, outpath, size=900):
+    outpath = Path(outpath)
+    if not outpath.exists():
+        t = Tree(str(treefile), format=1)
+        og = t.get_midpoint_outgroup()
+        if og is not None:
+            t.set_outgroup(og)
+        _log_transform(t)
+        for node in t.traverse():
+            ns = NodeStyle()
+            ns["size"] = 0
+            is_mdg = node.is_leaf() and "Madagascar" in node.name
+            col = MDG_COLOR if is_mdg else OTHER_COLOR
+            w   = 2 if is_mdg else 1
+            ns["hz_line_color"] = col
+            ns["vt_line_color"] = col
+            ns["hz_line_width"] = w
+            ns["vt_line_width"] = w
+            node.set_style(ns)
+        ts = TreeStyle()
+        ts.mode = "c"
+        ts.show_leaf_name    = False
+        ts.show_scale        = False
+        ts.show_branch_length = False
+        ts.show_branch_support = False
+        t.render(str(outpath), tree_style=ts, w=size, units="px")
+    ipy_display(Image(str(outpath)))
+```
+
+#### HA_H6N2
+
+```{python}
+#| label: fig-ete3-ha-h6n2-sub
+#| fig-cap: "HA_H6N2 — subsampled (64 tips: 27 Madagascar in red, 37 other Africa in grey). Same as the full tree since this subtype had fewer than the subsample target."
+plot_tree_ete3(VIZ_DIR / "HA_H6N2_sub64.nwk",
+               FIG_DIR / "ete3_HA_H6N2_sub64.png", size=700)
+```
+
+```{python}
+#| label: fig-ete3-ha-h6n2-full
+#| fig-cap: "HA_H6N2 — full tree (64 tips: 27 Madagascar in red, 37 other Africa in grey). Identical to the subsampled tree."
+plot_tree_ete3(TREES_DIR / "HA_H6N2.treefile",
+               FIG_DIR / "ete3_HA_H6N2_full64.png", size=700)
+```
+
+#### HA_B (Influenza B)
+
+```{python}
+#| label: fig-ete3-ha-b-sub
+#| fig-cap: "HA_B — subsampled (515 tips: 365 Madagascar in red, 150 other Africa in grey)."
+plot_tree_ete3(VIZ_DIR / "HA_B_sub515.nwk",
+               FIG_DIR / "ete3_HA_B_sub515.png", size=1000)
+```
+
+```{python}
+#| label: fig-ete3-ha-b-full
+#| fig-cap: "HA_B — full tree (5,015 tips: 365 Madagascar in red, 4,650 other Africa in grey)."
+plot_tree_ete3(TREES_DIR / "HA_B.treefile",
+               FIG_DIR / "ete3_HA_B_full5015.png", size=1200)
+```
+
+#### HA_H9N2
+
+```{python}
+#| label: fig-ete3-ha-h9n2-sub
+#| fig-cap: "HA_H9N2 — subsampled (201 tips: 51 Madagascar in red, 150 other Africa in grey)."
+plot_tree_ete3(VIZ_DIR / "HA_H9N2_sub201.nwk",
+               FIG_DIR / "ete3_HA_H9N2_sub201.png", size=800)
+```
+
+```{python}
+#| label: fig-ete3-ha-h9n2-full
+#| fig-cap: "HA_H9N2 — full tree (1,268 tips: 51 Madagascar in red, 1,217 other Africa in grey)."
+plot_tree_ete3(TREES_DIR / "HA_H9N2.treefile",
+               FIG_DIR / "ete3_HA_H9N2_full1268.png", size=1000)
+```
+
+#### NA_H6N2
+
+```{python}
+#| label: fig-ete3-na-h6n2-sub
+#| fig-cap: "NA_H6N2 — subsampled (65 tips: 28 Madagascar in red, 37 other Africa in grey). Same as the full tree."
+plot_tree_ete3(VIZ_DIR / "NA_H6N2_sub65.nwk",
+               FIG_DIR / "ete3_NA_H6N2_sub65.png", size=700)
+```
+
+```{python}
+#| label: fig-ete3-na-h6n2-full
+#| fig-cap: "NA_H6N2 — full tree (65 tips: 28 Madagascar in red, 37 other Africa in grey). Identical to the subsampled tree."
+plot_tree_ete3(TREES_DIR / "NA_H6N2.treefile",
+               FIG_DIR / "ete3_NA_H6N2_full65.png", size=700)
+```
 
