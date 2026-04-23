@@ -1,6 +1,6 @@
 # Madagascar Influenza
 
-*Last updated: 2026-04-16*
+*Last updated: 2026-04-23*
 
 **Report:** <https://edidpasteur.github.io/madagascar_influenza/>
 
@@ -74,7 +74,7 @@ Internal segments (PB2, PB1, PA, NP, MP, NS) pending.
 
 ```bash
 bash scripts/run_trees.sh --ha-na-only  # submits HA/NA jobs (resumable, skips done)
-bash scripts/run_trees.sh               # all 16 including internal segments
+# bash scripts/run_trees.sh             # internal segments (PB2, PB1, PA, NP, MP, NS) — pending
 ```
 
 Trees: `trees/<NAME>.treefile`. Clade analysis: `results/clade_summary.tsv`.
@@ -118,12 +118,13 @@ make report    # → docs/index.html
 - [x] Metadata analysis + Quarto report published
 - [x] Norosoa avian data (109 isolates) added
 - [x] 358 alignments completed (MAFFT)
-- [x] 10 HA/NA trees built (IQ-TREE, UFBoot2, full sequences — no subsampling)
-- [x] Monophyletic clade analysis run (`analyse_trees.py`)
-- [ ] Internal segment trees (PB2, PB1, PA, NP, MP, NS) — pending
-- [ ] Quarto report (`trees.qmd`) updated with results
-- [x] 16 ML trees completed (IQ-TREE 3.1.0, HKY+G)
+- [x] GISAID data downloaded (30,065 isolates)
+- [x] Metadata analysis + Quarto report published (`docs/index.html`)
+- [x] Norosoa avian data (109 isolates) added
+- [x] 358 alignments completed (MAFFT)
+- [x] 10 HA/NA trees built (IQ-TREE 3.1.0, HKY+G, UFBoot2 — full sequences, no subsampling)
 - [x] Monophyletic clade analysis (`results/clade_summary.tsv`)
-- [x] Report: Norosoa section + phylogenetic analysis section
-- [ ] Render trees as annotated PNGs (`scripts/render_trees.py`)
+- [x] Quarto report (`trees.qmd`) published with results, tables, and tree visualisations
+- [x] HA_H6N2 and NA_H6N2 circular tree plots (ete3, log branch lengths, Madagascar in red)
+- [ ] Internal segment trees (PB2, PB1, PA, NP, MP, NS) — pending
 - [ ] Reassortment analysis (H9N2, H3N2, H1N1, B)
