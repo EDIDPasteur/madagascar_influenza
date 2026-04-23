@@ -5,7 +5,7 @@ author: "Camila Duitama"
 date: today
 format:
   html:
-    embed-resources: true
+    embed-resources: false
     output-file: "index.html"
     toc: true
     toc-depth: 3
@@ -642,8 +642,8 @@ fig.show()
 
 ## Phylogenetic Analysis
 
-16 maximum-likelihood trees (IQ-TREE 3.1.0, HKY+G) were built across all segment × subtype
-combinations with ≥ 10 Madagascar sequences. Monophyletic Madagascar clades were detected
+10 maximum-likelihood trees (IQ-TREE 3.1.0, HKY+G, UFBoot2 1000 replicates) were built for HA and NA
+segments across 5 subtypes (B, H1N1, H3N2, H6N2, H9N2). Monophyletic Madagascar clades were detected
 with `scripts/analyse_trees.py` (ete3, midpoint-rooted, maximal all-Madagascar subtrees ≥ 2 tips).
 
 → **[Full phylogenetic analysis, tree visualizations and clade statistics](trees.html)**
