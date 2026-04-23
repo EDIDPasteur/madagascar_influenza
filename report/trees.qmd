@@ -323,21 +323,21 @@ def plot_tree_ete3(treefile, outpath, size=900):
     ipy_display(Image(str(outpath)))
 ```
 
-#### HA_H9N2
+#### HA_H6N2
 
 ```{python}
-#| label: fig-ete3-ha-h9n2-full
-#| fig-cap: "HA_H9N2 — full tree (1,268 tips: 51 Madagascar in red, 1,217 other Africa in grey)."
-plot_tree_ete3(TREES_DIR / "HA_H9N2.treefile",
-               FIG_DIR / "ete3_HA_H9N2_full1268.png", size=1000)
+#| label: fig-ete3-ha-h6n2-full
+#| fig-cap: "HA_H6N2 — full tree (64 tips: 27 Madagascar in red, 37 other Africa in grey)."
+plot_tree_ete3(TREES_DIR / "HA_H6N2.treefile",
+               FIG_DIR / "ete3_HA_H6N2_full64.png", size=700)
 ```
 
-#### NA_H9N2
+#### NA_H6N2
 
 ```{python}
-#| label: fig-ete3-na-h9n2-full
-#| fig-cap: "NA_H9N2 — full tree (1,456 tips: 53 Madagascar in red, 1,403 other Africa in grey)."
-plot_tree_ete3(TREES_DIR / "NA_H9N2.treefile",
-               FIG_DIR / "ete3_NA_H9N2_full1456.png", size=1000)
+#| label: fig-ete3-na-h6n2-full
+#| fig-cap: "NA_H6N2 — full tree (65 tips: 28 Madagascar in red, 37 other Africa in grey)."
+plot_tree_ete3(TREES_DIR / "NA_H6N2.treefile",
+               FIG_DIR / "ete3_NA_H6N2_full65.png", size=700)
 ```
 
