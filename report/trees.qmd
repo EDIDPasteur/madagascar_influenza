@@ -262,88 +262,11 @@ _pct = summary["pct_mdg_in_clades"]
 print(f"*Across the 10 trees, Madagascar sequences form {_clades.mean():.1f} \u00b1 {_clades.std():.1f} clades per tree on average, grouping {_pct.mean():.0f}% of sequences; MRCA fraction ranges from {_mrca.min():.3f} ({summary.loc[_mrca.idxmin(), 'tree']}) to {_mrca.max():.3f} ({summary.loc[_mrca.idxmax(), 'tree']}), spanning tight local clustering to broad seasonal spread.*")
 ```
 
-### Top clades per tree
-
-```{python}
-#| label: tbl-top-clades
-#| tbl-cap: "Per-tree mean ± SD across the five largest monophyletic Madagascar clades. **Tips**: number of Madagascar sequences in the clade. **Internal BL**: sum of all branch lengths within the clade (total evolutionary distance among clade members). **Stem BL**: length of the branch leading into the clade from the rest of the tree (longer = more diverged from non-Madagascar relatives). **% Tree BL**: percentage of the whole tree's total branch length that this clade accounts for."
-
-import pandas as pd
-
-top5 = (
-    details
-    .sort_values(["tree", "n_tips"], ascending=[True, False])
-    .groupby("tree")
-    .head(5)
-    .copy()
-)
-top5["clade_prop_tree_bl"] = top5["clade_prop_tree_bl"] * 100
-
-col_map = {
-    "n_tips": "Tips",
-    "internal_bl": "Internal BL",
-    "stem_bl": "Stem BL",
-    "clade_prop_tree_bl": "% Tree BL"
-}
-
-def fmt_t3(mean_val, std_val, col):
-    if col == "clade_prop_tree_bl":
-        return f"{mean_val:.2f} ± {std_val:.2f}%"
-    if col in ("internal_bl", "stem_bl"):
-        return f"{mean_val:.4f} ± {std_val:.4f}"
-    return f"{mean_val:.1f} ± {std_val:.1f}"
-
-rows = []
-for tree, grp in top5.groupby("tree"):
-    row = {"Tree": tree}
-    for col, label in col_map.items():
-        row[label] = fmt_t3(grp[col].mean(), grp[col].std(ddof=1), col)
-    rows.append(row)
-
-pd.DataFrame(rows).set_index("Tree").style
-```
-
-```{python}
-#| output: asis
-_top5_mean = top5.groupby("tree")["n_tips"].mean()
-_largest = _top5_mean.idxmax()
-print(f"*{_largest} has the largest top clades on average ({_top5_mean[_largest]:.0f} Madagascar sequences per clade); across all trees the five largest clades contain {top5['n_tips'].mean():.1f} \u00b1 {top5['n_tips'].std():.1f} sequences on average.*")
-```
-
 ## Tree visualisation
-
-### Subsampling for visualisation
-
-Full trees can contain thousands of sequences, making them impossible to read visually. To produce viewable trees, we subsampled each tree keeping **all Madagascar sequences** and selecting up to **150 non-Madagascar sequences** using [Treemmer](https://github.com/fmenardo/Treemmer) (Menardo et al. 2018, *BMC Bioinformatics* 19:164).
-
-Each tree was reduced using the following command:
-
-```bash
-python Treemmer_v0.3.py <tree.nwk> -X <target> -lm protected.csv -mc <n_mdg> -np -c 4
-```
-
-where `-X` sets the target number of tips, `-lm protected.csv` is a file listing all Madagascar tip names with the tag `Madagascar`, and `-mc <n_mdg>` forces Treemmer to always keep at least that many Madagascar-tagged sequences (equal to the total number of Madagascar tips, so none can be removed). All 10 subsampled trees were annotated with tip colours (Madagascar = red, other Africa = grey) and readable tip labels (Madagascar sequences only) for upload to [iTOL](https://itol.embl.de/).
-
-The table below summarises the composition of each subsampled tree:
-
-| Tree | Original tips | Madagascar tips | Non-Madagascar tips kept | Total after subsampling |
-|------|:---:|:---:|:---:|:---:|
-| HA_B | 5,015 | 365 | 150 | 515 |
-| HA_H1N1 | 8,621 | 234 | 150 | 384 |
-| HA_H3N2 | 9,587 | 375 | 150 | 525 |
-| HA_H6N2 | 64 | 27 | 37 | 64 *(full tree, below target)* |
-| HA_H9N2 | 1,268 | 51 | 150 | 201 |
-| NA_B | 4,292 | 258 | 150 | 408 |
-| NA_H1N1 | 7,186 | 203 | 150 | 353 |
-| NA_H3N2 | 8,114 | 369 | 150 | 519 |
-| NA_H6N2 | 65 | 28 | 37 | 65 *(full tree, below target)* |
-| NA_H9N2 | 1,456 | 53 | 150 | 203 |
 
 ### ete3 circular plots
 
-Trees are plotted with **ete3** in circular mode. Branch lengths are **log-transformed** (`log(1 + d/m)` where `m` is the median non-zero branch length across all branches) before rendering so that both short and long branches are visible in the same image — the absolute scale is not meaningful, only the relative spread matters. **Madagascar sequences** are shown in red; **other Africa** in grey. All trees are midpoint-rooted.
-
-For each tree, two versions are shown: the **subsampled tree** (all Madagascar + up to 150 other Africa, used for iTOL upload) and the **full tree** (all Africa sequences used for IQ-TREE). HA_H6N2 and NA_H6N2 had fewer tips than the subsample target, so their subsampled and full trees are identical.
+Trees are plotted with **ete3** in circular mode using all Africa sequences (no subsampling). Branch lengths are **log-transformed** (`log(1 + d/m)` where `m` is the median non-zero branch length) so that both short and long branches are visible — the absolute scale is not meaningful, only the relative spread matters. **Madagascar sequences** are shown in red; **other Africa** in grey. All trees are midpoint-rooted. All 10 subsampled trees are available in the `viz/` directory of the repository.
 
 ```{python}
 #| label: ete3-setup
@@ -400,46 +323,7 @@ def plot_tree_ete3(treefile, outpath, size=900):
     ipy_display(Image(str(outpath)))
 ```
 
-#### HA_H6N2
-
-```{python}
-#| label: fig-ete3-ha-h6n2-sub
-#| fig-cap: "HA_H6N2 — subsampled (64 tips: 27 Madagascar in red, 37 other Africa in grey). Same as the full tree since this subtype had fewer than the subsample target."
-plot_tree_ete3(VIZ_DIR / "HA_H6N2_sub64.nwk",
-               FIG_DIR / "ete3_HA_H6N2_sub64.png", size=700)
-```
-
-```{python}
-#| label: fig-ete3-ha-h6n2-full
-#| fig-cap: "HA_H6N2 — full tree (64 tips: 27 Madagascar in red, 37 other Africa in grey). Identical to the subsampled tree."
-plot_tree_ete3(TREES_DIR / "HA_H6N2.treefile",
-               FIG_DIR / "ete3_HA_H6N2_full64.png", size=700)
-```
-
-#### HA_B (Influenza B)
-
-```{python}
-#| label: fig-ete3-ha-b-sub
-#| fig-cap: "HA_B — subsampled (515 tips: 365 Madagascar in red, 150 other Africa in grey)."
-plot_tree_ete3(VIZ_DIR / "HA_B_sub515.nwk",
-               FIG_DIR / "ete3_HA_B_sub515.png", size=1000)
-```
-
-```{python}
-#| label: fig-ete3-ha-b-full
-#| fig-cap: "HA_B — full tree (5,015 tips: 365 Madagascar in red, 4,650 other Africa in grey)."
-plot_tree_ete3(TREES_DIR / "HA_B.treefile",
-               FIG_DIR / "ete3_HA_B_full5015.png", size=1200)
-```
-
 #### HA_H9N2
-
-```{python}
-#| label: fig-ete3-ha-h9n2-sub
-#| fig-cap: "HA_H9N2 — subsampled (201 tips: 51 Madagascar in red, 150 other Africa in grey)."
-plot_tree_ete3(VIZ_DIR / "HA_H9N2_sub201.nwk",
-               FIG_DIR / "ete3_HA_H9N2_sub201.png", size=800)
-```
 
 ```{python}
 #| label: fig-ete3-ha-h9n2-full
@@ -448,19 +332,12 @@ plot_tree_ete3(TREES_DIR / "HA_H9N2.treefile",
                FIG_DIR / "ete3_HA_H9N2_full1268.png", size=1000)
 ```
 
-#### NA_H6N2
+#### NA_H9N2
 
 ```{python}
-#| label: fig-ete3-na-h6n2-sub
-#| fig-cap: "NA_H6N2 — subsampled (65 tips: 28 Madagascar in red, 37 other Africa in grey). Same as the full tree."
-plot_tree_ete3(VIZ_DIR / "NA_H6N2_sub65.nwk",
-               FIG_DIR / "ete3_NA_H6N2_sub65.png", size=700)
-```
-
-```{python}
-#| label: fig-ete3-na-h6n2-full
-#| fig-cap: "NA_H6N2 — full tree (65 tips: 28 Madagascar in red, 37 other Africa in grey). Identical to the subsampled tree."
-plot_tree_ete3(TREES_DIR / "NA_H6N2.treefile",
-               FIG_DIR / "ete3_NA_H6N2_full65.png", size=700)
+#| label: fig-ete3-na-h9n2-full
+#| fig-cap: "NA_H9N2 — full tree (1,456 tips: 53 Madagascar in red, 1,403 other Africa in grey)."
+plot_tree_ete3(TREES_DIR / "NA_H9N2.treefile",
+               FIG_DIR / "ete3_NA_H9N2_full1456.png", size=1000)
 ```
 
